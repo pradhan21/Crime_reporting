@@ -1,5 +1,5 @@
 <?php
-include('../HTML/connection.php')
+include('main.php')
 $sql_admin = "CREATE TABLE Admin (
     admin_id int(10) AUTO_INCREMENT PRIMARY KEY,
     f_name VARCHAR(30) NOT NULL,
