@@ -5,7 +5,7 @@
         $email =$_POST['email'];
         $latitude =$_POST['latitude'];
         $longitude =$_POST['longitude'];
-        $sql="INSERT INTO details VALUES(1,'$name','$email','$longitude','$latitude')";
+        $sql="INSERT INTO details VALUES('','$name','$email','$longitude','$latitude')";
         mysqli_query($conn,$sql);
 
         echo
