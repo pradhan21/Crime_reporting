@@ -261,6 +261,23 @@ echo "connection successfuly";
     }
 
 
+    $sql_blog = "CREATE TABLE Blog (
+        blog_id int(10) AUTO_INCREMENT  PRIMARY KEY,
+        title varchar(50) NOT NULL,
+        sub_title varchar(50), 
+        author varchar(50) Not NULL,
+        featured_image longblob NOT NULL,
+        add_image longblob,
+        description varchar(1000) NOT NULL, 
+        description varchar(1000) NOT NULL
+        )";
+
+    if ($conn->query($sql_missing_details) === TRUE) {
+        echo "12. missing_details table created successfully <br/>";
+    } else {
+        echo "<br/> Error creating table: <br/> " . $conn->error;
+    }
+
 
 
 

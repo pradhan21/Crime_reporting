@@ -287,3 +287,10 @@
     background: var(--dark);
     border-color: var(--primary);
 }
+
+
+/* in textarea of blog form */
+
+.tarea{
+    resize: none;
+}
