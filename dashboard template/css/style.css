@@ -294,3 +294,9 @@
 .tarea{
     resize: none;
 }
+
+/* blog format */
+.format{
+    /* display: hidden; */
+    display: none;
+}

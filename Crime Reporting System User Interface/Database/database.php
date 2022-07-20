@@ -268,12 +268,13 @@ echo "connection successfuly";
         author varchar(50) Not NULL,
         featured_image longblob NOT NULL,
         add_image longblob,
-        description varchar(1000) NOT NULL, 
-        description varchar(1000) NOT NULL
+        description1 longtext NOT NULL, 
+        description2 longtext,
+        date_col datetime default current_timestamp
         )";
 
-    if ($conn->query($sql_missing_details) === TRUE) {
-        echo "12. missing_details table created successfully <br/>";
+    if ($conn->query($sql_blog) === TRUE) {
+        echo "13. blog table created successfully <br/>";
     } else {
         echo "<br/> Error creating table: <br/> " . $conn->error;
     }

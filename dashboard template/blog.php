@@ -1,3 +1,8 @@
+<?php
+
+    include "../Crime Reporting System User Interface/logics/bloglogic.php"
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,9 +31,12 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+
+
 </head>
 
 <body>
@@ -71,8 +79,8 @@
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Table</a>
-                    <a href="chart.html" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <a href="blog.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
+                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
+                    <a href="blog.html" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
                     <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -80,7 +88,7 @@
                             <a href="signin.html" class="dropdown-item">Sign In</a>
                             <a href="signup.html" class="dropdown-item">Sign Up</a>
                             <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
+                            <a href="blank.html" class="dropdown-item active">Blank Page</a>
                         </div>
                     </div>
                 </div>
@@ -182,48 +190,108 @@
             <!-- Navbar End -->
 
 
-            <!-- Chart Start -->
+            <!-- Blog Start -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row g-4">
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Single Line Chart</h6>
-                            <canvas id="line-chart"></canvas>
-                        </div>
+                <div class="container-fluid bg-secondary rounded align-items-center justify-content-center mx-0">
+                    <div class="container-fluid">
+                        <!-- <br/> -->
+                        
+                    
+                        <div class="format col-12" id="div1">
+                            
+                            <form method="post">   
+                                <br/>
+                                <h1>Blog Post</h1>                             
+                                <label for="blogTitle" class="form-label">Title</label>
+                                <input type="text" class="form-control" name="blogTitle" required>
+                                
+                                <label for="subTitle" class="form-label">Sub-Title</label>
+                                <input type="text" class="form-control" name="subTitle">
+
+                                <label for="author" class="form-label">Written by</label>
+                                <input type="text" class="form-control" name="author">
+                                
+                                <label for="fimage" class="form-label">Featured Image</label>
+                                <input type="file" class="form-control" name="fimage" required>
+                                
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control tarea" name="description" rows="8" required></textarea>
+                                
+                                <label for="addimage" class="form-label">Additional Image</label>
+                                <input type="file" class="form-control" name="addimage">
+
+                                <label for="opt_description" class="form-label">Optional Description</label>
+                                <textarea class="form-control tarea" name="opt_description" rows="6"></textarea>
+
+                                <br/>
+                                <button name="blog_insert" type="submit" class="btn btn-success" id = "btn-submit">Submit</button>
+                                <button type="reset" class="btn btn-info" onsubmit="myFunction()">Reset</button>
+                                <br/>
+                                <br/>
+                            </form> 
+
+                            <?php if(isset($_REQUEST['info'])){?>
+                                <?php if($_REQUEST['info'] == "added"){?> 
+                                
+                                    <div class="alert alert-success" role="alert">Post Added</div>
+                                <?php } ?>
+                            <?php } ?>
+
+                        </div>                           
                     </div>
-                    <div class="col-sm-12 col-xl-6">
+                    
+                </div>
+
+                <!-- Table start -->
+                <div class="row g-4" id= "div2">
+                    <div class="col-12">
+                        <br/>
+                        <button class="btn btn-success" id = "btn-tog">Create New Post</button>
+                        <br/>
+                        <br/>
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Multiple Line Chart</h6>
-                            <canvas id="salse-revenue"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Single Bar Chart</h6>
-                            <canvas id="bar-chart"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Multiple Bar Chart</h6>
-                            <canvas id="worldwide-sales"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Pie Chart</h6>
-                            <canvas id="pie-chart"></canvas>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-xl-6">
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Doughnut Chart</h6>
-                            <canvas id="doughnut-chart"></canvas>
+                            <h6 class="mb-4">Published Post List</h6>
+                            <div class="table-responsive">
+                                <table class="table table-hover table-bordered">
+                                    <thead class=" table-light">
+                                        <tr>
+                                            <th scope="col">Blog_Id</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Published Date</th>
+                                            <th scope="col">Image</th>
+                                            <th scope="col">Edit</th>
+                                            <th scope="col">Delete</th>
+                                            <th scope="col">Status</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <!-- Using loop to get recorded blog from database -->
+                                    <?php foreach($query as $q) { ?> 
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row"><?php echo $q['blog_id']; ?></th>
+                                            <td><?php echo $q['title']; ?></td>
+                                            <td><?php echo $q['date_col']; ?></td>
+                                            <td><?php echo $q['featured_image']; ?></td>
+                                            <td><button class="btn btn-light" name="edit_blog">Edit</button></td></td>
+                                            <td><a href="bloglogics.php?id= $query[blog_id]" class="btn btn-danger">Delete</a></td>
+                                            <!-- <td><button class="btn btn-danger" name = "delete">Delete</button></td> -->
+                                            <td>Member</td>
+                                        </tr>
+                                    </tbody>
+                                    <?php } ?>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <script src="js/toggle.js"></script>    
+                <!-- Table end -->
+                
+
+
             </div>
-            <!-- Chart End -->
+            <!-- Blog End -->
 
 
             <!-- Footer Start -->
