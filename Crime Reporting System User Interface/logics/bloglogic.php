@@ -24,30 +24,44 @@
       // echo "<pre>";
       // print_r($_FILES['fimage']);
       // echo"</pre>";
-      
+        $dir="images/";
+        $dir1="images1/";
         $title =$_REQUEST['blogTitle'];
         $subTitle =$_REQUEST['subTitle'];
         $author =$_REQUEST['author'];
-        $fimage =$_FILES['fimage']['name'];
+        $image_path=$dir.basename($_FILES['fimage']['name']);
         $description =$_REQUEST['description'];
-        $addimage =$_FILES['addimage']['name'];
+        $image1_path=$dir1.basename($_FILES['addimage']['name']);
         $opt_description =$_REQUEST['opt_description'];
 
-
-        $sql = "INSERT INTO Blog(title, sub_title, author, featured_image, description1, add_image, description2) VALUES('$title', '$subTitle', '$author', '$fimage', '$description', '$addimage', '$opt_description')" ;
-        $query_run = mysqli_query($conn, $sql);
-        
-        if($query_run){
-
-          move_uploaded_file($_FILES['fimage']['tmp_name'], "image/".$_FILES['fimage']['name']);
-          move_uploaded_file($_FILES['addimage']['tmp_name'], "image/".$_FILES['addimage']['name']);
-
-          header('Location: blog.php?info = added');
-          // exit();
+        if(move_uploaded_file($_FILES['fimage']['tmp_name'],$image_path) || move_uploaded_file($_FILES['addimage']['tmp_name'],$image1_path)  ){
+          $sql = "INSERT INTO Blog(title, sub_title, author, featured_image, description1, add_image, description2) VALUES('$title', '$subTitle', '$author', '$image_path', '$description', '$image1_path', '$opt_description')" ;
+          if( mysqli_query($conn, $sql)){
+            header('Location: blog.php?info = added');
+          }
+          else{
+            echo mysqli_error($conn);
+          }
+        }
+        else{
+          echo mysqli_error($conn);
         }
 
         
+        // if($query_run){
+
+        //   move_uploaded_file($_FILES['fimage']['tmp_name'], "image/".$_FILES['fimage']['name']);
+        //   move_uploaded_file($_FILES['addimage']['tmp_name'], "image/".$_FILES['addimage']['name']);
+
+        //   header('Location: blog.php?info = added');
+        //   // exit();
+        // }
+
+        
     
+      }
+      else{
+        echo mysqli_error($conn);
       }
 
 
@@ -70,3 +84,6 @@
 
 
 ?>
+
+
+
