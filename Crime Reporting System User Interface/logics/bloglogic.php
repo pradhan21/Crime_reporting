@@ -9,54 +9,46 @@
     if(!$conn){
       die("connection failed:".mysqli_connect_error());
     }
-    // echo "connection successfuly";
+
 
     // To show blog in the table
     $sql = "SELECT * FROM Blog";
     $query = mysqli_query($conn, $sql);
 
 
-    // Taking the data from the form
-    if(isset($_REQUEST["blog_insert"])){
-        $title =$_REQUEST["blogTitle"];
-        $subTitle =$_REQUEST["subTitle"];
-        $author =$_REQUEST["author"];
-        $fimage =$_REQUEST["fimage"];
-        $description =$_REQUEST["description"];
-        $addimage =$_REQUEST["addimage"];
-        $opt_description =$_REQUEST["opt_description"];
+    // Inserting the data in database from FORM
+    if(isset($_REQUEST["blog_insert"])) {
+       
+      // && isset($_FILES['fimage'])
+
+      // echo "<pre>";
+      // print_r($_FILES['fimage']);
+      // echo"</pre>";
+      
+        $title =$_REQUEST['blogTitle'];
+        $subTitle =$_REQUEST['subTitle'];
+        $author =$_REQUEST['author'];
+        $fimage =$_FILES['fimage']['name'];
+        $description =$_REQUEST['description'];
+        $addimage =$_FILES['addimage']['name'];
+        $opt_description =$_REQUEST['opt_description'];
 
 
         $sql = "INSERT INTO Blog(title, sub_title, author, featured_image, description1, add_image, description2) VALUES('$title', '$subTitle', '$author', '$fimage', '$description', '$addimage', '$opt_description')" ;
-        mysqli_query($conn, $sql);
+        $query_run = mysqli_query($conn, $sql);
         
-        header('Location: blog.php?info = added');
-        exit();
-    }
+        if($query_run){
 
-    //for deleting from table
-    // $blog_id = $_REQUEST['id'];
-    // $delete = "DELETE FROM Blog WHERE blog_id = '$blog_id'";
+          move_uploaded_file($_FILES['fimage']['tmp_name'], "image/".$_FILES['fimage']['name']);
+          move_uploaded_file($_FILES['addimage']['tmp_name'], "image/".$_FILES['addimage']['name']);
 
-    // $query = mysqli_query($conn, $delete);
+          header('Location: blog.php?info = added');
+          // exit();
+        }
 
-    // if($query){
-    //   echo "Deleted";
-    // }
-    // else{
-    //   echo "Failed";
-    // }
+        
     
-  //   if(isset($_REQUEST["id"])){
-  //     $id =$_REQUEST["id"];
-      
-
-  //     $delete = "DELETE FROM blog WHERE blog_id = $id ";
-  //     mysqli_query($conn, $delete);
-      
-  //     header("Location: blog.php?info = deleted");
-  //     exit();
-  // }
+      }
 
 
 
@@ -71,6 +63,10 @@
     header("Location: blog.php?info = deleted");
     exit();
 }
+
+
+
+
 
 
 ?>
