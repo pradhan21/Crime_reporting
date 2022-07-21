@@ -24,16 +24,41 @@
                         </div>
                         <form method="POST" action="registerhandle.php">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" placeholder="">
+                                <input type="text" class="form-control" name="fname" id="floatingText" placeholder="First Name" required>
                                 <label for="floatingText">First Name</label>
                             </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control" name="lname"id="floatingText" placeholder="Last Name"required>
+                                <label for="floatingText">Last Name</label>
+                            </div>
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                                <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com"required>
                                 <label for="floatingInput">Email address</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                                <input type="text" class="form-control"name="username" id="floatingText" placeholder="Username"required>
+                                <label for="floatingText">Usernmae</label>
+                            </div>
+                            
+                            <div class="form-floating mb-4">
+                                <input type="password" class="form-control"name="password" id="floatingPassword" placeholder="Password"required>
                                 <label for="floatingPassword">Password</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control"name="id" id="floatingText" placeholder="000-0000-000000"required>
+                                <label for="floatingText">Citizenship Id/Passwport Id</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control"name="city" id="floatingText" placeholder="Kathmandu"required>
+                                <label for="floatingText">City</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control"name="address" id="floatingText" placeholder="Tahachal, Kathmandu"required>
+                                <label for="floatingText">Address</label>
+                            </div>
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control"name="station" id="floatingText" placeholder="Kalimati Police Station"required>
+                                <label for="floatingText">Nearest Police station</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="form-check">
@@ -42,7 +67,7 @@
                                 </div>
                                 <a href="">Forgot Password</a>
                             </div>
-                            <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
+                            <button type="submit" name="Submit" value="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
                         </form>
                         <p class="text-center mb-0">Already have an Account? <a href="">Sign In</a></p>
                     </div>
