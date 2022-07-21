@@ -77,11 +77,9 @@
                         </div>
                     </div>
                     <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
+                    <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Table</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
-                    <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -197,9 +195,9 @@
                         <!-- <br/> -->
                         
                     
-                        <div class="format col-12" id="div1">
+                        <div class="col-12 format" id="div1">
                             
-                            <form method="post">   
+                            <form method="POST" enctype = "multipart/form-data" >   
                                 <br/>
                                 <h1>Blog Post</h1>                             
                                 <label for="blogTitle" class="form-label">Title</label>
@@ -245,7 +243,7 @@
                 <!-- Table start -->
                 <div class="row g-4" id= "div2">
                     <div class="col-12">
-                        <br/>
+                        
                         <button class="btn btn-success" id = "btn-tog">Create New Post</button>
                         <br/>
                         <br/>
@@ -261,7 +259,6 @@
                                             <th scope="col">Image</th>
                                             <th scope="col">Edit</th>
                                             <th scope="col">Delete</th>
-                                            <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     
@@ -284,8 +281,6 @@
                                                 <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
                                                 <td><input type="submit" name = "delete" class="btn btn-danger" value="Delete"></td>
                                             </form>
-
-                                            <td>Member</td>
                                         
                                         </tr>
                                     </tbody>
@@ -297,14 +292,14 @@
                 </div>
                 <script src="js/toggle.js"></script>    
                 <!-- Table end -->
-                
-
-
             </div>
             <!-- Blog End -->
-
+            
 
             <!-- Footer Start -->
+            <br/>
+            <br/>
+            <br/>
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary rounded-top p-4">
                     <div class="row">

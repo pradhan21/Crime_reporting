@@ -94,8 +94,8 @@
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Table</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <a href="blog.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
-                    <a href="blogpost.html" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
+                    <a href="blog.php" class="nav-item nav-link" active><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
+                    <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -226,25 +226,25 @@
                                 <input type="hidden" name = "id" value = "<?php echo $q['blog_id'] ?>">
 
                                 <label for="blogTitle" class="form-label">Title</label>
-                                <input type="text" class="form-control" name="blogTitle" value = "<?php echo $q['title'] ?>" required>
+                                <input type="text" class="form-control" name="blogTitle" value = "<?php echo $q['title']; ?>" required>
                                 
                                 <label for="subTitle" class="form-label">Sub-Title</label>
-                                <input type="text" class="form-control" name="subTitle" value = "<?php echo $q['sub_title'] ?>" >
+                                <input type="text" class="form-control" name="subTitle" value = "<?php echo $q['sub_title']; ?>" >
 
                                 <label for="author" class="form-label">Written by</label>
-                                <input type="text" class="form-control" name="author" value = "<?php echo $q['author'] ?>">
+                                <input type="text" class="form-control" name="author" value = "<?php echo $q['author']; ?>">
                                 
                                 <label for="fimage" class="form-label">Featured Image</label>
-                                <input type="file" class="form-control" name="fimage" value = "<?php echo $q['featured_image'] ?>" required>
+                                <input type="file" class="form-control" name="fimage" value = "<?php echo $q['featured_image']; ?>" required>
                                 
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control tarea" name="description" rows="8" value = "<?php echo $q['description1'] ?>" required></textarea>
+                                <textarea class="form-control tarea" name="description" rows="8" required> <?php echo $q['description1']; ?></textarea>
                                 
                                 <label for="addimage" class="form-label">Additional Image</label>
-                                <input type="file" class="form-control" name="addimage" value = "<?php echo $q['add_image'] ?>">
+                                <input type="file" class="form-control" name="addimage" value = "<?php echo $q['add_image']; ?>">
 
                                 <label for="opt_description" class="form-label">Optional Description</label>
-                                <textarea class="form-control tarea" name="opt_description" rows="6" value = "<?php echo $q['description2'] ?>"></textarea>
+                                <textarea class="form-control tarea" name="opt_description" rows="6"> <?php echo $q['description2']; ?> </textarea>
 
                                 <br/>
                                 <button name="blog_update" type="submit" class="btn btn-success" id = "btn-submit" onsubmit="myFunction()">Update Data</button>
