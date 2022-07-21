@@ -1,6 +1,23 @@
 <?php
 
-    include "../Crime Reporting System User Interface/logics/bloglogic.php"
+    $servername="localhost";
+    $username="root";
+    $password="";
+    $db="crime_db";
+    //create connections
+    $conn=mysqli_connect($servername,$username,$password, $db);
+    //check connection
+    if(!$conn){
+      die("connection failed:".mysqli_connect_error());
+    }
+    
+    $id = $_REQUEST['id'];
+
+    $sql = "SELECT * FROM blog WHERE blog_id = '$id' ";
+    $check_rec = mysqli_query($conn, $sql);
+
+    
+
 ?>
 
 <!DOCTYPE html>
@@ -31,12 +48,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-
-
-
 </head>
 
 <body>
@@ -80,15 +94,15 @@
                     <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Table</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
-                    <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
+                    <a href="blog.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
+                    <a href="blogpost.html" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>
                             <a href="signup.html" class="dropdown-item">Sign Up</a>
                             <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item active">Blank Page</a>
+                            <a href="blank.html" class="dropdown-item">Blank Page</a>
                         </div>
                     </div>
                 </div>
@@ -196,112 +210,66 @@
                     <div class="container-fluid">
                         <!-- <br/> -->
                         
+                        <?php
+                            if($check_rec){
+                                while($q = mysqli_fetch_array($check_rec))
+                                {
+                                    
+                        ?>        
                     
-                        <div class="format col-12" id="div1">
+                        <div class="col-12" id="div1">
                             
                             <form method="post">   
                                 <br/>
-                                <h1>Blog Post</h1>                             
+                                <h1>Update Blog Post</h1>  
+                                
+                                <input type="hidden" name = "id" value = "<?php echo $q['blog_id'] ?>">
+
                                 <label for="blogTitle" class="form-label">Title</label>
-                                <input type="text" class="form-control" name="blogTitle" required>
+                                <input type="text" class="form-control" name="blogTitle" value = "<?php echo $q['title'] ?>" required>
                                 
                                 <label for="subTitle" class="form-label">Sub-Title</label>
-                                <input type="text" class="form-control" name="subTitle">
+                                <input type="text" class="form-control" name="subTitle" value = "<?php echo $q['sub_title'] ?>" >
 
                                 <label for="author" class="form-label">Written by</label>
-                                <input type="text" class="form-control" name="author">
+                                <input type="text" class="form-control" name="author" value = "<?php echo $q['author'] ?>">
                                 
                                 <label for="fimage" class="form-label">Featured Image</label>
-                                <input type="file" class="form-control" name="fimage" required>
+                                <input type="file" class="form-control" name="fimage" value = "<?php echo $q['featured_image'] ?>" required>
                                 
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control tarea" name="description" rows="8" required></textarea>
+                                <textarea class="form-control tarea" name="description" rows="8" value = "<?php echo $q['description1'] ?>" required></textarea>
                                 
                                 <label for="addimage" class="form-label">Additional Image</label>
-                                <input type="file" class="form-control" name="addimage">
+                                <input type="file" class="form-control" name="addimage" value = "<?php echo $q['add_image'] ?>">
 
                                 <label for="opt_description" class="form-label">Optional Description</label>
-                                <textarea class="form-control tarea" name="opt_description" rows="6"></textarea>
+                                <textarea class="form-control tarea" name="opt_description" rows="6" value = "<?php echo $q['description2'] ?>"></textarea>
 
                                 <br/>
-                                <button name="blog_insert" type="submit" class="btn btn-success" id = "btn-submit" onsubmit="myFunction()">Submit</button>
+                                <button name="blog_update" type="submit" class="btn btn-success" id = "btn-submit" onsubmit="myFunction()">Update Data</button>
                                 <button type="reset" class="btn btn-info">Reset</button>
+                                <a href="blog.php" class="btn btn-light">Cancel / Go Back</a>
                                 <br/>
                                 <br/>
                             </form> 
 
-                            <?php if(isset($_REQUEST['info'])){?>
-                                <?php if($_REQUEST['info'] == "added"){?> 
-                                
-                                    <div class="alert alert-success" role="alert">Post Added</div>
-                                <?php } ?>
-                            <?php } ?>
 
-                        </div>                           
+                        </div>   
+                        <?php
+                                }
+                            }
+                        ?>
                     </div>
                     
                 </div>
 
-                <!-- Table start -->
-                <div class="row g-4" id= "div2">
-                    <div class="col-12">
-                        <br/>
+                <!-- <br/>
                         <button class="btn btn-success" id = "btn-tog">Create New Post</button>
                         <br/>
                         <br/>
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Published Post List</h6>
-                            <div class="table-responsive">
-                                <table class="table table-hover table-bordered">
-                                    <thead class=" table-light">
-                                        <tr>
-                                            <th scope="col">Blog_Id</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Published Date</th>
-                                            <th scope="col">Image</th>
-                                            <th scope="col">Edit</th>
-                                            <th scope="col">Delete</th>
-                                            <th scope="col">Status</th>
-                                        </tr>
-                                    </thead>
-                                    
-                                    <!-- Using loop to get recorded blog from database -->
-                                    <?php foreach($query as $q) { ?> 
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row"><?php echo $q['blog_id']; ?></th>
-                                            <td><?php echo $q['title']; ?></td>
-                                            <td><?php echo $q['date_col']; ?></td>
-                                            <td><?php echo $q['featured_image']; ?></td>
-                                            
-                                            <form action = "updatedata.php" method="POST">
-                                                <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
-                                                <td><input type="submit" name = "edit" class="btn btn-dark" value="Edit"></td>
-                                            </form>
-                                            <!-- <td><button class="btn btn-light" name="edit_blog">Edit</button></td></td> -->
 
-                                            <form method="POST">
-                                                <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
-                                                <td><input type="submit" name = "delete" class="btn btn-danger" value="Delete"></td>
-                                            </form>
-
-                                            <td>Member</td>
-                                        
-                                        </tr>
-                                    </tbody>
-                                    <?php } ?>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <script src="js/toggle.js"></script>    
-                <!-- Table end -->
-                
-
-
-            </div>
-            <!-- Blog End -->
+                        <script src="js/toggle.js"></script>     -->
 
 
             <!-- Footer Start -->

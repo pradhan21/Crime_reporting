@@ -11,7 +11,7 @@
     }
     // echo "connection successfuly";
 
-
+    // To show blog in the table
     $sql = "SELECT * FROM Blog";
     $query = mysqli_query($conn, $sql);
 
@@ -27,10 +27,10 @@
         $opt_description =$_REQUEST["opt_description"];
 
 
-        $sql = "INSERT INTO Blog(title, sub_title, author, featured_image, add_image, description1, description2) VALUES('$title', '$subTitle', '$author', '$fimage', '$description', '$addimage', '$opt_description')" ;
+        $sql = "INSERT INTO Blog(title, sub_title, author, featured_image, description1, add_image, description2) VALUES('$title', '$subTitle', '$author', '$fimage', '$description', '$addimage', '$opt_description')" ;
         mysqli_query($conn, $sql);
         
-        header("Location: blog.php?info = added");
+        header('Location: blog.php?info = added');
         exit();
     }
 
@@ -47,16 +47,30 @@
     //   echo "Failed";
     // }
     
-  //   if(isset($_REQUEST["delete"])){
-  //     $blog_id =$_REQUEST["blog_id"];
+  //   if(isset($_REQUEST["id"])){
+  //     $id =$_REQUEST["id"];
       
 
-  //     $delete = "DELETE FROM Blog WHERE blog_id = '$blog_id'";
-  //     mysqli_query($conn, $sql);
+  //     $delete = "DELETE FROM blog WHERE blog_id = $id ";
+  //     mysqli_query($conn, $delete);
       
   //     header("Location: blog.php?info = deleted");
   //     exit();
   // }
+
+
+
+  // For deleting data
+  if(isset($_REQUEST["delete"])){
+    $id =$_REQUEST["id"];
+    
+
+    $delete = "DELETE FROM blog WHERE blog_id = '$id' ";
+    mysqli_query($conn, $delete);
+    
+    header("Location: blog.php?info = deleted");
+    exit();
+}
 
 
 ?>

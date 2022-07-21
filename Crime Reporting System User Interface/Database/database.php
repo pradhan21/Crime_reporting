@@ -267,8 +267,8 @@ echo "connection successfuly";
         sub_title varchar(50), 
         author varchar(50) Not NULL,
         featured_image longblob NOT NULL,
-        add_image longblob,
-        description1 longtext NOT NULL, 
+        description1 longtext NOT NULL,
+        add_image longblob, 
         description2 longtext,
         date_col datetime default current_timestamp
         )";
