@@ -110,7 +110,7 @@ if (isset($_POST['upload'])) {
                   <p class="text-secondary mb-1">----something here</p>
                   <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
                   
-                  <button class="btn btn-outline-primary"><a href="#">Message</a></button>
+                  <button class="btn btn-outline-primary"><a href="#">Message</a></button><!--MESSAGE -------------------  -->
                 </div>
               </div>
             </div>
@@ -213,7 +213,7 @@ if (isset($_POST['upload'])) {
               <hr>
               <div class="row">
                 <div class="col-sm-12">
-                  <a class="btn btn-info " target="__blank" href="#">Edit</a>
+                  <a class="btn btn-info " target="__blank" href="#">Edit</a><!-- EDIT 111111111111111111111-->
                 </div>
               </div>
             </div>
