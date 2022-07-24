@@ -279,7 +279,19 @@ echo "connection successfuly";
         echo "<br/> Error creating table: <br/> " . $conn->error;
     }
 
+    $sql_emergency = "CREATE TABLE emergency (
+        id int(100) AUTO_INCREMENT  PRIMARY KEY,
+        email varchar(50),
+        latitude varchar(50), 
+        longitude varchar(50),
+        date_col datetime default current_timestamp
+        )";
 
+    if ($conn->query($sql_emergency) === TRUE) {
+        echo "13. emergency table created successfully <br/>";
+    } else {
+        echo "<br/> Error creating table: <br/> " . $conn->error;
+    }
 
 
 //close mysqli
