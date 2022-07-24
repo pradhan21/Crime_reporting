@@ -1,6 +1,7 @@
 <?php
 
-    include "../Crime Reporting System User Interface/logics/bloglogic.php"
+    include "../dashboard user/logics/bloglogic.php"
+    // include "../Crime Reporting System User Interface/logics/bloglogic.php"
 ?>
 
 <!DOCTYPE html>
