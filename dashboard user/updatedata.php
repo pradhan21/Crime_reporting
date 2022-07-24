@@ -11,6 +11,8 @@
       die("connection failed:".mysqli_connect_error());
     }
     
+    include_once "../Crime Reporting System User Interface/logics/bloglogic.php";
+
     $id = $_REQUEST['id'];
 
     $sql = "SELECT * FROM blog WHERE blog_id = '$id' ";
@@ -217,7 +219,7 @@
                     
                         <div class="col-12" id="div1">
                             
-                            <form method="post">   
+                            <form method="post" enctype = "multipart/form-data">   
                                 <br/>
                                 <h1>Update Blog Post</h1>  
                                 

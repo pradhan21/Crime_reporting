@@ -197,7 +197,7 @@
                     
                         <div class="col-12 format" id="div1">
                             
-                            <form method="POST" enctype = "multipart/form-data" >   
+                            <form method="POST" enctype = "multipart/form-data">   
                                 <br/>
                                 <h1>Blog Post</h1>                             
                                 <label for="blogTitle" class="form-label">Title</label>
@@ -270,8 +270,8 @@
                                             <th scope="row"><?php echo $q['blog_id']; ?></th>
                                             <td><?php echo $q['title']; ?></td>
                                             <td><?php echo $q['date_col']; ?></td>
-                                            <td><img class="img1" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?> "></td>
-                                            <td><img class="img1" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td>
+                                            <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?> "></td>
+                                            <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td>
                                             <form action = "updatedata.php" method="POST">
                                                 <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
                                                 <td><input type="submit" name = "edit" class="btn btn-dark" value="Edit"></td>
