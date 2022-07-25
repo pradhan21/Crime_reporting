@@ -8,11 +8,12 @@
         $lname=$_POST['lname'];
         $email=$_POST['email'];
         $username=$_POST['username'];
-        $pass=$_POST['password'];
+        $pass=md5($_POST['password']);
         $id=$_POST['id'];
         $city=$_POST['city'];
         $address=$_POST['address'];
         $station=$_POST['station'];
+        
 
         $sql="INSERT INTO user Values('','$fname','$lname','','$username','$email','$pass','$id','$city','$address','$station',''  )";
         if(mysqli_query($conn,$sql)){

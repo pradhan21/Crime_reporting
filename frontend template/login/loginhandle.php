@@ -12,10 +12,10 @@ SESSION_start();
             if(mysqli_num_rows($result)==1){
                 $row=mysqli_fetch_assoc($result);
                 if($row['email']==$email && $row['password']==$pass){
-                    $SESSION['fname']=$row['f_name'];
-                    $SESSION['lname']=$row['l_name'];
-                    $SESSION['id']=$row['user_id'];
-                    header("location:../../dashboard user/index.html");
+                    $_SESSION['fname']=$row['f_name'];
+                    $_SESSION['lname']=$row['l_name'];
+                    $_SESSION['id']=$row['user_id'];
+                    header("location:../../dashboard user/index.php");
                 }
             }
             else{
