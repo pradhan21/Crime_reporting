@@ -15,7 +15,7 @@ SESSION_start();
                     $SESSION['fname']=$row['f_name'];
                     $SESSION['lname']=$row['l_name'];
                     $SESSION['id']=$row['user_id'];
-                    header("location:../dashboard/index.html");
+                    header("location:../../dashboard user/index.html");
                 }
             }
             else{

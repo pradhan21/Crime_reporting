@@ -17,7 +17,7 @@
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="index.html" class="">
-                                <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+                                <h5 class="text-primary"><i class="fa fa-user-edit me-2"></i>Crime Reporting</h5>
                             </a>
                             <h3>Sign In</h3>
                         </div>
@@ -40,7 +40,7 @@
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
                         </form>
-                        <p class="text-center mb-0">Don't have an Account? <a href="">Sign Up</a></p>
+                        <p class="text-center mb-0">Don't have an Account? <a href="signup.php">Sign Up</a></p>
                     </div>
                 </div>
             </div>
