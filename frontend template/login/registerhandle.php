@@ -15,7 +15,7 @@
         $station=$_POST['station'];
         
 
-        $sql="INSERT INTO user Values('','$fname','$lname','$username','$pass','$id','$city','$address','$station','$email'  )";
+        $sql="INSERT INTO user Values('','$fname','$lname','$username','$pass','$id','$city','$address','$station','$email','' )";
         if(mysqli_query($conn,$sql)){
             header("location:login.php");
         }

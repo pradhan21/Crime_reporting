@@ -32,14 +32,14 @@ if (isset($_POST['upload'])) {
     // Now let's move the uploaded image into the folder: image
     if (move_uploaded_file($tempname, $folder)) {
     ?>
-<a href="index.html">press here to get redirected</a>
-<?php
-    } else {
-        echo "<h3>  Failed to upload image!</h3>";
+    <a href="index.html">press here to get redirected</a>
+    <?php
+        } else {
+            echo "<h3>  Failed to upload image!</h3>";
+        }
+      
     }
-  
-}
-?>
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -176,6 +176,8 @@ if (isset($_POST['upload'])) {
                   $phoneErr = "";  
                   $mobileErr="";
                   $addressErr="";
+                  $l_Err="";
+                  $f_Err="";
                   $name = "";  
                   $f_name="";
                   $l_name="";
@@ -186,14 +188,24 @@ if (isset($_POST['upload'])) {
                   $mobile="";
                   $address="";
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-                  if (empty($_POST["name"])) {  
-                    $nameErr = "Name Field is required";  
+                  if (empty($_POST["f_name"])) {  
+                    $f_Err = "Name Field is required";  
                   } else {  
-                    $name = test_input($_POST["name"]);  
-                    if (!preg_match("/^[a-zA-Z-' ]*$/",$name)) {  
-                      $nameErr = "Only letters and white space allowed";  
+                    $f_name = test_input($_POST["f_name"]);  
+                      
+                    if (!preg_match("/^[a-zA-Z-' ]*$/",$f_name)) {  
+                      $f_Err = "Only letters and white space allowed";  
                     }  
                   }  
+                    if (empty($_POST["l_name"])) {  
+                      $l_Err = "Name Field is required";  
+                    } else {  
+                        
+                      $l_name = test_input($_POST["l_name"]);  
+                      if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name)) {  
+                        $l_Err = "Only letters and white space allowed";  
+                      }  
+                    }  
                     if (empty($_POST["email"])) {  
                     $emailErr = "Email field is required";  
                   } else {  
@@ -249,18 +261,7 @@ if (isset($_POST['upload'])) {
                 }  
               ?>
               <form method="post" action= "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0" style="color:white">Name</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                  <input type="text" name="name" value="<?php echo $name;?>" style="background-color:#BEBEBE ">
-                  <span class="error"> 
-                  **<?php echo $nameErr;?> 
-                  </span>  
-                  </div>
-                </div>-->
-                <hr>
+
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0" style="color:white">First-Name</h6>
@@ -268,7 +269,7 @@ if (isset($_POST['upload'])) {
                   <div class="col-sm-9 text-secondary">
                   <input type="text" name="f_name" value="<?php echo $f_name;?>" style="background-color:#BEBEBE ">
                   <span class="error"> 
-                  **<?php echo $nameErr;?> 
+                  **<?php echo $f_Err;?> 
                   </span>  
                   </div>
                 </div>
@@ -280,7 +281,7 @@ if (isset($_POST['upload'])) {
                   <div class="col-sm-9 text-secondary">
                   <input type="text" name="l_name" value="<?php echo $l_name;?>" style="background-color:#BEBEBE ">
                   <span class="error"> 
-                  **<?php echo $nameErr;?> 
+                  **<?php echo $l_Err;?> 
                   </span>  
                   </div>
                 </div>
@@ -351,7 +352,7 @@ if (isset($_POST['upload'])) {
                 <div class="row">
                   <div class="col-sm-12">
 
-                    <button type="submit" class="btn btn-primary" name="">Send</button>
+                    <button type="submit" class="btn btn-primary" name="submitform">Send</button>
                     <button type="reset" class="btn btn-info">Reset</button><!-- EDIT 111111111111111111111-->
                   </div>
                      <?php  
@@ -364,9 +365,10 @@ if (isset($_POST['upload'])) {
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
-                          
-                                          $sql = "INSERT INTO user(f_name,l_name,email,gender,address)  VALUES ('$f_name','l_name',
-                                          '$email','$gender','$address')";
+                                            $sql="UPDATE user
+                                            SET f_name = '$f_name', l_name = '$l_name', email='$email', address='$address',phone='$mobile'
+                                            WHERE email = '$email';";
+                                          
                                        
                                       if(mysqli_query($conn, $sql)){
                                           echo "<h3>data stored in a database successfully."
@@ -379,9 +381,8 @@ if (isset($_POST['upload'])) {
                                           echo "ERROR: Hush! Sorry $sql. "
                                               . mysqli_error($conn);
                                       }
-                                       
                                       // Close connection
-                                      mysqli_close($conn);
+                                      
                          
                                 //echo "<h2> Your Input: </h2>";  
                                 //echo $name;  
@@ -396,8 +397,16 @@ if (isset($_POST['upload'])) {
                                 //echo "<br>";
                                 //echo $address; 
                                 //echo "<br>";
+                                if (isset($_POST['submitform']))  
+                                {       
                       ?>  
+                          <script type="text/javascript">
+                            window.location = "profile.php";
+                          </script>      
                         </div>
+                        <?php
+                              }
+                            ?>
               </form>
             </div>
           </div>
