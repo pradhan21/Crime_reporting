@@ -405,7 +405,7 @@ SESSION_start();
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">@</span>
                   <input type="email" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon1" name ="email">
-                  <input type="hidden" value="$id" name="id">
+                  <input type="hidden" value="<?php echo $id;?>" name="id">
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">@</span>

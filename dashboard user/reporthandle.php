@@ -13,12 +13,18 @@
                     $file=$folder.basename($_FILES['fimage']['name']);
                     $report=$_POST['report'];
                     $id=$_POST['id'];
+                    
                     $location=$_POST['location'];
                 
-                    $sql="INSERT INTO user_complaints VALUES('','$id','$location','','$report','$file','') ";
+                    $sql="INSERT INTO user_complaints VALUES('','$id','$location','','$report','$file') ";
                     
-                    if(mysqli_query($conn,$sql)){
-                        header("location:index.php");
+                    
+                        if(mysqli_query($conn, $sql)){
+                            move_uploaded_file($_FILES['fimage']['tmp_name'],$folder);
+                            header("location:index.php");
+                            exit();
+                
+                        
                     }else{
                         echo mysqli_error($conn);
                     }            
