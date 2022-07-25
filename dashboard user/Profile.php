@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(0);
 $filename = $_FILES["uploadfile"]["name"];
 $folder = "image/" . $filename;
@@ -105,10 +106,43 @@ if (isset($_POST['upload'])) {
                   
                   <button  class="btn btn-primary" type="submit" name="upload">UPLOAD</button>
                 </form>
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "crime_db";
+                $fisrt1="";
+                $last1="";
+                $phone1="";
+                $email1="";  
+                $address1="";          
+                $conn = new mysqli($servername,$username, $password, $dbname);
+                if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
+                }
+                $sql = "select f_name,l_name,address,email,phone from user ";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                  // output data of each row
+                  while($row = $result->fetch_assoc()) {
+                    $first1 = $row["f_name"];
+                    $last1=$row["l_name"];
+                    $address1 = $row["address"];
+                    $email1=$row["email"];
+                    $phone1=$row["phone"]; 
+                    
+                  }
+                }
+                  
+                
+              
+
+          
+          ?>
                 <div class="mt-3">
-                  <h4 style="color:white">Jhonny</h4>
-                  <p class="text-secondary mb-1">----something here</p>
-                  <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                  <h4 style="color:white"><?php echo $first1;?><?php echo $last1;?></h4>
+                  <p class="text-secondary mb-1">------------</p>
+                  <p class="text-muted font-size-sm"><?php echo $address1;?></p>
                   
                   <button class="btn btn-outline-primary"><a href="#">Message</a></button><!--MESSAGE -------------------  -->
                 </div>
@@ -166,51 +200,73 @@ if (isset($_POST['upload'])) {
         <div class="col-md-8">
           <div class="card mb-3">
             <div class="card-body" style="background-color:#191c24">
+
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0" style="color:white">Full Name</h6>
+                  <h6 class="mb-0" style="color:white">First Name</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  Kenneth Valdez
+                  <?php echo $first1;?>
                 </div>
               </div>
+
               <hr>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0" style="color:white">Last name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                <?php echo $last1;?>
+                </div>
+              </div>
+
+              <hr>
+
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0" style="color:white">Email</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  fip@jukmuh.al
+                <?php echo $email1;?>
                 </div>
               </div>
+
               <hr>
+
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0" style="color:white">Phone</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  (239) 816-9029
+                <?php echo $phone1;?>
                 </div>
               </div>
+
               <hr>
+
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0" style="color:white">Mobile</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  (320) 380-4539
+                <?php echo $phone1;?>
                 </div>
               </div>
+
               <hr>
+
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0" style="color:white">Address</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  Bay Area, San Francisco, CA
+                <?php echo $address1;?>
                 </div>
               </div>
+
               <hr>
+
               <div class="row">
                 <div class="col-sm-12">
                   <a class="btn btn-info " target="__blank" href="Profile_form.php">Edit</a><!-- EDIT 111111111111111111111-->
