@@ -65,12 +65,11 @@
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
                             <li><a href="index.html">Home</a></li>
                             <li class="active"><a href="news.php">News</a></li>
-                            <li><a href="news.php">Technology</a></li>
                             <li class="has-children">
-                                <a href="category.html">Login/Register</a>
+                                <a href="#">Login/Register</a>
                                 <ul class="dropdown">
-                                    <li><a href="../main dashboard/login.php">Login</a></li>
-                                    <li><a href="../main dashboard/signup.php">Signup</a></li>
+                                    <li><a href="login/login.php">Login</a></li>
+                                    <li><a href="login/signup.php">Signup</a></li>
                                 </ul>
                             </li>
                         </ul>
