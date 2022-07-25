@@ -4,7 +4,7 @@ SESSION_start();
 
     if(isset($_POST['submit'])){
         $email=$_POST['email'];
-        $pass=$_POST['pass'];
+        $pass=md5($_POST['pass']);
 
         if($email!="" && $pass!=""){
             $sql="SELECT * FROM user where email='$email' and password='$pass'";
