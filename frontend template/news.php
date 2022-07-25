@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="css/aos.css">
+    <!-- Font Awesome -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -130,7 +132,7 @@
                         <form action="#" class="search-form">
                             <div class="form-group">
                                 <span class="icon fa fa-search"></span>
-                                <input type="text" class="form-control" id="s" placeholder="Type a keyword and hit enter">
+                                <input type="text" class="form-control" id="s" placeholder="Search">
                             </div>
                         </form>
                     </div>
