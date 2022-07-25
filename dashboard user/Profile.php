@@ -13,7 +13,7 @@ if (isset($_POST['upload'])) {
    
     $tempname = $_FILES["uploadfile"]["tmp_name"];
     
-    $db = mysqli_connect("localhost", "root", "", "profiledb");
+    $db = mysqli_connect("localhost", "root", "", "crime_db");
     if (file_exists($target_file)) {
       echo "<h1>Sorry, file already exists</h1>";
       $db->close();  
@@ -25,10 +25,10 @@ if (isset($_POST['upload'])) {
  
     // Get all the submitted data from the form
     $sql = "INSERT INTO image (filename) VALUES ('$filename')";
-  
+    $sql_2="INSERT INTO user (image) VALUES ('$filename')";
     // Execute query+
     mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
- 
+    mysqli_query($db, $sql_2);
     // Now let's move the uploaded image into the folder: image
     if (move_uploaded_file($tempname, $folder)) {
     ?>

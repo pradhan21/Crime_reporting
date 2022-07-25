@@ -13,18 +13,18 @@ if (isset($_POST['upload'])) {
    
     $tempname = $_FILES["uploadfile"]["tmp_name"];
     
-    $db = mysqli_connect("localhost", "root", "", "profiledb");
+    $db = mysqli_connect("localhost", "root", "", "crime_db");
     if (file_exists($target_file)) {
       echo "<h1>Sorry, file already exists</h1>";
       $db->close();  
     }
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"&& $imageFileType != "gif" ) {
-   echo "Sorry, ononly JPG, JPEG, PNG & GIF files are allowed.";
-    $db->close();
-     }
- 
-    // Get all the submitted data from the form
-    $sql = "INSERT INTO image (filename) VALUES ('$filename')";
+      echo "Sorry, ononly JPG, JPEG, PNG & GIF files are allowed.";
+      $db->close();
+      }
+  
+      // Get all the submitted data from the form
+      $sql = "INSERT INTO image (filename) VALUES ('$filename')";
   
     // Execute query+
     mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
