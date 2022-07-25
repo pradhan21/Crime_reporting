@@ -77,7 +77,7 @@
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                    <a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
                     <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
                     <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Table</a>
                     <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
@@ -181,7 +181,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="../frontend template/login/logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
