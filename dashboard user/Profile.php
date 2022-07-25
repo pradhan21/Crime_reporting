@@ -16,11 +16,11 @@ if (isset($_POST['upload'])) {
     
     $db = mysqli_connect("localhost", "root", "", "crime_db");
     if (file_exists($target_file)) {
-      echo "<h1>Sorry, file already exists</h1>";
+      echo "<script>alert('Sorry, file already exists')</script>";
       $db->close();  
     }
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"&& $imageFileType != "gif" ) {
-   echo "Sorry, ononly JPG, JPEG, PNG & GIF files are allowed.";
+   echo "<script>alert('Sorry, ononly JPG, JPEG, PNG & GIF files are allowed.')</script>";
     $db->close();
      }
  
@@ -36,7 +36,7 @@ if (isset($_POST['upload'])) {
     <a href ="index.html">press here to get redirected</a>
     <?php
     } else {
-        echo "<h3>  Failed to upload image!</h3>";
+        echo " <script> alert('Failed to upload image!')</script>";
     }
   
 }
