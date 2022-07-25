@@ -177,6 +177,8 @@ if (isset($_POST['upload'])) {
                   $mobileErr="";
                   $addressErr="";
                   $name = "";  
+                  $f_name="";
+                  $l_name="";
                   $email = "";  
                   $gender = "";  
                   $comment = "";  
@@ -257,8 +259,33 @@ if (isset($_POST['upload'])) {
                   **<?php echo $nameErr;?> 
                   </span>  
                   </div>
+                </div>-->
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0" style="color:white">First-Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                  <input type="text" name="f_name" value="<?php echo $f_name;?>" style="background-color:#BEBEBE ">
+                  <span class="error"> 
+                  **<?php echo $nameErr;?> 
+                  </span>  
+                  </div>
                 </div>
                 <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0" style="color:white">Last-Name</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                  <input type="text" name="l_name" value="<?php echo $l_name;?>" style="background-color:#BEBEBE ">
+                  <span class="error"> 
+                  **<?php echo $nameErr;?> 
+                  </span>  
+                  </div>
+                </div>
+                <hr>
+
                 <div class="row" style="background-color:#191c24">
                   <div class="col-sm-3" style="background-color:#191c24">
                     <h6 class="mb-0" style="color:white">Email</h6>
@@ -331,22 +358,22 @@ if (isset($_POST['upload'])) {
                         $servername = "localhost";
                         $username = "root";
                         $password = "";
-                        $dbname = "profileCredentialsdb";
+                        $dbname = "crime_db";
 
                         $conn = new mysqli($servername,$username, $password, $dbname);
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
                           
-                                          $sql = "INSERT INTO credentials  VALUES ('$name',
-                                          '$email','$gender','$phone','$mobile','$address')";
+                                          $sql = "INSERT INTO user(f_name,l_name,email,gender,address)  VALUES ('$f_name','l_name',
+                                          '$email','$gender','$address')";
                                        
                                       if(mysqli_query($conn, $sql)){
                                           echo "<h3>data stored in a database successfully."
                                               . " Please browse your localhost php my admin"
                                               . " to view the updated data</h3>";
                                
-                                          echo nl2br("\n$first_name\n $last_name\n "
+                                          echo nl2br("\n$f_name\n $l_name\n "
                                               . "$gender\n $address\n $email");
                                       } else{
                                           echo "ERROR: Hush! Sorry $sql. "

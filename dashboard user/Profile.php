@@ -25,7 +25,7 @@ if (isset($_POST['upload'])) {
  
     // Get all the submitted data from the form
     $sql = "INSERT INTO image (filename) VALUES ('$filename')";
-    $sql_2="INSERT INTO user (image) VALUES ('$filename')";
+    $sql_2="INSERT INTO user (filename) VALUES ('$filename')";
     // Execute query+
     mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
     mysqli_query($db, $sql_2);

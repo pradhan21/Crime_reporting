@@ -21,4 +21,5 @@ $conn=mysqli_connect($servername,$username,$password, $db);
                 echo "<br/> Error creating table 'image': <br/> " . $conn->error;
             }
             
+            
 ?>            

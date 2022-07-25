@@ -1,3 +1,7 @@
+<?php 
+  if(isset($_SESSION['id'])){
+    include_once "connection.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -395,10 +399,16 @@
                 <h6 class="mb-0">Report Handler</h6>
                 <a href="">Show All</a>
               </div>
-              <form>
+              <form action="reporthandle.php" method="POST" enctype="multipart/form-data" >
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">@</span>
-                  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="email" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon1" name ="email">
+                  <input type="hidden" value="$_SESSION['id']" name="id">
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">@</span>
+                  <input type="text" class="form-control" placeholder="location"  aria-describedby="basic-addon1" name ="location">
+                  
                 </div>
 
                 <!--  <div class="d-flex mb-2">
@@ -408,7 +418,7 @@
                 <input type="file" class="form-control" name="fimage">
                 <br>
                 <div class="form-floating">
-                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;"></textarea>
+                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;"name="report"></textarea>
                   <label for="floatingTextarea">Type your report</label>
                 </div>
 
@@ -457,7 +467,7 @@
                   </div>
                 </div>
               </div>-->
-                <br><button type="submit" class="btn btn-primary">Send</button>
+                <br><button type="submit" class="btn btn-primary" name ="submit">Send</button>
                 <button type="reset" class="btn btn-info">Reset</button>
               </form>
             </div>
@@ -517,3 +527,9 @@
 </body>
 
 </html>
+<?php
+}
+else{
+  echo mysqli_error($conn);
+}
+?>
