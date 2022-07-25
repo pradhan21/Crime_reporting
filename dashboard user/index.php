@@ -2,7 +2,7 @@
 SESSION_start();
  $id=$_SESSION['id'];
 
-  if(isset($_SESSION['id'])){
+  if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname'])){
     include "connection.php";
     
     
@@ -54,7 +54,7 @@ SESSION_start();
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3">
       <nav class="navbar bg-secondary navbar-dark">
-        <a href="index.html" class="navbar-brand mx-4 mb-3">
+        <a href="#" class="navbar-brand mx-4 mb-3">
           <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Home</h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
@@ -63,23 +63,23 @@ SESSION_start();
             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
           </div>
           <div class="ms-3">
-            <h6 class="mb-0">Jhonny(user)</h6><!-- user-->
+            <h6 class="mb-0"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></h6><!-- user-->
             <span></span><!-- user-->
           </div>
         </div>
         <div class="navbar-nav w-100">
-          <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-          <div class="nav-item dropdown">
+          <a href="#" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
             <div class="dropdown-menu bg-transparent border-0">
               <a href="button.html" class="dropdown-item">Buttons</a>
               <a href="typography.html" class="dropdown-item">Typography</a>
               <a href="element.html" class="dropdown-item">Other Elements</a>
             </div>
-          </div>
-          <a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+          </div> -->
+          <!-- <a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a> -->
           <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a>
-          <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
+          <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
           <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -89,7 +89,7 @@ SESSION_start();
               <a href="404.html" class="dropdown-item">404 Error</a>
               <a href="blank.html" class="dropdown-item">Blank Page</a>
             </div>
-          </div>
+          </div> -->
         </div>
       </nav>
     </div>
@@ -178,7 +178,7 @@ SESSION_start();
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-              <span class="d-none d-lg-inline-flex">Jhonny</span>
+              <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="Profile.php" class="dropdown-item">My Profile</a>
@@ -270,93 +270,34 @@ SESSION_start();
             <h6 class="mb-0">Report History</h6>
             <a href="">Show All</a>
           </div>
-          <?php
-                  $servername = "localhost";
-                  $username = "root";
-                  $password = "";
-                  $dbname = "crime_db";
-                  $fisrt1="";
-                  $last1="";
-                  $phone1="";
-                  $email1="";  
-                  $address1="";          
-                  $conn = new mysqli($servername,$username, $password, $dbname);
-                  if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
-                  }
-                  $sql = "select f_name,l_name,address,email,phone from user ";
-                  $result = $conn->query($sql);
-
-                  if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                      $first1 = $row["f_name"];
-                      $last1=$row["l_name"];
-                      $address1 = $row["address"];
-                      $email1=$row["email"];
-                      $phone1=$row["phone"]; 
-                      
-                    }
-                  }
-          ?>
           <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
               <thead>
                 <tr class="text-white">
                   <th scope="col"></th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Invoice</th>
-                  <th scope="col">User-ID</th>
-                  <th scope="col">Amount</th>
+                  <th scope="col">Crime Type</th>
+                  <th scope="col">Location</th>
+                  <th scope="col">Discription</th>
                   <th scope="col">Report-Status</th>
                   <!--    <th scope="col">Action</th>-->
                 </tr>
               </thead>
               <tbody>
+                <?php
+                   $sql = "SELECT * FROM user_complaints where user_id='$id' ";
+                   $result = mysqli_query($conn,$sql);
+ 
+                   while($row = mysqli_fetch_array($result)){
+                ?>
                 <tr>
                   <th scope="row">1</th>
-                  <td>01 Jan 2045</td>
-                  <td>INV-0123</td>
-                  <td>Jhonny</td>
-                  <td>$123</td>
-                  <td>On-Going</td>
+                  <td><?php echo $row['crime_type'];?></td>
+                  <td><?php echo $row['crime_place'];?></td>
+                  <td><?php echo $row['crime_evidence'];?></td>
+                  <td>Pending</td>
 
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>01 Jan 2045</td>
-                  <td>INV-0123</td>
-                  <td>Jhonny</td>
-                  <td>$123</td>
-                  <td>Processed</td>
-
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>01 Jan 2045</td>
-                  <td>INV-0123</td>
-                  <td>Jhonny</td>
-                  <td>$123</td>
-                  <td>N/A</td>
-
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>01 Jan 2045</td>
-                  <td>INV-0123</td>
-                  <td>Jhonny</td>
-                  <td>$123</td>
-                  <td>Processed</td>
-
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>01 Jan 2045</td>
-                  <td>INV-0123</td>
-                  <td>Jhonny</td>
-                  <td>$123</td>
-                  <td>Processed</td>
-
-                </tr>
+                <?php }?>
               </tbody>
             </table>
           </div>
@@ -564,6 +505,6 @@ SESSION_start();
 }
   
 else{
-  echo "error";
+  echo mysqli_error($conn);
 }
 ?>
