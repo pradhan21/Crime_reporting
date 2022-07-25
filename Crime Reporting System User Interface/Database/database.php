@@ -191,7 +191,8 @@ echo "connection successfuly";
         crime_place varchar(50) NOT NULL,  
         crime_type varchar(50) NOT NULL,
         crime_evidence varchar(50) NOT NULL,
-        image longblob NOT NULL
+        image longblob NOT NULL,
+        Date-time datetime default current_timestamp
         )";
 
     if ($conn->query($sql_user_complaints) === TRUE) {

@@ -1,4 +1,5 @@
 <?php
+
 error_reporting(0);
 $filename = $_FILES["uploadfile"]["name"];
 $folder = "image/" . $filename;
@@ -13,29 +14,29 @@ if (isset($_POST['upload'])) {
    
     $tempname = $_FILES["uploadfile"]["tmp_name"];
     
-    $db = mysqli_connect("localhost", "root", "", "profiledb");
+    $db = mysqli_connect("localhost", "root", "", "crime_db");
     if (file_exists($target_file)) {
-      echo "<h1>Sorry, file already exists</h1>";
+      echo "<script>alert('Sorry, file already exists')</script>";
       $db->close();  
     }
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"&& $imageFileType != "gif" ) {
-   echo "Sorry, ononly JPG, JPEG, PNG & GIF files are allowed.";
+   echo "<script>alert('Sorry, ononly JPG, JPEG, PNG & GIF files are allowed.')</script>";
     $db->close();
      }
  
     // Get all the submitted data from the form
     $sql = "INSERT INTO image (filename) VALUES ('$filename')";
-  
+    $sql_2="INSERT INTO user (filename) VALUES ('$filename')";
     // Execute query+
     mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
- 
+    mysqli_query($db, $sql_2);
     // Now let's move the uploaded image into the folder: image
     if (move_uploaded_file($tempname, $folder)) {
     ?>
     <a href ="index.html">press here to get redirected</a>
     <?php
     } else {
-        echo "<h3>  Failed to upload image!</h3>";
+        echo " <script> alert('Failed to upload image!')</script>";
     }
   
 }
@@ -55,6 +56,24 @@ if (isset($_POST['upload'])) {
   <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css”>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
   <link href="css/Profile.css" rel="stylesheet">
+  <link href="img/favicon.ico" rel="icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Icon Font Stylesheet -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Template Stylesheet -->
+  <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body style="background-color:#000000">
@@ -64,7 +83,7 @@ if (isset($_POST['upload'])) {
       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb" style="background-color:#191c24 ">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
 
           <li class="breadcrumb-item active" aria-current="page">User Profile</li>
         </ol>
@@ -100,15 +119,48 @@ if (isset($_POST['upload'])) {
                   </div>
                           </br>
                         <div class ="form-group" style="background-color:#000000" >
-                          <input class="form-control" type="file" name="uploadfile" value="" style="background-color:#000000" />
+                          <input class="form-control" type="file" name="uploadfile"  style="background-color:#000000" />
                         </div>
                   
                   <button  class="btn btn-primary" type="submit" name="upload">UPLOAD</button>
                 </form>
+                <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "crime_db";
+                $fisrt1="";
+                $last1="";
+                $phone1="";
+                $email1="";  
+                $address1="";          
+                $conn = new mysqli($servername,$username, $password, $dbname);
+                if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
+                }
+                $sql = "select f_name,l_name,address,email,phone from user ";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                  // output data of each row
+                  while($row = $result->fetch_assoc()) {
+                    $first1 = $row["f_name"];
+                    $last1=$row["l_name"];
+                    $address1 = $row["address"];
+                    $email1=$row["email"];
+                    $phone1=$row["phone"]; 
+                    
+                  }
+                }
+                  
+                
+              
+
+          
+          ?>
                 <div class="mt-3">
-                  <h4 style="color:white">Jhonny</h4>
-                  <p class="text-secondary mb-1">----something here</p>
-                  <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                  <h4 style="color:white"><?php echo $first1;?><?php echo $last1;?></h4>
+                  <p class="text-secondary mb-1">------------</p>
+                  <p class="text-muted font-size-sm"><?php echo $address1;?></p>
                   
                   <button class="btn btn-outline-primary"><a href="#">Message</a></button><!--MESSAGE -------------------  -->
                 </div>
@@ -149,7 +201,7 @@ if (isset($_POST['upload'])) {
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
                   </svg>Instagram</h6>
-                <span class="text-secondary">Insta</span>
+                <span class="text-secondary" >Insta</span>
               </li>
               <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
                 style="background-color:#191c24">
@@ -166,51 +218,73 @@ if (isset($_POST['upload'])) {
         <div class="col-md-8">
           <div class="card mb-3">
             <div class="card-body" style="background-color:#191c24">
+
               <div class="row">
                 <div class="col-sm-3">
-                  <h6 class="mb-0" style="color:white">Full Name</h6>
+                  <h6 class="mb-0" style="color:white">First Name</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  Kenneth Valdez
+                  <?php echo $first1;?>
                 </div>
               </div>
+
               <hr>
+              
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0" style="color:white">Last name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                <?php echo $last1;?>
+                </div>
+              </div>
+
+              <hr>
+
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0" style="color:white">Email</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  fip@jukmuh.al
+                <?php echo $email1;?>
                 </div>
               </div>
+
               <hr>
+
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0" style="color:white">Phone</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  (239) 816-9029
+                <?php echo $phone1;?>
                 </div>
               </div>
+
               <hr>
+
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0" style="color:white">Mobile</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  (320) 380-4539
+                <?php echo $phone1;?>
                 </div>
               </div>
+
               <hr>
+
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0" style="color:white">Address</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                  Bay Area, San Francisco, CA
+                <?php echo $address1;?>
                 </div>
               </div>
+
               <hr>
+
               <div class="row">
                 <div class="col-sm-12">
                   <a class="btn btn-info " target="__blank" href="Profile_form.php">Edit</a><!-- EDIT 111111111111111111111-->
@@ -224,28 +298,28 @@ if (isset($_POST['upload'])) {
               <div class="card h-100">
                 <div class="card-body" style="background-color:#191c24">
                   <h6 class="d-flex align-items-center mb-3" style="color:white"><i
-                      class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                  <small style="color:white">Web Design</small>
+                      class="material-icons text-info mr-2">Investigation</i>Report Status</h6>
+                  <small style="color:white">Criminal-Identified</small>
                   <div class="progress mb-3" style="height: 5px">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
                       aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small style="color:white">Website Markup</small>
+                  <small style="color:white">Criminal-Descrpition</small>
                   <div class="progress mb-3" style="height: 5px">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72"
                       aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small style="color:white">One Page</small>
+                  <small style="color:white">Evidence-Collection</small>
                   <div class="progress mb-3" style="height: 5px">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89"
                       aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small style="color:white">Mobile Template</small>
+                  <small style="color:white">Alibi-Search</small>
                   <div class="progress mb-3" style="height: 5px">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55"
                       aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small style="color:white">Backend API</small>
+                  <small style="color:white">Report-Authenticity</small>
                   <div class="progress mb-3" style="height: 5px">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
                       aria-valuemin="0" aria-valuemax="100"></div>
@@ -257,28 +331,28 @@ if (isset($_POST['upload'])) {
               <div class="card h-100">
                 <div class="card-body" style="background-color:#191c24">
                   <h6 class="d-flex align-items-center mb-3" style="color:white"><i
-                      class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                  <small style="color:white">Web Design</small>
+                      class="material-icons text-info mr-2">Lifetime reports</i>Completion rate</h6>
+                  <small style="color:white">Report-1</small>
                   <div class="progress mb-3" style="height: 5px">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
                       aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small style="color:white">Website Markup</small>
+                  <small style="color:white">Report-2</small>
                   <div class="progress mb-3" style="height: 5px">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72"
                       aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small style="color:white">One Page</small>
+                  <small style="color:white">Report-3</small>
                   <div class="progress mb-3" style="height: 5px">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89"
                       aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small style="color:white">Mobile Template</small>
+                  <small style="color:white">Report-4</small>
                   <div class="progress mb-3" style="height: 5px">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55"
                       aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small style="color:white">Backend API</small>
+                  <small style="color:white">Report-5</small>
                   <div class="progress mb-3" style="height: 5px">
                     <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
                       aria-valuemin="0" aria-valuemax="100"></div>
