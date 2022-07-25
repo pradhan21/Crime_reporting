@@ -16,7 +16,7 @@
                     
                     $location=$_POST['location'];
                 
-                    $sql="INSERT INTO user_complaints VALUES('','$id','$location','','$report','$file','') ";
+                    $sql="INSERT INTO user_complaints VALUES('','$id','$location','','$report','$file') ";
                     
                     
                         if(mysqli_query($conn, $sql)){
