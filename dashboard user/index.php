@@ -1,8 +1,11 @@
 <?php 
 SESSION_start();
  $id=$_SESSION['id'];
+
   if(isset($_SESSION['id'])){
     include "connection.php";
+    
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -267,6 +270,34 @@ SESSION_start();
             <h6 class="mb-0">Report History</h6>
             <a href="">Show All</a>
           </div>
+          <?php
+                  $servername = "localhost";
+                  $username = "root";
+                  $password = "";
+                  $dbname = "crime_db";
+                  $fisrt1="";
+                  $last1="";
+                  $phone1="";
+                  $email1="";  
+                  $address1="";          
+                  $conn = new mysqli($servername,$username, $password, $dbname);
+                  if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
+                  }
+                  $sql = "select f_name,l_name,address,email,phone from user ";
+                  $result = $conn->query($sql);
+
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                      $first1 = $row["f_name"];
+                      $last1=$row["l_name"];
+                      $address1 = $row["address"];
+                      $email1=$row["email"];
+                      $phone1=$row["phone"]; 
+                      
+                    }
+                  }
+          ?>
           <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
               <thead>
@@ -531,6 +562,7 @@ SESSION_start();
 </html>
 <?php
 }
+  
 else{
   echo "error";
 }
