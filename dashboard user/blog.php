@@ -258,7 +258,7 @@
                                             <th scope="col">Title</th>
                                             <th scope="col">Published Date</th>
                                             <th scope="col">Image</th>
-                                            <th scope="col">added Image</th>
+                                            <!-- <th scope="col">added Image</th> -->
                                             <th scope="col">Edit</th>
                                             <th scope="col">Delete</th>
                                         </tr>
@@ -272,12 +272,11 @@
                                             <td><?php echo $q['title']; ?></td>
                                             <td><?php echo $q['date_col']; ?></td>
                                             <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?> "></td>
-                                            <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td>
+                                            <!-- <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td> -->
                                             <form action = "updatedata.php" method="POST">
                                                 <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
-                                                <td><input type="submit" name = "edit" class="btn btn-dark" value="Edit"></td>
+                                                <td><input type="submit" name = "edit" class="btn btn-info" value="Edit"></td>
                                             </form>
-                                            <!-- <td><button class="btn btn-light" name="edit_blog">Edit</button></td></td> -->
 
                                             <form method="POST">
                                                 <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
