@@ -1,3 +1,10 @@
+<?php
+
+    include_once "logics/latestpost.php";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -105,7 +112,7 @@
                     <nav class="site-navigation text-center " role="navigation">
 
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
-                            <li class="active"><a href="index.html">Home</a></li>
+                            <li class="active"><a href="index.php">Home</a></li>
                             <li><a href="news.php">News</a></li>
                             <li class="has-children">
                                 <a href="#">Login/Register</a>
@@ -168,42 +175,58 @@
         <div class="container">
 
             <div class="row align-items-stretch retro-layout">
-
+            <?php foreach($cyber as $q){ ?>
                 <div class="col-md-5">
-                    <a href="single.html" class="hentry img-1 h-100 gradient" style="background-image: url('images/img_4.jpg');">
-                        <span class="post-category text-white bg-danger">Travel</span>
+                    <a href="single.html" class="hentry img-1 h-100 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?>');">
+                        <span class="post-category text-white bg-danger">Cyber Crime</span>
                         <div class="text">
-                            <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                            <span>February 12, 2019</span>
+                            <h2><a href="single.php" class="text-light"><?php echo $q['title']; ?></h2>
+                            <span>&nbsp;-&nbsp; <?php echo $q['date_col']; ?></span>
                         </div>
                     </a>
                 </div>
+            <?php
+            }
+            ?>
 
                 <div class="col-md-7">
 
-                    <a href="single.html" class="hentry img-2 v-height mb30 gradient" style="background-image: url('images/img_1.jpg');">
-                        <span class="post-category text-white bg-success">Nature</span>
+                    <?php foreach($fraud as $f){ ?>
+                    <a href="single.html" class="hentry img-2 v-height mb30 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$f['featured_image']; ?>');">
+                        <span class="post-category text-white bg-success">Business Fraud</span>
                         <div class="text text-sm">
-                            <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                            <span>February 12, 2019</span>
+                            <h2><?php echo $f['title']; ?></h2>
+                            <span>&nbsp;-&nbsp; <?php echo $q['date_col']; ?></span>
                         </div>
                     </a>
+                    <?php
+                    }
+                    ?>
 
                     <div class="two-col d-block d-md-flex">
-                        <a href="single.html" class="hentry v-height img-2 gradient" style="background-image: url('images/img_2.jpg');">
-                            <span class="post-category text-white bg-primary">Sports</span>
+                        <?php foreach($murder as $m){ ?>
+                        <a href="single.html" class="hentry v-height img-2 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$m['featured_image']; ?>');">
+                            <span class="post-category text-white bg-danger">Murder</span>
                             <div class="text text-sm">
-                                <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                                <span>February 12, 2019</span>
+                                <h2><?php echo $m['title']; ?></h2>
+                                <span>&nbsp;-&nbsp; <?php echo $m['date_col']; ?></span>
                             </div>
                         </a>
-                        <a href="single.html" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('images/img_3.jpg');">
-                            <span class="post-category text-white bg-warning">Lifestyle</span>
+                        <?php
+                        }
+                        ?>
+
+                        <?php foreach($kidnap as $k){ ?>
+                        <a href="single.html" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$k['featured_image']; ?>');">
+                            <span class="post-category text-white bg-warning">Kidnapping</span>
                             <div class="text text-sm">
-                                <h2>The 20 Biggest Fintech Companies In America 2019</h2>
-                                <span>February 12, 2019</span>
+                                <h2><?php echo $k['title']; ?></h2>
+                                <span>&nbsp;-&nbsp; <?php echo $k['date_col']; ?></span>
                             </div>
                         </a>
+                        <?php
+                        }
+                        ?>
                     </div>
 
                 </div>
@@ -220,55 +243,41 @@
                 </div>
             </div>
             <div class="row">
+            <?php foreach($kidnap as $k){ ?>
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="entry2">
-                        <a href="single.html"><img src="images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
-                        <span class="post-category text-white bg-success mb-3">Nature</span>
-                        <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
+                        <a href="single.php"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$k['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
+                        <span class="post-category text-white bg-primary mb-3">News</span>
+                        <h2><a href="single.php"><?php echo $k['title']; ?></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
-                            <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-                            <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                            <span>&nbsp;-&nbsp; February 10, 2019</span>
+                            <span class="d-inline-block mt-1">By <a href="#"><?php echo $k['author']; ?></a></span>
+                            <span>&nbsp;-&nbsp; <?php echo $k['date_col']; ?></span>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
                     </div>
                 </div>
+                <?php
+                }
+                ?>
                 <div class="col-lg-6 pl-lg-4">
+                
+                <?php foreach($date as $d){ ?>
+            
                     <div class="entry3 d-block d-sm-flex">
                         <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
+                            <a href="single.html"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
                         </figure>
                         <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-success mb-3">Nature</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
+                            <span class="post-category text-white bg-primary mb-3">News</span>
+                            <h2><a href="single.php"><?php echo $d['title']; ?></a></h2>
+                            <span class="post-meta mb-3 d-block">&nbsp;-&nbsp; <?php echo $d['date_col']; ?></span>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio.</p>
                         </div>
                     </div>
+                <?php
+                }
+                ?>
 
-                    <div class="entry3 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_3.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-success mb-3">Nature</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio.</p>
-                        </div>
-                    </div>
-
-                    <div class="entry3 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_4.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-success mb-3">Nature</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio.</p>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -279,154 +288,44 @@
     <div class="site-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-
-                    <div class="entry2 mb-5">
-                        <a href="single.html"><img src="images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
-                        <span class="post-category text-white bg-primary mb-3">Sports</span>
-                        <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                        <div class="post-meta align-items-center text-left clearfix">
-                            <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-                            <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                            <span>&nbsp;-&nbsp; February 10, 2019</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio. laborum error in eum id veritatis quidem neque nesciunt at architecto nam ullam, officia unde dolores officiis veniam</p>
-                    </div>
-
-
-                    <div class="entry4 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="#"><img src="images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-primary mb-3">Sports</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                        </div>
-                    </div>
-
-                    <div class="entry4 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_4.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-primary mb-3">Sports</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                        </div>
-                    </div>
-
-                    <div class="entry4 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-primary mb-3">Sports</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-4 mb-5 mb-lg-0">
-
-                    <div class="entry2 mb-5">
-                        <a href="single.html"><img src="images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
-                        <span class="post-category text-white bg-danger mb-3">Travel</span>
-                        <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                        <div class="post-meta align-items-center text-left clearfix">
-                            <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-                            <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                            <span>&nbsp;-&nbsp; February 10, 2019</span>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio. laborum error in eum id veritatis quidem neque nesciunt at architecto nam ullam, officia unde dolores officiis veniam</p>
-                    </div>
-
-
-                    <div class="entry4 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_1.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-danger mb-3">Travel</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                        </div>
-                    </div>
-
-                    <div class="entry4 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-danger mb-3">Travel</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                        </div>
-                    </div>
-
-                    <div class="entry4 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_3.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-danger mb-3">Travel</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                        </div>
-                    </div>
-                </div>
-
-
+            <?php foreach($random as $r){ ?>
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="entry2 mb-5">
-                        <a href="single.html"><img src="images/img_3.jpg" alt="Image" class="img-fluid rounded"></a>
-                        <span class="post-category text-white bg-warning mb-3">Lifestyle</span>
-                        <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
+                        <a href="single.php"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$r['featured_image']; ?>" alt="Image" class="img-fluid rounded related_img"></a>
+                        <br>
+                        <span class="post-category text-white bg-primary mb-3">News</span>
+                        <h2><a href="single.php"><?php echo $r['title']; ?></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
-                            <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
-                            <span class="d-inline-block mt-1">By <a href="#">Carrol Atkinson</a></span>
-                            <span>&nbsp;-&nbsp; February 10, 2019</span>
+                            <span class="d-inline-block mt-1">By <a href="#"><?php echo $r['author']; ?></a></span>
+                            <span>&nbsp;-&nbsp; <?php echo $r['date_col']; ?></span>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio. laborum error in eum id veritatis quidem neque nesciunt at architecto nam ullam, officia unde dolores officiis veniam</p>
-                    </div>
-
-
-                    <div class="entry4 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_4.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-warning mb-3">Lifestyle</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                        </div>
-                    </div>
-
-                    <div class="entry4 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_3.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-warning mb-3">Lifestyle</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                        </div>
-                    </div>
-
-                    <div class="entry4 d-block d-sm-flex">
-                        <figure class="figure order-2">
-                            <a href="single.html"><img src="images/img_2.jpg" alt="Image" class="img-fluid rounded"></a>
-                        </figure>
-                        <div class="text mr-4 order-1">
-                            <span class="post-category text-white bg-warning mb-3">Lifestyle</span>
-                            <h2><a href="single.html">The 20 Biggest Fintech Companies In America 2019</a></h2>
-                            <span class="post-meta mb-3 d-block">May 12, 2019</span>
-                        </div>
-                    </div>
+                    </div>     
                 </div>
-
+            <?php
+            }
+            ?>
             </div>
+
+            <div class="row">
+            <?php foreach($query as $q){ ?>
+                <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="entry4 d-block d-sm-flex">
+                        <figure class="figure order-2">
+                            <a href="#"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
+                        </figure>
+                        <div class="text mr-4 order-1">
+                            <span class="post-category text-white bg-danger mb-3">NEWS</span>
+                            <h2><a href="single.php"><?php echo $q['title']; ?></a></h2>
+                            <span class="post-meta mb-3 d-block"><?php echo $q['date_col']; ?></span>
+                        </div>
+                    </div>     
+                </div>
+            <?php
+            }
+            ?>
+            </div>
+
         </div>
     </div>
 

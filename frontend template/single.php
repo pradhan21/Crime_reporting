@@ -1,6 +1,5 @@
 <?php
 
-    include_once "logics/bloglogic.php";
     include_once "logics/latestpost.php";
 
 ?>
@@ -10,7 +9,7 @@
 <html lang="en">
 
 <head>
-    <title>Crime Reporter</title>
+    <title>Hikers Blog &mdash; Colorlib Website Template</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -25,8 +24,6 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="css/aos.css">
-    <!-- Font Awesome -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -61,17 +58,17 @@
                         <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-xl-none"><span class="icon-menu h3"></span></a></div>
                 </div>
 
-                <div class="col-12 d-none d-xl-block border-top">
+                <div class="col-12 d-none d-xl-block border-top border-bottom">
                     <nav class="site-navigation text-center " role="navigation">
 
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
                             <li><a href="index.php">Home</a></li>
-                            <li class="active"><a href="news.php">News</a></li>
+                            <li><a href="news.php">News</a></li>
                             <li class="has-children">
                                 <a href="#">Login/Register</a>
                                 <ul class="dropdown">
-                                    <li><a href="login/login.php">Login</a></li>
-                                    <li><a href="login/signup.php">Signup</a></li>
+                                    <li><a href="../main dashboard/login.php">Login</a></li>
+                                    <li><a href="../main dashboard/signup.php">Signup</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -82,52 +79,52 @@
     </div>
     </header>
 
-
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/abuse.png');">
-        <div class="container">
-            <div class="row same-height justify-content-center">
-                <div class="col-md-12 col-lg-10">
-                    <div class="post-entry text-center">
-                        <span class="post-category text-white bg-success mb-3">News</span>
-                        <h1 class="mb-4"><a href="#">Crimes' Category</a></h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <section class="site-section py-lg">
+        
+        <div class="container">
+        <h5 class="ms-1"><a href="index.html">Home</a>   <span  style="color: #D18CE0">></span> <a href="news.php"> News </a></h5>
+        </div>
         <div class="container">
 
-            <div class="row blog-entries element-animate mb-5">
+            <div class="row blog-entries element-animate">
 
                 <div class="col-md-12 col-lg-8 main-content">
 
-                <?php foreach($query as $q){ ?>
-                    
-
-                    <div class="entry2 mb-5">
-                        <a href="single.php"><img class="blog_img" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
-                        <span class="post-category text-white bg-primary mb-3">News</span>
-                        <h2><a href="single.php"><?php echo $q['title']; ?> </a></h2>
-                        <div class="post-meta align-items-center text-left clearfix">
-                            <span class="d-inline-block mt-1">By <a href="#"><?php echo $q['author']; ?></a></span>
-                            <span>&nbsp;-&nbsp; <?php echo $q['date_col']; ?></span>
+                    <div class="post-content-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium nam quas inventore, ut iure iste modi eos adipisci ad ea itaque labore earum autem nobis et numquam, minima eius. Nam eius, non unde ut aut sunt eveniet rerum
+                            repellendus porro.</p>
+                        <p>Sint ab voluptates itaque, ipsum porro qui obcaecati cumque quas sit vel. Voluptatum provident id quis quo. Eveniet maiores perferendis officia veniam est laborum, expedita fuga doloribus natus repellendus dolorem ab similique
+                            sint eius cupiditate necessitatibus, magni nesciunt ex eos.</p>
+                        <p>Quis eius aspernatur, eaque culpa cumque reiciendis, nobis at earum assumenda similique ut? Aperiam vel aut, ex exercitationem eos consequuntur eaque culpa totam, deserunt, aspernatur quae eveniet hic provident ullam tempora error
+                            repudiandae sapiente illum rerum itaque voluptatem. Commodi, sequi.</p>
+                        <div class="row mb-5 mt-5">
+                            <div class="col-md-12 mb-4">
+                                <img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <img src="images/img_2.jpg" alt="Image placeholder" class="img-fluid rounded">
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <img src="images/img_3.jpg" alt="Image placeholder" class="img-fluid rounded">
+                            </div>
                         </div>
-                        <!-- <p><?php echo $q['description1']; ?> <br/> <br/></p> -->
+                        <p>Quibusdam autem, quas molestias recusandae aperiam molestiae modi qui ipsam vel. Placeat tenetur veritatis tempore quos impedit dicta, error autem, quae sint inventore ipsa quidem. Quo voluptate quisquam reiciendis, minus, animi
+                            minima eum officia doloremque repellat eos, odio doloribus cum.</p>
+                        <p>Temporibus quo dolore veritatis doloribus delectus dolores perspiciatis recusandae ducimus, nisi quod, incidunt ut quaerat, magnam cupiditate. Aut, laboriosam magnam, nobis dolore fugiat impedit necessitatibus nisi cupiditate,
+                            quas repellat itaque molestias sit libero voluptas eveniet omnis illo ullam dolorem minima.</p>
+                        <p>Porro amet accusantium libero fugit totam, deserunt ipsa, dolorem, vero expedita illo similique saepe nisi deleniti. Cumque, laboriosam, porro! Facilis voluptatem sequi nulla quidem, provident eius quos pariatur maxime sapiente
+                            illo nostrum quibusdam aliquid fugiat! Earum quod fuga id officia.</p>
+                        <p>Illo magnam at dolore ad enim fugiat ut maxime facilis autem, nulla cumque quis commodi eos nisi unde soluta, ipsa eius aspernatur sint atque! Nihil, eveniet illo ea, mollitia fuga accusamus dolor dolorem perspiciatis rerum hic,
+                            consectetur error rem aspernatur!</p>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus magni explicabo id molestiae, minima quas assumenda consectetur, nobis neque rem, incidunt quam tempore perferendis provident obcaecati sapiente, animi vel expedita
+                            omnis quae ipsa! Obcaecati eligendi sed odio labore vero reiciendis facere accusamus molestias eaque impedit, consequuntur quae fuga vitae fugit?</p>
                     </div>
-                
-                    
-                <?php 
-                }
-                ?>
+            </div>
 
 
-                </div>
 
-                <!-- END main-content -->
-
-                <div class="col-md-12 col-lg-4 sidebar">
+            <div class="col-md-12 col-lg-4 sidebar">
                     <div class="sidebar-box search-form-wrap">
                         <form action="#" class="search-form">
                             <div class="form-group">
@@ -136,11 +133,9 @@
                             </div>
                         </form>
                     </div>
-                    <!-- END sidebar-box -->
 
-                    <div class="sidebar-box">
-                        <h3 class="heading">Latest Posts</h3>
-                        
+                    <div class="sidebar-box side_post">
+                        <h3 class="heading">Popular Posts</h3>
                         <!-- Crousal -->
                         <div id="carouselExampleIndicators" class="carousel slide dasher" data-ride="carousel">
                             <div class="carousel-inner">
@@ -170,7 +165,7 @@
                                 <?php $i++; 
                                     } ?>
                             </div>
-                            <a class="carousel-control-prev text-dark" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
                             </a>
@@ -200,11 +195,45 @@
                 </div>
                 <!-- END sidebar -->
 
-            </div>
+
+
+
+
         </div>
     </section>
 
 
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="mb-5">Related Post</h2>
+                </div>
+            </div>
+            
+            <div class="row">
+            <?php foreach($random as $r){ ?>
+                <div class="col-md-6 col-lg-4">
+                    <div class="entry2 mb-5">
+                        <a href="#"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$r['featured_image']; ?>" alt="Image" class="img-fluid rounded related_img"></a>
+                        <br/>
+                        <span class="post-category text-white bg-primary mb-3">News</span>
+                        <h2><a href="single.php"><?php echo $r['title']; ?></a></h2>
+                        <div class="post-meta align-items-center text-left clearfix">
+                            <span class="d-inline-block mt-1">By <a href="#"><?php echo $r['author']; ?></a></span>
+                            <span>&nbsp;-&nbsp; <?php echo $r['date_col']; ?></span>
+                        </div>
+                    </div>
+                </div>
+            <?php 
+            }
+            ?>
+            </div>
+        </div>
+
+
+    </section>
+    <!-- END section -->
 
     <div class="site-footer">
         <div class="container">
