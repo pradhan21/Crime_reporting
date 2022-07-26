@@ -1,12 +1,54 @@
 <?php 
 SESSION_start();
  $id=$_SESSION['id'];
-
-  if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname'])){
+  //echo"<script>alert($id)</script>"; to check value of id
+  if(isset($_SESSION['id'])){
     include "connection.php";
     
     
 ?>
+<?php
+                  $servername = "localhost";
+                  $username = "root";
+                  $password = "";
+                  $dbname = "crime_db";
+                  $fisrt1="";
+                  $last1="";
+                  $phone1="";
+                  $email1="";  
+                  $address1="";  
+                  $user_id="";     
+                  $image1="";   
+                  $conn = new mysqli($servername,$username, $password, $dbname);
+                  if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
+                  }
+                  $sql = "select user_id,f_name,l_name,address,email,phone,liscence_no from user where user_id=$id ";
+                  $sql2="select image from user_complaints where user_id=$id";
+                  $result = $conn->query($sql);
+                  $result2 = $conn->query($sql2);
+
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = $result->fetch_assoc()) {
+                      $first1 = $row["f_name"];
+                      $last1=$row["l_name"];
+                      $address1 = $row["address"];
+                      $email1=$row["email"];
+                      $phone1=$row["phone"]; 
+                      $user_id=$row["user_id"];
+                      $l_no=$row["liscence_no"];
+                    }
+                  }
+                  if ($result2->num_rows > 0){
+                    while($row = $result2->fetch_assoc())
+                    $image1=$row["image"];
+
+                    echo "<script>alert('success')</script>";
+                  }
+                  else {
+                    echo "<script>alert('horse')</script>";
+                  }
+          ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,33 +96,36 @@ SESSION_start();
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3">
       <nav class="navbar bg-secondary navbar-dark">
-        <a href="#" class="navbar-brand mx-4 mb-3">
+        <a href="index.html" class="navbar-brand mx-4 mb-3">
           <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Home</h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
           <div class="position-relative">
-            <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+          <img class="rounded-circle"  src="image/Leonardo.jpg" id="output" style="width: 40px; height: 40px;" onerror="this.style.display='none'"/>
+             
             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
           </div>
           <div class="ms-3">
-            <h6 class="mb-0"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></h6><!-- user-->
+            <h6 class="mb-0"><?php echo $first1;echo $last1?></h6><!-- user-->
             <span></span><!-- user-->
           </div>
         </div>
         <div class="navbar-nav w-100">
-          <a href="#" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-          <!-- <div class="nav-item dropdown">
+          <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <!--<div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
             <div class="dropdown-menu bg-transparent border-0">
               <a href="button.html" class="dropdown-item">Buttons</a>
               <a href="typography.html" class="dropdown-item">Typography</a>
               <a href="element.html" class="dropdown-item">Other Elements</a>
             </div>
-          </div> -->
-          <!-- <a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a> -->
+          </div>-->
+          <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
           <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a>
-          <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-          <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
+          <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
+          <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
+          <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
+         <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
             <div class="dropdown-menu bg-transparent border-0">
@@ -89,7 +134,7 @@ SESSION_start();
               <a href="404.html" class="dropdown-item">404 Error</a>
               <a href="blank.html" class="dropdown-item">Blank Page</a>
             </div>
-          </div> -->
+          </div>
         </div>
       </nav>
     </div>
@@ -118,9 +163,9 @@ SESSION_start();
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="#" class="dropdown-item">
                 <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                  <img class="rounded-circle" src="image/Leonardo.jpg" alt="" style="width: 40px; height: 40px;">
                   <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon sent you a message</h6>
+                    <h6 class="fw-normal mb-0">leo sent you a message</h6>
                     <small>15 minutes ago</small>
                   </div>
                 </div>
@@ -131,7 +176,7 @@ SESSION_start();
                   <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
 
                   <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon sent you a message</h6>
+                    <h6 class="fw-normal mb-0">leo sent you a message</h6>
                     <small>16 minutes ago</small>
                   </div>
                 </div>
@@ -141,7 +186,7 @@ SESSION_start();
                 <div class="d-flex align-items-center">
                   <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                   <div class="ms-2">
-                    <h6 class="fw-normal mb-0">Jhon sent you a message</h6>
+                    <h6 class="fw-normal mb-0">Stan sent you a message</h6>
                     <small>17 minutes ago</small>
                   </div>
                 </div>
@@ -177,8 +222,8 @@ SESSION_start();
           </div>
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-              <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></span>
+              <img class="rounded-circle me-lg-2" src="image/Leonardo.jpg" alt="" style="width: 40px; height: 40px;">
+              <span class="d-none d-lg-inline-flex"><?php echo $first1;echo $last1?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="Profile.php" class="dropdown-item">My Profile</a>
@@ -270,34 +315,73 @@ SESSION_start();
             <h6 class="mb-0">Report History</h6>
             <a href="">Show All</a>
           </div>
+          
           <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
               <thead>
                 <tr class="text-white">
                   <th scope="col"></th>
-                  <th scope="col">Crime Type</th>
-                  <th scope="col">Location</th>
-                  <th scope="col">Discription</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">User-ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Liscence no</th>
+                  <th scope="col">email</th>
                   <th scope="col">Report-Status</th>
                   <!--    <th scope="col">Action</th>-->
                 </tr>
               </thead>
               <tbody>
-                <?php
-                   $sql = "SELECT * FROM user_complaints where user_id='$id' ";
-                   $result = mysqli_query($conn,$sql);
- 
-                   while($row = mysqli_fetch_array($result)){
-                ?>
                 <tr>
                   <th scope="row">1</th>
-                  <td><?php echo $row['crime_type'];?></td>
-                  <td><?php echo $row['crime_place'];?></td>
-                  <td><?php echo $row['crime_evidence'];?></td>
-                  <td>Pending</td>
+                  <td>01 Jan 2045</td>
+                  <td><?php echo $user_id;?></td>
+                  <td><?php echo $first1;echo $last1?></td>
+                  <td><?php echo $l_no;?></td>
+                  <td><?php echo $email1;?></td>
+                  <td>On-Going</td>
+
 
                 </tr>
-                <?php }?>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>01 Jan 2045</td>
+                  <td><?php echo $user_id;?></td>
+                  <td><?php echo $first1;echo $last1?></td>
+                  <td>112-222-333-9999</td>
+                  <td><?php echo $email1;?></td>
+                  <td>Processed</td>
+
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>01 Jan 2045</td>
+                  <td><?php echo $user_id;?></td>
+                  <td><?php echo $first1;echo $last1?></td>
+                  <td>113-222-333-9999</td>
+                  <td><?php echo $email1;?></td>
+                  <td>N/A</td>
+
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>01 Jan 2045</td>
+                  <td><?php echo $user_id;?></td>
+                  <td><?php echo $first1;echo $last1?></td>
+                  <td>114-222-333-9999</td>
+                  <td><?php echo $email1;?></td>
+                  <td>Processed</td>
+
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>01 Jan 2045</td>
+                  <td><?php echo $user_id;?></td>
+                  <td><?php echo $first1;echo $last1?></td>
+                  <td>115-222-333-9999</td>
+                  <td><?php echo $email1;?></td>
+                  <td>Processed</td>
+
+                </tr>
               </tbody>
             </table>
           </div>
@@ -313,14 +397,14 @@ SESSION_start();
           <div class="col-sm-12 col-md-6 col-xl-4">
             <div class="h-100 bg-secondary rounded p-4">
               <div class="d-flex align-items-center justify-content-between mb-2">
-                <h6 class="mb-0">Messages--chat portal</h6>
+                <h6 class="mb-0">Messages</h6>
                 <a href="">Show All</a>
               </div>
               <div class="d-flex align-items-center border-bottom py-3">
                 <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                   <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0">Jhonny</h6>
+                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
                     <small>15 minutes ago</small>
                   </div>
                   <span>Officer Stan says.....</span>
@@ -330,7 +414,7 @@ SESSION_start();
                 <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                   <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0">Jhonny</h6>
+                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
                     <small>15 minutes ago</small>
                   </div>
                   <span>Sergant Kenny says...</span>
@@ -340,17 +424,17 @@ SESSION_start();
                 <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                   <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0">Jhonny</h6>
+                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
                     <small>1 day ago</small>
                   </div>
-                  <span>Rob ken says - hi , Jhon...</span>
+                  <span>Rob ken says - hi , Officer t...</span>
                 </div>
               </div>
               <div class="d-flex align-items-center pt-3">
                 <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                   <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0">Jhonny</h6>
+                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
                     <small>1 week ago</small>
                   </div>
                   <span>Officer Goerge - I would...</span>
@@ -460,7 +544,7 @@ SESSION_start();
           <div class="row">
 
             <div class="col-12 col-sm-6 text-center text-sm-start">
-              &copy; <a href="#">Scelus</a>, All Right Reserved.
+              &copy; <a href="#">Scelus-nunitare</a>, All Right Reserved.
             </div>
             <div class="col-12 col-sm-6 text-center text-sm-end">
               <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -468,7 +552,7 @@ SESSION_start();
 
               Designed By <a href="#">Group-NNAS</a>
               <br>
-              Distributed by: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+              Distributed by: <a href="#" target="_blank">NNAS</a>
 
 
             </div>
@@ -505,6 +589,6 @@ SESSION_start();
 }
   
 else{
-  echo mysqli_error($conn);
+  echo "error";
 }
 ?>

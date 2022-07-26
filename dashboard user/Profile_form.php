@@ -391,8 +391,8 @@ if (isset($_POST['upload'])) {
                                       if(mysqli_query($conn, $sql)){
                                           echo "<script>alert(data stored in a database successfully.)</script>";
                                       } else{
-                                          echo "<script>alert(ERROR couldnt send form data.$sql.)</script> "
-                                              . mysqli_error($conn);
+                                          echo "<script>alert(ERROR couldnt send form data.$sql. mysqli_error($conn);)</script> ";
+                                              
                                       }
                                       // Close connection
                                       
