@@ -43,10 +43,10 @@ SESSION_start();
                     while($row = $result2->fetch_assoc())
                     $image1=$row["image"];
 
-                    echo "<script>alert('success')</script>";
+                   // echo "<script>alert('success')</script>";
                   }
                   else {
-                    echo "<script>alert('horse')</script>";
+                  //  echo "<script>alert('horse')</script>";
                   }
           ?>
 <!DOCTYPE html>
