@@ -370,7 +370,7 @@ include "connection.php";
                     <div class="row g-4">
                         <div class="col-sm-12 col-xl-6">
                             <div class="bg-secondary rounded h-100 p-4">
-                                <h6 class="mb-4">Basic Form</h6>
+                                <h6 class="mb-4">Authenticator</h6>
                                 <form>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -385,21 +385,21 @@ include "connection.php";
                                     </div>
                                     <div class="mb-3 form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                    <button type="submit" class="btn btn-primary">Check</button>
                                 </form>
                             </div>
                     </div>
 
-                    <div class="col-sm-12 col-xl-6">
+                    <div class="col-sm-12 col-xl-6" >
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Criminal details</h6>
                             <form method="POST" action= "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                             <div class="row mb-3">
                                     <label for="caseno1" class="col-sm-2 col-form-label">Case no :</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="caseno1" name ="caseno" value="<?php echo $caseno;?>">
+                                    <div class="col-sm-10" >
+                                        <input type="text" class="form-control" id="caseno1" name ="caseno" value="<?php echo $caseno;?>" >
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-exclamation-circle me-2"></i>
                                             **<?php echo $casenoErr;?> 
