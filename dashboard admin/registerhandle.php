@@ -15,7 +15,7 @@
         $station=$_POST['id'];
         
 
-        $sql="INSERT INTO police_registration Values('','$fname','$lname','$username','$pass','$city','$address','$contact','$email','$station' )";
+        $sql="INSERT INTO admin Values('','$fname','$lname','$username','$pass','$city','$address','$contact','$email','$station' )";
         if(mysqli_query($conn,$sql)){
             header("location:index.php");
         }
