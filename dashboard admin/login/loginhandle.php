@@ -9,8 +9,6 @@ SESSION_start();
         if($email!="" && $pass!=""){
             $sql="SELECT * FROM user where email='$email' and password='$pass'";
             $result=mysqli_query($conn,$sql);
-            $sql="SELECT * FROM admin where email='$email' and password='$pass'";
-            $result=mysqli_query($conn,$sql);
             if(mysqli_num_rows($result)==1){
                 $row=mysqli_fetch_assoc($result);
                 if($row['email']==$email && $row['password']==$pass){

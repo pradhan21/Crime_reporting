@@ -1,4 +1,35 @@
-<?php include_once "header.php";?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>DarkPan - Bootstrap 5 Admin Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="login/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="login/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="login/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="login/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="login/css/style.css" rel="stylesheet">
+</head>
 
 <body>
     <div class="container-fluid position-relative d-flex p-0">
@@ -53,8 +84,27 @@
                                 <label for="floatingText">Address</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control"name="station" id="floatingText" placeholder="Kalimati Police Station"required>
-                                <label for="floatingText">Station_id</label>
+                                <input type="text" class="form-control"name="contact" id="floatingText" placeholder="00000000"required>
+                                <label for="floatingText">Contact</label>
+                            </div>
+                            <div class="form-floating mb-4"> 
+                            </div>
+                            <div class="form-floating mb-4">
+                                <select name="id"  class="form-control" id="floatingText">
+                                    <?php 
+                                    include_once "connection.php";
+                                    $sql="SELECT * FROM police_station";
+                                    $result=mysqli_query($conn,$sql);
+                                    if(mysqli_num_rows($result)>0){
+                                    while($row=mysqli_fetch_array($result)){ 
+                                        
+                                    ?>
+                                    <option value="<?php echo $row['station_id'];?>" class="form-control" id="floatingText"><?php echo $row['station_name']; ?></option>
+                                    <?php }} ?>
+                                </select>
+                                
+                            </div>
+                                
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="form-check">

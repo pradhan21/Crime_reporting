@@ -2,53 +2,9 @@
 SESSION_start();
  $id=$_SESSION['id'];
   //echo"<script>alert($id)</script>"; to check value of id
-  if(isset($_SESSION['id'])){
-    include "connection.php";
-    
-    
+  if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
+    include "connection.php";  
 ?>
-<?php
-                  $servername = "localhost";
-                  $username = "root";
-                  $password = "";
-                  $dbname = "crime_db";
-                  $fisrt1="";
-                  $last1="";
-                  $phone1="";
-                  $email1="";  
-                  $address1="";  
-                  $user_id="";     
-                  $image1="";   
-                  $conn = new mysqli($servername,$username, $password, $dbname);
-                  if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
-                  }
-                  $sql = "select user_id,f_name,l_name,address,email,phone,liscence_no from user where user_id=$id ";
-                  $sql2="select image from user_complaints where user_id=$id";
-                  $result = $conn->query($sql);
-                  $result2 = $conn->query($sql2);
-
-                  if ($result->num_rows > 0) {
-                    // output data of each row
-                    while($row = $result->fetch_assoc()) {
-                      $first1 = $row["f_name"];
-                      $last1=$row["l_name"];
-                      $address1 = $row["address"];
-                      $email1=$row["email"];
-                      $phone1=$row["phone"]; 
-                      $user_id=$row["user_id"];
-                      $l_no=$row["liscence_no"];
-                    }
-                  }
-                  if ($result2->num_rows > 0){
-                    while($row = $result2->fetch_assoc())
-                    $image1=$row["image"];
-
-                    echo "<script>alert('success')</script>";
-                  }
-                  else {
-                    echo "<script>alert('horse')</script>";
-                  }
-          ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -96,7 +52,7 @@ SESSION_start();
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3">
       <nav class="navbar bg-secondary navbar-dark">
-        <a href="index.html" class="navbar-brand mx-4 mb-3">
+        <a href="#" class="navbar-brand mx-4 mb-3">
           <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Home</h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
@@ -106,12 +62,12 @@ SESSION_start();
             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
           </div>
           <div class="ms-3">
-            <h6 class="mb-0"><?php echo $first1;echo $last1?></h6><!-- user-->
+            <h6 class="mb-0"><?php echo $_SESSION['fname'] ?> <?php echo $_SESSION['lname'] ?></h6><!-- user-->
             <span></span><!-- user-->
           </div>
         </div>
         <div class="navbar-nav w-100">
-          <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <a href="#" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
           <!--<div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
             <div class="dropdown-menu bg-transparent border-0">
@@ -121,8 +77,8 @@ SESSION_start();
             </div>
           </div>-->
           <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
-          <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a>
-          <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
+          <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a> -->
+          <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
           <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
@@ -223,12 +179,12 @@ SESSION_start();
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <img class="rounded-circle me-lg-2" src="image/Leonardo.jpg" alt="" style="width: 40px; height: 40px;">
-              <span class="d-none d-lg-inline-flex"><?php echo $first1;echo $last1?></span>
+              <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['username']?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="Profile.php" class="dropdown-item">My Profile</a>
               <a href="#" class="dropdown-item">Settings</a>
-              <a href="../frontend template/login/logout.php" class="dropdown-item">Log Out</a>
+              <a href="logout.php" class="dropdown-item">Log Out</a>
             </div>
           </div>
         </div>
@@ -313,75 +269,40 @@ SESSION_start();
         <div class="bg-secondary text-center rounded p-4">
           <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Report History</h6>
-            <a href="">Show All</a>
+            <a href="widget.php">Show All</a>
           </div>
           
           <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
+
               <thead>
                 <tr class="text-white">
                   <th scope="col"></th>
                   <th scope="col">Date</th>
-                  <th scope="col">User-ID</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Liscence no</th>
-                  <th scope="col">email</th>
-                  <th scope="col">Report-Status</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">location</th>
                   <!--    <th scope="col">Action</th>-->
                 </tr>
               </thead>
               <tbody>
+              <?php 
+                $sql="SELECT * FROM emergency ORDER by id DESC LIMIT 0,5";
+                $result=mysqli_query($conn,$sql);
+                while ($data = mysqli_fetch_assoc($result)) {
+              ?>
                 <tr>
                   <th scope="row">1</th>
-                  <td>01 Jan 2045</td>
-                  <td><?php echo $user_id;?></td>
-                  <td><?php echo $first1;echo $last1?></td>
-                  <td><?php echo $l_no;?></td>
-                  <td><?php echo $email1;?></td>
-                  <td>On-Going</td>
+                  <td><?php echo $data['date_col']?></td>
+                  <td><?php echo $data['id'];?></td>
+                  <td>      <iframe class="position-relative rounded w-100 h-100"
+                            src="https://www.google.com/maps?q=<?php echo $data['latitude']; ?>,<?php echo $data['longitude']; ?>&hl=es;z=14&output=embed"
+                            frameborder="0" allowfullscreen="" aria-hidden="false"
+                            tabindex="0" style="filter: grayscale(100%) invert(92%) contrast(83%); border: 0;"></iframe></td>
+                  
 
 
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>01 Jan 2045</td>
-                  <td><?php echo $user_id;?></td>
-                  <td><?php echo $first1;echo $last1?></td>
-                  <td>112-222-333-9999</td>
-                  <td><?php echo $email1;?></td>
-                  <td>Processed</td>
-
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>01 Jan 2045</td>
-                  <td><?php echo $user_id;?></td>
-                  <td><?php echo $first1;echo $last1?></td>
-                  <td>113-222-333-9999</td>
-                  <td><?php echo $email1;?></td>
-                  <td>N/A</td>
-
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>01 Jan 2045</td>
-                  <td><?php echo $user_id;?></td>
-                  <td><?php echo $first1;echo $last1?></td>
-                  <td>114-222-333-9999</td>
-                  <td><?php echo $email1;?></td>
-                  <td>Processed</td>
-
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>01 Jan 2045</td>
-                  <td><?php echo $user_id;?></td>
-                  <td><?php echo $first1;echo $last1?></td>
-                  <td>115-222-333-9999</td>
-                  <td><?php echo $email1;?></td>
-                  <td>Processed</td>
-
-                </tr>
+                <?php } ?>
               </tbody>
             </table>
           </div>
@@ -397,49 +318,25 @@ SESSION_start();
           <div class="col-sm-12 col-md-6 col-xl-4">
             <div class="h-100 bg-secondary rounded p-4">
               <div class="d-flex align-items-center justify-content-between mb-2">
-                <h6 class="mb-0">Messages</h6>
+                <h6 class="mb-0">Latest Report</h6>
                 <a href="">Show All</a>
               </div>
+              <?php
+               $sql="SELECT * FROM user_complaints ORDER by complaint_id DESC LIMIT 0,5";
+               $result=mysqli_query($conn,$sql);
+               while ($data = mysqli_fetch_assoc($result)) {
+             ?>
               <div class="d-flex align-items-center border-bottom py-3">
-                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                <img class="rounded-circle flex-shrink-0" src="http://localhost/crime_reporting/dashboard%20admin/report-image/<?php echo $data['image']?>" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                   <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
+                    <h6 class="mb-0"><?php echo $data['crime_type']?></h6>
                     <small>15 minutes ago</small>
                   </div>
-                  <span>Officer Stan says.....</span>
+                  <span><?php echo $data['crime_evidence']?></span>
                 </div>
               </div>
-              <div class="d-flex align-items-center border-bottom py-3">
-                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                <div class="w-100 ms-3">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
-                    <small>15 minutes ago</small>
-                  </div>
-                  <span>Sergant Kenny says...</span>
-                </div>
-              </div>
-              <div class="d-flex align-items-center border-bottom py-3">
-                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                <div class="w-100 ms-3">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
-                    <small>1 day ago</small>
-                  </div>
-                  <span>Rob ken says - hi , Officer t...</span>
-                </div>
-              </div>
-              <div class="d-flex align-items-center pt-3">
-                <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                <div class="w-100 ms-3">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
-                    <small>1 week ago</small>
-                  </div>
-                  <span>Officer Goerge - I would...</span>
-                </div>
-              </div>
+              <?php } ?>
             </div>
           </div>
           <div class="col-sm-12 col-md-6 col-xl-4">

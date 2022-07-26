@@ -1,5 +1,9 @@
 <?php 
-include "connection.php";
+SESSION_start();
+ $id=$_SESSION['id'];
+  //echo"<script>alert($id)</script>"; to check value of id
+  if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
+    include "connection.php";  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,12 +61,12 @@ include "connection.php";
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0"><?php echo $_SESSION['fname'] ?> <?php echo $_SESSION['lname'] ?></h6>
                         <span>Admin</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="dashboard.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                        <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>-->
                         <div class="dropdown-menu bg-transparent border-0">
@@ -71,10 +75,10 @@ include "connection.php";
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
                     </div>
-                  <!--  <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
-                    <a href="blog.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
+                   <!-- <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
+                    <a href="blog.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog/News</a> -->
                     <a href="#" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i> Criminal detail</a>
-                    <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
+                    <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -170,7 +174,7 @@ include "connection.php";
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['username']?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
@@ -689,3 +693,10 @@ include "connection.php";
 </body>
 
 </html>
+<?php
+}
+  
+else{
+  echo "error";
+}
+?>

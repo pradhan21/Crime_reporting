@@ -9,10 +9,10 @@
         $email=$_POST['email'];
         $username=$_POST['username'];
         $pass=md5($_POST['password']);
-        $id=$_POST['id'];
+        $contact=$_POST['contact'];
         $city=$_POST['city'];
         $address=$_POST['address'];
-        $station=$_POST['station'];
+        $station=$_POST['id'];
         
 
         $sql="INSERT INTO police_registration Values('','$fname','$lname','$username','$pass','$city','$address','$contact','$email','$station' )";
