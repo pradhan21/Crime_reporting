@@ -476,43 +476,43 @@ include "connection.php";
                                     <div class="col-sm-10">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="1A") echo "checked";?>
-                                                id="gridRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="gridRadios1">
+                                                id="Radios1" value="1A" checked>
+                                            <label class="form-check-label" for="Radios1">
                                                 1A
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="1B") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="Radios2" value="1B">
+                                            <label class="form-check-label" for="Radios2">
                                                 1B
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="1C") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="Radios3" value="1C">
+                                            <label class="form-check-label" for="Radios3">
                                                 1C
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="2A") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="Radios4" value="2A">
+                                            <label class="form-check-label" for="Radios4">
                                                 2A
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="2B") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="Radios5" value="2B">
+                                            <label class="form-check-label" for="Radios5">
                                                 2B
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="2C and above") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="Radios6" value="2C and above">
+                                            <label class="form-check-label" for="Radios6">
                                                 2C and above
                                             </label>
                                         </div>
@@ -530,22 +530,22 @@ include "connection.php";
                                     <div class="col-sm-10">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?>
-                                                id="gridRadios1" value="option1" checked>
+                                                id="gridRadios1" value="male" checked>
                                             <label class="form-check-label" for="gridRadios1">
                                                 male
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?>
-                                                id="gridRadios2" value="option2">
+                                                id="gridRadios2" value="female">
                                             <label class="form-check-label" for="gridRadios2">
                                                 female
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="gridRadios3" value="other">
+                                            <label class="form-check-label" for="gridRadios3">
                                                 other
                                             </label>
                                         </div>
@@ -624,7 +624,7 @@ include "connection.php";
                                           
                                        
                                       if(mysqli_query($conn, $sql)){
-                                          echo "<script>alert(data stored in a database successfully.)</script>";
+                                          echo "<script>alert('data stored in a database successfully.)</script>";
                                       } else{
                                           echo "<script>alert(ERROR couldnt send form data.$sql.)</script> "
                                               . mysqli_error($conn);
