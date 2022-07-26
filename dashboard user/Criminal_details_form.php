@@ -62,7 +62,7 @@ include "connection.php";
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
                     <div class="nav-item dropdown">
                        <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>-->
                         <div class="dropdown-menu bg-transparent border-0">
@@ -173,7 +173,7 @@ include "connection.php";
                             <span class="d-none d-lg-inline-flex">John Doe</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="Profile.php" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
                             <a href="#" class="dropdown-item">Log Out</a>
                         </div>
@@ -370,7 +370,7 @@ include "connection.php";
                     <div class="row g-4">
                         <div class="col-sm-12 col-xl-6">
                             <div class="bg-secondary rounded h-100 p-4">
-                                <h6 class="mb-4">Basic Form</h6>
+                                <h6 class="mb-4">Authenticator</h6>
                                 <form>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Email address</label>
@@ -385,21 +385,21 @@ include "connection.php";
                                     </div>
                                     <div class="mb-3 form-check">
                                         <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                    <button type="submit" class="btn btn-primary">Check</button>
                                 </form>
                             </div>
                     </div>
 
-                    <div class="col-sm-12 col-xl-6">
+                    <div class="col-sm-12 col-xl-6" >
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Criminal details</h6>
                             <form method="POST" action= "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                             <div class="row mb-3">
                                     <label for="caseno1" class="col-sm-2 col-form-label">Case no :</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="caseno1" name ="caseno" value="<?php echo $caseno;?>">
+                                    <div class="col-sm-10" >
+                                        <input type="text" class="form-control" id="caseno1" name ="caseno" value="<?php echo $caseno;?>" >
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-exclamation-circle me-2"></i>
                                             **<?php echo $casenoErr;?> 
@@ -476,43 +476,43 @@ include "connection.php";
                                     <div class="col-sm-10">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="1A") echo "checked";?>
-                                                id="gridRadios1" value="option1" checked>
-                                            <label class="form-check-label" for="gridRadios1">
+                                                id="Radios1" value="1A" checked>
+                                            <label class="form-check-label" for="Radios1">
                                                 1A
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="1B") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="Radios2" value="1B">
+                                            <label class="form-check-label" for="Radios2">
                                                 1B
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="1C") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="Radios3" value="1C">
+                                            <label class="form-check-label" for="Radios3">
                                                 1C
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="2A") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="Radios4" value="2A">
+                                            <label class="form-check-label" for="Radios4">
                                                 2A
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="2B") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="Radios5" value="2B">
+                                            <label class="form-check-label" for="Radios5">
                                                 2B
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="2C and above") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="Radios6" value="2C and above">
+                                            <label class="form-check-label" for="Radios6">
                                                 2C and above
                                             </label>
                                         </div>
@@ -530,22 +530,22 @@ include "connection.php";
                                     <div class="col-sm-10">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?>
-                                                id="gridRadios1" value="option1" checked>
+                                                id="gridRadios1" value="male" checked>
                                             <label class="form-check-label" for="gridRadios1">
                                                 male
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?>
-                                                id="gridRadios2" value="option2">
+                                                id="gridRadios2" value="female">
                                             <label class="form-check-label" for="gridRadios2">
                                                 female
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?>
-                                                id="gridRadios2" value="option2">
-                                            <label class="form-check-label" for="gridRadios2">
+                                                id="gridRadios3" value="other">
+                                            <label class="form-check-label" for="gridRadios3">
                                                 other
                                             </label>
                                         </div>
@@ -624,7 +624,7 @@ include "connection.php";
                                           
                                        
                                       if(mysqli_query($conn, $sql)){
-                                          echo "<script>alert(data stored in a database successfully.)</script>";
+                                          echo "<script>alert('data stored in a database successfully.)</script>";
                                       } else{
                                           echo "<script>alert(ERROR couldnt send form data.$sql.)</script> "
                                               . mysqli_error($conn);
