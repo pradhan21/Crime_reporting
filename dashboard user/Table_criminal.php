@@ -111,7 +111,7 @@ include ("DB_pull.php");
                   <!--  <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
                     <a href="blog.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
                     <a href="#" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i> Criminal detail</a>
-                    <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
+                    
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -375,49 +375,57 @@ include ("DB_pull.php");
                         
 
 
-            <div class="table-table hover">
-                    <table class=" table table-hover">
-                        <thead>
-                            <tr class="text-white">
-                           
-                            <th scope="col">Date</th>
-                            <th scope="col">Criminal Name</th>
-                            <th scope="col">Gender</th>
-                            <th scope="col">Age</th>
-                            <th scope="col">Descritpion</th>
-                            
-                            <!--    <th scope="col">Action</th>-->
-                            </tr>
-                        </thead>
-                        <?php
-                                    if(is_array($fetchData)){      
-                                    $sn=1;
-                                    foreach($fetchData as $data){
-                                    ?>
-                        <tbody>
-                            <tr>
+                <div class="container-fluid pt-4 px-4">
+                    <div class="bg-secondary text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Criminal details</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div class="table-responsive">
+                            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                                <thead>
+                                    <tr class="text-white">
                                 
-                            <td><?php echo ++$no;?> Jan 2045</td>
-                            
-                            <td><?php echo $data['criminal_name']??'';?></td>
-                            <td><?php echo $data['age']??'';?></td>
-                            <td><?php echo $data['gender']??'';?></td>
-                            <td><?php echo $data['description']??'';?></td>
-                            
-                            </tr>
-                        </tbody>
-                
-                        <?php
-                       
-                        $sn++;}} 
-                        ?>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Criminal Name</th>
+                                    <th scope="col">Gender</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Descritpion</th>
+                                    
+
+                                    
+                                    <!--    <th scope="col">Action</th>-->
+                                    </tr>
+                                </thead>
+                                <?php
+                                            if(is_array($fetchData)){      
+                                            $sn=1;
+                                            foreach($fetchData as $data){
+                                            ?>
+                                <tbody>
+                                    <tr>
+                                        
+                                    <td><?php echo ++$no;?> July 2022</td>
+                                    
+                                    <td><a href= 'Criminal_details_form.php'> <?php echo $data['criminal_name']??'';?></a></td>
+                                    <td><a href= 'Criminal_details_form.php'> <?php echo $data['gender']??'';?></a></td>
+                                    <td><a href= 'Criminal_details_form.php'> <?php echo $data['age']??'';?></a></td>
+                                    <td><a href= 'Criminal_details_form.php'> <?php echo $data['description']??'';?></a></td>
+                                    
+                                    
+                                    </tr>
+                                </tbody>
                         
-                        
-                </table>
-            </div>
-        </div>
-      </div>
-      <!--   Recent Sales End -->
+                                <?php
+                            
+                                $sn++;}} 
+                                ?>
+                                
+                                
+                            </table>
+                        </div>
+                </div>
+      <!--   Recent Sales End 
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
                         <div class="col-sm-12 col-xl-6">
@@ -484,44 +492,52 @@ include ("DB_pull.php");
                                     
                                 </form>
                             </div>
-                    </div>  
+                    </div>  -->
 
-                    <!-- Footer Start -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                            <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer End -->
-            </div>
-        <!-- Content End -->
+                    <!-- Footer Start 
+      <div class="container-fluid pt-4 px-4">
+        <div class="bg-secondary rounded-top p-4">
+          <div class="row">
 
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+            <div class="col-12 col-sm-6 text-center text-sm-start">
+              &copy; <a href="#">Scelus-nunitare</a>, All Right Reserved.
+            </div>
+            <div class="col-12 col-sm-6 text-center text-sm-end">-->
+              <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+
+
+          <!--    Designed By <a href="#">Group-NNAS</a>
+              <br>
+              Distributed by: <a href="#" target="_blank">NNAS</a>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+       Footer End -->
     </div>
+    <!-- Content End -->
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/chart/chart.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/tempusdominus/js/moment.min.js"></script>
+  <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
 </body>
 
 </html>
