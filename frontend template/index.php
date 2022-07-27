@@ -119,8 +119,8 @@
                                 <a href="#">Login/Register</a>
                                 <ul class="dropdown">
                                     <li><a href="login/login.php">Login</a></li>
-                                    <li><a href="../dashboard user/login/signup.php">Signup-user</a></li>
-                                    <li><a href="../dashboard admin(police)/signup.php">Signup-admin</a></li>
+                                    <li><a href="../dashboard user/login/signup.php">Signup</a></li>
+                                   <!-- <li><a href="../dashboard admin(police)/signup.php">Signup-admin</a></li>-->
                                 </ul>
                             </li>
                         </ul>
