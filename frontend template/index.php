@@ -96,7 +96,7 @@
 
                     <div class="col-6 col-xl-6 logo">
 
-                        <h1 class="mb-0"><a href="index.html" class="text-black h2 mb-0">Crime Reporter</a></h1>
+                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime News</a></h1>
                     </div>
 
                     <div class="col-6 mr-auto py-3 text-right" style="position: relative; top: 3px;">
@@ -114,6 +114,7 @@
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
                             <li class="active"><a href="index.php">Home</a></li>
                             <li><a href="news.php">News</a></li>
+                            <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
                                 <a href="#">Login/Register</a>
                                 <ul class="dropdown">
@@ -139,10 +140,9 @@
                 <div class="row same-height align-items-center">
                     <div class="col-md-12 col-lg-6">
                         <div class="post-entry">
-                            <span class="post-category text-white bg-success mb-3">Nature</span>
-                            <h2 class="mb-4"><a href="#">The 20 Biggest Fintech Companies In America 2019</a></h2>
+                            <span class="post-category text-white bg-danger mb-3">NEWS</span>
+                            <h2 class="mb-4"><a style = "text-decoration:line-through;" href="#">Say No To Crime</a></h2>
                             <div class="post-meta align-items-center text-left">
-                                <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
                                 <span class="d-inline-block mt-1">By Carrol Atkinson</span>
                                 <span>&nbsp;-&nbsp; February 10, 2019</span>
                             </div>
@@ -157,8 +157,8 @@
                 <div class="row same-height align-items-center">
                     <div class="col-md-12 col-lg-6">
                         <div class="post-entry">
-                            <span class="post-category text-white bg-success mb-3">Nature</span>
-                            <h2 class="mb-4"><a href="#">The 20 Biggest Fintech Companies In America 2019</a></h2>
+                            <span class="post-category text-white bg-danger mb-3">NEWS</span>
+                            <h2 class="mb-4"><a style = "text-decoration:line-through;" href="#">Say Not To Crime</a></h2>
                             <div class="post-meta align-items-center text-left">
                                 <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
                                 <span class="d-inline-block mt-1">By Carrol Atkinson</span>
@@ -172,32 +172,36 @@
 
     </div>
 
+        <!-- End of Crousel -->
+
     <div class="site-section">
         <div class="container">
 
             <div class="row align-items-stretch retro-layout">
-            <?php foreach($cyber as $q){ ?>
+            
                 <div class="col-md-5">
-                    <a href="single.html" class="hentry img-1 h-100 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?>');">
+                <?php foreach($cyber as $c){ ?>
+                    <a href="single.php?b_id=<?php echo $c['blog_id'];?>" class="hentry img-1 h-100 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$c['featured_image']; ?>');">
                         <span class="post-category text-white bg-danger">Cyber Crime</span>
                         <div class="text">
-                            <h2><a href="single.php" class="text-light"><?php echo $q['title']; ?></h2>
-                            <span>&nbsp;-&nbsp; <?php echo $q['date_col']; ?></span>
+                            <h2><a href="single.php?b_id=<?php echo $c['blog_id'];?>" class="text-light"><?php echo $c['title']; ?></h2>
+                            <span>&nbsp;-&nbsp; <?php echo $c['date_col']; ?></span>
                         </div>
                     </a>
+                <?php
+                }
+                ?>
                 </div>
-            <?php
-            }
-            ?>
+            
 
                 <div class="col-md-7">
 
                     <?php foreach($fraud as $f){ ?>
-                    <a href="single.html" class="hentry img-2 v-height mb30 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$f['featured_image']; ?>');">
+                    <a href="single.php?b_id=<?php echo $f['blog_id'];?>" class="hentry img-2 v-height mb30 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$f['featured_image']; ?>');">
                         <span class="post-category text-white bg-success">Business Fraud</span>
                         <div class="text text-sm">
                             <h2><?php echo $f['title']; ?></h2>
-                            <span>&nbsp;-&nbsp; <?php echo $q['date_col']; ?></span>
+                            <span>&nbsp;-&nbsp; <?php echo $f['date_col']; ?></span>
                         </div>
                     </a>
                     <?php
@@ -206,7 +210,7 @@
 
                     <div class="two-col d-block d-md-flex">
                         <?php foreach($murder as $m){ ?>
-                        <a href="single.html" class="hentry v-height img-2 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$m['featured_image']; ?>');">
+                        <a href="single.php?b_id=<?php echo $m['blog_id'];?>" class="hentry v-height img-2 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$m['featured_image']; ?>');">
                             <span class="post-category text-white bg-danger">Murder</span>
                             <div class="text text-sm">
                                 <h2><?php echo $m['title']; ?></h2>
@@ -218,7 +222,7 @@
                         ?>
 
                         <?php foreach($kidnap as $k){ ?>
-                        <a href="single.html" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$k['featured_image']; ?>');">
+                        <a href="single.php?b_id=<?php echo $k['blog_id'];?>" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$k['featured_image']; ?>');">
                             <span class="post-category text-white bg-warning">Kidnapping</span>
                             <div class="text text-sm">
                                 <h2><?php echo $k['title']; ?></h2>
@@ -247,9 +251,9 @@
             <?php foreach($kidnap as $k){ ?>
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="entry2">
-                        <a href="single.php"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$k['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
+                        <a href="single.php?b_id=<?php echo $k['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$k['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
                         <span class="post-category text-white bg-primary mb-3">News</span>
-                        <h2><a href="single.php"><?php echo $k['title']; ?></a></h2>
+                        <h2><a href="single.php?b_id=<?php echo $k['blog_id'];?>"><?php echo $k['title']; ?></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
                             <span class="d-inline-block mt-1">By <a href="#"><?php echo $k['author']; ?></a></span>
                             <span>&nbsp;-&nbsp; <?php echo $k['date_col']; ?></span>
@@ -266,11 +270,11 @@
             
                     <div class="entry3 d-block d-sm-flex">
                         <figure class="figure order-2">
-                            <a href="single.html"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
+                            <a href="single.php?b_id=<?php echo $d['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
                         </figure>
                         <div class="text mr-4 order-1">
                             <span class="post-category text-white bg-primary mb-3">News</span>
-                            <h2><a href="single.php"><?php echo $d['title']; ?></a></h2>
+                            <h2><a href="single.php?b_id=<?php echo $d['blog_id'];?>"><?php echo $d['title']; ?></a></h2>
                             <span class="post-meta mb-3 d-block">&nbsp;-&nbsp; <?php echo $d['date_col']; ?></span>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio.</p>
                         </div>
@@ -292,10 +296,10 @@
             <?php foreach($random as $r){ ?>
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="entry2 mb-5">
-                        <a href="single.php"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$r['featured_image']; ?>" alt="Image" class="img-fluid rounded related_img"></a>
+                        <a href="single.php?b_id=<?php echo $r['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$r['featured_image']; ?>" alt="Image" class="img-fluid rounded related_img"></a>
                         <br>
                         <span class="post-category text-white bg-primary mb-3">News</span>
-                        <h2><a href="single.php"><?php echo $r['title']; ?></a></h2>
+                        <h2><a href="single.php?b_id=<?php echo $r['blog_id'];?>"><?php echo $r['title']; ?></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
                             <span class="d-inline-block mt-1">By <a href="#"><?php echo $r['author']; ?></a></span>
                             <span>&nbsp;-&nbsp; <?php echo $r['date_col']; ?></span>
@@ -313,11 +317,11 @@
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="entry4 d-block d-sm-flex">
                         <figure class="figure order-2">
-                            <a href="#"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
+                            <a href="single.php?b_id=<?php echo $q['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
                         </figure>
                         <div class="text mr-4 order-1">
                             <span class="post-category text-white bg-danger mb-3">NEWS</span>
-                            <h2><a href="single.php"><?php echo $q['title']; ?></a></h2>
+                            <h2><a href="single.php?b_id=<?php echo $q['blog_id'];?>"><?php echo $q['title']; ?></a></h2>
                             <span class="post-meta mb-3 d-block"><?php echo $q['date_col']; ?></span>
                         </div>
                     </div>     
@@ -342,21 +346,16 @@
                 <div class="col-md-3 ml-auto">
                     <h3 class="footer-heading mb-4">Quick Menu</h3>
                     <ul class="list-unstyled float-left mr-5">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Subscribes</a></li>
-                    </ul>
-                    <ul class="list-unstyled float-left">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Nature</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="news.php">News</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="login/login.php">LogIn</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <div class="mb-5">
                         <h3 class="footer-heading mb-4">Subscribe</h3>
+                        <p>If you want to be Stay updated with us through e-mail, please do subscribe to our website!</p>
                         <form action="" method="post" class="form-footer-subscribe">
                             <div class="form-group d-flex">
                                 <input type="text" class="form-control">
@@ -384,7 +383,7 @@
                         Copyright &copy;
                         <script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </script> All rights reserved
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
