@@ -192,7 +192,7 @@ SESSION_start();
       <!-- Navbar End -->
 
 
-      <!-- Sale & Revenue Start
+      <!-- <!-- Sale & Revenue Start -->
       <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
           <div class="col-sm-6 col-xl-3">
@@ -208,7 +208,7 @@ SESSION_start();
             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
               <i class="fa fa-chart-bar fa-3x text-primary"></i>
               <div class="ms-3">
-                <p class="mb-2">Total Sale</p>
+                <p class="mb-2">Total Users</p>
                 <h6 class="mb-0">$1234</h6>
               </div>
             </div>
@@ -217,7 +217,7 @@ SESSION_start();
             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
               <i class="fa fa-chart-area fa-3x text-primary"></i>
               <div class="ms-3">
-                <p class="mb-2">Today Revenue</p>
+                <p class="mb-2">Today Police</p>
                 <h6 class="mb-0">$1234</h6>
               </div>
             </div>
@@ -226,7 +226,7 @@ SESSION_start();
             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
               <i class="fa fa-chart-pie fa-3x text-primary"></i>
               <div class="ms-3">
-                <p class="mb-2">Total Revenue</p>
+                <p class="mb-2">Total Police Station</p>
                 <h6 class="mb-0">$1234</h6>
               </div>
             </div>
@@ -237,7 +237,7 @@ SESSION_start();
 
 
 
-      <!-- Sales Chart Start
+      <!-- <!-- Sales Chart Start -->
       <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
           <div class="col-sm-12 col-xl-6">
@@ -265,7 +265,7 @@ SESSION_start();
 
 
       <!-- Recent Sales Start -->
-      <div class="container-fluid pt-4 px-4">
+      <!-- <div class="container-fluid pt-4 px-4">
         <div class="bg-secondary text-center rounded p-4">
           <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Report History</h6>
@@ -281,33 +281,27 @@ SESSION_start();
                   <th scope="col">Date</th>
                   <th scope="col">ID</th>
                   <th scope="col">location</th>
-                  <!--    <th scope="col">Action</th>-->
-                </tr>
+                     <th scope="col">Action</th>-->
+                <!-- </tr>
               </thead>
               <tbody>
-              <?php 
-                $sql="SELECT * FROM emergency ORDER by id DESC LIMIT 0,5";
-                $result=mysqli_query($conn,$sql);
-                while ($data = mysqli_fetch_assoc($result)) {
-              ?>
+              
                 <tr>
                   <th scope="row">1</th>
-                  <td><?php echo $data['date_col']?></td>
-                  <td><?php echo $data['id'];?></td>
                   <td>      <iframe class="position-relative rounded w-100 h-100"
-                            src="https://www.google.com/maps?q=<?php echo $data['latitude']; ?>,<?php echo $data['longitude']; ?>&hl=es;z=14&output=embed"
+                            src="https://www.google.com/maps?q==&hl=es;z=14&output=embed"
                             frameborder="0" allowfullscreen="" aria-hidden="false"
                             tabindex="0" style="filter: grayscale(100%) invert(92%) contrast(83%); border: 0;"></iframe></td>
                   
 
 
                 </tr>
-                <?php } ?>
+                
               </tbody>
             </table>
           </div>
         </div>
-      </div>
+      </div> -->
       <!--   Recent Sales End -->
 
 

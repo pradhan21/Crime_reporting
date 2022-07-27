@@ -31,17 +31,13 @@ $crimeD="";
 $Race="";
 $Skin="";
 $image="";
-
-$gg=$_GET['id'];
-
-
 SESSION_start();
  $id=$_SESSION['id'];
   echo"<script>alert($id)</script>"; //to check value of id
   if(isset($_SESSION['id'])){
     include "connection.php";
 
-   $db1= "SELECT * from criminal_details where criminal_name='$gg'";/////////////////calling data from the database
+   $db1= "SELECT * from criminal_details where criminal_name='horr'";/////////////////calling data from the database
    $result=$conn->query($db1);
    if($result->num_rows > 0){
     while($row=$result->fetch_assoc()){
@@ -396,75 +392,73 @@ SESSION_start();
               ?>
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
-                        
+                        <div class="col-sm-12 col-xl-6">
                             <div class="bg-secondary rounded h-100 p-4">
                                 <h2 class="mb-4">Criminal Details </h2>
                                 <form>
                                 <div class="mb-3">
                                 <h4 class="mb-4">Image : </h4>
-
-                                        <img src="http://localhost/CC/crime_reporting/dashboard%20template/<?php echo $image;?>"/>
-                                
+                                        <?php echo "<img src= '$image'/>";?>
                                         
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Criminal name :</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" value ="<?php echo $name;?>"
-                                            aria-describedby="emailHelp" disabled>
+                                            aria-describedby="emailHelp">
                                         
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Age :</label>
-                                        <input type="text" class="form-control" id="exampleInput    1" value ="<?php echo $age;?>" disabled>
+                                        <input type="text" class="form-control" id="exampleInput    1" value ="<?php echo $age;?>">
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Height :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $height;?>" disabled> 
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $height;?>">
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Weight :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $weight;?>" disabled>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $weight;?>">
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Gender :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $gender;?>" disabled>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $gender;?>">
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Hair type :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $hair;?>" disabled>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $hair;?>">
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Skin color :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Skin;?>" disabled>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Skin;?>">
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Race :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Race;?>" disabled>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Race;?>">
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Description :</label>
-                                        <textarea class="form-control" placeholder="Description" id="floatingTextarea" name ="crimeD" style="height: 150px;" disabled ><?php echo $crimeD;?></textarea>
+                                        <textarea class="form-control" placeholder="Description" id="floatingTextarea" name ="crimeD" style="height: 150px;"  ><?php echo $crimeD;?></textarea>
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Records :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $caseno;?>" disabled>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $caseno;?>">
                                     </div>
                                     <hr>
                                     
                                 </form>
                             </div>
-                     
+                    </div>  
 
-                   <!-- <div class="col-sm-12 col-xl-6" >
+                    <div class="col-sm-12 col-xl-6" >
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Criminal details
                             <span class="alert alert-dark alert-dismissible fade show " role="alert"> 
@@ -640,7 +634,7 @@ SESSION_start();
                                 <div class="row mb-3">
                                     <label for="crimeD1" class="col-sm-2 col-form-label">Crime Description/(acts and sections)</label>
                                     <div class="col-sm-10">
-                                        
+                                        <!--<input type="textarea" class="form-control" id="crimeD1" name ="crimeD" value="">-->
                                         <textarea class="form-control" placeholder="Description" id="floatingTextarea" name ="crimeD" style="height: 150px;" value="<?php echo $crimeD;?>" disabled></textarea>
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-exclamation-circle me-2"></i>
@@ -699,7 +693,7 @@ SESSION_start();
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
-                                            $sql="INSERT into criminal_details(records,criminal_name,age,height,weight,gender,hair_type,skin_color,race,description,image) VALUES ('$caseno','$f_name','$age','$height','$weight','$gender','$hair','$Skin','$Race','$crimeD','')";
+                                            $sql="INSERT into criminal_details(records,criminal_name,age,height,weight,gender,hair_type,skin_color,race,description) VALUES ('$caseno','$f_name','$age','$height','$weight','$gender','$hair','$Skin','$Race','$crimeD')";
                                           
                                        
                                       if(mysqli_query($conn, $sql)){
@@ -728,7 +722,7 @@ SESSION_start();
                       ?>  
 
                         </div>
-                    </div>-->
+                    </div>
                     <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary rounded-top p-4">
