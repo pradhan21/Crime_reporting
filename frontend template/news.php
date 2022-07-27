@@ -27,6 +27,10 @@
     <link rel="stylesheet" href="css/aos.css">
     <!-- Font Awesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+     <!-- bootstrap CDN -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -49,7 +53,7 @@
                 <div class="row align-items-center">
 
                     <div class="col-6 col-xl-6 logo">
-                        <h1 class="mb-0"><a href="index.html" class="text-black h2 mb-0">Crime Reporter</a></h1>
+                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime News</a></h1>
                     </div>
 
                     <div class="col-6 mr-auto py-3 text-right" style="position: relative; top: 3px;">
@@ -67,6 +71,7 @@
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
                             <li><a href="index.php">Home</a></li>
                             <li class="active"><a href="news.php">News</a></li>
+                            <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
                                 <a href="#">Login/Register</a>
                                 <ul class="dropdown">
@@ -107,14 +112,14 @@
                     
 
                     <div class="entry2 mb-5">
-                        <a href="single.php"><img class="blog_img" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
+                        <a href="single.php?b_id=<?php echo $q['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?>" alt="Image" class="img-fluid rounded" style="width:95%; "></a>
+                        <br>
                         <span class="post-category text-white bg-primary mb-3">News</span>
-                        <h2><a href="single.php"><?php echo $q['title']; ?> </a></h2>
+                        <h2><a href="single.php?b_id=<?php echo $q['blog_id'];?>"><?php echo $q['title']; ?> </a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
-                            <span class="d-inline-block mt-1">By <a href="#"><?php echo $q['author']; ?></a></span>
-                            <span>&nbsp;-&nbsp; <?php echo $q['date_col']; ?></span>
+                            <span class="d-inline-block mt-1">By <i class="bi bi-person-fill"></i> <a href="#"><?php echo $q['author']; ?></a></span>
+                            <span>&nbsp;&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $q['date_col']; ?></span>
                         </div>
-                        <!-- <p><?php echo $q['description1']; ?> <br/> <br/></p> -->
                     </div>
                 
                     
@@ -156,11 +161,11 @@
 
                                 <div class="carousel-item <?=$actives ; ?>">
                                     <div class="card" style="width: 18rem;">
-                                        <img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" class="card-img-top slide_img" alt="...">
+                                        <img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" class="card-img-top" style="width:100%; height:180px;">
                                         <div class="card-body">
                                             <h5 class="card-title"><a class="text-dark" href="single.php"> <?php echo $d['title']; ?> </a></h5>
                                             <p class="card-text">By <a href="#"><?php echo $d['author']; ?></a> <small class="text-muted">&nbsp;-&nbsp; <?php echo $d['date_col']; ?></small></p>
-                                            <a href="single.php" class="btn btn-dark">Read More...</a>
+                                            <a href="single.php?b_id=<?php echo $d['blog_id'];?>" class="btn btn-dark">Read More...</a>
                                             
                                         </div>
                                     </div>
@@ -218,21 +223,16 @@
                 <div class="col-md-3 ml-auto">
                     <h3 class="footer-heading mb-4">Quick Menu</h3>
                     <ul class="list-unstyled float-left mr-5">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Subscribes</a></li>
-                    </ul>
-                    <ul class="list-unstyled float-left">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Nature</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="news.php">News</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="login/login.php">LogIn</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <div class="mb-5">
                         <h3 class="footer-heading mb-4">Subscribe</h3>
+                        <p>If you want to be Stay updated with us through e-mail, please do subscribe to our website!</p>
                         <form action="" method="post" class="form-footer-subscribe">
                             <div class="form-group d-flex">
                                 <input type="text" class="form-control">
@@ -260,7 +260,7 @@
                         Copyright &copy;
                         <script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </script> All rights reserved
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
