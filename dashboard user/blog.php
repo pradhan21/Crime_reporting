@@ -1,7 +1,6 @@
 <?php
 
-    // include "../dashboard user/logics/bloglogic.php"
-    include "../Crime Reporting System User Interface/logics/bloglogic.php"
+    include "logics/bloglogic.php"
 ?>
 
 <!DOCTYPE html>
@@ -80,8 +79,8 @@
                    <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
                     <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
 
-                    <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
-                    <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>
+                    <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
+                    
                    <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Table</a>-->
                   <!--  <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
                     <div class="nav-item dropdown">
@@ -261,7 +260,7 @@
                                             <th scope="col">Title</th>
                                             <th scope="col">Published Date</th>
                                             <th scope="col">Image</th>
-                                            <!-- <th scope="col">added Image</th> -->
+                                            <th scope="col">added Image</th>
                                             <th scope="col">Edit</th>
                                             <th scope="col">Delete</th>
                                         </tr>
@@ -275,7 +274,7 @@
                                             <td><?php echo $q['title']; ?></td>
                                             <td><?php echo $q['date_col']; ?></td>
                                             <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?> "></td>
-                                            <!-- <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td> -->
+                                            <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td>
                                             <form action = "updatedata.php" method="POST">
                                                 <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
                                                 <td><input type="submit" name = "edit" class="btn btn-info" value="Edit"></td>
@@ -299,26 +298,6 @@
             </div>
             <!-- Blog End -->
             
-
-            <!-- Footer Start -->
-            <br/>
-            <br/>
-            <br/>
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary rounded-top p-4">
-                    <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
-                        </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
-                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                            <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Footer End -->
         </div>
         <!-- Content End -->
 

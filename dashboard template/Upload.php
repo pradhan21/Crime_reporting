@@ -10,20 +10,26 @@ if (isset($_POST['upload'])) {
     $tempname = $_FILES["uploadfile"]["tmp_name"];
     $folder = "image/" . $filename;
  
-    $db = mysqli_connect("localhost", "root", "", "profiledb");
+    $db = mysqli_connect("localhost", "root", "", "crime_db");
  
     // Get all the submitted data from the form
-    $sql = "INSERT INTO image (filename) VALUES ('$filename')";
+    $sql = "INSERT INTO criminal_details  VALUES ('horsee','','','','','','','','','','$folder')";
  
     // Execute query+
-    mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
+   if (mysqli_query($db, $sql)){
+    move_uploaded_file($tempname, $folder);
+    echo "<h3>  Image uploaded successfully!</h3>";
+    } else {
+        echo mysqli_error($db);
+    }
+    //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
  
     // Now let's move the uploaded image into the folder: image
-    if (move_uploaded_file($tempname, $folder)) {
-        echo "<h3>  Image uploaded successfully!</h3>";
-    } else {
-        echo "<h3>  Failed to upload image!</h3>";
-    }
+   // if (move_uploaded_file($tempname, $folder)) {
+       // echo "<h3>  Image uploaded successfully!</h3>";
+   // } else {
+        //echo "<h3>  Failed to upload image!</h3>";
+   // }
 }
 ?>
 <!DOCTYPE html>
@@ -48,7 +54,7 @@ if (isset($_POST['upload'])) {
     </div>
     <div id="display-image">
         <?php
-        $query = " select * from image ";
+        $query = " select * from criminal_details ";
         $result = mysqli_query($db, $query);
  
         while ($data = mysqli_fetch_assoc($result)) {
