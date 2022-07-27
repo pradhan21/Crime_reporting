@@ -10,7 +10,7 @@
 <html lang="en">
 
 <head>
-    <title>Crime Reporter</title>
+    <title>News</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -88,12 +88,12 @@
     </header>
 
 
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/abuse.png');">
+    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/abuse.png'); background-repeat: no-repeat;">
         <div class="container">
             <div class="row same-height justify-content-center">
                 <div class="col-md-12 col-lg-10">
                     <div class="post-entry text-center">
-                        <span class="post-category text-white bg-success mb-3">News</span>
+                        <span class="post-category text-white bg-danger mb-3">News</span>
                         <h1 class="mb-4"><a href="#">Crimes' Category</a></h1>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                                         <img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" class="card-img-top" style="width:100%; height:180px;">
                                         <div class="card-body">
                                             <h5 class="card-title"><a class="text-dark" href="single.php"> <?php echo $d['title']; ?> </a></h5>
-                                            <p class="card-text">By <a href="#"><?php echo $d['author']; ?></a> <small class="text-muted">&nbsp;-&nbsp; <?php echo $d['date_col']; ?></small></p>
+                                            <p class="card-text"><i class="bi bi-person-fill"></i> <a href="#"><?php echo $d['author']; ?></a> <small class="text-muted">&nbsp;-&nbsp; <?php echo $d['date_col']; ?></small></p>
                                             <a href="single.php?b_id=<?php echo $d['blog_id'];?>" class="btn btn-dark">Read More...</a>
                                             
                                         </div>

@@ -18,7 +18,7 @@
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="index.html" class="">
-                                <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+                                <h5 class="text-primary"><i class="fa fa-user-edit me-2"></i>Crime Reporting</h5>
                             </a>
                             <h3>Sign Up</h3>
                         </div>
@@ -37,7 +37,7 @@
                             </div>
                             <div class="form-floating mb-4">
                                 <input type="text" class="form-control"name="username" id="floatingText" placeholder="Username"required>
-                                <label for="floatingText">Usernmae</label>
+                                <label for="floatingText">Username</label>
                             </div>
                             
                             <div class="form-floating mb-4">
@@ -69,7 +69,7 @@
                             </div>
                             <button type="submit" name="Submit" value="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
                         </form>
-                        <p class="text-center mb-0">Already have an Account? <a href="">Sign In</a></p>
+                        <p class="text-center mb-0">Already have an Account? <a href="login.php">Sign In</a></p>
                     </div>
                 </div>
             </div>
