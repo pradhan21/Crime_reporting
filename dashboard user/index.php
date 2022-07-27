@@ -589,4 +589,5 @@ SESSION_start();
 else{
   echo "error";
 }
+session_destroy();
 ?>
