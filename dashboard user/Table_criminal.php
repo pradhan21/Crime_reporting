@@ -34,7 +34,7 @@ $Skin="";
 $image="";
 $no=0;
  
-include ("DB_pull.php");
+include ("database_handler/DB_pull.php");
 
    
    ?>

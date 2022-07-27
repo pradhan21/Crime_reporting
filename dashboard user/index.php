@@ -455,7 +455,7 @@ SESSION_start();
                 <h6 class="mb-0">Report Handler</h6>
                 <a href="">Show All</a>
               </div>
-              <form action="reporthandle.php" method="POST" enctype="multipart/form-data" >
+              <form action="database_handler/reporthandle.php" method="POST" enctype="multipart/form-data" >
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">@</span>
                   <input type="email" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon1" name ="email">
@@ -589,5 +589,4 @@ SESSION_start();
 else{
   echo "error";
 }
-//session_destroy();
 ?>
