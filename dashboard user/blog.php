@@ -35,6 +35,10 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+
 
 
 </head>
@@ -108,8 +112,9 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+                <form class="d-none d-md-flex ms-4" method = "GET">
+                    <input class="form-control bg-dark border-0" name="search" type="search" value = "<?php if(isset($_REQUEST['search'])){ echo $_GET['search'];} ?>" placeholder="Search">
+                    <button type="submit" class="btn border-0"><i class="bi bi-search"></i></button>
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
@@ -260,7 +265,7 @@
                                             <th scope="col">Title</th>
                                             <th scope="col">Published Date</th>
                                             <th scope="col">Image</th>
-                                            <th scope="col">added Image</th>
+                                            <!-- <th scope="col">added Image</th> -->
                                             <th scope="col">Edit</th>
                                             <th scope="col">Delete</th>
                                         </tr>
@@ -274,7 +279,7 @@
                                             <td><?php echo $q['title']; ?></td>
                                             <td><?php echo $q['date_col']; ?></td>
                                             <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?> "></td>
-                                            <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td>
+                                            <!-- <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td> -->
                                             <form action = "updatedata.php" method="POST">
                                                 <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
                                                 <td><input type="submit" name = "edit" class="btn btn-info" value="Edit"></td>

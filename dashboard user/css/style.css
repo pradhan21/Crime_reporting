@@ -312,3 +312,17 @@
     height: 100px;
     margin-left: 2.5%;
 }
+
+
+/* sticking the heading */
+
+.table-fixed tbody {
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+
+/* .table-height {
+    max-height: 200px;
+    
+} */
