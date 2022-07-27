@@ -57,6 +57,8 @@
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
                             <li><a href="index.php">Home</a></li>
                             <li><a href="news.php">News</a></li>
+                            <li><a class="active" href="about.php">About Us</a></li>
+                            <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
                                 <a href="#">Login/Register</a>
                                 <ul class="dropdown">

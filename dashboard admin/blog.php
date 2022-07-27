@@ -78,7 +78,7 @@
                         </div>
                     </div>
                    <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
-                    <!-- <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a> -->
+                    <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
 
                     <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
                     <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->

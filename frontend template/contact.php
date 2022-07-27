@@ -39,7 +39,7 @@
                 <div class="row align-items-center">
 
                     <div class="col-6 col-xl-6 logo">
-                        <h1 class="mb-0"><a href="index.html" class="text-black h2 mb-0">Crime Reporter</a></h1>
+                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime News</a></h1>
                     </div>
 
                     <div class="col-6 mr-auto py-3 text-right" style="position: relative; top: 3px;">
@@ -51,14 +51,15 @@
                         <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-xl-none"><span class="icon-menu h3"></span></a></div>
                 </div>
 
-                <div class="col-12 d-none d-xl-block border-top">
+                <div class="col-12 d-none d-xl-block border-top border-bottom">
                     <nav class="site-navigation text-center " role="navigation">
 
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
                             <li><a href="index.php">Home</a></li>
                             <li><a href="news.php">News</a></li>
+                            <li><a class="active" href="contact.php">Contact</a></li>
                             <li class="has-children">
-                                <a href="category.html">Login/Register</a>
+                                <a href="#">Login/Register</a>
                                 <ul class="dropdown">
                                     <li><a href="login/login.php">Login</a></li>
                                     <li><a href="login/signup.php">Signup</a></li>
@@ -73,7 +74,7 @@
     </header>
 
 
-    <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/hero_1.jpg');">
+    <!-- <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/hero_1.jpg');">
         <div class="container">
             <div class="row same-height justify-content-center">
                 <div class="col-md-12 col-lg-10">
@@ -83,7 +84,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="site-section bg-light">
         <div class="container">
@@ -175,21 +176,16 @@
                 <div class="col-md-3 ml-auto">
                     <h3 class="footer-heading mb-4">Quick Menu</h3>
                     <ul class="list-unstyled float-left mr-5">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Subscribes</a></li>
-                    </ul>
-                    <ul class="list-unstyled float-left">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Nature</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="news.php">News</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="login/login.php">LogIn</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <div class="mb-5">
                         <h3 class="footer-heading mb-4">Subscribe</h3>
+                        <p>If you want to be Stay updated with us through e-mail, please do subscribe to our website!</p>
                         <form action="" method="post" class="form-footer-subscribe">
                             <div class="form-group d-flex">
                                 <input type="text" class="form-control">
@@ -217,7 +213,7 @@
                         Copyright &copy;
                         <script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </script> All rights reserved
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>

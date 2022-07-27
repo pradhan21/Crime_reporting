@@ -1,6 +1,7 @@
 <?php
 
     include_once "logics/latestpost.php";
+    include_once "logics/dis_blog.php";
 
 ?>
 
@@ -24,6 +25,13 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="css/aos.css">
+        <!-- Font Awesome -->
+        <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+        <!-- bootstrap CDN -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+
 
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -46,7 +54,7 @@
                 <div class="row align-items-center">
 
                     <div class="col-6 col-xl-6 logo">
-                        <h1 class="mb-0"><a href="index.html" class="text-black h2 mb-0">Crime Reporter</a></h1>
+                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime Reporter</a></h1>
                     </div>
 
                     <div class="col-6 mr-auto py-3 text-right" style="position: relative; top: 3px;">
@@ -64,6 +72,7 @@
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
                             <li><a href="index.php">Home</a></li>
                             <li><a href="news.php">News</a></li>
+                            <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
                                 <a href="#">Login/Register</a>
                                 <ul class="dropdown">
@@ -82,7 +91,7 @@
     <section class="site-section py-lg">
         
         <div class="container">
-        <h5 class="ms-1"><a href="index.html">Home</a>   <span  style="color: #D18CE0">></span> <a href="news.php"> News </a></h5>
+        <h5 class="ms-1"><a class="text-dark" href="index.html">Home</a>   <span  style="color: #D18CE0;">></span> <a class="text-dark" href="news.php" class="active"> News </a></h5>
         </div>
         <div class="container">
 
@@ -91,34 +100,38 @@
                 <div class="col-md-12 col-lg-8 main-content">
 
                     <div class="post-content-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium nam quas inventore, ut iure iste modi eos adipisci ad ea itaque labore earum autem nobis et numquam, minima eius. Nam eius, non unde ut aut sunt eveniet rerum
-                            repellendus porro.</p>
-                        <p>Sint ab voluptates itaque, ipsum porro qui obcaecati cumque quas sit vel. Voluptatum provident id quis quo. Eveniet maiores perferendis officia veniam est laborum, expedita fuga doloribus natus repellendus dolorem ab similique
-                            sint eius cupiditate necessitatibus, magni nesciunt ex eos.</p>
-                        <p>Quis eius aspernatur, eaque culpa cumque reiciendis, nobis at earum assumenda similique ut? Aperiam vel aut, ex exercitationem eos consequuntur eaque culpa totam, deserunt, aspernatur quae eveniet hic provident ullam tempora error
-                            repudiandae sapiente illum rerum itaque voluptatem. Commodi, sequi.</p>
-                        <div class="row mb-5 mt-5">
+                        <?php foreach($single as $s){ ?>
+                        <!-- Titles -->
+                        <h2 class="mb-3" style = "text-align: left; width: 86%;"><?php echo $s['title']; ?></h2>
+                        <span class="post-category text-white bg-primary mb-2">NEWS</span> <br>
+                        <span class="d-inline-block mt-1"><i class="bi bi-person-fill"></i> <?php echo $s['author']; ?></span>
+                        <span>&nbsp;&nbsp; <i class="bi bi-pencil-fill"></i>  <?php echo $s['date_col']; ?></span>
+                        <span>&nbsp;&nbsp; <i class="bi bi-stopwatch"></i> 5 Mins read</span>
+                        
+                        <!-- featured_image -->
+                        <div class="row mb-4 mt-4">
                             <div class="col-md-12 mb-4">
-                                <img src="images/img_1.jpg" alt="Image placeholder" class="img-fluid rounded">
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <img src="images/img_2.jpg" alt="Image placeholder" class="img-fluid rounded">
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <img src="images/img_3.jpg" alt="Image placeholder" class="img-fluid rounded">
+                                <img src="http://localhost/crime_reporting/dashboard%20user/<?=$s['featured_image']; ?>" alt="Image placeholder" class="img-fluid rounded" style="max-width:88%; margin-left: 6%;">
                             </div>
                         </div>
-                        <p>Quibusdam autem, quas molestias recusandae aperiam molestiae modi qui ipsam vel. Placeat tenetur veritatis tempore quos impedit dicta, error autem, quae sint inventore ipsa quidem. Quo voluptate quisquam reiciendis, minus, animi
-                            minima eum officia doloremque repellat eos, odio doloribus cum.</p>
-                        <p>Temporibus quo dolore veritatis doloribus delectus dolores perspiciatis recusandae ducimus, nisi quod, incidunt ut quaerat, magnam cupiditate. Aut, laboriosam magnam, nobis dolore fugiat impedit necessitatibus nisi cupiditate,
-                            quas repellat itaque molestias sit libero voluptas eveniet omnis illo ullam dolorem minima.</p>
-                        <p>Porro amet accusantium libero fugit totam, deserunt ipsa, dolorem, vero expedita illo similique saepe nisi deleniti. Cumque, laboriosam, porro! Facilis voluptatem sequi nulla quidem, provident eius quos pariatur maxime sapiente
-                            illo nostrum quibusdam aliquid fugiat! Earum quod fuga id officia.</p>
-                        <p>Illo magnam at dolore ad enim fugiat ut maxime facilis autem, nulla cumque quis commodi eos nisi unde soluta, ipsa eius aspernatur sint atque! Nihil, eveniet illo ea, mollitia fuga accusamus dolor dolorem perspiciatis rerum hic,
-                            consectetur error rem aspernatur!</p>
 
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus magni explicabo id molestiae, minima quas assumenda consectetur, nobis neque rem, incidunt quam tempore perferendis provident obcaecati sapiente, animi vel expedita
-                            omnis quae ipsa! Obcaecati eligendi sed odio labore vero reiciendis facere accusamus molestias eaque impedit, consequuntur quae fuga vitae fugit?</p>
+                        <!-- discription_1 -->
+                        <p style= "text-align: justify;"><?php echo $s['description1']; ?></p>
+                        
+                        <!-- Sub-Title -->
+                        <h4 class="mb-3" style = "text-align: left; width: 86%;"><?php echo $s['sub_title']; ?></h4>
+                        <!-- additional Image -->
+                        <div class="row mb-4 mt-4">
+                            <div class="col-md-12 mb-4">
+                                <img src="http://localhost/crime_reporting/dashboard%20user/<?=$s['add_image']; ?>" alt="" class="img-fluid rounded" style="max-width:70%; margin-left: 15%;">
+                            </div>
+                        </div>
+
+                        <!-- discription_2 -->
+                        <p style= "text-align: justify;"><?php echo $s['description2']; ?></p>
+                    
+                    <?php
+                    } ?>
                     </div>
             </div>
 
@@ -151,11 +164,11 @@
 
                                 <div class="carousel-item <?=$actives ; ?>">
                                     <div class="card" style="width: 18rem;">
-                                        <img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" class="card-img-top slide_img" alt="...">
+                                        <img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" class="card-img-top" style="width:100%; height:180px;">
                                         <div class="card-body">
-                                            <h5 class="card-title"><a class="text-dark" href="single.php"> <?php echo $d['title']; ?> </a></h5>
+                                            <h5 class="card-title"><a class="text-dark" href="single.php?b_id=<?php echo $d['blog_id'];?>"> <?php echo $d['title']; ?> </a></h5>
                                             <p class="card-text">By <a href="#"><?php echo $d['author']; ?></a> <small class="text-muted">&nbsp;-&nbsp; <?php echo $d['date_col']; ?></small></p>
-                                            <a href="single.php" class="btn btn-dark">Read More...</a>
+                                            <a href="single.php?b_id=<?php echo $d['blog_id'];?>" class="btn btn-dark">Read More...</a>
                                             
                                         </div>
                                     </div>
@@ -215,10 +228,10 @@
             <?php foreach($random as $r){ ?>
                 <div class="col-md-6 col-lg-4">
                     <div class="entry2 mb-5">
-                        <a href="#"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$r['featured_image']; ?>" alt="Image" class="img-fluid rounded related_img"></a>
+                        <a href="single.php?b_id=<?php echo $r['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$r['featured_image']; ?>" alt="Image" class="img-fluid rounded related_img"></a>
                         <br/>
                         <span class="post-category text-white bg-primary mb-3">News</span>
-                        <h2><a href="single.php"><?php echo $r['title']; ?></a></h2>
+                        <h2><a href="single.php?b_id=<?php echo $r['blog_id'];?>"><?php echo $r['title']; ?></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
                             <span class="d-inline-block mt-1">By <a href="#"><?php echo $r['author']; ?></a></span>
                             <span>&nbsp;-&nbsp; <?php echo $r['date_col']; ?></span>
@@ -247,21 +260,16 @@
                 <div class="col-md-3 ml-auto">
                     <h3 class="footer-heading mb-4">Quick Menu</h3>
                     <ul class="list-unstyled float-left mr-5">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Advertise</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Subscribes</a></li>
-                    </ul>
-                    <ul class="list-unstyled float-left">
-                        <li><a href="#">Travel</a></li>
-                        <li><a href="#">Lifestyle</a></li>
-                        <li><a href="#">Sports</a></li>
-                        <li><a href="#">Nature</a></li>
+                        <li><a href="index.php">Home</a></li>
+                        <li><a href="news.php">News</a></li>
+                        <li><a href="contact.php">Contact</a></li>
+                        <li><a href="login/login.php">LogIn</a></li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <div class="mb-5">
                         <h3 class="footer-heading mb-4">Subscribe</h3>
+                        <p>If you want to be Stay updated with us through e-mail, please do subscribe to our website!</p>
                         <form action="" method="post" class="form-footer-subscribe">
                             <div class="form-group d-flex">
                                 <input type="text" class="form-control">
@@ -289,7 +297,7 @@
                         Copyright &copy;
                         <script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </script> All rights reserved
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
