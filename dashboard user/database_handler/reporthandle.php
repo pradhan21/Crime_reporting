@@ -16,12 +16,12 @@
                     
                     $location=$_POST['location'];
                 
-                    $sql="INSERT INTO user_complaints VALUES('','$id','$location','','$report','$file','') ";
+                    $sql="INSERT INTO user_complaints VALUES('','$id','$location','','$report','$file') ";
                     
                     
                         if(mysqli_query($conn, $sql)){
                             move_uploaded_file($_FILES['fimage']['tmp_name'],$folder);
-                            header("location:index.php");
+                            header("location:../index.php");
                             exit();
                 
                         
