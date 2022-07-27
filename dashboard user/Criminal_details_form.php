@@ -1,6 +1,58 @@
 <?php 
-include "connection.php";
-?>
+$RaceErr="";
+$SkinErr="";
+$hairErr="";
+$heightErr="";
+$weightErr="";
+$ageErr="";
+$nameErr = "";  
+$dateErr = "";  
+$genderErr = "";  
+$casenoErr = "";  
+$mobileErr="";
+$addressErr="";
+$crimeDErr="";
+$l_Err="";
+$f_Err="";
+$name = "";  
+$f_name="";
+$l_name="";
+$date = "";  
+$gender = "";  
+$comment = "";  
+$caseno = "";  
+$mobile="";
+$address="";
+$age="";
+$height="";
+$weight="";
+$hair="";
+$crimeD="";
+$Race="";
+$Skin="";
+SESSION_start();
+ $id=$_SESSION['id'];
+  echo"<script>alert($id)</script>"; //to check value of id
+  if(isset($_SESSION['id'])){
+    include "connection.php";
+
+   $db1= "SELECT * from criminal_details where criminal_name='horr'";/////////////////calling data from the database
+   $result=$conn->query($db1);
+   if($result->num_rows > 0){
+    while($row=$result->fetch_assoc()){
+        $name=$row['criminal_name'];
+        $age=$row['age'];
+        $height=$row['height'];
+        $weight=$row['weight'];
+        $gender=$row['gender'];
+        $hair=$row['hair_type'];
+        $Skin=$row['skin_color'];
+        $Race=$row['race'];
+        $crimeD=$row['description'];
+        $caseno=$row['records'];
+    }
+   }
+   ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -182,37 +234,7 @@ include "connection.php";
             </nav>
             <!-- Navbar End -->
             <?php  
-                  $RaceErr="";
-                  $SkinErr="";
-                  $hairErr="";
-                  $heightErr="";
-                  $weightErr="";
-                  $ageErr="";
-                  $nameErr = "";  
-                  $dateErr = "";  
-                  $genderErr = "";  
-                  $casenoErr = "";  
-                  $mobileErr="";
-                  $addressErr="";
-                  $crimeDErr="";
-                  $l_Err="";
-                  $f_Err="";
-                  $name = "";  
-                  $f_name="";
-                  $l_name="";
-                  $date = "";  
-                  $gender = "";  
-                  $comment = "";  
-                  $caseno = "";  
-                  $mobile="";
-                  $address="";
-                  $age="";
-                  $height="";
-                  $weight="";
-                  $hair="";
-                  $crimeD="";
-                  $Race="";
-                  $Skin="";
+                  
                   if ($_SERVER["REQUEST_METHOD"] == "POST") {  
                   if (empty($_POST["f_name"])) {  
                     $f_Err = "Name Field is required";  
@@ -373,21 +395,58 @@ include "connection.php";
                                 <h6 class="mb-4">Details page</h6>
                                 <form>
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" id="exampleInputEmail1"
+                                        <label for="exampleInputEmail1" class="form-label">Criminal name :</label>
+                                        <input type="text" class="form-control" id="exampleInputEmail1" value ="<?php echo $name;?>"
                                             aria-describedby="emailHelp">
-                                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
-                                        </div>
+                                        
                                     </div>
+                                    <hr>
                                     <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                                        <input type="password" class="form-control" id="exampleInputPassword1">
+                                        <label for="exampleInputPassword1" class="form-label">Age :</label>
+                                        <input type="text" class="form-control" id="exampleInput    1" value ="<?php echo $age;?>">
                                     </div>
-                                    <div class="mb-3 form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1" >
-                                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                                    <hr>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Height :</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $height;?>">
                                     </div>
-                                    <button type="submit" class="btn btn-primary">Check</button>
+                                    <hr>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Weight :</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $weight;?>">
+                                    </div>
+                                    <hr>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Gender :</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $gender;?>">
+                                    </div>
+                                    <hr>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Hair type :</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $hair;?>">
+                                    </div>
+                                    <hr>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Skin color :</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Skin;?>">
+                                    </div>
+                                    <hr>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Race :</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Race;?>">
+                                    </div>
+                                    <hr>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Description :</label>
+                                        <textarea class="form-control" placeholder="Description" id="floatingTextarea" name ="crimeD" style="height: 150px;"  ><?php echo $crimeD;?></textarea>
+                                    </div>
+                                    <hr>
+                                    <div class="mb-3">
+                                        <label for="exampleInputPassword1" class="form-label">Records :</label>
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $caseno;?>">
+                                    </div>
+                                    <hr>
+                                    
                                 </form>
                             </div>
                     </div>  
@@ -397,7 +456,7 @@ include "connection.php";
                             <h6 class="mb-4">Criminal details
                             <span class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-exclamation-circle me-2"></i>
-                                            ONLY accesible to Admin
+                                               ONLY ACCESSIBLE TO ADMIN
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         </span> 
                             </h6>
@@ -696,3 +755,9 @@ include "connection.php";
 </body>
 
 </html>
+<?php
+  }
+  else{
+    echo "<script>alert('ERROR')</script>";
+  }
+?>
