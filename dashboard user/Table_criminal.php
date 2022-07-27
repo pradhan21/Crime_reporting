@@ -407,10 +407,10 @@ include ("DB_pull.php");
                                         
                                     <td><?php echo ++$no;?> July 2022</td>
                                     
-                                    <td><a href= 'Criminal_details_form.php'> <?php echo $data['criminal_name']??'';?></a></td>
-                                    <td><a href= 'Criminal_details_form.php'> <?php echo $data['gender']??'';?></a></td>
-                                    <td><a href= 'Criminal_details_form.php'> <?php echo $data['age']??'';?></a></td>
-                                    <td><a href= 'Criminal_details_form.php'> <?php echo $data['description']??'';?></a></td>
+                                    <td><a href= "Criminal_details_form.php?id=<?php echo $data['criminal_name'] ;?>"> <?php echo $data['criminal_name']??'';?></a></td>
+                                    <td><a href= "Criminal_details_form.php?id=<?php echo $data['criminal_name'] ;?>"> <?php echo $data['gender']??'';?></a></td>
+                                    <td><a href= "Criminal_details_form.php?id=<?php echo $data['criminal_name'] ;?>"> <?php echo $data['age']??'';?></a></td>
+                                    <td><a href= "Criminal_details_form.php?id=<?php echo $data['criminal_name'] ;?>"> <?php echo $data['description']??'';?></a></td>
                                     
                                     
                                     </tr>

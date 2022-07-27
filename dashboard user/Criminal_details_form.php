@@ -31,13 +31,17 @@ $crimeD="";
 $Race="";
 $Skin="";
 $image="";
+
+$gg=$_GET['id'];
+
+
 SESSION_start();
  $id=$_SESSION['id'];
   echo"<script>alert($id)</script>"; //to check value of id
   if(isset($_SESSION['id'])){
     include "connection.php";
 
-   $db1= "SELECT * from criminal_details where criminal_name='horr'";/////////////////calling data from the database
+   $db1= "SELECT * from criminal_details where criminal_name='$gg'";/////////////////calling data from the database
    $result=$conn->query($db1);
    if($result->num_rows > 0){
     while($row=$result->fetch_assoc()){
@@ -398,7 +402,9 @@ SESSION_start();
                                 <form>
                                 <div class="mb-3">
                                 <h4 class="mb-4">Image : </h4>
-                                        <?php echo "<img src= '$image'/>";?>
+
+                                        <img src="http://localhost/CC/crime_reporting/dashboard%20template/<?php echo $image;?>"/>
+                                
                                         
                                     </div>
                                     <div class="mb-3">
@@ -693,7 +699,7 @@ SESSION_start();
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
-                                            $sql="INSERT into criminal_details(records,criminal_name,age,height,weight,gender,hair_type,skin_color,race,description) VALUES ('$caseno','$f_name','$age','$height','$weight','$gender','$hair','$Skin','$Race','$crimeD')";
+                                            $sql="INSERT into criminal_details(records,criminal_name,age,height,weight,gender,hair_type,skin_color,race,description,image) VALUES ('$caseno','$f_name','$age','$height','$weight','$gender','$hair','$Skin','$Race','$crimeD','')";
                                           
                                        
                                       if(mysqli_query($conn, $sql)){
