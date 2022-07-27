@@ -1,44 +1,9 @@
 <?php 
 SESSION_start();
  $id=$_SESSION['id'];
-  //echo"<script>alert($id)</script>"; to check value of id
+  echo"<script>alert($id)</script>"; //to check value of id
   if(isset($_SESSION['id'])){
     include "connection.php";
-
-    $fisrt1="";
-    $last1="";
-    $phone1="";
-    $email1="";  
-    $address1="";  
-    $user_id="";     
-    $image1="";   
-    
-    $sql = "SELECT user_id,f_name,l_name,address,email,phone,liscence_no from user where user_id='$id' ";
-    $sql2="SELECT image from user_complaints where user_id='$id'";
-    $result = $conn->query($sql);
-    $result2 = $conn->query($sql2);
-
-    if ($result->num_rows > 0) {
-      // output data of each row
-      while($row = $result->fetch_assoc()) {
-        $first1 = $row["f_name"];
-        $last1=$row["l_name"];
-        $address1 = $row["address"];
-        $email1=$row["email"];
-        $phone1=$row["phone"]; 
-        $user_id=$row["user_id"];
-        $l_no=$row["liscence_no"];
-      }
-    }
-    if ($result2->num_rows > 0){
-      while($row = $result2->fetch_assoc())
-      $image1=$row["image"];
-
-      echo "<script>alert('success')</script>";
-    }
-    else {
-      echo "<script>alert('horse')</script>";
-    }
 ?>
 <?php
                   $servername = "localhost";
@@ -256,12 +221,12 @@ SESSION_start();
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <img class="rounded-circle me-lg-2" src="image/Leonardo.jpg" alt="" style="width: 40px; height: 40px;">
-              <span class="d-none d-lg-inline-flex"><?php echo $first1;echo $last1?></span>
+              <span class="d-none d-lg-inline-flex"><?php echo $username?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="Profile.php" class="dropdown-item">My Profile</a>
               <a href="#" class="dropdown-item">Settings</a>
-              <a href="../frontend template/login/logout.php" class="dropdown-item">Log Out</a>
+              <a href="login/logout.php" class="dropdown-item">Log Out</a>
             </div>
           </div>
         </div>

@@ -383,8 +383,8 @@ if (isset($_POST['upload'])) {
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
-                                            $sql="UPDATE user
-                                            SET f_name = '$f_name', l_name = '$l_name', email='$email', address='$address',phone='$mobile'
+                                            $sql="UPDATE police_registration
+                                            SET f_name = '$f_name', l_name = '$l_name', email='$email', address='$address',
                                             WHERE email = '$email';";
                                           
                                        

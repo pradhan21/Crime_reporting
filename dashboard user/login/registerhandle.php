@@ -13,13 +13,9 @@
         $city=$_POST['city'];
         $address=$_POST['address'];
         $station=$_POST['station'];
+        
 
-
-        //please read this first       
-        //not to user but send to poilce_registration my brother :)
-       // $sql="INSERT INTO user Values('','$fname','$lname','$username','$email','$pass','$id','$city','$address','$station','' )";
-
-
+        $sql="INSERT INTO user Values('','$fname','$lname','$username','$pass','$id','$city','$address','$station','$email','' )";
         if(mysqli_query($conn,$sql)){
             header("location:login.php");
         }
