@@ -39,6 +39,7 @@
                                 <a href="">Forgot Password</a>
                             </div>
                             <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
+                            <button type="button" name="submit" class="btn btn-primary py-3 w-100 mb-4">Cancel</button>
                         </form>
                         <p class="text-center mb-0">Don't have an Account? <a href="signup.php">Sign Up</a></p>
                     </div>
@@ -60,7 +61,9 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <script src="js/main.js">
+        
+    </script>
 </body>
 
 </html>
