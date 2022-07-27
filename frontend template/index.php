@@ -178,7 +178,7 @@
                 <div class="col-md-5">
                 <?php foreach($cyber as $c){ ?>
                     <a href="single.php?b_id=<?php echo $c['blog_id'];?>" class="hentry img-1 h-100 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$c['featured_image']; ?>');">
-                        <span class="post-category text-white bg-success">Business Fraud</span>
+                        <span class="post-category text-white bg-danger">BREAKING NEWS</span>
                         <div class="text text-sm">
                             <h2><?php echo $c['title']; ?></h2>
                             <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $c['date_col']; ?></span>
