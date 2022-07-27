@@ -11,9 +11,7 @@
       die("connection failed:".mysqli_connect_error());
     }
     
-    // include_once "../dashboard user/logics/bloglogic.php";
-
-    include_once "../Crime Reporting System User Interface/logics/bloglogic.php";
+    include_once "logics/bloglogic.php";
 
     $id = $_REQUEST['id'];
 

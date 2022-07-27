@@ -123,7 +123,7 @@
                         <!-- additional Image -->
                         <div class="row mb-4 mt-4">
                             <div class="col-md-12 mb-4">
-                                <img src="http://localhost/crime_reporting/dashboard%20user/<?=$s['add_image']; ?>" alt="Image placeholder" class="img-fluid rounded" style="max-width:70%; margin-left: 15%;">
+                                <img src="http://localhost/crime_reporting/dashboard%20user/<?=$s['add_image']; ?>" alt="" class="img-fluid rounded" style="max-width:70%; margin-left: 15%;">
                             </div>
                         </div>
 
