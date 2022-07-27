@@ -25,7 +25,7 @@
         </script>
         "
         ;
-        header("location:index.html");
+        header("location:index.php");
         }
         else{
             echo mysqli_error($conn);
