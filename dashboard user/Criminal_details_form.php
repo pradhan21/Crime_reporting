@@ -30,6 +30,7 @@ $hair="";
 $crimeD="";
 $Race="";
 $Skin="";
+$image="";
 SESSION_start();
  $id=$_SESSION['id'];
   echo"<script>alert($id)</script>"; //to check value of id
@@ -50,6 +51,7 @@ SESSION_start();
         $Race=$row['race'];
         $crimeD=$row['description'];
         $caseno=$row['records'];
+        $image=$row['image'];
     }
    }
    ?>
@@ -392,8 +394,13 @@ SESSION_start();
                     <div class="row g-4">
                         <div class="col-sm-12 col-xl-6">
                             <div class="bg-secondary rounded h-100 p-4">
-                                <h6 class="mb-4">Details page</h6>
+                                <h2 class="mb-4">Criminal Details </h2>
                                 <form>
+                                <div class="mb-3">
+                                <h4 class="mb-4">Image : </h4>
+                                        <?php echo "<img src= '$image'/>";?>
+                                        
+                                    </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Criminal name :</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" value ="<?php echo $name;?>"
