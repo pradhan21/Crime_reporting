@@ -1,6 +1,10 @@
 <?php
-
+     SESSION_start();
     include_once "logics/latestpost.php";
+   
+    $id=$_SESSION['id'];
+    // echo"<script>alert($id)</script>"; //to check value of id
+    if(isset($_SESSION['id'])){
 
 ?>
 
@@ -112,10 +116,10 @@
                             <li><a href="news.php">News</a></li>
                             <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
-                                <a href="#">Username</a>
+                                <a href="#"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></a>
                                 <ul class="dropdown">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">LogOut</a></li>
+                                    <li><a href="../dashboard user/index.php">Dashboard</a></li>
+                                    <li><a href="login/logout.php">LogOut</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -449,3 +453,10 @@
 </body>
 
 </html>
+<?php
+}
+  
+else{
+  echo "error";
+}
+?>

@@ -67,7 +67,7 @@ SESSION_start();
           </div>
         </div>
         <div class="navbar-nav w-100">
-          <a href="#" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <a href="dashboard.php" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
           <!--<div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
             <div class="dropdown-menu bg-transparent border-0">
@@ -77,9 +77,9 @@ SESSION_start();
             </div>
           </div>-->
           <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
-          <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a> -->
-          <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
-          <a href="Criminal_deets.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
+          <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a>
+          <a href="user.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Users</a>
+          <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Add Station</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
           <!-- <div class="nav-item dropdown">
@@ -190,7 +190,54 @@ SESSION_start();
         </div>
       </nav>
       <!-- Navbar End -->
+      <div class="col-12">
+              <div class="table-responsive">
+                  <table class="table">
+                      <thead>
+                          <tr>
+                              <th scope="col">ID</th>
+                              <th scope="col">First Name</th>
+                              <th scope="col">Last Name</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">Address</th>
+                              <th scope="col">City</th>
+                              <th scope="col">Near Police Station</th>
+                              <th scope="col">Delete</th>
 
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <?php
+                        $sql="SELECT * from user";
+                        if($result=mysqli_query($conn,$sql)){
+                        while($row=mysqli_fetch_assoc($result)){ 
+                        ?>
+                          <tr>
+                              <th scope="row"><?php echo $row['user_id'];?></th>
+                              <td><?php echo $row['f_name'];?></td>
+                              <td><?php echo $row['l_name'];?></td>
+                              <td><?php echo $row['email'];?></td>
+                              <td><?php echo $row['address'];?></td>
+                              <td><?php echo $row['city'];?></td>
+                              <td><?php echo $row['near_police_station'];?></td>
+                              <form method="POST" action="delete.php">
+                                  <input type="hidden" name = "id" value = "<?php echo $row['user_id']; ?>">
+                                  <td><input type="submit" name = "delete" class="btn btn-danger" value="Delete"></td>
+                              </form>
+                          
+                          </tr>
+                          <?php 
+                            }
+                          }
+                          else{
+                            echo mysqli_error($conn);
+                          } ?>
+                          
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      
 
       <!-- Sale & Revenue Start
       <div class="container-fluid pt-4 px-4">
@@ -265,7 +312,7 @@ SESSION_start();
 
 
       <!-- Recent Sales Start -->
-      <div class="container-fluid pt-4 px-4">
+      <!-- <div class="container-fluid pt-4 px-4">
         <div class="bg-secondary text-center rounded p-4">
           <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Report History</h6>
@@ -281,32 +328,23 @@ SESSION_start();
                   <th scope="col">Date</th>
                   <th scope="col">ID</th>
                   <th scope="col">location</th>
-                  <!--    <th scope="col">Action</th>-->
-                </tr>
+                   <th scope="col">Action</th>-->
+                <!-- </tr>
               </thead>
               <tbody>
-              <?php 
-                $sql="SELECT * FROM emergency ORDER by id DESC";
-                $result=mysqli_query($conn,$sql);
-                while ($data = mysqli_fetch_assoc($result)) {
-              ?>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><?php echo $data['date_col']?></td>
-                  <td><?php echo $data['id'];?></td>
-                    <td>
+             
                         <iframe class="position-relative rounded w-100 h-100"
-                        src="https://www.google.com/maps?q=<?php echo $data['latitude']; ?>,<?php echo $data['longitude']; ?>&hl=es;z=14&output=embed"
+                       
                         frameborder="0" allowfullscreen="" aria-hidden="false"
                         tabindex="0" style="filter: grayscale(100%) invert(92%) contrast(83%); border: 0;"></iframe>
                     </td>
                 </tr>
-                <?php } ?>
+               
               </tbody>
             </table>
           </div>
         </div>
-      </div>
+      </div> --> 
       <!--   Recent Sales End -->
 
 
@@ -315,7 +353,7 @@ SESSION_start();
 
 
       <!-- Footer Start -->
-      
+     
       <!-- Footer End -->
     </div>
     <!-- Content End -->
