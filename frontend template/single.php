@@ -10,7 +10,7 @@
 <html lang="en">
 
 <head>
-    <title>Hikers Blog &mdash; Colorlib Website Template</title>
+    <title>Blog</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -91,7 +91,7 @@
     <section class="site-section py-lg">
         
         <div class="container">
-        <h5 class="ms-1"><a class="text-dark" href="index.html">Home</a>   <span  style="color: #D18CE0;">></span> <a class="text-dark" href="news.php" class="active"> News </a></h5>
+            <h5 class="ms-1"><a class="text-info" href="index.php">Home</a><i class="bi bi-chevron-double-right" style="color:#774360;"></i><a class="text-info" href="news.php" class="active"> News </a></h5>
         </div>
         <div class="container">
 
@@ -167,7 +167,7 @@
                                         <img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" class="card-img-top" style="width:100%; height:180px;">
                                         <div class="card-body">
                                             <h5 class="card-title"><a class="text-dark" href="single.php?b_id=<?php echo $d['blog_id'];?>"> <?php echo $d['title']; ?> </a></h5>
-                                            <p class="card-text">By <a href="#"><?php echo $d['author']; ?></a> <small class="text-muted">&nbsp;-&nbsp; <?php echo $d['date_col']; ?></small></p>
+                                            <p class="card-text"><i class="bi bi-person-fill"></i> <a href="#"><?php echo $d['author']; ?></a> <small class="text-muted">&nbsp;<i class="bi bi-pencil-fill"></i> <?php echo $d['date_col']; ?></small></p>
                                             <a href="single.php?b_id=<?php echo $d['blog_id'];?>" class="btn btn-dark">Read More...</a>
                                             
                                         </div>
@@ -233,8 +233,8 @@
                         <span class="post-category text-white bg-primary mb-3">News</span>
                         <h2><a href="single.php?b_id=<?php echo $r['blog_id'];?>"><?php echo $r['title']; ?></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
-                            <span class="d-inline-block mt-1">By <a href="#"><?php echo $r['author']; ?></a></span>
-                            <span>&nbsp;-&nbsp; <?php echo $r['date_col']; ?></span>
+                            <span class="d-inline-block mt-1"><i class="bi bi-person-fill"></i> <a href="#"><?php echo $r['author']; ?></a></span>
+                            <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $r['date_col']; ?></span>
                         </div>
                     </div>
                 </div>
