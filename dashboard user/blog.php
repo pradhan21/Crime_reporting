@@ -113,7 +113,7 @@
                     <i class="fa fa-bars"></i>
                 </a>
                 <form class="d-none d-md-flex ms-4" method = "GET">
-                    <input class="form-control bg-dark border-0" name="search" type="search" value = "<?php if(isset($_REQUEST['search'])){ echo $_GET['search'];} ?>" placeholder="Search">
+                    <input class="form-control bg-dark border-0" name="search" type="search" value = "<?php if(isset($_REQUEST['search'])){ echo $_GET['search'];} ?>" placeholder="Search" required>
                     <button type="submit" class="btn border-0"><i class="bi bi-search"></i></button>
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
@@ -234,12 +234,14 @@
                                 <button type="reset" class="btn btn-info">Reset</button>
                                 <br/>
                                 <br/>
-                            </form> 
+                            </form>
 
                             <?php if(isset($_REQUEST['info'])){?>
-                                <?php if($_REQUEST['info'] == "added"){?> 
+                                <?php if($_REQUEST['info'] == "added"){?>
                                 
-                                    <div class="alert alert-success" role="alert">Post Added</div>
+                                    <div class="alert alert-success" role="alert">
+                                        This is a success alert—check it out!
+                                    </div>
                                 <?php } ?>
                             <?php } ?>
 
@@ -256,7 +258,7 @@
                         <br/>
                         <br/>
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Published Post List</h6>
+                            <h2 class="mb-4">Published Post List</h2>
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered">
                                     <thead class=" table-light">

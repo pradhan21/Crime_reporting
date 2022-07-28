@@ -78,11 +78,11 @@ SESSION_start();
           </div>-->
           <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
           <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a>
-          <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
+          <a href="user.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Users</a>
           <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
-          <div class="nav-item dropdown">
+          <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
             <div class="dropdown-menu bg-transparent border-0">
               <a href="signin.html" class="dropdown-item">Sign In</a>
@@ -90,7 +90,7 @@ SESSION_start();
               <a href="404.html" class="dropdown-item">404 Error</a>
               <a href="blank.html" class="dropdown-item">Blank Page</a>
             </div>
-          </div>
+          </div> -->
         </div>
       </nav>
     </div>
@@ -192,15 +192,20 @@ SESSION_start();
       <!-- Navbar End -->
 
 
-      <!-- <!-- Sale & Revenue Start -->
+      <!--Sale & Revenue Start -->
       <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
           <div class="col-sm-6 col-xl-3">
             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
               <i class="fa fa-chart-line fa-3x text-primary"></i>
               <div class="ms-3">
-                <p class="mb-2">Today </p>
-                <h6 class="mb-0">$1234</h6>
+                <p class="mb-2">emergency </p>
+                <?php
+                $sql="SELECT * from emergency";
+                $result=mysqli_query($conn,$sql);
+                $count=mysqli_num_rows($result); 
+                ?>
+                <h6 class="mb-0"><?php echo $count; ?></h6>
               </div>
             </div>
           </div>
@@ -209,7 +214,12 @@ SESSION_start();
               <i class="fa fa-chart-bar fa-3x text-primary"></i>
               <div class="ms-3">
                 <p class="mb-2">Total Users</p>
-                <h6 class="mb-0">$1234</h6>
+                <?php
+                $sql1="SELECT * from user";
+                $result1=mysqli_query($conn,$sql1);
+                $count1=mysqli_num_rows($result1); 
+                ?>
+                <h6 class="mb-0"><?php echo $count1; ?></h6>
               </div>
             </div>
           </div>
@@ -217,8 +227,13 @@ SESSION_start();
             <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
               <i class="fa fa-chart-area fa-3x text-primary"></i>
               <div class="ms-3">
-                <p class="mb-2">Today Police</p>
-                <h6 class="mb-0">$1234</h6>
+                <p class="mb-2">Total Police</p>
+                <?php
+                $sql3="SELECT * from police_registration";
+                $result3=mysqli_query($conn,$sql3);
+                $count3=mysqli_num_rows($result3); 
+                ?>
+                <h6 class="mb-0"><?php echo $count3; ?></h6>
               </div>
             </div>
           </div>
@@ -227,18 +242,23 @@ SESSION_start();
               <i class="fa fa-chart-pie fa-3x text-primary"></i>
               <div class="ms-3">
                 <p class="mb-2">Total Police Station</p>
-                <h6 class="mb-0">$1234</h6>
+                <?php
+                $sql4="SELECT * from police_station";
+                $result4=mysqli_query($conn,$sql4);
+                $count4=mysqli_num_rows($result4); 
+                ?>
+                <h6 class="mb-0"><?php echo $count4; ?></h6>
               </div>
             </div>
           </div>
         </div>
       </div>
-       Sale & Revenue End   -->
+       <!--Sale & Revenue End   -->
 
 
 
-      <!-- <!-- Sales Chart Start -->
-      <div class="container-fluid pt-4 px-4">
+      <!--  Sales Chart Start -->
+      <!-- <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
           <div class="col-sm-12 col-xl-6">
             <div class="bg-secondary text-center rounded p-4">
@@ -259,8 +279,8 @@ SESSION_start();
             </div>
           </div>
         </div>
-      </div>
-       Sales Chart End -->
+      </div> -->
+  <!--Sales Chart End -->
 
 
 
@@ -309,11 +329,11 @@ SESSION_start();
       <!-- Widgets Start -->
       <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
-          <div class="col-sm-12 col-md-6 col-xl-4">
+          <div class="col-sm-12 col-md-6 col-xl-4 dim" style="width:60%">
             <div class="h-100 bg-secondary rounded p-4">
               <div class="d-flex align-items-center justify-content-between mb-2">
                 <h6 class="mb-0">Latest Report</h6>
-                <a href="">Show All</a>
+                <a href="widget.php">Show All</a>
               </div>
               <?php
                $sql="SELECT * FROM user_complaints ORDER by complaint_id DESC LIMIT 0,5";
@@ -333,7 +353,7 @@ SESSION_start();
               <?php } ?>
             </div>
           </div>
-          <div class="col-sm-12 col-md-6 col-xl-4">
+          <div class="col-sm-12 col-md-6 col-xl-4 dis" style="width:40%">
             <div class="h-100 bg-secondary rounded p-4">
               <div class="d-flex align-items-center justify-content-between mb-4">
                 <h6 class="mb-0">Calender</h6>
@@ -342,7 +362,7 @@ SESSION_start();
               <div id="calender"></div>
             </div>
           </div>
-          <div class="col-sm-12 col-md-6 col-xl-4">
+          <!-- <div class="col-sm-12 col-md-6 col-xl-4">
             <div class="h-100 bg-secondary rounded p-4">
               <div class="d-flex align-items-center justify-content-between mb-4">
                 <h6 class="mb-0">Report Handler</h6>
@@ -352,7 +372,7 @@ SESSION_start();
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">@</span>
                   <input type="email" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon1" name ="email">
-                  <input type="hidden" value="<?php echo $id;?>" name="id">
+                  <input type="hidden" value="<?php //echo $id;?>" name="id">
                 </div>
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">@</span>
@@ -364,12 +384,12 @@ SESSION_start();
                 <input class="form-control bg-dark border-0" type="text" placeholder="Enter task">
                 <button type="button" class="btn btn-primary ms-2">Add</button>
               </div>-->
-                <input type="file" class="form-control" name="fimage">
+                <!-- <input type="file" class="form-control" name="fimage">
                 <br>
                 <div class="form-floating">
                   <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;"name="report"></textarea>
                   <label for="floatingTextarea">Type your report</label>
-                </div>
+                </div> -->
 
                 <!--    <div class="d-flex align-items-center border-bottom py-2">
                 <input class="form-check-input m-0" type="checkbox">
@@ -416,40 +436,24 @@ SESSION_start();
                   </div>
                 </div>
               </div>-->
-                <br><button type="submit" class="btn btn-primary" name ="submit">Send</button>
+                <!-- <br><button type="submit" class="btn btn-primary" name ="submit">Send</button>
                 <button type="reset" class="btn btn-info">Reset</button>
               </form>
-            </div>
+            </div> -->
 
 
-          </div>
+          <!-- </div> --> 
+          
 
         </div>
       </div>
+      <br><br>
       <!-- Widgets End -->
+     
+                    
+                    
 
-
-      <!-- Footer Start -->
-      <div class="container-fluid pt-4 px-4">
-        <div class="bg-secondary rounded-top p-4">
-          <div class="row">
-
-            <div class="col-12 col-sm-6 text-center text-sm-start">
-              &copy; <a href="#">Scelus-nunitare</a>, All Right Reserved.
-            </div>
-            <div class="col-12 col-sm-6 text-center text-sm-end">
-              <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-
-
-              Designed By <a href="#">Group-NNAS</a>
-              <br>
-              Distributed by: <a href="#" target="_blank">NNAS</a>
-
-
-            </div>
-          </div>
-        </div>
-      </div>
+      
       <!-- Footer End -->
     </div>
     <!-- Content End -->
@@ -459,6 +463,7 @@ SESSION_start();
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
   </div>
+  
 
   <!-- JavaScript Libraries -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -470,7 +475,7 @@ SESSION_start();
   <script src="lib/tempusdominus/js/moment.min.js"></script>
   <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
   <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <!-- Template Javascript -->
   <script src="js/main.js"></script>
 </body>
