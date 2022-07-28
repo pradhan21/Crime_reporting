@@ -17,11 +17,12 @@ SESSION_start();
                   $address1="";  
                   $user_id="";     
                   $image1="";   
+                  $no="0";
                   $conn = new mysqli($servername,$username, $password, $dbname);
                   if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                   }
-                  $sql = "select user_id,f_name,l_name,address,email,phone,liscence_no from user where user_id=$id ";
-                  $sql2="select image from user_complaints where user_id=$id";
+                  $sql = "SELECT   user_id,f_name,l_name,address,email,phone,liscence_no from user where user_id='$id' limit 0,5 ";
+                  $sql2="SELECT * from user_complaints where user_id='$id' limit 0,5";
                   $result = $conn->query($sql);
                   $result2 = $conn->query($sql2);
 
@@ -37,15 +38,7 @@ SESSION_start();
                       $l_no=$row["liscence_no"];
                     }
                   }
-                  if ($result2->num_rows > 0){
-                    while($row = $result2->fetch_assoc())
-                    $image1=$row["image"];
-
-                   // echo "<script>alert('success')</script>";
-                  }
-                  else {
-                  //  echo "<script>alert('horse')</script>";
-                  }
+                  
           ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -119,7 +112,7 @@ SESSION_start();
             </div>
           </div>-->
           <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
-          <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a>
+          <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a> -->
         <!--  <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>-->
           <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
@@ -319,72 +312,56 @@ SESSION_start();
               <thead>
                 <tr class="text-white">
                   <th scope="col"></th>
-                  <th scope="col">Date</th>
-                  <th scope="col">User-ID</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Liscence no</th>
-                  <th scope="col">email</th>
-                  <th scope="col">Report-Status</th>
+                  <th scope="col">Crime-ID</th>
+                  <th scope="col">User_ID</th>
+                  <th scope="col">Crime Location</th>
+                  <th scope="col">Crime type</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Status</th>
                   <!--    <th scope="col">Action</th>-->
                 </tr>
               </thead>
               <tbody>
+                <?php 
+                if ($result2->num_rows > 0){
+                  while($row = $result2->fetch_assoc()){
+                  $c_id = $row["complaint_id"];
+                  $u_id=$row["user_id"];
+                  $c_place = $row["crime_place"];
+                  $c_type=$row["crime_type"];
+                //  $evidence=$row["evidence"];
+                  $image2=$row["image"]; 
+                 // $image1=$row["image"];
+
+                 
+                
+                ?>
                 <tr>
-                  <th scope="row">1</th>
-                  <td>01 Jan 2045</td>
-                  <td><?php echo $user_id;?></td>
-                  <td><?php echo $first1;echo $last1?></td>
-                  <td><?php echo $l_no;?></td>
-                  <td><?php echo $email1;?></td>
+                  <th scope="row"><?php echo ++$no;?></th>
+                  <td><?php echo $c_id;?></td>
+                  <td><?php echo $u_id;?></td>
+                  <td><?php echo $c_place;?></td>
+                  <td><?php echo $c_type;?></td>
+                  <td><img src="http://localhost/CC/crime_reporting/dashboard%20template/<?php echo $image2;?>" onerror="this.style.display='none'"/></td>
                   <td>On-Going</td>
 
 
                 </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>01 Jan 2045</td>
-                  <td><?php echo $user_id;?></td>
-                  <td><?php echo $first1;echo $last1?></td>
-                  <td>112-222-333-9999</td>
-                  <td><?php echo $email1;?></td>
-                  <td>Processed</td>
+                <?php 
+              //  echo "<script>alert('success')</script>";
+                }
 
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>01 Jan 2045</td>
-                  <td><?php echo $user_id;?></td>
-                  <td><?php echo $first1;echo $last1?></td>
-                  <td>113-222-333-9999</td>
-                  <td><?php echo $email1;?></td>
-                  <td>N/A</td>
-
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>01 Jan 2045</td>
-                  <td><?php echo $user_id;?></td>
-                  <td><?php echo $first1;echo $last1?></td>
-                  <td>114-222-333-9999</td>
-                  <td><?php echo $email1;?></td>
-                  <td>Processed</td>
-
-                </tr>
-                <tr>
-                  <th scope="row">5</th>
-                  <td>01 Jan 2045</td>
-                  <td><?php echo $user_id;?></td>
-                  <td><?php echo $first1;echo $last1?></td>
-                  <td>115-222-333-9999</td>
-                  <td><?php echo $email1;?></td>
-                  <td>Processed</td>
-
-                </tr>
+                }else {
+                  echo "<script>alert('horse')</script>";
+                }
+                ?>
+                
               </tbody>
             </table>
           </div>
         </div>
       </div>
+
       <!--   Recent Sales End -->
 
 
