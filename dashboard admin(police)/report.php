@@ -277,29 +277,28 @@ SESSION_start();
 
               <thead>
                 <tr class="text-white">
-                  <th scope="col"></th>
-                  <th scope="col">Date</th>
                   <th scope="col">ID</th>
-                  <th scope="col">location</th>
+                  <th scope="col">User</th>
+                  <th scope="col">Crime Place</th>
+                  <th scope="col">Crime Type</th>
+                  <th scope="col">Crime Evidence</th>
+                  <th scope="col">Date</th>
                   <!--    <th scope="col">Action</th>-->
                 </tr>
               </thead>
               <tbody>
               <?php 
-                $sql="SELECT * FROM emergency ORDER by id DESC";
+                $sql="SELECT * FROM user_complaints ORDER by complaint_id DESC ";
                 $result=mysqli_query($conn,$sql);
                 while ($data = mysqli_fetch_assoc($result)) {
               ?>
                 <tr>
-                  <th scope="row">1</th>
-                  <td><?php echo $data['date_col']?></td>
-                  <td><?php echo $data['id'];?></td>
-                    <td>
-                        <iframe class="position-relative rounded w-100 h-100"
-                        src="https://www.google.com/maps?q=<?php echo $data['latitude']; ?>,<?php echo $data['longitude']; ?>&hl=es;z=14&output=embed"
-                        frameborder="0" allowfullscreen="" aria-hidden="false"
-                        tabindex="0" style="filter: grayscale(100%) invert(92%) contrast(83%); border: 0;"></iframe>
-                    </td>
+                  <th scope="row"><?php echo $data['complaint_id']?></th>
+                  <td><?php echo $data['user_id']?></td>
+                  <td><?php echo $data['crime_place'];?></td>
+                  <td><?php echo $data['crime_type'];?></td>
+                  <td> <?php echo $data['crime_evidence'];?></td>
+                  <td><?php echo $data['date'];?></td>
                 </tr>
                 <?php } ?>
               </tbody>

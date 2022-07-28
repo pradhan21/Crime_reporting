@@ -4,6 +4,59 @@ SESSION_start();
   //echo"<script>alert($id)</script>"; to check value of id
   if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
     include "connection.php";  
+    $sql1="SELECT count(complaint_id) from user_complaints where date_col between '2022-01-01' and '2022-01-31'";
+    $result1 = mysqli_query($conn,$sql1);
+    $data1 = mysqli_num_rows($result1); 
+  
+      $sql2="SELECT count(complaint_id) from user_complaints where date_col between '2022-02-01' and '2022-02-31'";
+      $result2 = mysqli_query($conn,$sql2);
+      $data2 = mysqli_num_rows($result2);
+
+      $sql3="SELECT count(complaint_id) from user_complaints where date_col between '2022-03-01' and '2022-03-31'";
+      $result3 = mysqli_query($conn,$sql3);
+      $data3 = mysqli_num_rows($result3);
+
+      $sql4="SELECT count(complaint_id) from user_complaints where date_col between '2022-04-01' and '2022-04-31'";
+      
+      $result4 = mysqli_query($conn,$sql4);
+    $data4 = mysqli_num_rows($result4);
+
+    $sql5="SELECT count(complaint_id)  from user_complaints where date_col between '2022-05-01' and '2022-05-31'";
+    $result5 = mysqli_query($conn,$sql5);
+    $data5 = mysqli_num_rows($result5);
+
+    $sql6="SELECT count(complaint_id) from user_complaints where date_col between '2022-06-01' and '2022-06-31'";
+    $result6 = mysqli_query($conn,$sql6);
+    $data6 = mysqli_num_rows($result6);
+
+    $sql7="SELECT count(complaint_id) from user_complaints where date_col between '2022-07-01' and '2022-07-31'";
+    $result7 = mysqli_query($conn,$sql7);
+    $data7 = mysqli_num_rows($result7);
+
+    $sql8="SELECT count(complaint_id) from user_complaints where date_col between '2022-08-01' and '2022-08-31'";
+    $result8 = mysqli_query($conn,$sql8);
+    $data8 = mysqli_num_rows($result8);
+
+    $sql9="SELECT count(complaint_id) from user_complaints where date_col between '2022-09-01' and '2022-09-31'";
+    $result9 = mysqli_query($conn,$sql9);
+    $data9 = mysqli_num_rows($result9);
+
+    $sql10="SELECT count(complaint_id) from user_complaints where date_col between '2022-10-01' and '2022-11-31'";
+    $result10 = mysqli_query($conn,$sql10);
+    $data10 = mysqli_num_rows($result10);
+
+    $sql11="SELECT count(complaint_id) from user_complaints where date_col between '2022-11-01' and '2022-11-31'";
+    $result11 = mysqli_query($conn,$sql11);
+    $data11 = mysqli_num_rows($result11);
+
+    $sql12="SELECT count(complaint_id) from user_complaints where date_col between '2022-12-01' and '2022-12-31'";
+    $result12 = mysqli_query($conn,$sql12);
+    
+    $data12 = mysqli_num_rows($result12);
+  $dataPoints = array(
+    $data1,$data2 ,$data3 ,$data4, $data5, $data6, $data7 ,$data8, $data9, $data10, $data11, $data12
+  );
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,12 +83,32 @@ SESSION_start();
   <!-- Libraries Stylesheet -->
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 
   <!-- Customized Bootstrap Stylesheet -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Template Stylesheet -->
   <link href="css/style.css" rel="stylesheet">
+  <script>
+    window.onload = function () {
+    
+    var chart = new CanvasJS.Chart("chartContainer", {
+      title: {
+        text: "Push-ups Over a Week"
+      },
+      axisY: {
+        title: "Number of Push-ups"
+      },
+      data: [{
+        type: "line",
+        dataPoints: <?php echo json_encode($dataPoints); ?>
+      }]
+    });
+    chart.render();
+    
+    }
+    </script>
 </head>
 
 <body>
@@ -258,7 +331,7 @@ SESSION_start();
 
 
       <!--  Sales Chart Start -->
-      <!-- <div class="container-fluid pt-4 px-4">
+       <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
           <div class="col-sm-12 col-xl-6">
             <div class="bg-secondary text-center rounded p-4">
@@ -266,20 +339,12 @@ SESSION_start();
                 <h6 class="mb-0">Reports</h6>
                 <a href="">Show All</a>
               </div>
-              <canvas id="worldwide-sales"></canvas>
+              <div id="chartContainer" style="height: 370px; width: 100%;"></div>
             </div>
-          </div>
-          <div class="col-sm-12 col-xl-6">
-            <div class="bg-secondary text-center rounded p-4">
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Salse & Revenue</h6>
-                <a href="">Show All</a>
-              </div>
-              <canvas id="salse-revenue"></canvas>
-            </div>
-          </div>
+          </div> 
+          
         </div>
-      </div> -->
+      </div> 
   <!--Sales Chart End -->
 
 
