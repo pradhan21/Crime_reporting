@@ -67,7 +67,7 @@ SESSION_start();
           </div>
         </div>
         <div class="navbar-nav w-100">
-          <a href="dashboard.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <a href="dashboard.php" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
           <!--<div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
             <div class="dropdown-menu bg-transparent border-0">
@@ -78,7 +78,7 @@ SESSION_start();
           </div>-->
           <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
           <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a>
-          <a href="user.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Users</a>
+          <a href="user.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Users</a>
           <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
@@ -196,27 +196,42 @@ SESSION_start();
                       <thead>
                           <tr>
                               <th scope="col">ID</th>
-                              <th scope="col">crime Place</th>
-                              <th scope="col">Crime Type</th>
-                              <th scope="col">Crime Evidence</th>
-                              <th scope="col">Date</th>
-                              
+                              <th scope="col">First Name</th>
+                              <th scope="col">Last Name</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">Address</th>
+                              <th scope="col">City</th>
+                              <th scope="col">Near Police Station</th>
+                              <th scope="col">Delete</th>
+
                           </tr>
                       </thead>
                       <tbody>
-                      <?php
-                        $sql="SELECT * from user_complaints";
+                        <?php
+                        $sql="SELECT * from user";
                         if($result=mysqli_query($conn,$sql)){
                         while($row=mysqli_fetch_assoc($result)){ 
-                        ?> 
+                        ?>
                           <tr>
-                              <th scope="row"><?php echo $row['complaint_id'];?></th>
-                              <td><?php echo $row['crime_place'];?></td>
-                              <td><?php echo $row['crime_type'];?></td>
-                              <td><?php echo $row['crime_evidence'];?></td>
-                              <td><?php echo $row['date'];?></td>
+                              <th scope="row"><?php echo $row['user_id'];?></th>
+                              <td><?php echo $row['f_name'];?></td>
+                              <td><?php echo $row['l_name'];?></td>
+                              <td><?php echo $row['email'];?></td>
+                              <td><?php echo $row['address'];?></td>
+                              <td><?php echo $row['city'];?></td>
+                              <td><?php echo $row['near_police_station'];?></td>
+                              <form method="POST" action="delete.php">
+                                  <input type="hidden" name = "id" value = "<?php echo $row['user_id']; ?>">
+                                  <td><input type="submit" name = "delete" class="btn btn-danger" value="Delete"></td>
+                              </form>
+                          
                           </tr>
-                          <?php }} ?>
+                          <?php 
+                            }
+                          }
+                          else{
+                            echo mysqli_error($conn);
+                          } ?>
                           
                       </tbody>
                   </table>
