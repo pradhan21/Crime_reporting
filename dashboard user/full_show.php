@@ -1,7 +1,7 @@
 <?php 
 SESSION_start();
  $id=$_SESSION['id'];
-//  echo"<script>alert($id)</script>"; //to check value of id
+ //  echo"<script>alert($id)</script>"; //to check value of id
   if(isset($_SESSION['id'])){
     include "connection.php";
 ?>
@@ -21,8 +21,8 @@ SESSION_start();
                   $conn = new mysqli($servername,$username, $password, $dbname);
                   if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                   }
-                  $sql = "SELECT   user_id,f_name,l_name,address,email,liscence_no from user where user_id='$id' limit 0,5 ";
-                  $sql2="SELECT * from user_complaints where user_id='$id' limit 0,5";
+                  $sql = "SELECT   user_id,f_name,l_name,address,email,liscence_no from user where user_id='$id' ";
+                  $sql2="SELECT * from user_complaints where user_id='$id' ";
                   $result = $conn->query($sql);
                   $result2 = $conn->query($sql2);
 
@@ -304,7 +304,7 @@ SESSION_start();
         <div class="bg-secondary text-center rounded p-4">
           <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Report History</h6>
-            <a href="full_show.php">Show All</a>
+            <a href="index.php">Show Less</a>
           </div>
           
           <div class="table-responsive">
@@ -440,20 +440,6 @@ SESSION_start();
                   <span class="input-group-text" id="basic-addon1">@</span>
                   <input type="text" class="form-control" placeholder="location"  aria-describedby="basic-addon1" name ="location">
                   
-                </div>
-                <div class="input-group mb-3">
-                <select name="id"  class="form-control" id="floatingText">
-                    <?php 
-                    include_once "connection.php";
-                    $sql="SELECT * FROM cime_type";
-                    $result=mysqli_query($conn,$sql);
-                    if(mysqli_num_rows($result)>0){
-                    while($row=mysqli_fetch_array($result)){ 
-                        
-                    ?>
-                    <option value="<?php echo $row['crime_id'];?>" class="form-control" id="floatingText"><?php echo $row['crime']; ?></option>
-                    <?php }} ?>
-                </select>
                 </div>
 
                 <!--  <div class="d-flex mb-2">

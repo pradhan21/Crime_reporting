@@ -474,6 +474,8 @@ SESSION_start();
                                 <div class="row mb-3">
                                     <label for="first_name" class="col-sm-2 col-form-label" >Criminal Name :</label>
                                     <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="first_name" name="f_name" value="<?php echo $f_name;?>">
+
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                         <i class="fa fa-exclamation-circle me-2"></i>
                                             **<?php echo $f_Err;?> 
