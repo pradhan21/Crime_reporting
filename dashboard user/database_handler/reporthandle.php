@@ -4,11 +4,12 @@
                 $password = "";
                 $dbname = "crime_db";
                 $folder = "images1/" ;
+             //   $folder = "../image/". $_FILES['fimage']['name'];
                 
                 //$report="";
                 $conn = new mysqli($servername,$username, $password, $dbname);
 
-                if(isset($_POST['submit'])){
+                if(isset($_POST['submit'])){    
                     $email=$_POST['email'];
                     $file=$folder.basename($_FILES['fimage']['name']);
                     $report=$_POST['report'];

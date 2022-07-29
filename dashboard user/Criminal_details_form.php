@@ -130,7 +130,7 @@ SESSION_start();
                         </div>
                     </div>
                   <!--  <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
-                    <a href="blog.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
+                 <!--   <a href="blog.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>-->
                     <a href="#" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i> Criminal detail</a>
                    <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>-->
                     <div class="nav-item dropdown">
@@ -702,12 +702,7 @@ SESSION_start();
                                             $sql="INSERT into criminal_details(records,criminal_name,age,height,weight,gender,hair_type,skin_color,race,description,image) VALUES ('$caseno','$f_name','$age','$height','$weight','$gender','$hair','$Skin','$Race','$crimeD','')";
                                           
                                        
-                                      if(mysqli_query($conn, $sql)){
-                                          echo "<script>alert(data stored in a database successfully.)</script>";
-                                      } else{
-                                          echo "<script>alert(ERROR couldnt send form data.$sql.)</script> "
-                                              . mysqli_error($conn);
-                                      }
+                                      
                                       // Close connection
                                       
                          

@@ -5,6 +5,8 @@ SESSION_start();
     if(isset($_POST['submit'])){
         $email=$_POST['email'];
         $pass=$_POST['pass'];
+        // echo $email , $pass;
+        // die();
 
         if($email!="" && $pass!=""){
             $sql="SELECT * FROM admin where email_id='$email' and password='$pass'";
@@ -19,10 +21,15 @@ SESSION_start();
                     $_SESSION['username']=$row['username'];
                     header("location:dashboard.php");
                 }
+                else{
+                    echo mysqli_error($conn);
+                }
             }
             else{
                 header("location:index.php");
             }            
+        }else{
+            echo mysqli_error($conn);
         }
     }
     mysqli_close($conn);

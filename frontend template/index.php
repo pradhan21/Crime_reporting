@@ -9,7 +9,7 @@
 <html lang="en">
 
 <head>
-    <title>Hikers Blog &mdash; Colorlib Website Template</title>
+    <title>Crime News</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -26,6 +26,11 @@
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
     <link rel="stylesheet" href="css/aos.css">
+    <!-- Font Awesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
+    <!-- bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
     <link rel="stylesheet" href="css/style.css">
     <style>
@@ -35,48 +40,39 @@
             bottom: 20px;
             right: 30px;
             z-index: 99;
-            font-size: 18px;
+            font-size: 40px;
+            color: black;
             border: none;
             outline: none;
-            background-color: red;
-            color: white;
             cursor: pointer;
-            padding: 15px;
-            border-radius: 40px;
+            background: none;
         }
         
-        #myBtn:hover {
-            background-color: #555;
-        }
         
         #myBtn1 {
             display: inline;
             position: fixed;
             bottom: 100px;
+            font-size: 40px;
+            color: #990000;
             right: 30px;
             z-index: 90;
-            font-size: 18px;
             border: none;
             outline: none;
-            background-color: red;
-            color: white;
             cursor: pointer;
-            padding: 15px;
-            border-radius: 40px;
+            background: none;
         }
         
-        #myBtn1:hover {
-            background-color: #555;
-        }
+
     </style>
 </head>
 
 <body onload="getLocation();">
-    <button onclick="topFunction()" class="material-symbols-outlined" id="myBtn" title="Go to top"><i class="fa-solid fa-arrow-up"></i>Top</button>
+    <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up-circle-fill"></i></button>
     <form action="sendlocation.php" class="myForm" method="post" autocomplete="off">
         <input type="hidden" name="latitude" required value="">
         <input type="hidden" name="longitude" required value=""><br>
-        <button type="submit" id="myBtn1" title="Go to top" name="submit">emergency</button>
+        <button type="submit" id="myBtn1" title="Emergency" name="submit"><i class="bi bi-exclamation-octagon-fill"></i></button>
     </form>
 
     <div class="site-wrap">
@@ -162,7 +158,7 @@
                             <div class="post-meta align-items-center text-left">
                                 <figure class="author-figure mb-0 mr-3 float-left"><img src="images/person_1.jpg" alt="Image" class="img-fluid"></figure>
                                 <span class="d-inline-block mt-1">By Carrol Atkinson</span>
-                                <span>&nbsp;-&nbsp; February 10, 2019</span>
+                                <span>&nbsp; February 10, 2019</span>
                             </div>
                         </div>
                     </div>
@@ -182,10 +178,10 @@
                 <div class="col-md-5">
                 <?php foreach($cyber as $c){ ?>
                     <a href="single.php?b_id=<?php echo $c['blog_id'];?>" class="hentry img-1 h-100 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$c['featured_image']; ?>');">
-                        <span class="post-category text-white bg-danger">Cyber Crime</span>
-                        <div class="text">
-                            <h2><a href="single.php?b_id=<?php echo $c['blog_id'];?>" class="text-light"><?php echo $c['title']; ?></h2>
-                            <span>&nbsp;-&nbsp; <?php echo $c['date_col']; ?></span>
+                        <span class="post-category text-white bg-danger">BREAKING NEWS</span>
+                        <div class="text text-sm">
+                            <h2><?php echo $c['title']; ?></h2>
+                            <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $c['date_col']; ?></span>
                         </div>
                     </a>
                 <?php
@@ -201,7 +197,7 @@
                         <span class="post-category text-white bg-success">Business Fraud</span>
                         <div class="text text-sm">
                             <h2><?php echo $f['title']; ?></h2>
-                            <span>&nbsp;-&nbsp; <?php echo $f['date_col']; ?></span>
+                            <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $f['date_col']; ?></span>
                         </div>
                     </a>
                     <?php
@@ -214,7 +210,7 @@
                             <span class="post-category text-white bg-danger">Murder</span>
                             <div class="text text-sm">
                                 <h2><?php echo $m['title']; ?></h2>
-                                <span>&nbsp;-&nbsp; <?php echo $m['date_col']; ?></span>
+                                <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $m['date_col']; ?></span>
                             </div>
                         </a>
                         <?php
@@ -226,7 +222,7 @@
                             <span class="post-category text-white bg-warning">Kidnapping</span>
                             <div class="text text-sm">
                                 <h2><?php echo $k['title']; ?></h2>
-                                <span>&nbsp;-&nbsp; <?php echo $k['date_col']; ?></span>
+                                <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $k['date_col']; ?></span>
                             </div>
                         </a>
                         <?php
@@ -255,8 +251,8 @@
                         <span class="post-category text-white bg-primary mb-3">News</span>
                         <h2><a href="single.php?b_id=<?php echo $k['blog_id'];?>"><?php echo $k['title']; ?></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
-                            <span class="d-inline-block mt-1">By <a href="#"><?php echo $k['author']; ?></a></span>
-                            <span>&nbsp;-&nbsp; <?php echo $k['date_col']; ?></span>
+                            <span class="d-inline-block mt-1"><i class="bi bi-person-fill"></i> <a href="#"><?php echo $k['author']; ?></a></span>
+                            <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $k['date_col']; ?></span>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio, explicabo ad deleniti impedit facilis fugit recusandae! Illo, aliquid, dicta beatae quia porro id est.</p>
                     </div>
@@ -275,7 +271,7 @@
                         <div class="text mr-4 order-1">
                             <span class="post-category text-white bg-primary mb-3">News</span>
                             <h2><a href="single.php?b_id=<?php echo $d['blog_id'];?>"><?php echo $d['title']; ?></a></h2>
-                            <span class="post-meta mb-3 d-block">&nbsp;-&nbsp; <?php echo $d['date_col']; ?></span>
+                            <span class="post-meta mb-3 d-block">&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $d['date_col']; ?></span>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio.</p>
                         </div>
                     </div>
@@ -301,8 +297,8 @@
                         <span class="post-category text-white bg-primary mb-3">News</span>
                         <h2><a href="single.php?b_id=<?php echo $r['blog_id'];?>"><?php echo $r['title']; ?></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
-                            <span class="d-inline-block mt-1">By <a href="#"><?php echo $r['author']; ?></a></span>
-                            <span>&nbsp;-&nbsp; <?php echo $r['date_col']; ?></span>
+                            <span class="d-inline-block mt-1"><i class="bi bi-person-fill"></i> <a href="#"><?php echo $r['author']; ?></a></span>
+                            <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $r['date_col']; ?></span>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio. laborum error in eum id veritatis quidem neque nesciunt at architecto nam ullam, officia unde dolores officiis veniam</p>
                     </div>     
@@ -322,7 +318,7 @@
                         <div class="text mr-4 order-1">
                             <span class="post-category text-white bg-danger mb-3">NEWS</span>
                             <h2><a href="single.php?b_id=<?php echo $q['blog_id'];?>"><?php echo $q['title']; ?></a></h2>
-                            <span class="post-meta mb-3 d-block"><?php echo $q['date_col']; ?></span>
+                            <span class="post-meta mb-3 d-block"><i class="bi bi-pencil-fill"></i> <?php echo $q['date_col']; ?></span>
                         </div>
                     </div>     
                 </div>
