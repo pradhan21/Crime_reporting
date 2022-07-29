@@ -104,7 +104,7 @@
                     <div class="post-content-body">
                         <?php foreach($single as $s){ ?>
                         <!-- Titles -->
-                        <h2 class="mb-3" style = "text-align: left; width: 86%;"><?php echo $s['title']; ?></h2>
+                        <h2 class="mb-3" style = "text-align: left; width: 86%; font-family: "Times New Roman", Times, serif;"><strong><?php echo $s['title']; ?></strong></h2>
                         <span class="post-category text-white bg-primary mb-2">NEWS</span> <br>
                         <span class="d-inline-block mt-1"><i class="bi bi-person-fill"></i> <?php echo $s['author']; ?></span>
                         <span>&nbsp;&nbsp; <i class="bi bi-pencil-fill"></i>  <?php echo $s['date_col']; ?></span>
@@ -118,7 +118,7 @@
                         </div>
 
                         <!-- discription_1 -->
-                        <p style= "text-align: justify;"><?php echo $s['description1']; ?></p>
+                        <p style= "text-align: justify; color:black;"><?php echo $s['description1']; ?></p>
                         
                         <!-- Sub-Title -->
                         <h4 class="mb-3" style = "text-align: left; width: 86%;"><?php echo $s['sub_title']; ?></h4>
@@ -191,7 +191,7 @@
                                     <div class="card" style="width: 18rem;">
                                         <img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" class="card-img-top" style="width:100%; height:180px;">
                                         <div class="card-body">
-                                            <h5 class="card-title"><a class="text-dark" href="single.php?b_id=<?php echo $d['blog_id'];?>"> <?php echo $d['title']; ?> </a></h5>
+                                            <h5 class="card-title"><a class="text-dark" href="single.php?b_id=<?php echo $d['blog_id'];?>"><strong> <?php echo $d['title']; ?> </a></strong></h5>
                                             <p class="card-text"><i class="bi bi-person-fill"></i> <a href="#"><?php echo $d['author']; ?></a> <small class="text-muted">&nbsp;<i class="bi bi-pencil-fill"></i> <?php echo $d['date_col']; ?></small></p>
                                             <a href="single.php?b_id=<?php echo $d['blog_id'];?>" class="btn btn-dark">Read More...</a>
                                             
@@ -256,7 +256,7 @@
                         <a href="single.php?b_id=<?php echo $r['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$r['featured_image']; ?>" alt="Image" class="img-fluid rounded related_img"></a>
                         <br/>
                         <span class="post-category text-white bg-primary mb-3">News</span>
-                        <h2><a href="single.php?b_id=<?php echo $r['blog_id'];?>"><?php echo $r['title']; ?></a></h2>
+                        <h2><a href="single.php?b_id=<?php echo $r['blog_id'];?>"><strong><?php echo $r['title']; ?></strong></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
                             <span class="d-inline-block mt-1"><i class="bi bi-person-fill"></i> <a href="#"><?php echo $r['author']; ?></a></span>
                             <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $r['date_col']; ?></span>
