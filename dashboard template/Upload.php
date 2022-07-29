@@ -13,7 +13,7 @@ if (isset($_POST['upload'])) {
     $db = mysqli_connect("localhost", "root", "", "crime_db");
  
     // Get all the submitted data from the form
-    $sql = "INSERT INTO criminal_details  VALUES ('horsee','','','','','','','','','','$folder')";
+    $sql = "INSERT INTO criminal_details(image,criminal_name)  VALUES ('$folder','Leo')";
  
     // Execute query+
    if (mysqli_query($db, $sql)){

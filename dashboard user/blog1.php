@@ -1,6 +1,5 @@
 <?php
 
-    // include "../dashboard user/logics/bloglogic.php"
     include "logics/bloglogic.php";
 ?>
 
@@ -9,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DarkPan - Bootstrap 5 Admin Template</title>
+    <title>DarkPan</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -75,23 +74,23 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="dashboard.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <!-- <div class="nav-item dropdown">
-                       <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
+                    <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <div class="nav-item dropdown">
+                       <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>-->
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="button.html" class="dropdown-item">Buttons</a>
                             <a href="typography.html" class="dropdown-item">Typography</a>
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
-                    </div> -->
+                    </div>
                    <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
-                    <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
-                    <a href="user.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Users</a>
-                    <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Add Station</a>
-                    <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
+                    <!-- <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a> -->
+
+                    <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
+                    
                    <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Table</a>-->
                   <!--  <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
-                    <!-- <div class="nav-item dropdown">
+                    <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="signin.html" class="dropdown-item">Sign In</a>
@@ -99,7 +98,7 @@
                             <a href="404.html" class="dropdown-item">404 Error</a>
                             <a href="blank.html" class="dropdown-item active">Blank Page</a>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </nav>
         </div>
@@ -190,9 +189,9 @@
                             <span class="d-none d-lg-inline-flex">John Doe</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-                            <a href="#" class="dropdown-item">My Profile</a>
+                            <a href="Profile.php" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="../frontend template/login/logout.php" class="dropdown-item">Log Out</a>
+                            <a href="login/logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -236,17 +235,16 @@
                                 <br/>
                                 <button name="blog_insert" type="submit" class="btn btn-success" id = "btn-submit" onsubmit="myFunction()">Submit</button>
                                 <button type="reset" class="btn btn-info">Reset</button>
-                                <button name="blog_insert" type="button" class="btn btn-light" id = "btn-submit" onclick="myFunction()">Go Back</button>
-
-                                <!-- <a href="blog.php" class="btn btn-light">Cancel / Go Back</a> -->
                                 <br/>
                                 <br/>
-                            </form> 
+                            </form>
 
                             <?php if(isset($_REQUEST['info'])){?>
-                                <?php if($_REQUEST['info'] == "added"){?> 
+                                <?php if($_REQUEST['info'] == "added"){?>
                                 
-                                    <div class="alert alert-success" role="alert">Post Added</div>
+                                    <div class="alert alert-success" role="alert">
+                                        This is a success alert—check it out!
+                                    </div>
                                 <?php } ?>
                             <?php } ?>
 
@@ -263,7 +261,7 @@
                         <br/>
                         <br/>
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h1 class="mb-4">Published Post List</h1>
+                            <h2 class="mb-4">Published Post List</h2>
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered" id="table-data">
                                     <thead class=" table-light">
@@ -311,15 +309,15 @@
             <!-- Blog End -->
             
 
-            <!-- Footer Start -->
             
-            <!-- Footer End -->
         </div>
         <!-- Content End -->
         <script type="text/javascript">
             $(document).ready(function(){
                 $("#search_text").keyup(function(){
                     var input = $(this).val();
+                    // alert(input);
+                    // if(input !=""){
                         $.ajax({
                             url:"action.php",
                             method: "POST",
@@ -329,6 +327,10 @@
                                 $("#table-data").html(response);
                             }
                         });
+                    // }else{
+                    //     // $("#searchresult").css("display", "none");
+                    //     $("#table-data").html("");
+                    // }
                 });
             });
         </script>

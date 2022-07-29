@@ -56,7 +56,7 @@
                 <div class="row align-items-center">
 
                     <div class="col-6 col-xl-6 logo">
-                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime Reporter</a></h1>
+                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime Daily</a></h1>
                     </div>
 
                     <div class="col-6 mr-auto py-3 text-right" style="position: relative; top: 3px;">
@@ -147,7 +147,7 @@
                     </div>
                     <!-- END sidebar-box -->
                     <!-- search bar -->
-                    <div id="searchresult"></div>
+                    <div class ="container-fluid" id="searchresult"></div>
                     <script type = "text/javascript">
                         $(document).ready(function(){
                             $("#live_search").keyup(function(){
