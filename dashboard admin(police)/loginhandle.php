@@ -23,11 +23,11 @@ SESSION_start();
                 }
             }
             else{
-                header("location:index.php");
+                header("location:index.php?err= Invalid email or password!!!");
             }            
         }
         else{
-            echo mysqli_error($conn);
+            header("location:index.php?err= Email and password required!!!");
         }
     }
     mysqli_close($conn);

@@ -180,7 +180,7 @@
                     <a href="single.php?b_id=<?php echo $c['blog_id'];?>" class="hentry img-1 h-100 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$c['featured_image']; ?>');">
                         <span class="post-category text-white bg-danger">BREAKING NEWS</span>
                         <div class="text text-sm">
-                            <h2><?php echo $c['title']; ?></h2>
+                            <h2><strong><?php echo $c['title']; ?> </strong></h2>
                             <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $c['date_col']; ?></span>
                         </div>
                     </a>
@@ -196,7 +196,7 @@
                     <a href="single.php?b_id=<?php echo $f['blog_id'];?>" class="hentry img-2 v-height mb30 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$f['featured_image']; ?>');">
                         <span class="post-category text-white bg-success">Business Fraud</span>
                         <div class="text text-sm">
-                            <h2><?php echo $f['title']; ?></h2>
+                            <h2><strong><?php echo $f['title']; ?></strong></h2>
                             <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $f['date_col']; ?></span>
                         </div>
                     </a>
@@ -209,7 +209,7 @@
                         <a href="single.php?b_id=<?php echo $m['blog_id'];?>" class="hentry v-height img-2 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$m['featured_image']; ?>');">
                             <span class="post-category text-white bg-danger">Murder</span>
                             <div class="text text-sm">
-                                <h2><?php echo $m['title']; ?></h2>
+                                <h2><strong><?php echo $m['title']; ?></strong></h2>
                                 <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $m['date_col']; ?></span>
                             </div>
                         </a>
@@ -221,7 +221,7 @@
                         <a href="single.php?b_id=<?php echo $k['blog_id'];?>" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$k['featured_image']; ?>');">
                             <span class="post-category text-white bg-warning">Kidnapping</span>
                             <div class="text text-sm">
-                                <h2><?php echo $k['title']; ?></h2>
+                                <h2><strong><?php echo $k['title']; ?></strong></h2>
                                 <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $k['date_col']; ?></span>
                             </div>
                         </a>
@@ -249,7 +249,7 @@
                     <div class="entry2">
                         <a href="single.php?b_id=<?php echo $k['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$k['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
                         <span class="post-category text-white bg-primary mb-3">News</span>
-                        <h2><a href="single.php?b_id=<?php echo $k['blog_id'];?>"><?php echo $k['title']; ?></a></h2>
+                        <h2><a href="single.php?b_id=<?php echo $k['blog_id'];?>"><strong><?php echo $k['title']; ?></strong></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
                             <span class="d-inline-block mt-1"><i class="bi bi-person-fill"></i> <a href="#"><?php echo $k['author']; ?></a></span>
                             <span>&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $k['date_col']; ?></span>
@@ -270,7 +270,7 @@
                         </figure>
                         <div class="text mr-4 order-1">
                             <span class="post-category text-white bg-primary mb-3">News</span>
-                            <h2><a href="single.php?b_id=<?php echo $d['blog_id'];?>"><?php echo $d['title']; ?></a></h2>
+                            <h2><a href="single.php?b_id=<?php echo $d['blog_id'];?>"><strong><?php echo $d['title']; ?></strong></a></h2>
                             <span class="post-meta mb-3 d-block">&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $d['date_col']; ?></span>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo sunt tempora dolor laudantium sed optio.</p>
                         </div>
@@ -307,6 +307,7 @@
             }
             ?>
             </div>
+            <br/>
 
             <div class="row">
             <?php foreach($query as $q){ ?>

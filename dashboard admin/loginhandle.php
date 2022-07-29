@@ -7,7 +7,6 @@ SESSION_start();
         $pass=$_POST['pass'];
         // echo $email , $pass;
         // die();
-
         if($email!="" && $pass!=""){
             $sql="SELECT * FROM admin where email_id='$email' and password='$pass'";
             $result=mysqli_query($conn,$sql);
@@ -26,10 +25,11 @@ SESSION_start();
                 }
             }
             else{
-                header("location:index.php");
+                header("location:index.php?err=Invalid email or password !!");
             }            
-        }else{
-            echo mysqli_error($conn);
+        }
+        else{
+            header("location:index.php?err=Password and email required!!");
         }
     }
     mysqli_close($conn);

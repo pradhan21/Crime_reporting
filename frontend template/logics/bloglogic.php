@@ -13,7 +13,7 @@
 
     // To show blog in the table
     $sql = "SELECT * FROM Blog";
-    $query = mysqli_query($conn, $sql);
+    $first = mysqli_query($conn, $sql);
 
 
     // Inserting the data in database from FORM
