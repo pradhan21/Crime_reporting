@@ -39,7 +39,7 @@ SESSION_start();
  $id=$_SESSION['id'];
   echo"<script>alert($id)</script>"; //to check value of id
   if(isset($_SESSION['id'])){
-    include "connection.php";
+    include ("login/connection.php");
 
    $db1= "SELECT * from criminal_details where criminal_name='$gg'";/////////////////calling data from the database
    $result=$conn->query($db1);
@@ -773,5 +773,5 @@ SESSION_start();
   else{
     echo "<script>alert('ERROR')</script>";
   }
-    
+
 ?>

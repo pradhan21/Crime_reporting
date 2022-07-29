@@ -3,7 +3,7 @@
                 $username = "root";
                 $password = "";
                 $dbname = "crime_db";
-                $folder = "Report_file/" ;
+                $folder = "images1/" ;
                 
                 //$report="";
                 $conn = new mysqli($servername,$username, $password, $dbname);
