@@ -110,17 +110,17 @@
 
                 <div class="col-md-12 col-lg-8 main-content">
 
-                <?php foreach($query as $q){ ?>
+                <?php foreach($first as $fa){ ?>
                     
 
                     <div class="entry2 mb-5">
-                        <a href="single.php?b_id=<?php echo $q['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?>" alt="Image" class="img-fluid rounded" style="width:95%; "></a>
+                        <a href="single.php?b_id=<?php echo $fa['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$fa['featured_image']; ?>" alt="Image" class="img-fluid rounded" style="width:95%; max-height:420px; "></a>
                         <br>
                         <span class="post-category text-white bg-primary mb-3">News</span>
-                        <h2><a href="single.php?b_id=<?php echo $q['blog_id'];?>"><?php echo $q['title']; ?> </a></h2>
+                        <h2><a href="single.php?b_id=<?php echo $fa['blog_id'];?>"><strong><?php echo $fa['title']; ?> </strong></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
-                            <span class="d-inline-block mt-1">By <i class="bi bi-person-fill"></i> <a href="#"><?php echo $q['author']; ?></a></span>
-                            <span>&nbsp;&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $q['date_col']; ?></span>
+                            <span class="d-inline-block mt-1">By <i class="bi bi-person-fill"></i> <a href="#"><?php echo $fa['author']; ?></a></span>
+                            <span>&nbsp;&nbsp; <i class="bi bi-pencil-fill"></i> <?php echo $fa['date_col']; ?></span>
                         </div>
                     </div>
                 
@@ -187,7 +187,7 @@
                                     <div class="card" style="width: 18rem;">
                                         <img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" class="card-img-top" style="width:100%; height:180px;">
                                         <div class="card-body">
-                                            <h5 class="card-title"><a class="text-dark" href="single.php"> <?php echo $d['title']; ?> </a></h5>
+                                            <h5 class="card-title"><a class="text-dark" href="single.php"><strong> <?php echo $d['title']; ?> </strong></a></h5>
                                             <p class="card-text"><i class="bi bi-person-fill"></i> <a href="#"><?php echo $d['author']; ?></a> <small class="text-muted">&nbsp;-&nbsp; <?php echo $d['date_col']; ?></small></p>
                                             <a href="single.php?b_id=<?php echo $d['blog_id'];?>" class="btn btn-dark">Read More...</a>
                                             
