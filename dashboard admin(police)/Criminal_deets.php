@@ -397,54 +397,54 @@ SESSION_start();
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Criminal name :</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" value ="<?php echo $name;?>"
-                                            aria-describedby="emailHelp">
+                                        <input type="text" class="form-control" id="exampleInputEmail1" value ="<?php echo $name;?> "
+                                            aria-describedby="emailHelp" disabled>
                                         
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Age :</label>
-                                        <input type="text" class="form-control" id="exampleInput    1" value ="<?php echo $age;?>">
+                                        <input type="text" class="form-control" id="exampleInput    1" value ="<?php echo $age;?>" disabled>
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Height :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $height;?>">
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $height;?>" disabled>
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Weight :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $weight;?>">
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $weight;?>" disabled>
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Gender :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $gender;?>">
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $gender;?>" disabled>
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Hair type :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $hair;?>">
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $hair;?>" disabled>
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Skin color :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Skin;?>">
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Skin;?>" disabled> 
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Race :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Race;?>">
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Race;?>" disabled>
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Description :</label>
-                                        <textarea class="form-control" placeholder="Description" id="floatingTextarea" name ="crimeD" style="height: 150px;"  ><?php echo $crimeD;?></textarea>
+                                        <textarea class="form-control" placeholder="Description" id="floatingTextarea" name ="crimeD" style="height: 150px;" disabled  ><?php echo $crimeD;?></textarea>
                                     </div>
                                     <hr>
                                     <div class="mb-3">
                                         <label for="exampleInputPassword1" class="form-label">Records :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $caseno;?>">
+                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $caseno;?>" disabled>
                                     </div>
                                     <hr>
                                     
