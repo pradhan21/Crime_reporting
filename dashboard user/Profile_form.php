@@ -1,9 +1,14 @@
 <?php
+SESSION_start();
+$id=$_SESSION['id'];
+  echo"<script>alert($id)</script>"; //to check value of id
+ if(isset($_SESSION['id'])){
+   include "connection.php";
 error_reporting(0);
 $filename = $_FILES["uploadfile"]["name"];
 $folder = "image/" . $filename;
 $target_dir = "image/";
-$target_file = $target_dir . basename($_FILES["uploadfile"]["name"]);
+$target_file = $target_dir.basename($_FILES["uploadfile"]["name"]);
 $msg = "";
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -15,31 +20,32 @@ if (isset($_POST['upload'])) {
     
     $db = mysqli_connect("localhost", "root", "", "crime_db");
     if (file_exists($target_file)) {
-      echo "<h1>Sorry, file already exists</h1>";
+      echo "<script>alert('Sorry, file already exists')</script>";
       $db->close();  
     }
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"&& $imageFileType != "gif" ) {
-      echo "Sorry, ononly JPG, JPEG, PNG & GIF files are allowed.";
-      $db->close();
-      }
-  
-      // Get all the submitted data from the form
-      $sql = "INSERT INTO image (filename) VALUES ('$filename')";
-  
-    // Execute query+
-    mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
+   echo "<script>alert('Sorry, ononly JPG, JPEG, PNG & GIF files are allowed.')</script>";
+    $db->close();
+     }
  
+    // Get all the submitted data from the form
+    //$sql = "INSERT INTO image (filename) VALUES ('$target_file')";
+    //$sql_2="INSERT INTO user (image) VALUES ('$filename') WHERE user_id='$id'";
+    $sql_2="UPDATE user SET  image ='$filename' WHERE user_id='$id'";
+    // Execute query+
+   // mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
+    mysqli_query($db, $sql_2);
     // Now let's move the uploaded image into the folder: image
     if (move_uploaded_file($tempname, $folder)) {
     ?>
-    <a href="index.html">press here to get redirected</a>
+    <a href =""><script>alert("press here to get redirected")</script><?php //header('Location:http://localhost/CC/crime_reporting/dashboard%20user/index.php')?></a>
     <?php
-        } else {
-            echo "<h3>  Failed to upload image!</h3>";
-        }
-      
+    } else {
+        echo " <script> alert('Failed to upload image!')</script>";
     }
-    ?>
+  
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,7 +94,34 @@ if (isset($_POST['upload'])) {
         </ol>
       </nav>
       <!-- /Breadcrumb -->
+      <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "crime_db";
+                $fisrt1="";
+                $last1="";
+                $phone1="";
+                $email1="";  
+                $address1="";   
+                $image1="";       
+                $conn = new mysqli($servername,$username, $password, $dbname);
+                if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
+                }
+                $sql = "SELECT f_name,l_name,address,email,image from user WHERE user_id='$id' ";
+                $result = $conn->query($sql);
 
+                if ($result->num_rows > 0) {
+                  // output data of each row
+                  while($row = $result->fetch_assoc()) {
+                    $first1 = $row["f_name"];
+                    $last1=$row["l_name"];
+                    $address1 = $row["address"];
+                    $email1=$row["email"];
+                    $image1=$row["image"]; 
+                  }
+                }
+          ?>
       <div class="row gutters-sm" style="background-color:#000000">
         <div class="col-md-4 mb-3">
           <div class=" card" style="background-color:#191c24">
@@ -103,18 +136,11 @@ if (isset($_POST['upload'])) {
                       <span>Preview image</span>
                     </label>
                     <input id="file" type="file" onchange="loadFile(event)" />
-                    <img src="image/Leonardo.jpg" id="output" width="200" onerror="this.style.display='none'" />
-                    <?php
-                            $query = " select * from image ";
-                            $result = mysqli_query($db, $query);
-                     
-                            while ($data = mysqli_fetch_assoc($result)) {
-                        ?>
-                    <img src="image/<?php echo $data['filename']; ?>" id="output" width="200"
+                    <!--<img src="image/Leonardo.jpg" id="output" width="200" onerror="this.style.display='none'" />-->
+                  
+                    <img src="http://localhost/crime_reporting/dashboard%20user/image/<?php echo $image1;?>" id="output" width="200"
                       onerror="this.style.display='none'" />
-                    <?php
-                            }
-                        ?>
+                    
                     <!--<img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output" width="200" />--->
                   </div>
                   </br>
@@ -122,13 +148,13 @@ if (isset($_POST['upload'])) {
                     <input class="form-control" type="file" name="uploadfile" value=""
                       style="background-color:#000000" />
                   </div>
-
+                  
                   <button class="btn btn-primary" type="submit" name="upload">UPLOAD</button>
                 </form>
                 <div class="mt-3">
-                  <h4 style="color:white">Jhonny</h4>
-                  <p class="text-secondary mb-1">----something here</p>
-                  <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                  <h4 style="color:white"><?php echo $first1;?> <?php echo $last1; ?></h4>
+                  <p class="text-secondary mb-1">------------</p>
+                  <p class="text-muted font-size-sm"><?php echo $address1?></p>
 
                   <button class="btn btn-outline-primary"><a href="#">Message</a></button>
                   <!--MESSAGE -------------------  -->
@@ -574,3 +600,8 @@ if (isset($_POST['upload'])) {
 </body>
 
 </html>
+<?php
+ }else{
+  echo "error";
+ }
+?>
