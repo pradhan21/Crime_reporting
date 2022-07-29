@@ -1,6 +1,6 @@
 <?php
 
-    include "logics/bloglogic.php"
+    include "logics/bloglogic.php";
 ?>
 
 <!DOCTYPE html>
@@ -316,6 +316,8 @@
             $(document).ready(function(){
                 $("#search_text").keyup(function(){
                     var input = $(this).val();
+                    // alert(input);
+                    // if(input !=""){
                         $.ajax({
                             url:"action.php",
                             method: "POST",
@@ -325,6 +327,10 @@
                                 $("#table-data").html(response);
                             }
                         });
+                    // }else{
+                    //     // $("#searchresult").css("display", "none");
+                    //     $("#table-data").html("");
+                    // }
                 });
             });
         </script>
