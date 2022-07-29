@@ -29,6 +29,8 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
      <!-- bootstrap CDN -->
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+     <!-- ajax for search bar -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 
@@ -53,7 +55,7 @@
                 <div class="row align-items-center">
 
                     <div class="col-6 col-xl-6 logo">
-                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime News</a></h1>
+                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime Daily</a></h1>
                     </div>
 
                     <div class="col-6 mr-auto py-3 text-right" style="position: relative; top: 3px;">
@@ -73,10 +75,10 @@
                             <li class="active"><a href="news.php">News</a></li>
                             <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
-                                <a href="#">Login/Register</a>
+                                <a href="#">Username</a>
                                 <ul class="dropdown">
-                                    <li><a href="login/login.php">Login</a></li>
-                                    <li><a href="login/signup.php">Signup</a></li>
+                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="#">LogOut</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -134,14 +136,36 @@
 
                 <div class="col-md-12 col-lg-4 sidebar">
                     <div class="sidebar-box search-form-wrap">
-                        <form action="#" class="search-form">
-                            <div class="form-group">
-                                <span class="icon fa fa-search"></span>
-                                <input type="text" class="form-control" id="s" placeholder="Search">
+                            <div class="d-md-flex ms-4">                            
+                                <input class="form-control search_bar" type="text" name = "input" class="form-control" id="live_search" placeholder="Search hear" required>
                             </div>
-                        </form>
                     </div>
                     <!-- END sidebar-box -->
+                    <!-- search bar -->
+                    <div class ="container-fluid" id="searchresult"></div>
+                    <script type = "text/javascript">
+                        $(document).ready(function(){
+                            $("#live_search").keyup(function(){
+                                var input = $(this).val();
+                                // alert(input);
+                                if(input !=""){
+                                    $.ajax({
+                                        url:"logics/livesearch.php",
+                                        method: "POST",
+                                        data: {input:input},
+
+                                        success:function(data){
+                                            $("#searchresult").html(data);
+                                        }
+                                    });
+                                }else{
+                                    // $("#searchresult").css("display", "none");
+                                    $("#searchresult").html("");
+                                }
+                            });
+                        });
+                    </script>
+                    <!-- search end -->
 
                     <div class="sidebar-box">
                         <h3 class="heading">Latest Posts</h3>

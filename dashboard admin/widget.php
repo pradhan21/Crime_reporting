@@ -214,7 +214,7 @@ SESSION_start();
                               <td><?php echo $row['crime_place'];?></td>
                               <td><?php echo $row['crime_type'];?></td>
                               <td><?php echo $row['crime_evidence'];?></td>
-                              <td><?php echo $row['date'];?></td>
+                              <td><?php echo $row['date_col'];?></td>
                           </tr>
                           <?php }} ?>
                           

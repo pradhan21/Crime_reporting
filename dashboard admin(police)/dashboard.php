@@ -79,10 +79,10 @@ SESSION_start();
           <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
           <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a> -->
           <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
-          <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
+          <a href="Criminal_deets.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
-          <div class="nav-item dropdown">
+          <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
             <div class="dropdown-menu bg-transparent border-0">
               <a href="signin.html" class="dropdown-item">Sign In</a>
@@ -90,7 +90,7 @@ SESSION_start();
               <a href="404.html" class="dropdown-item">404 Error</a>
               <a href="blank.html" class="dropdown-item">Blank Page</a>
             </div>
-          </div>
+          </div> -->
         </div>
       </nav>
     </div>
@@ -319,7 +319,7 @@ SESSION_start();
             <div class="h-100 bg-secondary rounded p-4">
               <div class="d-flex align-items-center justify-content-between mb-2">
                 <h6 class="mb-0">Latest Report</h6>
-                <a href="">Show All</a>
+                <a href="report.php">Show All</a>
               </div>
               <?php
                $sql="SELECT * FROM user_complaints ORDER by complaint_id DESC LIMIT 0,5";
@@ -365,7 +365,20 @@ SESSION_start();
                   <input type="text" class="form-control" placeholder="location"  aria-describedby="basic-addon1" name ="location">
                   
                 </div>
-
+                <div class="input-group mb-3">
+                <select name="id"  class="form-control" id="floatingText">
+                    <?php 
+                    include_once "connection.php";
+                    $sql="SELECT * FROM cime_type";
+                    $result=mysqli_query($conn,$sql);
+                    if(mysqli_num_rows($result)>0){
+                    while($row=mysqli_fetch_array($result)){ 
+                        
+                    ?>
+                    <option value="<?php echo $row['crime_id'];?>" class="form-control" id="floatingText"><?php echo $row['crime']; ?></option>
+                    <?php }} ?>
+                </select>
+                </div>
                 <!--  <div class="d-flex mb-2">
                 <input class="form-control bg-dark border-0" type="text" placeholder="Enter task">
                 <button type="button" class="btn btn-primary ms-2">Add</button>
@@ -376,6 +389,7 @@ SESSION_start();
                   <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;"name="report"></textarea>
                   <label for="floatingTextarea">Type your report</label>
                 </div>
+
 
                 <!--    <div class="d-flex align-items-center border-bottom py-2">
                 <input class="form-check-input m-0" type="checkbox">
@@ -426,36 +440,14 @@ SESSION_start();
                 <button type="reset" class="btn btn-info">Reset</button>
               </form>
             </div>
-
-
           </div>
-
         </div>
       </div>
       <!-- Widgets End -->
 
 
       <!-- Footer Start -->
-      <div class="container-fluid pt-4 px-4">
-        <div class="bg-secondary rounded-top p-4">
-          <div class="row">
-
-            <div class="col-12 col-sm-6 text-center text-sm-start">
-              &copy; <a href="#">Scelus-nunitare</a>, All Right Reserved.
-            </div>
-            <div class="col-12 col-sm-6 text-center text-sm-end">
-              <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-
-
-              Designed By <a href="#">Group-NNAS</a>
-              <br>
-              Distributed by: <a href="#" target="_blank">NNAS</a>
-
-
-            </div>
-          </div>
-        </div>
-      </div>
+     
       <!-- Footer End -->
     </div>
     <!-- Content End -->

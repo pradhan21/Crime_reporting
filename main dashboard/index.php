@@ -1,6 +1,10 @@
 <?php
-
+     SESSION_start();
     include_once "logics/latestpost.php";
+   
+    $id=$_SESSION['id'];
+    // echo"<script>alert($id)</script>"; //to check value of id
+    if(isset($_SESSION['id'])){
 
 ?>
 
@@ -92,7 +96,7 @@
 
                     <div class="col-6 col-xl-6 logo">
 
-                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime News</a></h1>
+                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime Daily</a></h1>
                     </div>
 
                     <div class="col-6 mr-auto py-3 text-right" style="position: relative; top: 3px;">
@@ -112,10 +116,10 @@
                             <li><a href="news.php">News</a></li>
                             <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
-                                <a href="#">Username</a>
+                                <a href="#"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></a>
                                 <ul class="dropdown">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">LogOut</a></li>
+                                    <li><a href="../dashboard user/index.php">Dashboard</a></li>
+                                    <li><a href="login/logout.php">LogOut</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -449,3 +453,10 @@
 </body>
 
 </html>
+<?php
+}
+  
+else{
+  echo "error";
+}
+?>

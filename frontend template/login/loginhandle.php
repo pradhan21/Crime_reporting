@@ -16,7 +16,7 @@ SESSION_start();
                     $_SESSION['lname']=$row['l_name'];
                     $_SESSION['id']=$row['user_id'];
                     $_SESSION['email']=$row['email'];
-                    header("location:../../dashboard user/index.php");
+                    header("location:../../main dashboard/index.php");
                 }
             }
             else{

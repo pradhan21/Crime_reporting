@@ -1,7 +1,7 @@
 <?php
 
     // include "../dashboard user/logics/bloglogic.php"
-    include "../Crime Reporting System User Interface/logics/bloglogic.php"
+    include "logics/bloglogic.php";
 ?>
 
 <!DOCTYPE html>
@@ -36,6 +36,13 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
+    <!-- bootstrap CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+    <!-- ajax for search bar -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
 
 
 </head>
@@ -69,14 +76,14 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="dashboard.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <div class="nav-item dropdown">
-                       <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>-->
+                    <!-- <div class="nav-item dropdown">
+                       <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="button.html" class="dropdown-item">Buttons</a>
                             <a href="typography.html" class="dropdown-item">Typography</a>
                             <a href="element.html" class="dropdown-item">Other Elements</a>
                         </div>
-                    </div>
+                    </div> -->
                    <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
                     <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
                     <a href="user.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Users</a>
@@ -109,9 +116,10 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <form class="d-none d-md-flex ms-4">
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
-                </form>
+                <!-- <form class="d-none d-md-flex ms-4" method = "GET"> -->
+                    &nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control bg-dark border-0" name="search" id="search_text" type="search" placeholder="Search..." required>
+                    <button type="submit" class="btn border-0"><i class="bi bi-search"></i></button>
+                <!-- </form> -->
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -228,6 +236,9 @@
                                 <br/>
                                 <button name="blog_insert" type="submit" class="btn btn-success" id = "btn-submit" onsubmit="myFunction()">Submit</button>
                                 <button type="reset" class="btn btn-info">Reset</button>
+                                <button name="blog_insert" type="button" class="btn btn-light" id = "btn-submit" onclick="myFunction()">Go Back</button>
+
+                                <!-- <a href="blog.php" class="btn btn-light">Cancel / Go Back</a> -->
                                 <br/>
                                 <br/>
                             </form> 
@@ -252,9 +263,9 @@
                         <br/>
                         <br/>
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Published Post List</h6>
+                            <h1 class="mb-4">Published Post List</h1>
                             <div class="table-responsive">
-                                <table class="table table-hover table-bordered">
+                                <table class="table table-hover table-bordered" id="table-data">
                                     <thead class=" table-light">
                                         <tr>
                                             <th scope="col">Blog_Id</th>
@@ -305,6 +316,22 @@
             <!-- Footer End -->
         </div>
         <!-- Content End -->
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("#search_text").keyup(function(){
+                    var input = $(this).val();
+                        $.ajax({
+                            url:"action.php",
+                            method: "POST",
+                            data: {input:input},
+
+                            success:function(response){
+                                $("#table-data").html(response);
+                            }
+                        });
+                });
+            });
+        </script>
 
 
         <!-- Back to Top -->

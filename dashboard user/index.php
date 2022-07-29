@@ -441,6 +441,20 @@ SESSION_start();
                   <input type="text" class="form-control" placeholder="location"  aria-describedby="basic-addon1" name ="location">
                   
                 </div>
+                <div class="input-group mb-3">
+                <select name="id"  class="form-control" id="floatingText">
+                    <?php 
+                    include_once "connection.php";
+                    $sql="SELECT * FROM cime_type";
+                    $result=mysqli_query($conn,$sql);
+                    if(mysqli_num_rows($result)>0){
+                    while($row=mysqli_fetch_array($result)){ 
+                        
+                    ?>
+                    <option value="<?php echo $row['crime_id'];?>" class="form-control" id="floatingText"><?php echo $row['crime']; ?></option>
+                    <?php }} ?>
+                </select>
+                </div>
 
                 <!--  <div class="d-flex mb-2">
                 <input class="form-control bg-dark border-0" type="text" placeholder="Enter task">

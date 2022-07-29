@@ -79,10 +79,10 @@ SESSION_start();
           <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
           <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a> -->
           <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
-          <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
+          <a href="Criminal_deets.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
-          <div class="nav-item dropdown">
+          <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
             <div class="dropdown-menu bg-transparent border-0">
               <a href="signin.html" class="dropdown-item">Sign In</a>
@@ -90,7 +90,7 @@ SESSION_start();
               <a href="404.html" class="dropdown-item">404 Error</a>
               <a href="blank.html" class="dropdown-item">Blank Page</a>
             </div>
-          </div>
+          </div> -->
         </div>
       </nav>
     </div>
@@ -315,26 +315,7 @@ SESSION_start();
 
 
       <!-- Footer Start -->
-      <div class="container-fluid pt-4 px-4">
-        <div class="bg-secondary rounded-top p-4">
-          <div class="row">
-
-            <div class="col-12 col-sm-6 text-center text-sm-start">
-              &copy; <a href="#">Scelus-nunitare</a>, All Right Reserved.
-            </div>
-            <div class="col-12 col-sm-6 text-center text-sm-end">
-              <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-
-
-              Designed By <a href="#">Group-NNAS</a>
-              <br>
-              Distributed by: <a href="#" target="_blank">NNAS</a>
-
-
-            </div>
-          </div>
-        </div>
-      </div>
+      
       <!-- Footer End -->
     </div>
     <!-- Content End -->
