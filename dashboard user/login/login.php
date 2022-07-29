@@ -31,6 +31,13 @@
                                 <input type="password" class="form-control" name="pass" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Password</label>
                             </div>
+                            <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
+                                <i class="fa fa-exclamation-circle me-2"></i>
+                                **<?php
+                                if(isset($_GET['err'])){
+                                    echo $_GET['err'];}?> 
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>  
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
