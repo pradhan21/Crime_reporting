@@ -86,6 +86,8 @@ SESSION_start();
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+      <!-- ajax for search bar -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -149,7 +151,8 @@ SESSION_start();
                     <i class="fa fa-bars"></i>
                 </a>
                 <form class="d-none d-md-flex ms-4" >
-                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+                    &nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control bg-dark border-0" name="search" id="search_text" type="search" placeholder="Search..." required>
+                    <button type="submit" class="btn border-0"><i class="bi bi-search"></i></button>
                 </form>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
@@ -387,12 +390,12 @@ SESSION_start();
                 <div class="container-fluid pt-4 px-4">
                     <div class="row g-4">
                         <div class="col-sm-12 col-xl-6">
-                            <div class="bg-secondary rounded h-100 p-4">
-                                <h2 class="mb-4">Criminal Details </h2>
-                                <form>
+                            <div class="bg-secondary rounded h-100 p-4" id="deets">
+                                <h2 class="mb-4" >Criminal Details1 </h2>
+                                <form >
                                 <div class="mb-3">
-                                <h4 class="mb-4">Image : </h4>
-                                        <?php echo "<img src= '$image'/>";?>
+                                    <h4 class="mb-4">Image : </h4>
+                                    <?php echo "<img src= '$image'/>";?>
                                         
                                     </div>
                                     <div class="mb-3">
@@ -446,35 +449,35 @@ SESSION_start();
                                         <label for="exampleInputPassword1" class="form-label">Records :</label>
                                         <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $caseno;?>">
                                     </div>
-                                    <hr>
-                                    
+                                    <hr>   
                                 </form>
                             </div>
-                    </div>  
+                        </div>  
 
-                    <div class="col-sm-12 col-xl-6" >
+                        <div class="col-sm-12 col-xl-6" >
                         <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Criminal details
                             
                             </h6>
-                             
-                            <form method="POST" action= "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                            <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
+                                <i class="fa fa-exclamation-circle me-2"></i>
+                                **<?php
+                                if(isset($_GET['success'])){
+                                    echo $_GET['success'];}?> 
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>  
+                            <form method="POST" action= "detailsform.php" enctype = "multipart/form-data">
                             <div class="row mb-3">
-                                    <label for="caseno1" class="col-sm-2 col-form-label">Case no :</label>
+                                    <label for="caseno1" class="col-sm-2 col-form-label">Image :</label>
                                     <div class="col-sm-10" >
-                                        <input type="text" class="form-control" id="caseno1" name ="caseno" value="<?php echo $caseno;?>"  >
-                                        <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                                <i class="fa fa-exclamation-circle me-2"></i>
-                                            **<?php echo $casenoErr;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div> 
+                                        <input type="file" class="form-control" id="caseno1" name ="image"   >
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="row mb-3">
                                     <label for="first_name" class="col-sm-2 col-form-label" >Criminal Name :</label>
                                     <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="first_name" name="f_name" value="<?php echo $f_name;?>">
+                                    <input type="text" class="form-control" id="first_name" name="f_name">
 
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                         <i class="fa fa-exclamation-circle me-2"></i>
@@ -487,7 +490,7 @@ SESSION_start();
                                 <div class="row mb-3">
                                     <label for="age1" class="col-sm-2 col-form-label" >Age :</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="age1" name="age" value="<?php echo $age;?>" >
+                                        <input type="text" class="form-control" id="age1" name="age"  >
                                             <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-exclamation-circle me-2"></i>
                                                 **<?php echo $ageErr;?> 
@@ -500,7 +503,7 @@ SESSION_start();
                                 <div class="row mb-3">
                                     <label for="height1" class="col-sm-2 col-form-label" >Height :</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="height1" name="height" value="<?php echo $height;?>" >
+                                        <input type="text" class="form-control" id="height1" name="height"  >
                                             <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-exclamation-circle me-2"></i>
                                                 **<?php echo $heightErr;?> 
@@ -513,7 +516,7 @@ SESSION_start();
                                 <div class="row mb-3">
                                     <label for="weight1" class="col-sm-2 col-form-label" >Weight :</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="weight1" name="weight" value="<?php echo $weight;?>" >
+                                        <input type="text" class="form-control" id="weight1" name="weight"  >
                                             <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-exclamation-circle me-2"></i>
                                                 **<?php echo $weightErr;?> 
@@ -526,7 +529,7 @@ SESSION_start();
                                 <div class="row mb-3">
                                     <label for="D.O.B" class="col-sm-2 col-form-label">Date of Birth :</label>
                                     <div class="col-sm-10">
-                                        <input type="date" class="form-control" id="D.O.B" name ="date" value="<?php echo $datename;?>" >
+                                        <input type="date" class="form-control" id="D.O.B" name ="date"  >
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-exclamation-circle me-2"></i>
                                             **<?php echo $dateErr;?> 
@@ -539,43 +542,43 @@ SESSION_start();
                                     <legend class="col-form-label col-sm-2 pt-0">Hair type :</legend>
                                     <div class="col-sm-10">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="1A") echo "checked";?> 
-                                                id="gridRadios1" value="option1" checked >
+                                            <input class="form-check-input" type="radio" name="hair" 
+                                                id="gridRadios1" value="1A" checked >
                                             <label class="form-check-label" for="gridRadios1">
                                                 1A
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="1B") echo "checked";?>
-                                                id="gridRadios2" value="option2" >
+                                            <input class="form-check-input" type="radio" name="hair" 
+                                                id="gridRadios2" value="1B" >
                                             <label class="form-check-label" for="gridRadios2">
                                                 1B
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="1C") echo "checked";?>
-                                                id="gridRadios2" value="option2" >
+                                            <input class="form-check-input" type="radio" name="hair" 
+                                                id="gridRadios2" value="1C" >
                                             <label class="form-check-label" for="gridRadios2">
                                                 1C
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="2A") echo "checked";?>
-                                                id="gridRadios2" value="option2" >
+                                            <input class="form-check-input" type="radio" name="hair" 
+                                                id="gridRadios2" value="2A" >
                                             <label class="form-check-label" for="gridRadios2">
                                                 2A
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="2B") echo "checked";?>
-                                                id="gridRadios2" value="option2" >
+                                            <input class="form-check-input" type="radio" name="hair" 
+                                                id="gridRadios2" value="2B" >
                                             <label class="form-check-label" for="gridRadios2">
                                                 2B
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="hair" <?php if (isset($hair) && $hair=="2C and above") echo "checked";?>
-                                                id="gridRadios2" value="option2" >
+                                            <input class="form-check-input" type="radio" name="hair
+                                                id="gridRadios2" value="2C and above" >
                                             <label class="form-check-label" for="gridRadios2">
                                                 2C and above
                                             </label>
@@ -593,22 +596,22 @@ SESSION_start();
                                     <legend class="col-form-label col-sm-2 pt-0">Gender :</legend>
                                     <div class="col-sm-10">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?>
-                                                id="gridRadios1" value="option1" checked >
+                                            <input class="form-check-input" type="radio" name="gender"
+                                                id="gridRadios1" value="male" checked >
                                             <label class="form-check-label" for="gridRadios1">
                                                 male
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?>
-                                                id="gridRadios2" value="option2" >
+                                            <input class="form-check-input" type="radio" name="gender" 
+                                                id="gridRadios2" value="female" >
                                             <label class="form-check-label" for="gridRadios2">
                                                 female
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?>
-                                                id="gridRadios2" value="option2" >
+                                            <input class="form-check-input" type="radio" name="gender" 
+                                                id="gridRadios2" value="other" >
                                             <label class="form-check-label" for="gridRadios2">
                                                 other
                                             </label>
@@ -627,7 +630,7 @@ SESSION_start();
                                     <label for="crimeD1" class="col-sm-2 col-form-label">Crime Description/(acts and sections)</label>
                                     <div class="col-sm-10">
                                         <!--<input type="textarea" class="form-control" id="crimeD1" name ="crimeD" value="">-->
-                                        <textarea class="form-control" placeholder="Description" id="floatingTextarea" name ="crimeD" style="height: 150px;" value="<?php echo $crimeD;?>" ></textarea>
+                                        <textarea class="form-control" placeholder="Description" id="floatingTextarea" name ="crimeD" style="height: 150px;"  ></textarea>
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-exclamation-circle me-2"></i>
                                             **<?php echo $crimeDErr;?> 
@@ -639,7 +642,7 @@ SESSION_start();
                                 <div class="row mb-3">
                                     <label for="race" class="col-sm-2 col-form-label" >Race :</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="race" name="Race" value="<?php echo $Race;?>" >
+                                        <input type="text" class="form-control" id="race" name="Race"  >
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                         <i class="fa fa-exclamation-circle me-2"></i>
                                             **<?php echo $RaceErr;?> 
@@ -651,7 +654,7 @@ SESSION_start();
                                 <div class="row mb-3">
                                     <label for="skin" class="col-sm-2 col-form-label" >Skin Color :</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="skin" name="Skin" value="<?php echo $Skin;?>" >
+                                        <input type="text" class="form-control" id="skin" name="Skin"  >
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                         <i class="fa fa-exclamation-circle me-2"></i>
                                             **<?php echo $SkinErr;?> 
@@ -686,22 +689,22 @@ SESSION_start();
                                     </div>
                                 </div>
                                 <hr>
-                                <button type="submit" class="btn btn-primary" >Submit</button>
+                                <button type="submit" class="btn btn-primary" name="submit" >Submit</button>
                                 <button type="reset" class="btn btn-success" > Reset </button>
                             </form>
                             <?php  
-                        //$servername = "localhost";
-                       // $username = "root";
-                        //$password = "";
-                       // $dbname = "crime_db";
+                        $servername = "localhost";
+                       $username = "root";
+                        $password = "";
+                       $dbname = "crime_db";
 
-                       // $conn = new mysqli($servername,$username, $password, $dbname);
+                       $conn = new mysqli($servername,$username, $password, $dbname);
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
                                             $sql="INSERT into criminal_details(records,criminal_name,age,height,weight,gender,hair_type,skin_color,race,description) VALUES ('$caseno','$f_name','$age','$height','$weight','$gender','$hair','$Skin','$Race','$crimeD')";
                                           
-                                       
+                                    
                                       if(mysqli_query($conn, $sql)){
                                           echo "<script>alert(data stored in a database successfully.)</script>";
                                       } else{
@@ -738,7 +741,22 @@ SESSION_start();
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+    <script type="text/javascript">
+            $(document).ready(function(){
+                $("#search_text").keyup(function(){
+                    var input = $(this).val();
+                        $.ajax({
+                            url:"action.php",
+                            method: "POST",
+                            data: {input:input},
 
+                            success:function(response){
+                                $("#deets").html(response);
+                            }
+                        });
+                });
+            });
+        </script>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
