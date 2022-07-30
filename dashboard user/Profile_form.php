@@ -232,50 +232,50 @@ if (isset($_POST['upload'])) {
         </div>
         <?php  
                   
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//first name check
-                      if (emptyempty($_POST["f_name"])) {  
-                        $f_Err = "Name is required";  
-                      } else {  
-                      $f_name = input_data($_POST["f_name"]);  
-                          // check if name only contains letters and whitespace  
-                          if (!preg_match("/^[a-zA-Z ]*$/",$f_name)) {  
-                              $f_Err = "Only alphabets and white space are allowed";  
-                          }  
-                      }  
-//;last name check
-                    if (empty($_POST["l_name"])) {  
-                      $l_Err = "Name Field is required";  
-                    } else {  
+//                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// //first name check
+//                       if (emptyempty($_POST["f_name"])) {  
+//                         $f_Err = "Name is required";  
+//                       } else {  
+//                       $f_name = input_data($_POST["f_name"]);  
+//                           // check if name only contains letters and whitespace  
+//                           if (!preg_match("/^[a-zA-Z ]*$/",$f_name)) {  
+//                               $f_Err = "Only alphabets and white space are allowed";  
+//                           }  
+//                       }  
+// //;last name check
+//                     if (empty($_POST["l_name"])) {  
+//                       $l_Err = "Name Field is required";  
+//                     } else {  
                         
-                      $l_name = input_data($_POST["l_name"]);  
-                      if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name)) {  
-                        $l_Err = "Only letters and white space allowed";  
-                      }  
-                    }  
- //email check                   
-                    if (empty($_POST["email"])) {  
-                    $emailErr = "date field is required";  
-                  } else {  
-                    $email = input_data($_POST["email"]);  
-                    if (empty($_POST["date"])) {  
-                        $emailErr = "date-feild is required";  
-                      }
-                  }  
+//                       $l_name = input_data($_POST["l_name"]);  
+//                       if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name)) {  
+//                         $l_Err = "Only letters and white space allowed";  
+//                       }  
+//                     }  
+//  //email check                   
+//                     if (empty($_POST["email"])) {  
+//                     $emailErr = "date field is required";  
+//                   } else {  
+//                     $email = input_data($_POST["email"]);  
+//                     if (empty($_POST["date"])) {  
+//                         $emailErr = "date-feild is required";  
+//                       }
+//                   }  
 
-//address check
-                  if (empty($_POST["address"])) {  
-                    $addressErr = "Address is required";  
-                  }else {  
-                    $address = input_data($_POST["address"]);  
-                  }  
-                 } 
+// //address check
+//                   if (empty($_POST["address"])) {  
+//                     $addressErr = "Address is required";  
+//                   }else {  
+//                     $address = input_data($_POST["address"]);  
+//                   }  
+//                  } 
                   
-                function input_data($data) {  
-                  $data = trim($data);  
-                  $data = stripslashes($data);  
-                  $data = htmlspecialchars($data);  
-                  return $data; 
+//                 function input_data($data) {  
+//                   $data = trim($data);  
+//                   $data = stripslashes($data);  
+//                   $data = htmlspecialchars($data);  
+//                   return $data; 
          
                 }  
               ?>

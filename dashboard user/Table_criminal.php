@@ -220,157 +220,157 @@ include("database_handler/select_user.php");
             <!-- Navbar End -->
             <?php  
                   
-                  if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-                  if (empty($_POST["f_name"])) {  
-                    $f_Err = "Name Field is required";  
-                  } else {  
-                    $f_name = test_input($_POST["f_name"]);  
+//                   if ($_SERVER["REQUEST_METHOD"] == "POST") {  
+//                   if (empty($_POST["f_name"])) {  
+//                     $f_Err = "Name Field is required";  
+//                   } else {  
+//                     $f_name = test_input($_POST["f_name"]);  
                       
-                    if (!preg_match("/^[a-zA-Z-' ]*$/",$f_name)) {  
-                      $f_Err = "Only letters and white space allowed";  
-                    }  
-                  }  
-                    if (empty($_POST["l_name"])) {  
-                      $l_Err = "Name Field is required";  
-                    } else {  
+//                     if (!preg_match("/^[a-zA-Z-' ]*$/",$f_name)) {  
+//                       $f_Err = "Only letters and white space allowed";  
+//                     }  
+//                   }  
+//                     if (empty($_POST["l_name"])) {  
+//                       $l_Err = "Name Field is required";  
+//                     } else {  
                         
-                      $l_name = test_input($_POST["l_name"]);  
-                      if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name)) {  
-                        $l_Err = "Only letters and white space allowed";  
-                      }  
-                    }  
-                    if (empty($_POST["email"])) {  
-                    $dateErr = "date field is required";  
-                  } else {  
-                    $date = test_input($_POST["date"]);  
-                    if (empty($_POST["date"])) {  
-                        $dateErr = "date-feild is required";  
-                      }
-                  }  
-//race check
-                if (empty($_POST["Race"])) {  
-                    $RaceErr = "Race is required";  
-                } else {  
-                    $Race = test_input($_POST["Race"]);  
+//                       $l_name = test_input($_POST["l_name"]);  
+//                       if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name)) {  
+//                         $l_Err = "Only letters and white space allowed";  
+//                       }  
+//                     }  
+//                     if (empty($_POST["email"])) {  
+//                     $dateErr = "date field is required";  
+//                   } else {  
+//                     $date = test_input($_POST["date"]);  
+//                     if (empty($_POST["date"])) {  
+//                         $dateErr = "date-feild is required";  
+//                       }
+//                   }  
+// //race check
+//                 if (empty($_POST["Race"])) {  
+//                     $RaceErr = "Race is required";  
+//                 } else {  
+//                     $Race = test_input($_POST["Race"]);  
                     
-                    if (!preg_match("/^[a-zA-Z-' ]*$/",$Race)) {  
-                    $RaceErr = "Only letters and white space allowed";  
-                    }  
-                }  
-//Skin check    
-                if (empty($_POST["Skin"])) {  
-                    $SkinErr = "Skin color is required";  
-                } else {  
-                    $Skin = test_input($_POST["Skin"]);  
+//                     if (!preg_match("/^[a-zA-Z-' ]*$/",$Race)) {  
+//                     $RaceErr = "Only letters and white space allowed";  
+//                     }  
+//                 }  
+// //Skin check    
+//                 if (empty($_POST["Skin"])) {  
+//                     $SkinErr = "Skin color is required";  
+//                 } else {  
+//                     $Skin = test_input($_POST["Skin"]);  
                     
-                    if (!preg_match("/^[a-zA-Z-' ]*$/",$Skin)) {  
-                    $SkinErr = "Only letters and white space allowed";  
-                    }  
-                }  
+//                     if (!preg_match("/^[a-zA-Z-' ]*$/",$Skin)) {  
+//                     $SkinErr = "Only letters and white space allowed";  
+//                     }  
+//                 }  
 
-//case no error check
-                  if (empty($_POST["caseno"])) {  
-                    $casenoErr = "case no is required";  
-                  } 
-                  if (empty($_POST["caseno"])) {  
-                    $caseno = "";  
-                  } else {  
-                    $caseno = test_input($_POST["caseno"]);  
-                    if (preg_match("/^[a-zA-Z-' ]*$/",$caseno)) {  
-                      $casenoErr = "Invalid number";  
-                    }  
-                  }  
-//age check
-                  if (empty($_POST["age"])) {  
-                    $ageErr = "age is required";  
-                  } 
-                  if (empty($_POST["age"])) {  
-                    $age = "";  
-                  } else {  
-                    $age = test_input($_POST["age"]);  
-                    if (preg_match("/^[a-zA-Z-' ]*$/",$age)) {  
-                      $ageErr = "Invalid number";  
-                    }  
-                  }  
-//weight check                  
-                  if (empty($_POST["weight"])) {  
-                    $weightErr = "weight is required";  
-                  } 
-                  if (empty($_POST["weight"])) {  
-                    $weight = "";  
-                  } else {  
-                    $weight = test_input($_POST["weight"]);  
-                    if (preg_match("/^[a-zA-Z-' ]*$/",$weight)) {  
-                      $weightErr = "Invalid number";  
-                    }  
-                  }  
-//height check
-                if (empty($_POST["height"])) {  
-                    $heightErr = "height is required";  
-                } 
-                if (empty($_POST["height"])) {  
-                    $height = "";  
-                } else {  
-                    $height = test_input($_POST["height"]);  
-                    if (preg_match("/^[a-zA-Z-' ]*$/",$height)) {  
-                    $heightErr = "Invalid number";  
-                    }  
-                }  
-//mobile no error check
-                  if (empty($_POST["mobile"])) {  
-                    $mobileErr = "Mobile no is required";  
-                  } 
-                  if (empty($_POST["mobile"])) {  
-                    $mobile = "";  
-                  } else {  
-                    $mobile = test_input($_POST["mobile"]);  
-                    if (!preg_match( '/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/' ,$mobile)) {  
-                      $mobileErr = "Invalid mobile no";  
-                    }  
-                  } 
+// //case no error check
+//                   if (empty($_POST["caseno"])) {  
+//                     $casenoErr = "case no is required";  
+//                   } 
+//                   if (empty($_POST["caseno"])) {  
+//                     $caseno = "";  
+//                   } else {  
+//                     $caseno = test_input($_POST["caseno"]);  
+//                     if (preg_match("/^[a-zA-Z-' ]*$/",$caseno)) {  
+//                       $casenoErr = "Invalid number";  
+//                     }  
+//                   }  
+// //age check
+//                   if (empty($_POST["age"])) {  
+//                     $ageErr = "age is required";  
+//                   } 
+//                   if (empty($_POST["age"])) {  
+//                     $age = "";  
+//                   } else {  
+//                     $age = test_input($_POST["age"]);  
+//                     if (preg_match("/^[a-zA-Z-' ]*$/",$age)) {  
+//                       $ageErr = "Invalid number";  
+//                     }  
+//                   }  
+// //weight check                  
+//                   if (empty($_POST["weight"])) {  
+//                     $weightErr = "weight is required";  
+//                   } 
+//                   if (empty($_POST["weight"])) {  
+//                     $weight = "";  
+//                   } else {  
+//                     $weight = test_input($_POST["weight"]);  
+//                     if (preg_match("/^[a-zA-Z-' ]*$/",$weight)) {  
+//                       $weightErr = "Invalid number";  
+//                     }  
+//                   }  
+// //height check
+//                 if (empty($_POST["height"])) {  
+//                     $heightErr = "height is required";  
+//                 } 
+//                 if (empty($_POST["height"])) {  
+//                     $height = "";  
+//                 } else {  
+//                     $height = test_input($_POST["height"]);  
+//                     if (preg_match("/^[a-zA-Z-' ]*$/",$height)) {  
+//                     $heightErr = "Invalid number";  
+//                     }  
+//                 }  
+// //mobile no error check
+//                   if (empty($_POST["mobile"])) {  
+//                     $mobileErr = "Mobile no is required";  
+//                   } 
+//                   if (empty($_POST["mobile"])) {  
+//                     $mobile = "";  
+//                   } else {  
+//                     $mobile = test_input($_POST["mobile"]);  
+//                     if (!preg_match( '/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/' ,$mobile)) {  
+//                       $mobileErr = "Invalid mobile no";  
+//                     }  
+//                   } 
                   
-//comment check description checkas well
-                  if (empty($_POST["comment"])) {  
-                    $comment = "";  
-                  } else {  
-                    $comment = test_input($_POST["comment"]);  
-                  }  
-//hair type check
-                if (empty($_POST["hair"])) {  
-                    $hairErr = "hair is required";  
-                } else {  
-                    $hair = test_input($_POST["hair"]);  
-                }  
+// //comment check description checkas well
+//                   if (empty($_POST["comment"])) {  
+//                     $comment = "";  
+//                   } else {  
+//                     $comment = test_input($_POST["comment"]);  
+//                   }  
+// //hair type check
+//                 if (empty($_POST["hair"])) {  
+//                     $hairErr = "hair is required";  
+//                 } else {  
+//                     $hair = test_input($_POST["hair"]);  
+//                 }  
                 
- //gender check                 
-                  if (empty($_POST["gender"])) {  
-                    $genderErr = "Gender is required";  
-                  } else {  
-                    $gender = test_input($_POST["gender"]);  
-                  }  
-//crime description check
-                if (empty($_POST["crimeD"])) {  
-                    $crimeDErr = "Description is required";  
-                } else {  
-                    $crimeD = test_input($_POST["crimeD"]);  
+//  //gender check                 
+//                   if (empty($_POST["gender"])) {  
+//                     $genderErr = "Gender is required";  
+//                   } else {  
+//                     $gender = test_input($_POST["gender"]);  
+//                   }  
+// //crime description check
+//                 if (empty($_POST["crimeD"])) {  
+//                     $crimeDErr = "Description is required";  
+//                 } else {  
+//                     $crimeD = test_input($_POST["crimeD"]);  
                     
-                    //if (!preg_match("/^[a-zA-Z-' ]*$/",$crimeD)) {  
-                    //$f_Err = "Only letters and white space allowed";  
-                   // }  
-                }  
-//address check
-                  if (empty($_POST["address"])) {  
-                    $addressErr = "Address is required";  
-                  }else {  
-                    $address = test_input($_POST["address"]);  
-                  }  
-                 }  
-                function test_input($data) {  
-                  $data = trim($data);  
-                  $data = stripslashes($data);  
-                  $data = htmlspecialchars($data);  
-                  return $data; 
-                }  
+//                     //if (!preg_match("/^[a-zA-Z-' ]*$/",$crimeD)) {  
+//                     //$f_Err = "Only letters and white space allowed";  
+//                    // }  
+//                 }  
+// //address check
+//                   if (empty($_POST["address"])) {  
+//                     $addressErr = "Address is required";  
+//                   }else {  
+//                     $address = test_input($_POST["address"]);  
+//                   }  
+//                  }  
+//                 function test_input($data) {  
+//                   $data = trim($data);  
+//                   $data = stripslashes($data);  
+//                   $data = htmlspecialchars($data);  
+//                   return $data; 
+//                 }  
             ?>
                         
 

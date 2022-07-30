@@ -1,7 +1,7 @@
 <?php 
 SESSION_start();
  $id=$_SESSION['id'];
- //  echo"<script>alert($id)</script>"; //to check value of id
+//  echo"<script>alert($id)</script>"; //to check value of id
   if(isset($_SESSION['id'])){
     include "connection.php";
 ?>
@@ -21,7 +21,7 @@ SESSION_start();
                   $conn = new mysqli($servername,$username, $password, $dbname);
                   if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                   }
-                  $sql = "SELECT   user_id,f_name,l_name,address,email,liscence_no from user where user_id='$id' ";
+                  $sql = "SELECT   user_id,f_name,l_name,address,email,liscence_no,image from user where user_id='$id'  ";
                   $sql2="SELECT * from user_complaints where user_id='$id' ";
                   $result = $conn->query($sql);
                   $result2 = $conn->query($sql2);
@@ -33,7 +33,7 @@ SESSION_start();
                       $last1=$row["l_name"];
                       $address1 = $row["address"];
                       $email1=$row["email"];
-                     // $phone1=$row["phone"]; 
+                     $image1=$row["image"];
                       $user_id=$row["user_id"];
                       $l_no=$row["liscence_no"];
                     }
@@ -92,7 +92,7 @@ SESSION_start();
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
           <div class="position-relative">
-          <img class="rounded-circle"  src="image/Leonardo.jpg" id="output" style="width: 40px; height: 40px;" onerror="this.style.display='none'"/>
+          <img class="rounded-circle" src="http://localhost/crime_reporting/dashboard%20user/image/<?php echo $image1;?>" id="output" style="width: 40px; height: 40px;" onerror="this.style.display='none'"/>
              
             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
           </div>
@@ -154,7 +154,7 @@ SESSION_start();
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="#" class="dropdown-item">
                 <div class="d-flex align-items-center">
-                  <img class="rounded-circle" src="image/Leonardo.jpg" alt="" style="width: 40px; height: 40px;">
+                  <img class="rounded-circle" src="http://localhost/crime_reporting/dashboard%20user/image/<?php echo $image1;?>" alt="" style="width: 40px; height: 40px;">
                   <div class="ms-2">
                     <h6 class="fw-normal mb-0">leo sent you a message</h6>
                     <small>15 minutes ago</small>
@@ -213,7 +213,7 @@ SESSION_start();
           </div>
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <img class="rounded-circle me-lg-2" src="image/Leonardo.jpg" alt="" style="width: 40px; height: 40px;">
+              <img class="rounded-circle me-lg-2" src="http://localhost/crime_reporting/dashboard%20user/image/<?php echo $image1;?>" alt="" style="width: 40px; height: 40px;">
               <span class="d-none d-lg-inline-flex"><?php echo $username?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
@@ -304,7 +304,7 @@ SESSION_start();
         <div class="bg-secondary text-center rounded p-4">
           <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Report History</h6>
-            <a href="index.php">Show Less</a>
+            <a href="full_show.php">Show All</a>
           </div>
           
           <div class="table-responsive">
@@ -339,7 +339,7 @@ SESSION_start();
                   <td><?php echo $u_id;?></td>
                   <td><?php echo $c_place;?></td>
                   <td><?php echo $c_type;?></td>
-                  <td><img src="http://localhost/CC/crime_reporting/dashboard%20template/<?php echo $image2;?>"onerror="this.style.display='none'"/></td>
+                  <td><img src="http://localhost/crime_reporting/dashboard%20template/<?php echo $image2;?>"onerror="this.style.display='none'"/></td>
                   <td>On-Going</td>
 
 
@@ -440,6 +440,20 @@ SESSION_start();
                   <span class="input-group-text" id="basic-addon1">@</span>
                   <input type="text" class="form-control" placeholder="location"  aria-describedby="basic-addon1" name ="location">
                   
+                </div>
+                <div class="input-group mb-3">
+                <select name="id"  class="form-control" id="floatingText">
+                    <?php 
+                    include_once "connection.php";
+                    $sql="SELECT * FROM crime_type";
+                    $result=mysqli_query($conn,$sql);
+                    if(mysqli_num_rows($result)>0){
+                    while($row=mysqli_fetch_array($result)){ 
+                        
+                    ?>
+                    <option value="<?php echo $row['crime_id'];?>" class="form-control" id="floatingText"><?php echo $row['crime']; ?></option>
+                    <?php }} ?>
+                </select>
                 </div>
 
                 <!--  <div class="d-flex mb-2">
