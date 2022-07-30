@@ -124,6 +124,7 @@ if (isset($_POST['upload'])) {
                     $email1=$row["email"];
                     $image1=$row["image"]; 
                   }
+                  echo "<script>alert($last1);</script>";
                 }
           ?>
 
@@ -250,7 +251,7 @@ if (isset($_POST['upload'])) {
                   <h6 class="mb-0" style="color:white">Phone</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                <?php echo $phone1;?>
+                <?php// echo $phone1;?>
                 </div>
               </div>
 
@@ -261,7 +262,7 @@ if (isset($_POST['upload'])) {
                   <h6 class="mb-0" style="color:white">Mobile</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                <?php echo $phone1;?>
+                <?php// echo $phone1;?>
                 </div>
               </div>
 
@@ -280,7 +281,7 @@ if (isset($_POST['upload'])) {
 
               <div class="row">
                 <div class="col-sm-12">
-                  <a class="btn btn-info " target="__blank" href="Profile_form.php">Edit</a><!-- EDIT 111111111111111111111-->
+                  <a class="btn btn-info " target="__blank" href="Profile_edit.php?id=<?php echo $id;?>">Edit</a><!-- EDIT 111111111111111111111-->
                 </div>
               </div>
             </div>

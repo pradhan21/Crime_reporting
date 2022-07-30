@@ -1,9 +1,58 @@
 <?php
-SESSION_start();
-$id=$_SESSION['id'];
-  echo"<script>alert($id)</script>"; //to check value of id
- if(isset($_SESSION['id'])){
-   include "connection.php";
+$nameErr = "";  
+$emailErr = "";  
+$genderErr = "";  
+$phoneErr = "";  
+$mobileErr="";
+$addressErr="";
+$l_Err="";
+$f_Err="";
+$name = "";  
+$f_name1="";
+$l_name1="";
+$email1 = "";  
+$gender = "";  
+$comment = "";  
+$phone = "";  
+$mobile="";
+$address1="";
+
+//$gg=$_GET['id'];
+
+//echo"<script>alert($gg);</script>";
+  // include ("connection.php");
+   $servername = "localhost";
+   $username = "root";
+   $password = "";
+   $dbname = "crime_db";
+   $first1="";
+   $last1="";
+   $phone1="";
+   $email1="";  
+   $address1="";   
+   $image1=""; 
+   $id="";      
+   $conn = new mysqli($servername,$username, $password, $dbname);
+   if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
+   }
+   //echo"<script>alert($gg);</script>";
+   $sql = "SELECT * from user WHERE user_id='3' ";
+   $result = $conn->query($sql);
+
+   if ($result->num_rows > 0) {
+     // output data of each row
+     while($row = $result->fetch_array()) {
+       $first1 = $row["f_name"];
+       $last1=$row["l_name"];
+       $address1 = $row["address"];
+       $email1=$row["email"];
+       $image1=$row["image"]; 
+       $id=$row["user_id"];
+     }
+     echo"<script>alert($id);</script>";
+   }
+  
+ echo "<script>alert('$first1')</script>"; 
 error_reporting(0);
 $filename = $_FILES["uploadfile"]["name"];
 $folder = "image/" . $filename;
@@ -31,7 +80,7 @@ if (isset($_POST['upload'])) {
     // Get all the submitted data from the form
     //$sql = "INSERT INTO image (filename) VALUES ('$target_file')";
     //$sql_2="INSERT INTO user (image) VALUES ('$filename') WHERE user_id='$id'";
-    $sql_2="UPDATE user SET  image ='$filename' WHERE user_id='$id'";
+    $sql_2="UPDATE user SET  image ='$filename' WHERE user_id='3'";
     // Execute query+
    // mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
     mysqli_query($db, $sql_2);
@@ -94,34 +143,7 @@ if (isset($_POST['upload'])) {
         </ol>
       </nav>
       <!-- /Breadcrumb -->
-      <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "crime_db";
-                $fisrt1="";
-                $last1="";
-                $phone1="";
-                $email1="";  
-                $address1="";   
-                $image1="";       
-                $conn = new mysqli($servername,$username, $password, $dbname);
-                if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
-                }
-                $sql = "SELECT f_name,l_name,address,email,image from user WHERE user_id='$id' ";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                  // output data of each row
-                  while($row = $result->fetch_assoc()) {
-                    $first1 = $row["f_name"];
-                    $last1=$row["l_name"];
-                    $address1 = $row["address"];
-                    $email1=$row["email"];
-                    $image1=$row["image"]; 
-                  }
-                }
-          ?>
+      
       <div class="row gutters-sm" style="background-color:#000000">
         <div class="col-md-4 mb-3">
           <div class=" card" style="background-color:#191c24">
@@ -210,120 +232,80 @@ if (isset($_POST['upload'])) {
             </ul>
           </div>
         </div>
-        <div class="col-md-8">
-          <div class="card mb-3">
-            <div class="card-body" style="background-color:#191c24">
-              <?php  
-                  $nameErr = "";  
-                  $emailErr = "";  
-                  $genderErr = "";  
-                  $phoneErr = "";  
-                  $mobileErr="";
-                  $addressErr="";
-                  $l_Err="";
-                  $f_Err="";
-                  $name = "";  
-                  $f_name="";
-                  $l_name="";
-                  $email = "";  
-                  $gender = "";  
-                  $comment = "";  
-                  $phone = "";  
-                  $mobile="";
-                  $address="";
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-                  if (empty($_POST["f_name"])) {  
-                    $f_Err = "Name Field is required";  
-                  } else {  
-                    $f_name = test_input($_POST["f_name"]);  
-                      
-                    if (!preg_match("/^[a-zA-Z-' ]*$/",$f_name)) {  
-                      $f_Err = "Only letters and white space allowed";  
-                    }  
-                  }  
-                    if (empty($_POST["l_name"])) {  
+        <?php  
+                  
+                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//first name check
+                      if (emptyempty($_POST["f_name1"])) {  
+                        $f_Err = "Name is required";  
+                      } else {  
+                      $f_name1 = input_data($_POST["f_name1"]);  
+                          // check if name only contains letters and whitespace  
+                          if (!preg_match("/^[a-zA-Z ]*$/",$f_name1)) {  
+                              $f_Err = "Only alphabets and white space are allowed";  
+                          }  
+                      }  
+//;last name check
+                    if (empty($_POST["l_name1"])) {  
                       $l_Err = "Name Field is required";  
                     } else {  
                         
-                      $l_name = test_input($_POST["l_name"]);  
-                      if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name)) {  
+                      $l_name1 = input_data($_POST["l_name1"]);  
+                      if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name1)) {  
                         $l_Err = "Only letters and white space allowed";  
                       }  
                     }  
-                    if (empty($_POST["email"])) {  
-                    $emailErr = "Email field is required";  
+ //email check                   
+                    if (empty($_POST["email1"])) {  
+                    $emailErr = "date field is required";  
                   } else {  
-                    $email = test_input($_POST["email"]);  
-                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {  
-                      $emailErr = "Invalid email format";  
-                    }  
+                    $email1 = input_data($_POST["email1"]);  
+                    if (empty($_POST["date"])) {  
+                        $emailErr = "date-feild is required";  
+                      }
                   }  
-                  if (empty($_POST["phone"])) {  
-                    $phone = "";  
-                  } else {  
-                    $phone = test_input($_POST["phone"]);  
-                    if (!preg_match( '/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/' ,$phone)) {  
-                      $phoneErr = "Invalid phone";  
-                    }  
 
-                  }  
-                  if (empty($_POST["mobile"])) {  
-                    $mobileErr = "Mobile no is required";  
-                  } 
-                  if (empty($_POST["mobile"])) {  
-                    $mobile = "";  
-                  } else {  
-                    $mobile = test_input($_POST["mobile"]);  
-                    if (!preg_match( '/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/' ,$mobile)) {  
-                      $mobileErr = "Invalid mobile no";  
-                    }  
-                    
-                  } 
-                  
-
-                  if (empty($_POST["comment"])) {  
-                    $comment = "";  
-                  } else {  
-                    $comment = test_input($_POST["comment"]);  
-                  }  
-                  if (empty($_POST["gender"])) {  
-                    $genderErr = "Gender is required";  
-                  } else {  
-                    $gender = test_input($_POST["gender"]);  
-                  }  
-                  if (empty($_POST["address"])) {  
+//address check
+                  if (empty($_POST["address1"])) {  
                     $addressErr = "Address is required";  
                   }else {  
-                    $address = test_input($_POST["address"]);  
+                    $address1= input_data($_POST["address1"]);  
                   }  
-                }  
-                function test_input($data) {  
+                 } 
+                  
+                function input_data($data) {  
                   $data = trim($data);  
                   $data = stripslashes($data);  
                   $data = htmlspecialchars($data);  
-                  return $data;  
+                  return $data; 
+         
                 }  
               ?>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-body" style="background-color:#191c24">
+              
               <form method="post" action= "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-
+              
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0" style="color:white">First-Name</h6>
                   </div>
-                  <div class="col-sm-9 text-secondary">
-                  <input type="text" name="f_name" value="<?php echo $f_name;?>" >
-                  <span class="error"> 
+                    <div class="col-sm-9 text-secondary">
+                    <input type="text" name="f_name1" value=<?php echo $f_name1;?>>
+                    <span class="error"> 
                   **<?php echo $f_Err;?> 
-                  </span>  
-                  </div>
-                </div>
+                    </span>  
+                    </div>
+                 </div>
                 <hr>
+                
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0" style="color:white">Last-Name</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <input type="text" name="l_name" value="<?php echo $l_name;?>" >
+                  <input type="text" name="l_name1"  value=<?php echo $l_name1;?>>
                   <span class="error"> 
                   **<?php echo $l_Err;?> 
                   </span>  
@@ -336,70 +318,36 @@ if (isset($_POST['upload'])) {
                     <h6 class="mb-0" style="color:white">Email</h6>
                   </div>
                   <div class="col-sm-9 text-secondary" >
-                    <input type="text" name ="email" value="<?php echo $email;?>" >
+                    <input type="text" name ="email1" value=<?php echo $email1;?> >
                     <span class = "error">
-                    **<?php echo $emailErr;?>
+                    **<?php// echo $emailErr;?>
                     </span>
                   </div>
                 </div>
                 <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0" style="color:white">Gender</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female" style="background-color:#BEBEBE"> Female  
-                  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male" style="background-color:#BEBEBE"> Male  
-                  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other" style="background-color:#BEBEBE"> Other
-                    <span class="error">
-                    **<?php echo $genderErr;?>
-                    </span>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0" style="color:white">Phone</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                    <input type = "text" name = "phone" value="<?php echo $phone;?>" >
-                    <span class ="error">
-                    *<?php echo $phoneErr;?>
-                    </span>
-                  </div>
-                </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0" style="color:white">Mobile</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                    <input type="text" name="mobile" value ="<?php echo $mobile;?>">
-                    <span class="error">
-                    **<?php echo $mobileErr;?>
-                    </span>
-                  </div>
-                </div>
-                <hr>
+                
+                
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0" style="color:white">Address</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <input type="text" name ="address" value="<?php echo $address;?>" >
+                    <input type="text" name ="address1" value=<?php echo $address1;?> >
                     <span class="error">
                     **<?php echo $addressErr;?>
                     </span>
                   </div>
                 </div>
                 <br>
+
                 <div class="row">
                   <div class="col-sm-12">
 
-                    <button type="submit" class="btn btn-primary" name="submitform">Send</button>
+                    <button type="submit" class="btn btn-primary" name="submitform">Submit</button>
                     <button type="reset" class="btn btn-info">Reset</button><!-- EDIT 111111111111111111111-->
                   </div>
-                     <?php  
+              </div>
+              <?php  
                         $servername = "localhost";
                         $username = "root";
                         $password = "";
@@ -409,47 +357,47 @@ if (isset($_POST['upload'])) {
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
+                                        /// echo"<script>alert($gg);</script>";
+                                         echo"<script>alert('$f_name1');</script>";
                                             $sql="UPDATE user
-                                            SET f_name = '$f_name', l_name = '$l_name', email='$email', address='$address',phone='$mobile'
-                                            WHERE email = '$email';";
+                                            SET f_name1 = '$f_name1', l_name1 = '$l_name1', email1='$email1', address1='$address1'
+                                            WHERE user_id = '3'";
                                           
                                        
                                       if(mysqli_query($conn, $sql)){
-                                          echo "<script>alert(data stored in a database successfully.)</script>";
+                                         // echo "<script>alert(1111);</script>";
+                                          
                                       } else{
-                                          echo "<script>alert(ERROR couldnt send form data.$sql. mysqli_error($conn);)</script> ";
+                                         echo "error";
                                               
                                       }
-                                      // Close connection
+                                      
                                       
                          
-                                //echo "<h2> Your Input: </h2>";  
-                                //echo $name;  
-                                //echo "<br>";  
-                                //echo $email;  
-                                //echo "<br>";  
-                                //echo $phone;  
-                                //echo "<br>";  
-                                //echo $mobile;  
-                                //echo "<br>";  
-                                //echo $gender; 
-                                //echo "<br>";
-                                //echo $address; 
-                                //echo "<br>";
+                                echo "<h2> Your Input: </h2>";  
+                                echo $f_name;  
+                                echo "<br>";  
+                                echo $email;  
+                                echo "<br>";  
+                                
+                                echo $address; 
+                                echo "<br>";
+
+
                                 if (isset($_POST['submitform']))  
                                 {       
                       ?>  
                           <script type="text/javascript">
-                            window.location = "profile.php";
+                            window.location = "profile_form.php";
                           </script>      
-                        </div>
-                        <?php
-                              }
-                            ?>
+                        
+                         <?php
+                               }  
+                            ?>              
               </form>
             </div>
           </div>
-                              
+          
           <div class="row gutters-sm" style="background-color:#000000 " >
             <div class="col-sm-6 mb-3">
               <div class="card h-100">
@@ -600,8 +548,3 @@ if (isset($_POST['upload'])) {
 </body>
 
 </html>
-<?php
- }else{
-  echo "error";
- }
-?>
