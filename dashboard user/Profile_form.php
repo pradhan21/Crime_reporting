@@ -357,7 +357,8 @@ if (isset($_POST['upload'])) {
                         $username = "root";
                         $password = "";
                         $dbname = "crime_db";
-$f_name=$_POST['f_name'];$l_name=$_POST['l_name'];$email=$_POST['email'];$address=$_POST['address'];
+                        $f_name=$_POST['f_name'];$l_name=$_POST['l_name'];
+                        $email=$_POST['email'];$address=$_POST['address'];
                         $conn = new mysqli($servername,$username, $password, $dbname);
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
