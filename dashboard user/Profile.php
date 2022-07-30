@@ -1,5 +1,9 @@
 <?php
-
+SESSION_start();
+$id=$_SESSION['id'];
+  echo"<script>alert($id)</script>"; //to check value of id
+ if(isset($_SESSION['id'])){
+   include "connection.php";
 error_reporting(0);
 $filename = $_FILES["uploadfile"]["name"];
 $folder = "image/" . $filename;
@@ -26,14 +30,14 @@ if (isset($_POST['upload'])) {
  
     // Get all the submitted data from the form
     $sql = "INSERT INTO image (filename) VALUES ('$filename')";
-    $sql_2="INSERT INTO user (filename) VALUES ('$filename')";
+    $sql_2="INSERT INTO user (image) VALUES ('$filename') where user_id='$id'";
     // Execute query+
     mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
     mysqli_query($db, $sql_2);
     // Now let's move the uploaded image into the folder: image
     if (move_uploaded_file($tempname, $folder)) {
     ?>
-    <a href ="index.html">press here to get redirected</a>
+    <a href ="index.php"><script>alert("press here to get redirected")</script><?php header('Location:http://localhost/crime_reporting/dashboard%20user/index.php')?></a>
     <?php
     } else {
         echo " <script> alert('Failed to upload image!')</script>";
@@ -94,6 +98,36 @@ if (isset($_POST['upload'])) {
         <div class="col-md-4 mb-3">
           <div class=" card" style="background-color:#191c24">
             <!-- COPY FROM HERE FOR COLOR-->
+            <?php
+                $servername = "localhost";
+                $username = "root";
+                $password = "";
+                $dbname = "crime_db";
+                $fisrt1="";
+                $last1="";
+                $phone1="";
+                $email1="";  
+                $address1="";   
+                $image1="";       
+                $conn = new mysqli($servername,$username, $password, $dbname);
+                if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
+                }
+                $sql = "SELECT f_name,l_name,address,email,image from user WHERE user_id='$id' ";
+                $result = $conn->query($sql);
+
+                if ($result->num_rows > 0) {
+                  // output data of each row
+                  while($row = $result->fetch_assoc()) {
+                    $first1 = $row["f_name"];
+                    $last1=$row["l_name"];
+                    $address1 = $row["address"];
+                    $email1=$row["email"];
+                    $image1=$row["image"]; 
+                  }
+                  echo "<script>alert($last1);</script>";
+                }
+          ?>
+
             <div class=" card-body">
               <div class="d-flex flex-column align-items-center text-center">
                 <!--<img src="img/user.jpg" alt="Admin" class="rounded-circle" width="150">-->
@@ -104,61 +138,21 @@ if (isset($_POST['upload'])) {
                       <span>Preview image</span>
                     </label>
                     <input id="file" type="file" onchange="loadFile(event)" />           
-                    <img src="image/Leonardo.jpg" id="output" width="200" onerror="this.style.display='none'"/>
-                    <?php
-                            $query = " select * from image ";
-                            $result = mysqli_query($db, $query);
-                     
-                            while ($data = mysqli_fetch_assoc($result)) {
-                        ?>
-                    <img src="image/<?php echo $data['filename']; ?>" id="output" width="200" onerror="this.style.display='none'"/>
-                    <?php
-                            }
-                        ?>
+                    
                     <!--<img src="https://cdn.pixabay.com/photo/2017/08/06/21/01/louvre-2596278_960_720.jpg" id="output" width="200" />--->
+                    <img src="http://localhost/crime_reporting/dashboard%20user/image/<?php echo $image1;?>" id="output" width="200"
+                      onerror="this.style.display='none'" />
+
                   </div>
                           </br>
-                        <div class ="form-group" style="background-color:#000000" >
+                  <!--      <div class ="form-group" style="background-color:#000000" >
                           <input class="form-control" type="file" name="uploadfile"  style="background-color:#000000" />
-                        </div>
+                        </div>-->
                   
-                  <button  class="btn btn-primary" type="submit" name="upload">UPLOAD</button>
+                 <!-- <button  class="btn btn-primary" type="submit" name="upload">UPLOAD</button>-->
                 </form>
-                <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "crime_db";
-                $fisrt1="";
-                $last1="";
-                $phone1="";
-                $email1="";  
-                $address1="";          
-                $conn = new mysqli($servername,$username, $password, $dbname);
-                if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
-                }
-                $sql = "select f_name,l_name,address,email,phone from user ";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                  // output data of each row
-                  while($row = $result->fetch_assoc()) {
-                    $first1 = $row["f_name"];
-                    $last1=$row["l_name"];
-                    $address1 = $row["address"];
-                    $email1=$row["email"];
-                    $phone1=$row["phone"]; 
-                    
-                  }
-                }
-                  
-                
-              
-
-          
-          ?>
                 <div class="mt-3">
-                  <h4 style="color:white"><?php echo $first1;?><?php echo $last1;?></h4>
+                  <h4 style="color:white"><?php echo $first1;?> <?php echo $last1;?></h4>
                   <p class="text-secondary mb-1">------------</p>
                   <p class="text-muted font-size-sm"><?php echo $address1;?></p>
                   
@@ -257,7 +251,7 @@ if (isset($_POST['upload'])) {
                   <h6 class="mb-0" style="color:white">Phone</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                <?php echo $phone1;?>
+                <?php// echo $phone1;?>
                 </div>
               </div>
 
@@ -268,7 +262,7 @@ if (isset($_POST['upload'])) {
                   <h6 class="mb-0" style="color:white">Mobile</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                <?php echo $phone1;?>
+                <?php// echo $phone1;?>
                 </div>
               </div>
 
@@ -287,7 +281,7 @@ if (isset($_POST['upload'])) {
 
               <div class="row">
                 <div class="col-sm-12">
-                  <a class="btn btn-info " target="__blank" href="Profile_form.php">Edit</a><!-- EDIT 111111111111111111111-->
+                  <a class="btn btn-info " target="__blank" href="Profile_edit.php?id=<?php echo $id;?>">Edit</a><!-- EDIT 111111111111111111111-->
                 </div>
               </div>
             </div>
@@ -443,3 +437,8 @@ if (isset($_POST['upload'])) {
 </body>
 
 </html>
+<?php 
+}else{
+  echo "error";
+}
+?>
