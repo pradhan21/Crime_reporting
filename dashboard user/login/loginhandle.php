@@ -20,9 +20,12 @@ SESSION_start();
                 }
             }
             else{
-                header("location:login.php");
+                header("location:login.php?err=Invalid email or password!!!");
             }            
         }
+        else{
+            header("location:login.php?err= email or password required!!!");
+        } 
     }
     mysqli_close($conn);
 ?>

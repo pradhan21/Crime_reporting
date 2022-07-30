@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -91,27 +91,33 @@
             <div class="row">
                 <div class="col-md-7 mb-5">
 
+                <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
+                                <i class="fa fa-exclamation-circle me-2"></i>
+                                **<?php
+                                if(isset($_GET['success'])){
+                                    echo $_GET['success'];}?> 
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>  
 
-
-                    <form action="#" class="p-5 bg-white">
+                    <form action="contacthandle.php" method="post" class="p-5 bg-white">
 
 
                         <div class="row form-group">
                             <div class="col-md-6 mb-3 mb-md-0">
                                 <label class="text-black" for="fname">First Name</label>
-                                <input type="text" id="fname" class="form-control">
+                                <input type="text" id="fname" name="fname"class="form-control">
                             </div>
                             <div class="col-md-6">
                                 <label class="text-black" for="lname">Last Name</label>
-                                <input type="text" id="lname" class="form-control">
+                                <input type="text" id="lname"name="lname" class="form-control">
                             </div>
                         </div>
 
                         <div class="row form-group">
 
                             <div class="col-md-12">
-                                <label class="text-black" for="email">Email</label>
-                                <input type="email" id="email" class="form-control">
+                                <label class="text-black" for="email">Contact Number</label>
+                                <input type="text" id="email" name="email"class="form-control">
                             </div>
                         </div>
 
@@ -119,20 +125,20 @@
 
                             <div class="col-md-12">
                                 <label class="text-black" for="subject">Subject</label>
-                                <input type="subject" id="subject" class="form-control">
+                                <input type="subject" id="subject"name="subject" class="form-control">
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <label class="text-black" for="message">Message</label>
-                                <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
+                                <textarea name="message" id="message" name="message"cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12">
-                                <input type="submit" value="Send Message" class="btn btn-primary py-2 px-4 text-white">
+                                <input type="submit" value="Send Message" name="submit" class="btn btn-primary py-2 px-4 text-white">
                             </div>
                         </div>
 
@@ -143,20 +149,20 @@
 
                     <div class="p-4 mb-3 bg-white">
                         <p class="mb-0 font-weight-bold">Address</p>
-                        <p class="mb-4">203 Fake St. Mountain View, San Francisco, California, USA</p>
+                        <p class="mb-4">Apex College, Baneshwor, Nepal</p>
 
                         <p class="mb-0 font-weight-bold">Phone</p>
-                        <p class="mb-4"><a href="#">+1 232 3235 324</a></p>
+                        <p class="mb-4"><a href="#">+977-9812345678</a></p>
 
                         <p class="mb-0 font-weight-bold">Email Address</p>
-                        <p class="mb-0"><a href="#">youremail@domain.com</a></p>
+                        <p class="mb-0"><a href="#">nirdesh.pradhan@apexcollege.edu.np</a></p>
 
                     </div>
 
                     <div class="p-4 mb-3 bg-white">
-                        <h3 class="h5 text-black mb-3">More Info</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa ad iure porro mollitia architecto hic consequuntur. Distinctio nisi perferendis dolore, ipsa consectetur? Fugiat quaerat eos qui, libero neque sed nulla.</p>
-                        <p><a href="#" class="btn btn-primary px-4 py-2 text-white">Learn More</a></p>
+                        <h3 class="h5 text-black mb-3">Email</h3>
+                        <p>Contact us by dirsctly mailing us</p>
+                        <p><a href="mailto:https://mail.google.com/mail/u/1/?tab=wm&ogbl#inbox?compose=CllgCJZbjGdNRtQdcdcMXvHzbcxFTvGXRXZgTbBBvXhqDzqsLTTrcldFpHgssMLcfJKWcmpbSdq" target="_blank" class="btn btn-primary px-4 py-2 text-white">Email</a></p>
                     </div>
 
                 </div>
