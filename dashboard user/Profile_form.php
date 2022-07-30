@@ -8,18 +8,17 @@ $addressErr="";
 $l_Err="";
 $f_Err="";
 $name = "";  
-$f_name1="";
-$l_name1="";
-$email1 = "";  
+$f_name="";
+$l_name="";
+$email = "";  
 $gender = "";  
 $comment = "";  
 $phone = "";  
 $mobile="";
-$address1="";
+$address="";
 
-//$gg=$_GET['id'];
-
-//echo"<script>alert($gg);</script>";
+$gg=$_GET['id'];
+echo"<script>alert($gg);</script>";
   // include ("connection.php");
    $servername = "localhost";
    $username = "root";
@@ -35,8 +34,7 @@ $address1="";
    $conn = new mysqli($servername,$username, $password, $dbname);
    if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
    }
-   //echo"<script>alert($gg);</script>";
-   $sql = "SELECT * from user WHERE user_id='3' ";
+   $sql = "SELECT * from user WHERE user_id='$gg' ";
    $result = $conn->query($sql);
 
    if ($result->num_rows > 0) {
@@ -47,12 +45,12 @@ $address1="";
        $address1 = $row["address"];
        $email1=$row["email"];
        $image1=$row["image"]; 
-       $id=$row["user_id"];
+       //$id=$row["user_id"];
      }
-     echo"<script>alert($id);</script>";
+     
    }
   
- echo "<script>alert('$first1')</script>"; 
+ echo "<script>alert($first1)</script>"; 
 error_reporting(0);
 $filename = $_FILES["uploadfile"]["name"];
 $folder = "image/" . $filename;
@@ -80,7 +78,7 @@ if (isset($_POST['upload'])) {
     // Get all the submitted data from the form
     //$sql = "INSERT INTO image (filename) VALUES ('$target_file')";
     //$sql_2="INSERT INTO user (image) VALUES ('$filename') WHERE user_id='$id'";
-    $sql_2="UPDATE user SET  image ='$filename' WHERE user_id='3'";
+    $sql_2="UPDATE user SET  image ='$filename' WHERE user_id='$gg'";
     // Execute query+
    // mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
     mysqli_query($db, $sql_2);
@@ -236,40 +234,40 @@ if (isset($_POST['upload'])) {
                   
                 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 //first name check
-                      if (emptyempty($_POST["f_name1"])) {  
+                      if (emptyempty($_POST["f_name"])) {  
                         $f_Err = "Name is required";  
                       } else {  
-                      $f_name1 = input_data($_POST["f_name1"]);  
+                      $f_name = input_data($_POST["f_name"]);  
                           // check if name only contains letters and whitespace  
-                          if (!preg_match("/^[a-zA-Z ]*$/",$f_name1)) {  
+                          if (!preg_match("/^[a-zA-Z ]*$/",$f_name)) {  
                               $f_Err = "Only alphabets and white space are allowed";  
                           }  
                       }  
 //;last name check
-                    if (empty($_POST["l_name1"])) {  
+                    if (empty($_POST["l_name"])) {  
                       $l_Err = "Name Field is required";  
                     } else {  
                         
-                      $l_name1 = input_data($_POST["l_name1"]);  
-                      if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name1)) {  
+                      $l_name = input_data($_POST["l_name"]);  
+                      if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name)) {  
                         $l_Err = "Only letters and white space allowed";  
                       }  
                     }  
  //email check                   
-                    if (empty($_POST["email1"])) {  
+                    if (empty($_POST["email"])) {  
                     $emailErr = "date field is required";  
                   } else {  
-                    $email1 = input_data($_POST["email1"]);  
+                    $email = input_data($_POST["email"]);  
                     if (empty($_POST["date"])) {  
                         $emailErr = "date-feild is required";  
                       }
                   }  
 
 //address check
-                  if (empty($_POST["address1"])) {  
+                  if (empty($_POST["address"])) {  
                     $addressErr = "Address is required";  
                   }else {  
-                    $address1= input_data($_POST["address1"]);  
+                    $address = input_data($_POST["address"]);  
                   }  
                  } 
                   
@@ -292,7 +290,7 @@ if (isset($_POST['upload'])) {
                     <h6 class="mb-0" style="color:white">First-Name</h6>
                   </div>
                     <div class="col-sm-9 text-secondary">
-                    <input type="text" name="f_name1" value=<?php echo $f_name1;?>>
+                    <input type="text" name="f_name">
                     <span class="error"> 
                   **<?php echo $f_Err;?> 
                     </span>  
@@ -305,7 +303,7 @@ if (isset($_POST['upload'])) {
                     <h6 class="mb-0" style="color:white">Last-Name</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <input type="text" name="l_name1"  value=<?php echo $l_name1;?>>
+                  <input type="text" name="l_name"  >
                   <span class="error"> 
                   **<?php echo $l_Err;?> 
                   </span>  
@@ -318,7 +316,7 @@ if (isset($_POST['upload'])) {
                     <h6 class="mb-0" style="color:white">Email</h6>
                   </div>
                   <div class="col-sm-9 text-secondary" >
-                    <input type="text" name ="email1" value=<?php echo $email1;?> >
+                    <input type="text" name ="email"  >
                     <span class = "error">
                     **<?php// echo $emailErr;?>
                     </span>
@@ -332,7 +330,7 @@ if (isset($_POST['upload'])) {
                     <h6 class="mb-0" style="color:white">Address</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <input type="text" name ="address1" value=<?php echo $address1;?> >
+                    <input type="text" name ="address"  >
                     <span class="error">
                     **<?php echo $addressErr;?>
                     </span>
@@ -347,7 +345,11 @@ if (isset($_POST['upload'])) {
                     <button type="reset" class="btn btn-info">Reset</button><!-- EDIT 111111111111111111111-->
                   </div>
               </div>
-              <?php  
+
+              </form>
+            </div>
+          </div>
+          <?php  
                         $servername = "localhost";
                         $username = "root";
                         $password = "";
@@ -357,15 +359,13 @@ if (isset($_POST['upload'])) {
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
-                                        /// echo"<script>alert($gg);</script>";
-                                         echo"<script>alert('$f_name1');</script>";
                                             $sql="UPDATE user
-                                            SET f_name1 = '$f_name1', l_name1 = '$l_name1', email1='$email1', address1='$address1'
-                                            WHERE user_id = '3'";
+                                            SET f_name = '$f_name', l_name = '$l_name', email='$email', address='$address'
+                                            WHERE user_id = '$gg';";
                                           
                                        
                                       if(mysqli_query($conn, $sql)){
-                                         // echo "<script>alert(1111);</script>";
+                                          echo "<script>alert(data stored in a database successfully.);</script>";
                                           
                                       } else{
                                          echo "error";
@@ -394,10 +394,6 @@ if (isset($_POST['upload'])) {
                          <?php
                                }  
                             ?>              
-              </form>
-            </div>
-          </div>
-          
           <div class="row gutters-sm" style="background-color:#000000 " >
             <div class="col-sm-6 mb-3">
               <div class="card h-100">

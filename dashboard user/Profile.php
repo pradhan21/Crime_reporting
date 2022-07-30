@@ -281,7 +281,7 @@ if (isset($_POST['upload'])) {
 
               <div class="row">
                 <div class="col-sm-12">
-                  <a class="btn btn-info " target="__blank" href="Profile_edit.php?id=<?php echo $id;?>">Edit</a><!-- EDIT 111111111111111111111-->
+                  <a class="btn btn-info " target="__blank" href="Profile_form.php?id=<?php echo $id;?>">Edit</a><!-- EDIT 111111111111111111111-->
                 </div>
               </div>
             </div>
