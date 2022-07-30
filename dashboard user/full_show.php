@@ -118,7 +118,7 @@ SESSION_start();
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
           <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
+            <!-- <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a> -->
             <div class="dropdown-menu bg-transparent border-0">
               <a href="signin.html" class="dropdown-item">Sign In</a>
               <a href="signup.html" class="dropdown-item">Sign Up</a>
@@ -339,7 +339,7 @@ SESSION_start();
                   <td><?php echo $u_id;?></td>
                   <td><?php echo $c_place;?></td>
                   <td><?php echo $c_type;?></td>
-                  <td><img src="http://localhost/crime_reporting/dashboard%20template/<?php echo $image2;?>"onerror="this.style.display='none'"/></td>
+                  <td><img  src="http://localhost/crime_reporting/dashboard%20user/<?php echo $image2;?>" alt="" style="width: 40px; height: 40px;"></td>
                   <td>On-Going</td>
 
 
@@ -430,7 +430,7 @@ SESSION_start();
                 <h6 class="mb-0">Report Handler</h6>
                 <a href="">Show All</a>
               </div>
-              <form action="database_handler/reporthandle.php" method="POST" enctype="multipart/form-data" >
+              <form action="reporthandle.php" method="POST" enctype="multipart/form-data" >
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1">@</span>
                   <input type="email" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon1" name ="email">
