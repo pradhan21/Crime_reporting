@@ -99,6 +99,26 @@ SESSION_start();
             </div>
         </div>
         <!-- Spinner End -->
+        <?php
+        $sql = "SELECT * from user where user_id='$id' limit 0,5 ";
+                  $sql2="SELECT * from user_complaints where user_id='$id' limit 0,5";
+                  $result = $conn->query($sql);
+                  $result2 = $conn->query($sql2);
+
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = mysqli_fetch_array($result)) {
+                      $first1 = $row["f_name"];
+                      $last1=$row["l_name"];
+                      $address1 = $row["address"];
+                      $email1=$row["email"];
+                     $image1=$row["image"];
+                      $user_id=$row["user_id"];
+                      $l_no=$row["liscence_no"];
+                    }
+                  }
+                  
+          ?>
 
 
         <!-- Sidebar Start -->
@@ -113,8 +133,8 @@ SESSION_start();
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
-                        <span>Admin</span>
+                        <h6 class="mb-0"><?php echo $first1;?> <?php echo $last1;?></h6>
+                        <span></span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
@@ -138,8 +158,7 @@ SESSION_start();
             </nav>
         </div>
         <!-- Sidebar End -->
-
-
+        
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
@@ -221,7 +240,7 @@ SESSION_start();
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex">John Doe</span>
+                            <span class="d-none d-lg-inline-flex"><?php echo $first1;?> <?php echo $last1;?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="Profile.php" class="dropdown-item">My Profile</a>

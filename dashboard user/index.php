@@ -21,14 +21,14 @@ SESSION_start();
                   $conn = new mysqli($servername,$username, $password, $dbname);
                   if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                   }
-                  $sql = "SELECT   user_id,f_name,l_name,address,email,liscence_no,image from user where user_id='$id' limit 0,5 ";
+                  $sql = "SELECT * from user where user_id='$id' limit 0,5 ";
                   $sql2="SELECT * from user_complaints where user_id='$id' limit 0,5";
                   $result = $conn->query($sql);
                   $result2 = $conn->query($sql2);
 
                   if ($result->num_rows > 0) {
                     // output data of each row
-                    while($row = $result->fetch_assoc()) {
+                    while($row = mysqli_fetch_array($result)) {
                       $first1 = $row["f_name"];
                       $last1=$row["l_name"];
                       $address1 = $row["address"];
@@ -97,7 +97,7 @@ SESSION_start();
             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
           </div>
           <div class="ms-3">
-            <h6 class="mb-0"><?php echo $first1;echo $last1?></h6><!-- user-->
+            <h6 class="mb-0"><?php echo $first1 ; echo $last1?></h6><!-- user-->
             <span></span><!-- user-->
           </div>
         </div>
@@ -117,7 +117,7 @@ SESSION_start();
           <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
-          <div class="nav-item dropdown">
+          <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
             <div class="dropdown-menu bg-transparent border-0">
               <a href="signin.html" class="dropdown-item">Sign In</a>
@@ -125,7 +125,7 @@ SESSION_start();
               <a href="404.html" class="dropdown-item">404 Error</a>
               <a href="blank.html" class="dropdown-item">Blank Page</a>
             </div>
-          </div>
+          </div> -->
         </div>
       </nav>
     </div>

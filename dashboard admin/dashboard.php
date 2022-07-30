@@ -252,7 +252,7 @@ SESSION_start();
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <img class="rounded-circle me-lg-2" src="image/Leonardo.jpg" alt="" style="width: 40px; height: 40px;">
-              <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['username']?></span>
+              <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['fname']?> <?php echo $_SESSION['lname']?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="Profile.php" class="dropdown-item">My Profile</a>
@@ -331,7 +331,7 @@ SESSION_start();
 
 
       <!--  Sales Chart Start -->
-       <div class="container-fluid pt-4 px-4">
+       <!-- <div class="container-fluid pt-4 px-4">
         <div class="row g-4">
           <div class="col-sm-12 col-xl-6">
             <div class="bg-secondary text-center rounded p-4">
@@ -344,7 +344,7 @@ SESSION_start();
           </div> 
           
         </div>
-      </div> 
+      </div>  -->
   <!--Sales Chart End -->
 
 

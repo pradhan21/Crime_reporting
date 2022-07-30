@@ -171,7 +171,7 @@
     </div>
 
     <div class="site-footer">
-        <div class="container">
+        <div class="container"> 
             <div class="row mb-5">
                 <div class="col-md-4">
                     <h3 class="footer-heading mb-4">About Us</h3>

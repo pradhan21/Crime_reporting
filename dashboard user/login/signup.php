@@ -34,6 +34,13 @@
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com"required>
                                 <label for="floatingInput">Email address</label>
+                                <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
+                                <i class="fa fa-exclamation-circle me-2"></i>
+                                **<?php
+                                if(isset($_GET['err1'])){
+                                    echo $_GET['err1'];}?> 
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>  
                             </div>
                             <div class="form-floating mb-4">
                                 <input type="text" class="form-control"name="username" id="floatingText" placeholder="Username"required>
@@ -47,6 +54,13 @@
                             <div class="form-floating mb-4">
                                 <input type="text" class="form-control"name="id" id="floatingText" placeholder="000-0000-000000"required>
                                 <label for="floatingText">Citizenship Id/Passwport Id</label>
+                                <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
+                                <i class="fa fa-exclamation-circle me-2"></i>
+                                **<?php
+                                if(isset($_GET['err'])){
+                                    echo $_GET['err'];}?> 
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>  
                             </div>
                             <div class="form-floating mb-4">
                                 <input type="text" class="form-control"name="city" id="floatingText" placeholder="Kathmandu"required>
@@ -57,8 +71,19 @@
                                 <label for="floatingText">Address</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control"name="station" id="floatingText" placeholder="Kalimati Police Station"required>
-                                <label for="floatingText">Nearest Police station</label>
+                                <select name="id"  class="form-control" id="floatingText">
+                                    <?php 
+                                    include_once "connection.php";
+                                    $sql="SELECT * FROM police_station";
+                                    $result=mysqli_query($conn,$sql);
+                                    if(mysqli_num_rows($result)>0){
+                                    while($row=mysqli_fetch_array($result)){ 
+                                        
+                                    ?>
+                                    <option value="<?php echo $row['station_id'];?>" class="form-control" id="floatingText"><?php echo $row['station_name']; ?></option>
+                                    <?php }} ?>
+                                </select>
+                                
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
                                 <div class="form-check">
