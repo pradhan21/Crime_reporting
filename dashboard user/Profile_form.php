@@ -16,9 +16,12 @@ $comment = "";
 $phone = "";  
 $mobile="";
 $address="";
+SESSION_start();
+$id=$_SESSION['id'];
+  echo"<script>alert($id)</script>"; //to check value of id
+  if(isset($_SESSION['id'])){
+    include "connection.php";
 
-$gg=$_GET['id'];
-echo"<script>alert($gg);</script>";
   // include ("connection.php");
    $servername = "localhost";
    $username = "root";
@@ -30,11 +33,11 @@ echo"<script>alert($gg);</script>";
    $email1="";  
    $address1="";   
    $image1=""; 
-   $id="";      
+        
    $conn = new mysqli($servername,$username, $password, $dbname);
    if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
    }
-   $sql = "SELECT * from user WHERE user_id='$gg' ";
+   $sql = "SELECT * from user WHERE user_id='$id' ";
    $result = $conn->query($sql);
 
    if ($result->num_rows > 0) {
@@ -78,7 +81,7 @@ if (isset($_POST['upload'])) {
     // Get all the submitted data from the form
     //$sql = "INSERT INTO image (filename) VALUES ('$target_file')";
     //$sql_2="INSERT INTO user (image) VALUES ('$filename') WHERE user_id='$id'";
-    $sql_2="UPDATE user SET  image ='$filename' WHERE user_id='$gg'";
+    $sql_2="UPDATE user SET  image ='$filename' WHERE user_id='$id'";
     // Execute query+
    // mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
     mysqli_query($db, $sql_2);
@@ -277,13 +280,13 @@ if (isset($_POST['upload'])) {
 //                   $data = htmlspecialchars($data);  
 //                   return $data; 
          
-                }  
+                //}  
               ?>
         <div class="col-md-8">
           <div class="card mb-3">
             <div class="card-body" style="background-color:#191c24">
               
-              <form method="post" action= "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+              <form name ="form" method="post" action= "">
               
                 <div class="row">
                   <div class="col-sm-3">
@@ -354,14 +357,14 @@ if (isset($_POST['upload'])) {
                         $username = "root";
                         $password = "";
                         $dbname = "crime_db";
-
+$f_name=$_POST['f_name'];$l_name=$_POST['l_name'];$email=$_POST['email'];$address=$_POST['address'];
                         $conn = new mysqli($servername,$username, $password, $dbname);
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
                                             $sql="UPDATE user
                                             SET f_name = '$f_name', l_name = '$l_name', email='$email', address='$address'
-                                            WHERE user_id = '$gg';";
+                                            WHERE user_id = '$id';";
                                           
                                        
                                       if(mysqli_query($conn, $sql)){
@@ -544,3 +547,8 @@ if (isset($_POST['upload'])) {
 </body>
 
 </html>
+<?php
+  }else{
+    echo "error";
+  }
+?>
