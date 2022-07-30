@@ -1,4 +1,8 @@
 <?php
+$f_name="";
+$l_name="";
+$email="";
+$address="";
 SESSION_start();
 $id=$_SESSION['id'];
   echo"<script>alert($id)</script>"; //to check value of id
@@ -214,97 +218,97 @@ if (isset($_POST['upload'])) {
           <div class="card mb-3">
             <div class="card-body" style="background-color:#191c24">
               <?php  
-                  $nameErr = "";  
-                  $emailErr = "";  
-                  $genderErr = "";  
-                  $phoneErr = "";  
-                  $mobileErr="";
-                  $addressErr="";
-                  $l_Err="";
-                  $f_Err="";
-                  $name = "";  
-                  $f_name="";
-                  $l_name="";
-                  $email = "";  
-                  $gender = "";  
-                  $comment = "";  
-                  $phone = "";  
-                  $mobile="";
-                  $address="";
-                if ($_SERVER["REQUEST_METHOD"] == "POST") {  
-                  if (empty($_POST["f_name"])) {  
-                    $f_Err = "Name Field is required";  
-                  } else {  
-                    $f_name = test_input($_POST["f_name"]);  
+                //   $nameErr = "";  
+                //   $emailErr = "";  
+                //   $genderErr = "";  
+                //   $phoneErr = "";  
+                //   $mobileErr="";
+                //   $addressErr="";
+                //   $l_Err="";
+                //   $f_Err="";
+                //   $name = "";  
+                //   $f_name="";
+                //   $l_name="";
+                //   $email = "";  
+                //   $gender = "";  
+                //   $comment = "";  
+                //   $phone = "";  
+                //   $mobile="";
+                //   $address="";
+                // if ($_SERVER["REQUEST_METHOD"] == "POST") {  
+                //   if (empty($_POST["f_name"])) {  
+                //     $f_Err = "Name Field is required";  
+                //   } else {  
+                //     $f_name = test_input($_POST["f_name"]);  
                       
-                    if (!preg_match("/^[a-zA-Z-' ]*$/",$f_name)) {  
-                      $f_Err = "Only letters and white space allowed";  
-                    }  
-                  }  
-                    if (empty($_POST["l_name"])) {  
-                      $l_Err = "Name Field is required";  
-                    } else {  
+                //     if (!preg_match("/^[a-zA-Z-' ]*$/",$f_name)) {  
+                //       $f_Err = "Only letters and white space allowed";  
+                //     }  
+                //   }  
+                //     if (empty($_POST["l_name"])) {  
+                //       $l_Err = "Name Field is required";  
+                //     } else {  
                         
-                      $l_name = test_input($_POST["l_name"]);  
-                      if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name)) {  
-                        $l_Err = "Only letters and white space allowed";  
-                      }  
-                    }  
-                    if (empty($_POST["email"])) {  
-                    $emailErr = "Email field is required";  
-                  } else {  
-                    $email = test_input($_POST["email"]);  
-                    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {  
-                      $emailErr = "Invalid email format";  
-                    }  
-                  }  
-                  if (empty($_POST["phone"])) {  
-                    $phone = "";  
-                  } else {  
-                    $phone = test_input($_POST["phone"]);  
-                    if (!preg_match( '/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/' ,$phone)) {  
-                      $phoneErr = "Invalid phone";  
-                    }  
+                //       $l_name = test_input($_POST["l_name"]);  
+                //       if (!preg_match("/^[a-zA-Z-' ]*$/",$l_name)) {  
+                //         $l_Err = "Only letters and white space allowed";  
+                //       }  
+                //     }  
+                //     if (empty($_POST["email"])) {  
+                //     $emailErr = "Email field is required";  
+                //   } else {  
+                //     $email = test_input($_POST["email"]);  
+                //     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {  
+                //       $emailErr = "Invalid email format";  
+                //     }  
+                //   }  
+                //   if (empty($_POST["phone"])) {  
+                //     $phone = "";  
+                //   } else {  
+                //     $phone = test_input($_POST["phone"]);  
+                //     if (!preg_match( '/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/' ,$phone)) {  
+                //       $phoneErr = "Invalid phone";  
+                //     }  
 
-                  }  
-                  if (empty($_POST["mobile"])) {  
-                    $mobileErr = "Mobile no is required";  
-                  } 
-                  if (empty($_POST["mobile"])) {  
-                    $mobile = "";  
-                  } else {  
-                    $mobile = test_input($_POST["mobile"]);  
-                    if (!preg_match( '/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/' ,$mobile)) {  
-                      $mobileErr = "Invalid mobile no";  
-                    }  
+                //   }  
+                //   if (empty($_POST["mobile"])) {  
+                //     $mobileErr = "Mobile no is required";  
+                //   } 
+                //   if (empty($_POST["mobile"])) {  
+                //     $mobile = "";  
+                //   } else {  
+                //     $mobile = test_input($_POST["mobile"]);  
+                //     if (!preg_match( '/^(\+1|001)?\(?([0-9]{3})\)?([ .-]?)([0-9]{3})([ .-]?)([0-9]{4})/' ,$mobile)) {  
+                //       $mobileErr = "Invalid mobile no";  
+                //     }  
                     
-                  } 
+                //   } 
                   
 
-                  if (empty($_POST["comment"])) {  
-                    $comment = "";  
-                  } else {  
-                    $comment = test_input($_POST["comment"]);  
-                  }  
-                  if (empty($_POST["gender"])) {  
-                    $genderErr = "Gender is required";  
-                  } else {  
-                    $gender = test_input($_POST["gender"]);  
-                  }  
-                  if (empty($_POST["address"])) {  
-                    $addressErr = "Address is required";  
-                  }else {  
-                    $address = test_input($_POST["address"]);  
-                  }  
-                }  
-                function test_input($data) {  
-                  $data = trim($data);  
-                  $data = stripslashes($data);  
-                  $data = htmlspecialchars($data);  
-                  return $data;  
-                }  
+                //   if (empty($_POST["comment"])) {  
+                //     $comment = "";  
+                //   } else {  
+                //     $comment = test_input($_POST["comment"]);  
+                //   }  
+                //   if (empty($_POST["gender"])) {  
+                //     $genderErr = "Gender is required";  
+                //   } else {  
+                //     $gender = test_input($_POST["gender"]);  
+                //   }  
+                //   if (empty($_POST["address"])) {  
+                //     $addressErr = "Address is required";  
+                //   }else {  
+                //     $address = test_input($_POST["address"]);  
+                //   }  
+                // }  
+                // function test_input($data) {  
+                //   $data = trim($data);  
+                //   $data = stripslashes($data);  
+                //   $data = htmlspecialchars($data);  
+                //   return $data;  
+                // }  
               ?>
-              <form method="post" action= "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+              <form method="post" action= "" name ="form">
 
                 <div class="row">
                   <div class="col-sm-3">
@@ -406,7 +410,8 @@ if (isset($_POST['upload'])) {
                         $dbname = "crime_db";
 
                         $conn = new mysqli($servername,$username, $password, $dbname);
-
+                        $f_name=$POST['f_name'];$l_name=$POST['l_name'];
+                        $address=$POST['address'];$email=$POST['email'];
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
                                             $sql="UPDATE police_registration
@@ -417,9 +422,17 @@ if (isset($_POST['upload'])) {
                                       if(mysqli_query($conn, $sql)){
                                           echo "<script>alert(data stored in  database successfully.)</script>";
                                       } else{
-                                           echo mysqli_error($conn);
+                                           echo "error";
                                               
                                       }
+                                      echo "<h2> Your Input: </h2>";  
+                                     echo $f_name;  
+                                      echo "<br>";  
+                                     echo $email;  
+                                    echo "<br>";  
+                                
+                                echo $address; 
+                                echo "<br>";
                                       // Close connection
                                       
                          

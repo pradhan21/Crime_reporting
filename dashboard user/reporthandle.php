@@ -3,8 +3,8 @@
                 $username = "root";
                 $password = "";
                 $dbname = "crime_db";
-                $folder = "images1/" ;
-             //   $folder = "../image/". $_FILES['fimage']['name'];
+               // $folder = "images1/" ;
+              $folder = "image/". $_FILES['fimage']['name'];
                 
                 //$report="";
                 $conn = new mysqli($servername,$username, $password, $dbname);
@@ -17,12 +17,12 @@
                     
                     $location=$_POST['location'];
                 
-                    $sql="INSERT INTO user_complaints VALUES('','$id','$location','','$report','$file') ";
+                    $sql="INSERT INTO user_complaints VALUES('','$id','$location','','$report','$file','') ";
                     
                     
                         if(mysqli_query($conn, $sql)){
                             move_uploaded_file($_FILES['fimage']['tmp_name'],$folder);
-                            header("location:../index.php");
+                            header("location:index.php");
                             exit();
                 
                         
