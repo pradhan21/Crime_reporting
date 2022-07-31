@@ -17,6 +17,7 @@ SESSION_start();
                     $_SESSION['fname']=$row['f_name'];
                     $_SESSION['lname']=$row['l_name'];
                     $_SESSION['id']=$row['police_id'];
+                    $_SESSION['sid']=$row['station_id'];
                     $_SESSION['email']=$row['email_id'];
                     $_SESSION['username']=$row['username'];
                     header("location:dashboard.php");

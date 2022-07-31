@@ -71,7 +71,7 @@
                                 <label for="floatingText">Address</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <select name="id"  class="form-control" id="floatingText">
+                                <select name="station"  class="form-control" id="floatingText">
                                     <?php 
                                     include_once "connection.php";
                                     $sql="SELECT * FROM police_station";

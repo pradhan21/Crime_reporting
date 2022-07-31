@@ -4,18 +4,8 @@ SESSION_start();
  $sid=$_SESSION['sid'];
   //echo"<script>alert($id)</script>"; to check value of id
   if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
-    include "connection.php"; 
-    $row="";
-//     $sql="SELECT * FROM user join user_complaints on user.user_id=user_complaints.user_id where near_police_station='$sid'";
-//                $result=mysqli_query($conn,$sql);
-//                if(mysqli_num_rows($result)>0){
-//                while ($data = mysqli_fetch_assoc($result)) {
-//                 $row= $data['near_police_station'];
-//                }
-//               }
-//               echo $row;
-//               die();
-// ?>
+    include "connection.php";  
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,8 +81,8 @@ SESSION_start();
           <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a> -->
           <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
           <a href="Criminal_deets.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
-          <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a> -->
-         <a href="yourcase.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Your Cases</a>
+          <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
+         <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
           <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
             <div class="dropdown-menu bg-transparent border-0">
@@ -190,7 +180,7 @@ SESSION_start();
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <img class="rounded-circle me-lg-2" src="image/Leonardo.jpg" alt="" style="width: 40px; height: 40px;">
-              <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['fname']?> <?php echo $_SESSION['lname']?></span>
+              <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['username']?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="Profile.php" class="dropdown-item">My Profile</a>
@@ -276,196 +266,82 @@ SESSION_start();
 
 
       <!-- Recent Sales Start -->
-      <div class="container-fluid pt-4 px-4">
-        <div class="bg-secondary text-center rounded p-4">
-          <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">Report History</h6>
-            <a href="widget.php">Show All</a>
-          </div>
-          
-          <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
-
-              <thead>
-                <tr class="text-white">
-                  <th scope="col"></th>
-                  <th scope="col">Date</th>
-                  <th scope="col">ID</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">location</th>
-                  <!--    <th scope="col">Action</th>-->
-                </tr>
-              </thead>
-              <tbody>
-              <?php 
-                $sql="SELECT * FROM emergency ORDER by id DESC LIMIT 0,5";
-                $result=mysqli_query($conn,$sql);
-                while ($data = mysqli_fetch_assoc($result)) {
-              ?>
-                <tr>
-                  <th scope="row">1</th>
-                  <td><?php echo $data['date_col']?></td>
-                  <td><?php echo $data['id'];?></td>
-                  <td><?php echo $data['email'];?></td>
-                  <td>      <iframe class="position-relative rounded w-100 h-100"
-                            src="https://www.google.com/maps?q=<?php echo $data['latitude']; ?>,<?php echo $data['longitude']; ?>&hl=es;z=14&output=embed"
-                            frameborder="0" allowfullscreen="" aria-hidden="false"
-                            tabindex="0" style="filter: grayscale(100%) invert(92%) contrast(83%); border: 0;"></iframe></td>
-                  
-
-
-                </tr>
-                <?php } ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                    <div class="h-100 bg-secondary rounded p-4">
+                    <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Floating Label</h6>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingPassword"
+                                    placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="floatingSelect"
+                                    aria-label="Floating label select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                                <label for="floatingSelect">Works with selects</label>
+                            </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here"
+                                    id="floatingTextarea" style="height: 150px;"></textarea>
+                                <label for="floatingTextarea">Comments</label>
+                            </div>
+                        </div>
+                   
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-xl-4">
+                <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Floating Label</h6>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="floatingInput"
+                                    placeholder="name@example.com">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingPassword"
+                                    placeholder="Password">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="floatingSelect"
+                                    aria-label="Floating label select example">
+                                    <option selected>Open this select menu</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                                <label for="floatingSelect">Works with selects</label>
+                            </div>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a comment here"
+                                    id="floatingTextarea" style="height: 150px;"></textarea>
+                                <label for="floatingTextarea">Comments</label>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            
       <!--   Recent Sales End -->
 
 
 
-      <!-- Widgets Start -->
-      <div class="container-fluid pt-4 px-4">
-        <div class="row g-4">
-          <div class="col-sm-12 col-md-6 col-xl-4">
-            <div class="h-100 bg-secondary rounded p-4">
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <h6 class="mb-0">Latest Report</h6>
-                <a href="report.php">Show All</a>
-              </div>
-              <?php
-               $sql="SELECT * FROM user join user_complaints on user.user_id=user_complaints.user_id where user.near_police_station='$sid' ORDER BY complaint_id DESC LIMIT 0,6";
-               $result=mysqli_query($conn,$sql);
-               if(mysqli_num_rows($result)>0){
-               while ($data = mysqli_fetch_assoc($result)) {
-             ?>
-              <div class="d-flex align-items-center border-bottom py-3">
-                <img class="rounded-circle flex-shrink-0" src="http://localhost/crime_reporting/dashboard%20admin/report-image/<?php echo $data['image']?>" alt="" style="width: 40px; height: 40px;">
-                <div class="w-100 ms-3">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0"><?php echo $data['crime_type']?></h6>
-                    <small><?php echo $data['date_col']?></small>
-                  </div>
-                  <span><?php echo $data['crime_evidence']?></span>
-                </div>
-              </div>
-              <?php }}
-              else{
-                $error=mysqli_error($conn);
-                echo "<script>alert('error')</script>";
-              } ?>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-xl-4">
-            <div class="h-100 bg-secondary rounded p-4">
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Calender</h6>
-                <a href="">Show All</a>
-              </div>
-              <div id="calender"></div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md-6 col-xl-4">
-            <div class="h-100 bg-secondary rounded p-4">
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Report Handler</h6>
-                <a href="">Show All</a>
-              </div>
-              <form action="reporthandle.php" method="POST" enctype="multipart/form-data" >
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">@</span>
-                  <input type="email" class="form-control" placeholder="email" aria-label="email" aria-describedby="basic-addon1" name ="email">
-                  <input type="hidden" value="<?php echo $id;?>" name="id">
-                </div>
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1">@</span>
-                  <input type="text" class="form-control" placeholder="location"  aria-describedby="basic-addon1" name ="location">
-                  
-                </div>
-                <div class="input-group mb-3">
-                <select name="id"  class="form-control" id="floatingText">
-                    <?php 
-                    include_once "connection.php";
-                    $sql="SELECT * FROM cime_type";
-                    $result=mysqli_query($conn,$sql);
-                    if(mysqli_num_rows($result)>0){
-                    while($row=mysqli_fetch_array($result)){ 
-                        
-                    ?>
-                    <option value="<?php echo $row['crime_id'];?>" class="form-control" id="floatingText"><?php echo $row['crime']; ?></option>
-                    <?php }} ?>
-                </select>
-                </div>
-                <!--  <div class="d-flex mb-2">
-                <input class="form-control bg-dark border-0" type="text" placeholder="Enter task">
-                <button type="button" class="btn btn-primary ms-2">Add</button>
-              </div>-->
-                <input type="file" class="form-control" name="fimage">
-                <br>
-                <div class="form-floating">
-                  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="height: 150px;"name="report"></textarea>
-                  <label for="floatingTextarea">Type your report</label>
-                </div>
 
-
-                <!--    <div class="d-flex align-items-center border-bottom py-2">
-                <input class="form-check-input m-0" type="checkbox">
-                <div class="w-100 ms-3">
-                  <div class="d-flex w-100 align-items-center justify-content-between">
-                    <span>Short task goes here...</span>
-                    <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex align-items-center border-bottom py-2">
-                <input class="form-check-input m-0" type="checkbox">
-                <div class="w-100 ms-3">
-                  <div class="d-flex w-100 align-items-center justify-content-between">
-                    <span>Short task goes here...</span>
-                    <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex align-items-center border-bottom py-2">
-                <input class="form-check-input m-0" type="checkbox" checked>
-                <div class="w-100 ms-3">
-                  <div class="d-flex w-100 align-items-center justify-content-between">
-                    <span><del>Short task goes here...</del></span>
-                    <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex align-items-center border-bottom py-2">
-                <input class="form-check-input m-0" type="checkbox">
-                <div class="w-100 ms-3">
-                  <div class="d-flex w-100 align-items-center justify-content-between">
-                    <span>Short task goes here...</span>
-                    <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex align-items-center pt-2">
-                <input class="form-check-input m-0" type="checkbox">
-                <div class="w-100 ms-3">
-                  <div class="d-flex w-100 align-items-center justify-content-between">
-                    <span>Short task goes here...</span>
-                    <button class="btn btn-sm"><i class="fa fa-times"></i></button>
-                  </div>
-                </div>
-              </div>-->
-                <br><button type="submit" class="btn btn-primary" name ="submit">Send</button>
-                <button type="reset" class="btn btn-info">Reset</button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Widgets End -->
 
 
       <!-- Footer Start -->
-     
+      
       <!-- Footer End -->
     </div>
     <!-- Content End -->

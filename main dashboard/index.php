@@ -3,16 +3,10 @@
     include_once "logics/latestpost.php";
    
     $id=$_SESSION['id'];
+    $email=$_SESSION['email'];
     // echo"<script>alert($id)</script>"; //to check value of id
     if(isset($_SESSION['id'])){
-        $sql5="SELECT * FROM user where user_id='$id'";
-        $result5=mysqli_query($conn,$sql5);
-        if(mysqli_num_rows($result5)>0){
-            while($row5=mysqli_fetch_array($result5)){
-                $email=$row5['email'];
-            }
-
-        }
+        
 
 ?>
 
