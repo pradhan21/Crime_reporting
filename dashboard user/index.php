@@ -21,14 +21,14 @@ SESSION_start();
                   $conn = new mysqli($servername,$username, $password, $dbname);
                   if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                   }
-                  $sql = "SELECT * from user where user_id='$id' limit 0,5 ";
+                  $sql = "SELECT   user_id,f_name,l_name,address,email,liscence_no,image from user where user_id='$id' limit 0,5 ";
                   $sql2="SELECT * from user_complaints where user_id='$id' limit 0,5";
                   $result = $conn->query($sql);
                   $result2 = $conn->query($sql2);
 
                   if ($result->num_rows > 0) {
                     // output data of each row
-                    while($row = mysqli_fetch_array($result)) {
+                    while($row = $result->fetch_assoc()) {
                       $first1 = $row["f_name"];
                       $last1=$row["l_name"];
                       $address1 = $row["address"];
@@ -87,7 +87,7 @@ SESSION_start();
     <!-- Sidebar Start -->
     <div class="sidebar pe-4 pb-3">
       <nav class="navbar bg-secondary navbar-dark">
-        <a href="index.php" class="navbar-brand mx-4 mb-3">
+        <a href="../main dashboard/index.php" class="navbar-brand mx-4 mb-3">
           <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Home</h3>
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
@@ -97,7 +97,7 @@ SESSION_start();
             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
           </div>
           <div class="ms-3">
-            <h6 class="mb-0"><?php echo $first1 ; echo $last1?></h6><!-- user-->
+            <h6 class="mb-0"><?php echo $first1;echo $last1?></h6><!-- user-->
             <span></span><!-- user-->
           </div>
         </div>
@@ -136,7 +136,7 @@ SESSION_start();
     <div class="content">
       <!-- Navbar Start -->
       <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-        <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+        <a href="../main dashboard/index.php" class="navbar-brand d-flex d-lg-none me-4">
           <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
         </a>
         <a href="#" class="sidebar-toggler flex-shrink-0">
@@ -339,7 +339,7 @@ SESSION_start();
                   <td><?php echo $u_id;?></td>
                   <td><?php echo $c_place;?></td>
                   <td><?php echo $c_type;?></td>
-                  <td><img src="http://localhost/crime_reporting/dashboard%20user<?php echo $image2;?>" onerror="this.style.display='none'"/></td>
+                  <td><img src="http://localhost/crime_reporting/dashboard%20template/<?php echo $image2;?>"onerror="this.style.display='none'"/></td>
                   <td>On-Going</td>
 
 
@@ -442,17 +442,21 @@ SESSION_start();
                   
                 </div>
                 <div class="input-group mb-3">
-                <select name="id"  class="form-control" id="floatingText">
+                <select name="type"  class="form-control" id="floatingText">
                     <?php 
                     include_once "connection.php";
-                    $sql="SELECT * FROM crime_type";
+                    $sql="SELECT * FROM cime_type";
                     $result=mysqli_query($conn,$sql);
                     if(mysqli_num_rows($result)>0){
-                    while($row=mysqli_fetch_array($result)){ 
+                      while($row=mysqli_fetch_array($result)){ 
                         
                     ?>
                     <option value="<?php echo $row['crime_id'];?>" class="form-control" id="floatingText"><?php echo $row['crime']; ?></option>
-                    <?php }} ?>
+                    <?php }}
+                    else{
+                      $error=mysqli_error($conn);
+                      echo "<script>alert('$error')</script>";
+                    } ?>
                 </select>
                 </div>
 

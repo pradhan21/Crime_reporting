@@ -18,7 +18,7 @@ $mobile="";
 $address="";
 SESSION_start();
 $id=$_SESSION['id'];
-  echo"<script>alert($id)</script>"; //to check value of id
+  // echo"<script>alert($id)</script>"; //to check value of id
   if(isset($_SESSION['id'])){
     include "connection.php";
 
@@ -372,20 +372,20 @@ if (isset($_POST['upload'])) {
                                           echo "<script>alert(data stored in a database successfully.);</script>";
                                           
                                       } else{
-                                         echo "error";
+                                         //echo "error";
                                               
                                       }
                                       
                                       
                          
-                                echo "<h2> Your Input: </h2>";  
-                                echo $f_name;  
-                                echo "<br>";  
-                                echo $email;  
-                                echo "<br>";  
+                                // echo "<h2> Your Input: </h2>";  
+                                // echo $f_name;  
+                                // echo "<br>";  
+                                // echo $email;  
+                                // echo "<br>";  
                                 
-                                echo $address; 
-                                echo "<br>";
+                                // echo $address; 
+                                // echo "<br>";
 
 
                                 if (isset($_POST['submitform']))  

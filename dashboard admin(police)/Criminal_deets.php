@@ -133,7 +133,7 @@ SESSION_start();
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0"><?php echo $first1;?> <?php echo $last1;?></h6>
+                        <h6 class="mb-0"><?php echo $_SESSION['fname']?> <?php echo $_SESSION['lname'];?></h6>
                         <span></span>
                     </div>
                 </div>
@@ -240,7 +240,7 @@ SESSION_start();
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><?php echo $first1;?> <?php echo $last1;?></span>
+                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['fname']?> <?php echo $_SESSION['lname'];?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="Profile.php" class="dropdown-item">My Profile</a>

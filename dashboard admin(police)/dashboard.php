@@ -280,6 +280,7 @@ SESSION_start();
                   <th scope="col"></th>
                   <th scope="col">Date</th>
                   <th scope="col">ID</th>
+                  <th scope="col">Email</th>
                   <th scope="col">location</th>
                   <!--    <th scope="col">Action</th>-->
                 </tr>
@@ -294,6 +295,7 @@ SESSION_start();
                   <th scope="row">1</th>
                   <td><?php echo $data['date_col']?></td>
                   <td><?php echo $data['id'];?></td>
+                  <td><?php echo $data['email'];?></td>
                   <td>      <iframe class="position-relative rounded w-100 h-100"
                             src="https://www.google.com/maps?q=<?php echo $data['latitude']; ?>,<?php echo $data['longitude']; ?>&hl=es;z=14&output=embed"
                             frameborder="0" allowfullscreen="" aria-hidden="false"
