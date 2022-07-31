@@ -162,7 +162,7 @@
                     <div class="p-4 mb-3 bg-white">
                         <h3 class="h5 text-black mb-3">Email</h3>
                         <p>Contact us by dirsctly mailing us</p>
-                        <p><a href="mailto:https://mail.google.com/mail/u/1/?tab=wm&ogbl#inbox?compose=CllgCJZbjGdNRtQdcdcMXvHzbcxFTvGXRXZgTbBBvXhqDzqsLTTrcldFpHgssMLcfJKWcmpbSdq" target="_blank" class="btn btn-primary px-4 py-2 text-white">Email</a></p>
+                        <p><a href="https://mail.google.com/mail/u/1/?tab=wm&ogbl#inbox?compose=CllgCJZbjGdNRtQdcdcMXvHzbcxFTvGXRXZgTbBBvXhqDzqsLTTrcldFpHgssMLcfJKWcmpbSdq" target="_blank" class="btn btn-primary px-4 py-2 text-white">Email</a></p>
                     </div>
 
                 </div>
