@@ -68,7 +68,7 @@ SESSION_start();
           </div>
         </div>
         <div class="navbar-nav w-100">
-          <a href="#" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <a href="#" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
           <!--<div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
             <div class="dropdown-menu bg-transparent border-0">
@@ -82,6 +82,7 @@ SESSION_start();
           <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
           <a href="Criminal_deets.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
+          <a href="yourcase.php" class="nav-item nav-link  active"><i class="fa fa-chart-bar me-2"></i>Your Cases</a>
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
           <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -268,9 +269,9 @@ SESSION_start();
       <!-- Recent Sales Start -->
         <div class="container-fluid pt-4 px-4">
             <div class="row g-4">
-                <div class="col-sm-12 col-md-6 col-xl-4">
+                <div class="col-sm-12 col-md-6 col-xl-6" style="width=100px;">
                     <div class="h-100 bg-secondary rounded p-4">
-                    <div class="bg-secondary rounded h-100 p-4">
+                        <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Floating Label</h6>
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="floatingInput"
@@ -301,7 +302,7 @@ SESSION_start();
                    
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-xl-4">
+                <div class="col-sm-12 col-md-6 col-xl-6">
                 <div class="bg-secondary rounded h-100 p-4">
                             <h6 class="mb-4">Floating Label</h6>
                             <div class="form-floating mb-3">
