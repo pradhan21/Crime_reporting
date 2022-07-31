@@ -2,6 +2,7 @@
 SESSION_start();
  $id=$_SESSION['id'];
  $sid=$_SESSION['sid'];
+ $csid=$_GET['csid'];
   //echo"<script>alert($id)</script>"; to check value of id
   if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
     include "connection.php";  
@@ -27,6 +28,9 @@ SESSION_start();
   <!-- Icon Font Stylesheet -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
 
   <!-- Libraries Stylesheet -->
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -269,73 +273,147 @@ SESSION_start();
       <!-- Recent Sales Start -->
         <div class="container-fluid pt-4 px-4">
             <div class="row g-4">
-                <div class="col-sm-12 col-md-6 col-xl-6" style="width=100px;">
+                <div class="col-sm-14 col-md-6 col-xl-6" >
                     <div class="h-100 bg-secondary rounded p-4">
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Floating Label</h6>
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
-                                    placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
+                            <h6 class="mb-4">Case</h6>
+                            <?Php
+                            $sql1="SELECT *
+                            FROM  user_complaints join investigation_details on  user_complaints.complaint_id=investigation_details.complaint_id
+                            join investigation on investigation_details.investigation_del_id=investigation.investigation_del_id
+                             where user_complaints .complaint_id='$csid'"; 
+                             $result1=mysqli_query($conn,$sql1);
+                             if(mysqli_num_rows($result1)>0){
+                              while($row=mysqli_fetch_array($result1)){
+
+            
+                            ?>
+                            <div class=" mb-3">
+                             <label for="" class="mb-1">Case-Details</label>
+                                <input type="text" class="form-control" id="floatingInput" readonly
+                                    placeholder="<?php echo $row['details'];?>">
+                                <label for="floatingInput"></label>
+                             </div>
+                            <div class="input-group mb-3  row justify-content-around form-floating">
+                                <div class="col-6  ">
+                                  <label for="" class="mb-1">Complaint_id</label>
+                                  <input type="text" class="form-control" placeholder="<?php echo $row['complaint_id'];?>"  readonly aria-label="Username">
+                                </div>
+                                <!-- <span class="input-group-text"> </span> -->
+                                <div class="col-6 ">
+                                <label for="" class="mb-1">Criminal Name</label>
+                                  <input type="text" class="form-control" placeholder="<?php echo $row['criminal_name'];?>"  readonly aria-label="Server">
+                                </div>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword"
-                                    placeholder="Password">
-                                <label for="floatingPassword">Password</label>
+                             <div class=" mb-3">
+                             <label for="" class="mb-1">Crime Type</label>
+                                <input type="text" class="form-control" id="floatingInput" readonly
+                                    placeholder="<?php echo $row['crime_type'];?>">
+                                <label for="floatingInput"></label>
+                             </div>
+                             <div class="mb-3  row justify-content-around form-floating">
+                                <div class="col-6  ">
+                                <label for="" class="mb-1">Date</label>
+                                  <input type="text" class="form-control" placeholder="<?php echo $row['date_col'];?>"  readonly aria-label="Username">
+                                </div>
+                                <!-- <span class="input-group-text"> </span> -->
+                                <div class="col-6 ">
+                                <label for="" class="mb-1">Crime Place</label>
+                                  <input type="text" class="form-control" placeholder="<?php echo $row['crime_place'];?>" readonly aria-label="Server">
+                                </div>
                             </div>
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                <label for="floatingSelect">Works with selects</label>
-                            </div>
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a comment here"
-                                    id="floatingTextarea" style="height: 150px;"></textarea>
-                                <label for="floatingTextarea">Comments</label>
-                            </div>
+                            
+                            <div class=" mb-3">
+                            <label for="" class="mb-1">Evidences</label>
+                                <input type="text" class="form-control" id="floatingInput" readonly
+                                    placeholder="<?php echo $row['crime_evidence'];?>">
+                                <label for="floatingInput"></label>
+                             </div>
+                            <br>
+                            <?php }}
+                            ?>
+                            
                         </div>
                    
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-xl-6">
-                <div class="bg-secondary rounded h-100 p-4">
-                            <h6 class="mb-4">Floating Label</h6>
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput"
-                                    placeholder="name@example.com">
-                                <label for="floatingInput">Email address</label>
+                        <div class="bg-secondary rounded h-100 p-4">
+                          <h6 class="mb-4">Case</h6>
+                            <?Php
+                            $sql1="SELECT *
+                            FROM  user_complaints join investigation_details on  user_complaints.complaint_id=investigation_details.complaint_id
+                            join investigation on investigation_details.investigation_del_id=investigation.investigation_del_id
+                             where user_complaints .complaint_id='$csid'"; 
+                             $result1=mysqli_query($conn,$sql1);
+                             if(mysqli_num_rows($result1)>0){
+                              while($row=mysqli_fetch_array($result1)){
+
+            
+                            ?>
+                          <form action="caseupdate.php" method="post">
+                            <div class=" mb-3">
+                             <label for="" class="mb-1">Case-Details</label>
+                                <input type="text" class="form-control" id="floatingInput" name="details"
+                                    value="<?php echo $row['details'];?>">
+                                <label for="floatingInput"></label>
+                             </div>
+                            <div class="input-group mb-3  row justify-content-around form-floating">
+                                <div class="col-6  ">
+                                  <label for="" class="mb-1">Complaint_id</label>
+                                  <input type="text" class="form-control" value="<?php echo $row['complaint_id'];?>" name="complaint" aria-label="Username">
+                                </div>
+                                <!-- <span class="input-group-text"> </span> -->
+                                <div class="col-6 ">
+                                <label for="" class="mb-1">Criminal Name</label>
+                                  <input type="text" class="form-control" value="<?php echo $row['criminal_name'];?>" name="name" aria-label="Server">
+                                </div>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword"
-                                    placeholder="Password">
-                                <label for="floatingPassword">Password</label>
+                             <div class=" mb-3">
+                             <label for="" class="mb-1">Crime Type</label>
+                                <input type="text" class="form-control" id="floatingInput"name="type"
+                                    placeholder="<?php echo $row['crime_type'];?>">
+                                <label for="floatingInput"></label>
+                             </div>
+                             <div class="mb-3  row justify-content-around form-floating">
+                                <div class="col-6  ">
+                                <label for="" class="mb-1">Date</label>
+                                  <input type="text" class="form-control" value="<?php echo $row['date_col'];?>" name="date" aria-label="Username">
+                                </div>
+                                <!-- <span class="input-group-text"> </span> -->
+                                <div class="col-6 ">
+                                <label for="" class="mb-1">Crime Place</label>
+                                  <input type="text" class="form-control" value="<?php echo $row['crime_place'];?>" name="place" aria-label="Server">
+                                </div>
                             </div>
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="floatingSelect"
-                                    aria-label="Floating label select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                                <label for="floatingSelect">Works with selects</label>
+                            
+                            <div class=" mb-3">
+                            <label for="" class="mb-1">Evidences</label>
+                                <input type="text" class="form-control" id="floatingInput" name="evidence"
+                                value ="<?php echo $row['crime_evidence'];?>">
+                                <label for="floatingInput"></label>
+                             </div>
+                            <br>
+                            <?php }}
+                            ?>
+                            <div class="input-group mb-3  row justify-content-around form-floating">
+                                <div class="col-6  ">
+                                  <button type="submit" class="btn btn-primary" name="update">Update</button>
+                                </div>
+                          
                             </div>
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a comment here"
-                                    id="floatingTextarea" style="height: 150px;"></textarea>
-                                <label for="floatingTextarea">Comments</label>
-                            </div>
+                          </form>
+                        </div>
                         </div>
                 </div>
             </div>
             
       <!--   Recent Sales End -->
+      
 
+<!-- Modal -->
+
+  <!-- Modal -->
 
 
 
