@@ -20,9 +20,7 @@
                 if($row['email']==$email){
                     header("location:signup.php?err1=Email already exists!!!");
                 }
-                elseif($row['liscence_no']==$id){
-                    header("location:signup.php?err=CitizenShip already registered!!!");
-                }
+                
                 else{
                     $sql="INSERT INTO user Values('','$fname','$lname','$username','$pass','$id','$city','$address','$station','$email','' )";
                     if(mysqli_query($conn,$sql)){

@@ -22,7 +22,7 @@ SESSION_start();
                   if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                   }
                   $sql = "SELECT   user_id,f_name,l_name,address,email,liscence_no,image from user where user_id='$id'  ";
-                  $sql2="SELECT * from user_complaints where user_id='$id' ";
+                  $sql2="SELECT * from user_complaints where user_id='$id' order by complaint_id desc ";
                   $result = $conn->query($sql);
                   $result2 = $conn->query($sql2);
 
@@ -315,7 +315,7 @@ SESSION_start();
                   <th scope="col">Crime-ID</th>
                   <th scope="col">User_ID</th>
                   <th scope="col">Crime Location</th>
-                  <th scope="col">Crime type</th>
+                  <th scope="col">Crime Evidence</th>
                   <th scope="col">Image</th>
                   <th scope="col">Status</th>
                   <!--    <th scope="col">Action</th>-->
@@ -329,6 +329,7 @@ SESSION_start();
                   $u_id=$row["user_id"];
                   $c_place = $row["crime_place"];
                   $c_type=$row["crime_type"];
+                  $c_desc = $row["crime_evidence"];
                 //  $evidence=$row["evidence"];
                   $image2=$row["image"]; 
                  // $image1=$row["image"];
@@ -338,7 +339,7 @@ SESSION_start();
                   <td><?php echo $c_id;?></td>
                   <td><?php echo $u_id;?></td>
                   <td><?php echo $c_place;?></td>
-                  <td><?php echo $c_type;?></td>
+                  <td><?php echo $c_desc;?></td>
                   <td><img  src="http://localhost/crime_reporting/dashboard%20user/<?php echo $image2;?>" alt="" style="width: 40px; height: 40px;"></td>
                   <td>On-Going</td>
 
