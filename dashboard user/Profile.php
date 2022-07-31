@@ -1,7 +1,7 @@
 <?php
 SESSION_start();
 $id=$_SESSION['id'];
-  echo"<script>alert($id)</script>"; //to check value of id
+  // echo"<script>alert($id)</script>"; //to check value of id
  if(isset($_SESSION['id'])){
    include "connection.php";
 error_reporting(0);
