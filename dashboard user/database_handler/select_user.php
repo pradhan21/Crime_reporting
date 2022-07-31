@@ -1,6 +1,6 @@
 <?php
 $id=$_SESSION['id'];
-  echo"<script>alert($id)</script>"; //to check value of id
+ // echo"<script>alert($id)</script>"; //to check value of id
  if(isset($_SESSION['id'])){
                 $servername = "localhost";
                 $username = "root";

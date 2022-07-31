@@ -91,12 +91,12 @@
             <div class="row">
                 <div class="col-md-7 mb-5">
 
-                <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                <i class="fa fa-exclamation-circle me-2"></i>
-                                **<?php
+                            <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
+                                <!-- <i class="fa fa-exclamation-circle me-2"></i> -->
+                                <?php
                                 if(isset($_GET['success'])){
                                     echo $_GET['success'];}?> 
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
                             </div>  
 
                     <form action="contacthandle.php" method="post" class="p-5 bg-white">
@@ -162,7 +162,7 @@
                     <div class="p-4 mb-3 bg-white">
                         <h3 class="h5 text-black mb-3">Email</h3>
                         <p>Contact us by dirsctly mailing us</p>
-                        <p><a href="mailto:https://mail.google.com/mail/u/1/?tab=wm&ogbl#inbox?compose=CllgCJZbjGdNRtQdcdcMXvHzbcxFTvGXRXZgTbBBvXhqDzqsLTTrcldFpHgssMLcfJKWcmpbSdq" target="_blank" class="btn btn-primary px-4 py-2 text-white">Email</a></p>
+                        <p><a href="https://mail.google.com/mail/u/1/?tab=wm&ogbl#inbox?compose=CllgCHrkWCfgkxlSXcdtTZWncWWRghMBqFnsjDSktCZPLJKvzdtFxpVnVznwqmMZhQHZjMKPRjB" target="_blank" class="btn btn-primary px-4 py-2 text-white">Email</a></p>
                     </div>
 
                 </div>

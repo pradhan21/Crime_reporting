@@ -14,9 +14,11 @@
     if(isset($_POST['submit'])){
         $latitude =$_POST['latitude'];
         $longitude =$_POST['longitude'];
+        $email=$_POST['email'];
+    
         // date_default_timezone_set('Asia/Katmandu');
         // $date = date('m/d/Y h:i:s a', time());
-        $sql="INSERT INTO emergency(latitude, longitude) VALUES('$latitude','$longitude')";
+        $sql="INSERT INTO emergency(email,latitude, longitude) VALUES('$email','$latitude','$longitude')";
         if(mysqli_query($conn,$sql)){
             echo
         "

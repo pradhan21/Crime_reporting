@@ -5,6 +5,14 @@
     $id=$_SESSION['id'];
     // echo"<script>alert($id)</script>"; //to check value of id
     if(isset($_SESSION['id'])){
+        $sql5="SELECT * FROM user where user_id='$id'";
+        $result5=mysqli_query($conn,$sql5);
+        if(mysqli_num_rows($result5)>0){
+            while($row5=mysqli_fetch_array($result5)){
+                $email=$row5['email'];
+            }
+
+        }
 
 ?>
 
@@ -74,6 +82,7 @@
 <body onload="getLocation();">
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up-circle-fill"></i></button>
     <form action="sendlocation.php" class="myForm" method="post" autocomplete="off">
+    <input type="hidden" name="email" required value="<?php echo $email;?>">
         <input type="hidden" name="latitude" required value="">
         <input type="hidden" name="longitude" required value=""><br>
         <button type="submit" id="myBtn1" title="Emergency" name="submit"><i class="bi bi-exclamation-octagon-fill"></i></button>
