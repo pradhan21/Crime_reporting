@@ -141,7 +141,7 @@
                 <div class="col-md-12 col-lg-4 sidebar">
                     <div class="sidebar-box search-form-wrap">
                             <div class="d-md-flex ms-4">                            
-                                <input class="form-control search_bar" type="text" name = "input" class="form-control" id="live_search" placeholder="Search hear" required>
+                                <input class="form-control search_bar" type="text" name = "input" class="form-control" id="live_search" placeholder="Search here" required>
                             </div>
                     </div>
                     <!-- END sidebar-box -->
