@@ -22,7 +22,7 @@
                     header("location:signup.php?err1=Email already exists!!!");
                 }  
                 else{
-                    $sql="INSERT INTO user(f_name,l_name,username,password,liscence_no,city,address,near_police_station,email) Values('$fname','$lname','$username','$pass','$id','$city','$address','$station','$email')";
+                    $sql="INSERT INTO user(f_name,l_name,username,password,liscence_no,city,address,near_police_station,email,contact_no) Values('$fname','$lname','$username','$pass','$id','$city','$address','$station','$email','$contact')";
                     if(mysqli_query($conn,$sql)){
                         header("location:login.php");
                     }
