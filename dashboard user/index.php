@@ -6,10 +6,10 @@ SESSION_start();
     include "connection.php";
 ?>
 <?php
-                  $servername = "localhost";
-                  $username = "root";
-                  $password = "";
-                  $dbname = "crime_db";
+                  // $servername = "localhost";
+                  // $username = "root";
+                  // $password = "";
+                  // $dbname = "crime_db";
                   $fisrt1="";
                   $last1="";
                   $phone1="";
@@ -18,9 +18,9 @@ SESSION_start();
                   $user_id="";     
                   $image1="";   
                   $no="0";
-                  $conn = new mysqli($servername,$username, $password, $dbname);
-                  if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
-                  }
+                  // $conn = new mysqli($servername,$username, $password, $dbname);
+                  // if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
+                  // }
                   $sql = "SELECT   user_id,f_name,l_name,address,email,liscence_no,image from user where user_id='$id' limit 0,5 ";
                   $sql2="SELECT * from user_complaints where user_id='$id' limit 0,5";
                   $result = $conn->query($sql);
@@ -97,7 +97,7 @@ SESSION_start();
             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
           </div>
           <div class="ms-3">
-            <h6 class="mb-0"><?php echo $_SESSION['fname'];echo $_SESSION['lname']?></h6><!-- user-->
+            <h6 class="mb-0"><?php echo $_SESSION['fname'].' '.$_SESSION['lname']?></h6><!-- user-->
             <span></span><!-- user-->
           </div>
         </div>
@@ -214,7 +214,7 @@ SESSION_start();
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
               <img class="rounded-circle me-lg-2" src="http://localhost/crime_reporting/dashboard%20user/image/<?php echo $image1;?>" alt="" style="width: 40px; height: 40px;">
-              <span class="d-none d-lg-inline-flex"><?php echo $username?></span>
+              <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['fname'].' '.$_SESSION['lname']?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="Profile.php" class="dropdown-item">My Profile</a>
@@ -350,8 +350,8 @@ SESSION_start();
                 }
 
                 }else {
-                 // mysqli_error($conn,$sql2);
-                  echo "<script>alert('horsey')</script>";
+                //  mysqli_error($conn,$sql2);
+                  // echo "<script>alert('horsey')</script>";
                 }
                 ?>
                 
@@ -531,26 +531,7 @@ SESSION_start();
 
 
       <!-- Footer Start -->
-      <div class="container-fluid pt-4 px-4">
-        <div class="bg-secondary rounded-top p-4">
-          <div class="row">
-
-            <div class="col-12 col-sm-6 text-center text-sm-start">
-              &copy; <a href="#">Scelus-nunitare</a>, All Right Reserved.
-            </div>
-            <div class="col-12 col-sm-6 text-center text-sm-end">
-              <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-
-
-              Designed By <a href="#">Group-NNAS</a>
-              <br>
-              Distributed by: <a href="#" target="_blank">NNAS</a>
-
-
-            </div>
-          </div>
-        </div>
-      </div>
+   
       <!-- Footer End -->
     </div>
     <!-- Content End -->

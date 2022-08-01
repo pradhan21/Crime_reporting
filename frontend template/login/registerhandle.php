@@ -8,6 +8,7 @@
         $lname=$_POST['lname'];
         $email=$_POST['email'];
         $username=$_POST['username'];
+        $contact=$_POST['contact_no'];
         $pass=md5($_POST['password']);
         $id=$_POST['id'];
         $city=$_POST['city'];

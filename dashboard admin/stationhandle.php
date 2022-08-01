@@ -9,7 +9,8 @@
             header("location:Criminal_details_form.php?dataError1= Contact Number must be of 10 digits. ");
         }
         else{
-            $sql="INSERT INTO police_station VALUES('','$name','$city','$address','$contact','')";
+            // $sql_count = "SELECT * FROM police_registration"
+            $sql=" INSERT INTO police_station(station_name,city,address,contact_no) VALUES('$name','$city','$address','$contact')";
             if($result=mysqli_query($conn,$sql)){
                 header("location:Criminal_details_form.php?data1= Station Added.");
             }
