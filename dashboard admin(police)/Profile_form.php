@@ -5,7 +5,7 @@ $email="";
 $address="";
 SESSION_start();
 $id=$_SESSION['id'];
-  echo"<script>alert($id)</script>"; //to check value of id
+  // echo"<script>alert($id)</script>"; //to check value of id
  if(isset($_SESSION['id'])){
    include "connection.php";
 error_reporting(0);
@@ -112,7 +112,7 @@ if (isset($_POST['upload'])) {
                 $conn = new mysqli($servername,$username, $password, $dbname);
                 if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                 }
-                $sql = "SELECT f_name,l_name,address,email_id,image from police_registration WHERE police_id='$id' ";
+                $sql = "SELECT * from police_registration WHERE police_id='$id' ";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -309,13 +309,21 @@ if (isset($_POST['upload'])) {
                 // }  
               ?>
               <form method="post" action= "" name ="form">
+                <?php
+              $sql = "SELECT * from police_registration WHERE police_id='$id' ";
+                $result = $conn->query($sql);
 
+                if ($result->num_rows > 0) {
+                  // output data of each row
+                  while($row = $result->fetch_assoc()) {
+                   
+                ?>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0" style="color:white">First-Name</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <input type="text" name="f_name" value="<?php echo $f_name;?>" >
+                  <input type="text" name="f_name" value="<?php echo $row['f_name'];?>" required>
                   <span class="error"> 
                   **<?php echo $f_Err;?> 
                   </span>  
@@ -327,7 +335,7 @@ if (isset($_POST['upload'])) {
                     <h6 class="mb-0" style="color:white">Last-Name</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <input type="text" name="l_name" value="<?php echo $l_name;?>" >
+                  <input type="text" name="l_name" value="<?php echo $row['l_name'];?>" required>
                   <span class="error"> 
                   **<?php echo $l_Err;?> 
                   </span>  
@@ -340,62 +348,39 @@ if (isset($_POST['upload'])) {
                     <h6 class="mb-0" style="color:white">Email</h6>
                   </div>
                   <div class="col-sm-9 text-secondary" >
-                    <input type="text" name ="email" value="<?php echo $email;?>" >
+                    <input type="text" name ="email" value="<?php echo $row['email_id'];?>" required>
                     <span class = "error">
                     **<?php echo $emailErr;?>
                     </span>
                   </div>
                 </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0" style="color:white">Gender</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="female") echo "checked";?> value="female" style="background-color:#BEBEBE"> Female  
-                  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="male") echo "checked";?> value="male" style="background-color:#BEBEBE"> Male  
-                  <input type="radio" name="gender" <?php if (isset($gender) && $gender=="other") echo "checked";?> value="other" style="background-color:#BEBEBE"> Other
-                    <span class="error">
-                    **<?php echo $genderErr;?>
-                    </span>
-                  </div>
-                </div>
+                
                 <hr>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0" style="color:white">Phone</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <input type = "text" name = "phone" value="<?php echo $phone;?>" >
+                    <input type = "text" name = "phone" value="<?php echo $row['contact_no'];?>" required>
                     <span class ="error">
                     *<?php echo $phoneErr;?>
                     </span>
                   </div>
                 </div>
                 <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0" style="color:white">Mobile</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                    <input type="text" name="mobile" value ="<?php echo $mobile;?>">
-                    <span class="error">
-                    **<?php echo $mobileErr;?>
-                    </span>
-                  </div>
-                </div>
-                <hr>
+               
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0" style="color:white">Address</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <input type="text" name ="address" value="<?php echo $address;?>" >
+                    <input type="text" name ="address" value="<?php echo $row['address'];?>" required>
                     <span class="error">
                     **<?php echo $addressErr;?>
                     </span>
                   </div>
                 </div>
+                <?php }} ?>
                 <br>
                 <div class="row">
                   <div class="col-sm-12">
@@ -410,12 +395,15 @@ if (isset($_POST['upload'])) {
                         $dbname = "crime_db";
 
                         $conn = new mysqli($servername,$username, $password, $dbname);
-                        $f_name=$POST['f_name'];$l_name=$POST['l_name'];
-                        $address=$POST['address'];$email=$POST['email'];
+                        $f_name=$_POST['f_name'];
+                        $l_name=$_POST['l_name'];
+                        $address=$_POST['address'];
+                        $email=$_POST['email'];
+                        $contact=$_POST['phone'];
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
                                             $sql="UPDATE police_registration
-                                            SET f_name = '$f_name', l_name = '$l_name', email_id='$email', address='$address'
+                                            SET f_name = '$f_name', l_name = '$l_name', email_id='$email', address='$address', contact_no='$contact'
                                             WHERE police_id='$id' ";
                                           
                                        
@@ -453,7 +441,7 @@ if (isset($_POST['upload'])) {
                                 {       
                       ?>  
                           <script type="text/javascript">
-                            window.location = "profile.php";
+                            window.location = "Profile.php";
                           </script>      
                         </div>
                         <?php

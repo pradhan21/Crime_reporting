@@ -5,7 +5,7 @@ SESSION_start();
   //echo"<script>alert($id)</script>"; to check value of id
   if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
     include "connection.php"; 
-    $row="";
+    $image1="";
 //     $sql="SELECT * FROM user join user_complaints on user.user_id=user_complaints.user_id where near_police_station='$sid'";
 //                $result=mysqli_query($conn,$sql);
 //                if(mysqli_num_rows($result)>0){
@@ -15,6 +15,16 @@ SESSION_start();
 //               }
 //               echo $row;
 //               die();
+    $sql = "SELECT * from police_registration WHERE police_id='$id' ";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+     
+        $image1=$row["image"]; 
+      }
+    }
 // ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +78,7 @@ SESSION_start();
         </a>
         <div class="d-flex align-items-center ms-4 mb-4">
           <div class="position-relative">
-          <img class="rounded-circle"  src="image/Leonardo.jpg" id="output" style="width: 40px; height: 40px;" onerror="this.style.display='none'"/>
+          <img class="rounded-circle"  src="http://localhost/crime_reporting/dashboard%20admin(police)/image/<?php echo $image1;?>" id="output" style="width: 40px; height: 40px;" onerror="this.style.display='none'"/>
              
             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
           </div>
@@ -189,7 +199,7 @@ SESSION_start();
           </div>
           <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-              <img class="rounded-circle me-lg-2" src="image/Leonardo.jpg" alt="" style="width: 40px; height: 40px;">
+              <img class="rounded-circle me-lg-2" src="http://localhost/crime_reporting/dashboard%20admin(police)/image/<?php echo $image1;?>" alt="" style="width: 40px; height: 40px;">
               <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['fname']?> <?php echo $_SESSION['lname']?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">

@@ -31,6 +31,7 @@ $crimeD="";
 $Race="";
 $Skin="";
 $image="";
+$image1="";
 SESSION_start();
  $id=$_SESSION['id'];
   //echo"<script>alert($id)</script>"; //to check value of id
@@ -54,6 +55,17 @@ SESSION_start();
         $image=$row['image'];
     }
    }
+   $sql = "SELECT * from police_registration WHERE police_id='$id' ";
+   $result = $conn->query($sql);
+
+   if ($result->num_rows > 0) {
+     // output data of each row
+     while($row = $result->fetch_assoc()) {
+    
+       $image1=$row["image"]; 
+     }
+   }
+
    ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -129,7 +141,7 @@ SESSION_start();
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="http://localhost/crime_reporting/dashboard%20admin(police)/image/<?php echo $image1;?>" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
@@ -145,6 +157,7 @@ SESSION_start();
                     <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog/News</a> -->
                     <a href="#" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i> Criminal detail</a>
                    <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>-->
+                   <a href="casedisplay.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Your Cases</a>
                     <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -239,7 +252,7 @@ SESSION_start();
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="http://localhost/crime_reporting/dashboard%20admin(police)/image/<?php echo $image1;?>" alt="" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['fname']?> <?php echo $_SESSION['lname'];?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
