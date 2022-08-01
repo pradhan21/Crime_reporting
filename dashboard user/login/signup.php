@@ -17,8 +17,8 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                                <h5 class="text-primary"><i class="fa fa-user-edit me-2"></i>Crime Reporting</h5>
+                            <a href="../../frontend template/index.php" class="">
+                                <h5 class="text-primary"><i class="fa fa-user-edit me-2"></i>Crime Daily</h5>
                             </a>
                             <h3>Sign Up</h3>
                         </div>
@@ -31,16 +31,16 @@
                                 <input type="text" class="form-control" name="lname"id="floatingText" placeholder="Last Name"required>
                                 <label for="floatingText">Last Name</label>
                             </div>
-                            <div class="form-floating mb-3">
+                                <div class="form-floating mb-3">
                                 <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com"required>
-                                <label for="floatingInput">Email address</label>
+                                <label for="floatingInput">Email Address</label>
+                            <?php if(isset($_GET['err1'])){ ?>
                                 <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                 <i class="fa fa-exclamation-circle me-2"></i>
-                                **<?php
-                                if(isset($_GET['err1'])){
-                                    echo $_GET['err1'];}?> 
+                                    <?php echo $_GET['err1'];?> 
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>  
+                            <?php } ?><br>
                             <div class="form-floating mb-4">
                                 <input type="text" class="form-control"name="contact_no" id="floatingText" placeholder="Contact No."required>
                                 <label for="floatingText">Contact Number</label>
@@ -58,13 +58,14 @@
                             <div class="form-floating mb-4">
                                 <input type="text" class="form-control"name="id" id="floatingText" placeholder="000-0000-000000"required>
                                 <label for="floatingText">Citizenship Id/Passwport Id</label>
-                                <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
+                                <?php
+                                if(isset($_GET['err'])){ ?>
+                                    <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                 <i class="fa fa-exclamation-circle me-2"></i>
-                                **<?php
-                                if(isset($_GET['err'])){
-                                    echo $_GET['err'];}?> 
+                                   <?php echo $_GET['err'];?> 
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>  
+                            <?php } ?>
                             </div>
                             <div class="form-floating mb-4">
                                 <input type="text" class="form-control"name="city" id="floatingText" placeholder="Kathmandu"required>
@@ -89,13 +90,7 @@
                                 </select>
                                 
                             </div>
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
-                                <a href="">Forgot Password</a>
-                            </div>
+
                             <button type="submit" name="Submit" value="submit" class="btn btn-primary py-3 w-100 mb-4">Sign Up</button>
                             
                         </form>

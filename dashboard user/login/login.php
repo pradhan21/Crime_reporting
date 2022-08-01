@@ -16,8 +16,8 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-secondary rounded p-4 p-sm-5 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                                <h5 class="text-primary"><i class="fa fa-user-edit me-2"></i>Crime Reporting</h5>
+                            <a href="../../frontend template/index.php" class="">
+                                <h5 class="text-primary"><i class="fa fa-user-edit me-2"></i>Crime Daily</h5>
                             </a>
                             <h3>Sign In</h3>
                         </div>
@@ -31,22 +31,23 @@
                                 <input type="password" class="form-control" name="pass" id="floatingPassword" placeholder="Password">
                                 <label for="floatingPassword">Password</label>
                             </div>
+                            <?php
+                            if(isset($_GET['err'])){
+                                
+                                ?>
                             <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                 <i class="fa fa-exclamation-circle me-2"></i>
-                                **<?php
-                                if(isset($_GET['err'])){
-                                    echo $_GET['err'];}?> 
+                                <?php
+
+                                    echo $_GET['err'];?> 
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>  
-                            <div class="d-flex align-items-center justify-content-between mb-4">
-                                <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                </div>
+                            <?php } ?>
+                            <!-- <div class="d-flex align-items-center justify-content-between mb-4">
                                 <a href="">Forgot Password</a>
-                            </div>
+                            </div> -->
                             <button type="submit" name="submit" class="btn btn-primary py-3 w-100 mb-4">Sign In</button>
-                            <button type="button" name="submit" class="btn btn-primary py-3 w-100 mb-4">Cancel</button>
+                            <a href="../../frontend template/index.php"><button type="button" name="submit" class="btn btn-primary py-3 w-100 mb-4">Go Back</button></a>
                         </form>
                         <p class="text-center mb-0">Don't have an Account? <a href="signup.php">Sign Up</a></p>
                     </div>
