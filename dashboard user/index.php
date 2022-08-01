@@ -103,6 +103,9 @@ SESSION_start();
         </div>
         <div class="navbar-nav w-100">
           <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+        <a href="create_complaint.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Create Complaint</a>
+        <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>My Complaints</a>
+          <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>My Active Cases</a>
           <!--<div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
             <div class="dropdown-menu bg-transparent border-0">
@@ -114,8 +117,7 @@ SESSION_start();
           <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
           <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a> -->
         <!--  <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>-->
-        <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
-        <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>My </a>
+
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
           <!-- <div class="nav-item dropdown">
@@ -219,7 +221,7 @@ SESSION_start();
             </a>
             <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
               <a href="Profile.php" class="dropdown-item">My Profile</a>
-              <a href="#" class="dropdown-item">Settings</a>
+              <!-- <a href="#" class="dropdown-item">Settings</a> -->
               <a href="login/logout.php" class="dropdown-item">Log Out</a>
             </div>
           </div>
@@ -229,7 +231,6 @@ SESSION_start();
         <div class="bg-secondary text-center rounded p-4">
           <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Report History</h6>
-            <a href="full_show.php">Show All</a>
           </div>
           
           <div class="table-responsive">
