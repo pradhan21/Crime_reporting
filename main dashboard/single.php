@@ -79,6 +79,13 @@
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
                             <li><a href="index.php">Home</a></li>
                             <li><a href="news.php">News</a></li>
+                            <li class="has-children">
+                                <a href="#">Notice</a>
+                                <ul class="dropdown">
+                                    <li><a href="#">Missing Person</a></li>
+                                    <li><a href="safety.php">Security & Safety Tips</a></li>
+                                </ul>
+                            </li>
                             <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
                                 <a href="#"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></a>
@@ -283,8 +290,7 @@
             <div class="row mb-5">
                 <div class="col-md-4">
                     <h3 class="footer-heading mb-4">About Us</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat reprehenderit magnam deleniti quasi saepe, consequatur atque sequi delectus dolore veritatis obcaecati quae, repellat eveniet omnis, voluptatem in. Soluta, eligendi,
-                        architecto.
+                    <p>Crime Daily is the growing site that plans to cover latest, high-profile criminal trials, crazy crime. Created by few undergraduate students of Apex college.
                     </p>
                 </div>
                 <div class="col-md-3 ml-auto">
@@ -292,6 +298,7 @@
                     <ul class="list-unstyled float-left mr-5">
                         <li><a href="index.php">Home</a></li>
                         <li><a href="news.php">News</a></li>
+                        <li><a href="safety.php">Security & Safety</a></li>
                         <li><a href="contact.php">Contact</a></li>
                         <li><a href="login/login.php">LogIn</a></li>
                     </ul>
