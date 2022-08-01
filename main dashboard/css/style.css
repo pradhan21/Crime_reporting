@@ -1728,3 +1728,10 @@ h5,
 .search_bar:hover {
     border: 2px solid #73A9AD;
 }
+
+
+/* For Identity */
+
+.detail_space {
+    display: inline-block;
+}

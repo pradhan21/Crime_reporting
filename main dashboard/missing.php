@@ -1,13 +1,23 @@
+<?php
+    SESSION_start();
+    $id=$_SESSION['id'];
+    $email=$_SESSION['email'];
+    // echo"<script>alert($id)</script>"; //to check value of id
+    if(isset($_SESSION['id'])){
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Contact</title>
+    <title>Safety & Security</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700|Playfair+Display:400,700,900" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -34,12 +44,12 @@
             <div class="site-mobile-menu-body"></div>
         </div>
 
-        <header class="site-navbar pt-3" role="banner">
+    <header class="site-navbar pt-3" role="banner">
             <div class="container-fluid">
                 <div class="row align-items-center">
 
                     <div class="col-6 col-xl-6 logo">
-                        <h1 class="mb-0"><a href="index.php" class="text-black h2 mb-0">Crime Daily</a></h1>
+                        <h1 class="mb-0"><a href="index.html" class="text-black h2 mb-0">Crime Daily</a></h1>
                     </div>
 
                     <div class="col-6 mr-auto py-3 text-right" style="position: relative; top: 3px;">
@@ -51,138 +61,93 @@
                         <a href="#" class="site-menu-toggle js-menu-toggle text-black d-inline-block d-xl-none"><span class="icon-menu h3"></span></a></div>
                 </div>
 
-                <div class="col-12 d-none d-xl-block border-top border-bottom">
+                <div class="col-12 d-none d-xl-block border-top">
                     <nav class="site-navigation text-center " role="navigation">
 
                         <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block mb-0">
                             <li><a href="index.php">Home</a></li>
                             <li><a href="news.php">News</a></li>
-                            <li class="has-children">
+                            <li class="has-children active">
                                 <a href="#">Notice</a>
                                 <ul class="dropdown">
                                     <li><a href="missing.php">Missing Person</a></li>
                                     <li><a href="safety.php">Security & Safety Tips</a></li>
                                 </ul>
                             </li>
-                            <li><a class="active" href="contact.php">Contact</a></li>
+                            <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
-                                <a href="#">Login/Register</a>
+                                <a href="#"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></a>
                                 <ul class="dropdown">
-                                <li><a href="../dashboard user/login/login.php">Login</a></li>
-                                    <li><a href="../dashboard user/login/signup.php">Signup</a></li>
+                                    <li><a href="../dashboard user/index.php">Dashboard</a></li>
+                                    <li><a href="login/logout.php">LogOut</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </nav>
                 </div>
             </div>
-
-    </div>
+        </div>
     </header>
 
 
-    <!-- <div class="site-cover site-cover-sm same-height overlay single-page" style="background-image: url('images/hero_1.jpg');">
+    <div class="site-section">
         <div class="container">
-            <div class="row same-height justify-content-center">
-                <div class="col-md-12 col-lg-10">
-                    <div class="post-entry text-center">
-                        <h1 class="mb-4">Contact Us</h1>
+            <div class="row mb-4">
+                <div class="col-8"><h1 class="text-primary" style="margin-top:1%;">Missing Person</h1></div>
+                <div class="col-3">
+                    <div class="d-md-flex ms-4" style="margin-top:5%;">                            
+                        <input class="form-control search_bar" type="text" name = "input" class="form-control" id="live_search" placeholder="Search here" required>
+                    </div>
+                </div>
+                <div class="col-1">
+                <div class="dropdown" style="margin-top:22%;">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <li><a class="dropdown-item" href="#">This Week</a></li>
+                        <li><a class="dropdown-item" href="#">This Month</a></li>
+                        <li><a class="dropdown-item" href="#">Last Month Month</a></li>
+                    </ul>
                     </div>
                 </div>
             </div>
-        </div>
-    </div> -->
 
-    <div class="site-section bg-light">
-        <div class="container">
             <div class="row">
-                <div class="col-md-7 mb-5">
-
-                            <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                <!-- <i class="fa fa-exclamation-circle me-2"></i> -->
-                                <?php
-                                if(isset($_GET['success'])){
-                                    echo $_GET['success'];}?> 
-                                <!-- <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button> -->
-                            </div>  
-
-                    <form action="contacthandle.php" method="post" class="p-5 bg-white">
-
-
-                        <div class="row form-group">
-                            <div class="col-md-6 mb-3 mb-md-0">
-                                <label class="text-black" for="fname">First Name</label>
-                                <input type="text" id="fname" name="fname"class="form-control">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="text-black" for="lname">Last Name</label>
-                                <input type="text" id="lname"name="lname" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="row form-group">
-
-                            <div class="col-md-12">
-                                <label class="text-black" for="email">Contact Number</label>
-                                <input type="text" id="email" name="email"class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="row form-group">
-
-                            <div class="col-md-12">
-                                <label class="text-black" for="subject">Subject</label>
-                                <input type="subject" id="subject"name="subject" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="row form-group">
-                            <div class="col-md-12">
-                                <label class="text-black" for="message">Message</label>
-                                <textarea name="message" id="message" name="message"cols="30" rows="7" class="form-control" placeholder="Write your notes or questions here..."></textarea>
-                            </div>
-                        </div>
-
-                        <div class="row form-group">
-                            <div class="col-md-12">
-                                <input type="submit" value="Send Message" name="submit" class="btn btn-primary py-2 px-4 text-white">
-                            </div>
-                        </div>
-
-
-                    </form>
+                <div class="col-3">
+                    <img src="images/blank.png" class="img-fluid rounded-start" style="margin-top:2.5%; width:100%;">
                 </div>
-                <div class="col-md-5">
-
-                    <div class="p-4 mb-3 bg-white">
-                        <p class="mb-0 font-weight-bold">Address</p>
-                        <p class="mb-4">Apex College, Baneshwor, Nepal</p>
-
-                        <p class="mb-0 font-weight-bold">Phone</p>
-                        <p class="mb-4"><a href="#">+977-9812345678</a></p>
-
-                        <p class="mb-0 font-weight-bold">Email Address</p>
-                        <p class="mb-0"><a href="#">nirdesh.pradhan@apexcollege.edu.np</a></p>
-
+                <div class="col-8" style="margin-left:2%;">
+                    <div class="row"><h4>&nbsp;&nbsp;Sita Kumari</h4></div>
+                    <div class="row"><span>&nbsp;&nbsp; 20-02-2020</span></div>
+                    <div class="row">
+                        <div class="col-7"><h5 class = "detail_space">Homeland: </h5> &nbsp;<span> Dhulikhel </span></div>
+                        <div class="col-5"><h5 class = "detail_space">Gender: </h5> &nbsp;<span> Female </span></div>
                     </div>
-
-                    <div class="p-4 mb-3 bg-white">
-                        <h3 class="h5 text-black mb-3">Email</h3>
-                        <p>Contact us by dirsctly mailing us</p>
-                        <p><a href="https://mail.google.com/mail/u/1/?tab=wm&ogbl#inbox?compose=CllgCHrkWCfgkxlSXcdtTZWncWWRghMBqFnsjDSktCZPLJKvzdtFxpVnVznwqmMZhQHZjMKPRjB" target="_blank" class="btn btn-primary px-4 py-2 text-white">Email</a></p>
+                    <div class="row">
+                        <div class="col-7"><h5 class = "detail_space">Lost-Location:</h5> &nbsp;<span> Kathmandu </span></div>
+                        <div class="col-5"><h5 class = "detail_space">Lost-Date:</h5> &nbsp;<span> 19-02-2020 </span></div>                    
                     </div>
-
-                </div>
+                    <div class="row">
+                        <div class="col-7"><h5 class = "detail_space">Complainers' Name: </h5> &nbsp;<span> Ram Bahadhur </span></div>
+                        <div class="col-5"><h5 class = "detail_space">Contact Number:</h5> &nbsp;<span> 9888009977 </span></div>                    
+                    </div>
+                    <div class="row">
+                        <div><h5 class = "detail_space">&nbsp;&nbsp; Appearance:</h5><p style="margin-left:7%;">Height 5 feet, black eyes, black hair, black pants, black shawl, yellow hat, wearing pink shoes. </p></div>
+                    </div>
+                </div>  
+                <div class="col-1"></div>             
             </div>
+
         </div>
     </div>
+    <!-- body end -->
+    
 
     <div class="site-footer">
-        <div class="container"> 
+        <div class="container">
             <div class="row mb-5">
                 <div class="col-md-4">
                     <h3 class="footer-heading mb-4">About Us</h3>
-                    <p>Crime Daily is the growing site that plans to cover latest, high-profile criminal trials, crazy crime. Created by few undergraduate students of Apex college.
+                    <p>Crime Daily is the growing site that plans to covers latest, high-profile criminal trials, crazy crime. Created by few undergraduate students of Apex college. 
                     </p>
                 </div>
                 <div class="col-md-3 ml-auto">
@@ -253,3 +218,11 @@
 </body>
 
 </html>
+
+<?php
+}
+  
+else{
+  echo "error";
+}
+?>

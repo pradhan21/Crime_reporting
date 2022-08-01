@@ -80,7 +80,7 @@
                             <li class="has-children">
                                 <a href="#">Notice</a>
                                 <ul class="dropdown">
-                                    <li><a href="#">Missing Person</a></li>
+                                    <li><a href="missing.php">Missing Person</a></li>
                                     <li><a href="safety.php">Security & Safety Tips</a></li>
                                 </ul>
                             </li>
