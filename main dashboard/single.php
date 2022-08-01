@@ -1,7 +1,12 @@
 <?php
+    SESSION_start();
 
     include_once "logics/latestpost.php";
     include_once "logics/dis_blog.php";
+    $id=$_SESSION['id'];
+    $email=$_SESSION['email'];
+    // echo"<script>alert($id)</script>"; //to check value of id
+    if(isset($_SESSION['id'])){
 
 ?>
 
@@ -76,10 +81,10 @@
                             <li><a href="news.php">News</a></li>
                             <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
-                                <a href="#">Username</a>
+                                <a href="#"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></a>
                                 <ul class="dropdown">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">LogOut</a></li>
+                                    <li><a href="../dashboard user/index.php">Dashboard</a></li>
+                                    <li><a href="login/logout.php">LogOut</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -142,7 +147,7 @@
             <div class="col-md-12 col-lg-4 sidebar">
                     <div class="sidebar-box search-form-wrap">
                         <div class="d-md-flex ms-4">                            
-                            <input class="form-control search_bar" type="text" name = "input" class="form-control" id="live_search" placeholder="Search hear" required>
+                            <input class="form-control search_bar" type="text" name = "input" class="form-control" id="live_search" placeholder="Search here" required>
                         </div>
                     </div>
                     <!-- END sidebar-box -->
@@ -349,3 +354,11 @@
 </body>
 
 </html>
+
+<?php
+}
+  
+else{
+  echo "error";
+}
+?>
