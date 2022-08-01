@@ -69,10 +69,6 @@ if (isset($_POST['upload'])) {
     $tempname = $_FILES["uploadfile"]["tmp_name"];
     
     $db = mysqli_connect("localhost", "root", "", "crime_db");
-    if (file_exists($target_file)) {
-      echo "<script>alert('Sorry, file already exists')</script>";
-      $db->close();  
-    }
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"&& $imageFileType != "gif" ) {
    echo "<script>alert('Sorry, ononly JPG, JPEG, PNG & GIF files are allowed.')</script>";
     $db->close();
@@ -81,15 +77,15 @@ if (isset($_POST['upload'])) {
     // Get all the submitted data from the form
     //$sql = "INSERT INTO image (filename) VALUES ('$target_file')";
     //$sql_2="INSERT INTO user (image) VALUES ('$filename') WHERE user_id='$id'";
-    $sql_2="UPDATE user SET  image ='$filename' WHERE user_id='$id'";
+    $sql_2="UPDATE user SET  image ='$filename',f_name = '$first1', l_name = '$last1', email='$email1', address='$address1' WHERE user_id='$id'";
     // Execute query+
    // mysqli_query($db, $sql); //works successsfully till here but the image dosent get uploaded HELP!!!!!!!!! yo bhanda tala ko part dosent work :(
     mysqli_query($db, $sql_2);
     // Now let's move the uploaded image into the folder: image
     if (move_uploaded_file($tempname, $folder)) {
-    ?>
-    <a href =""><script>alert("press here to get redirected")</script><?php //header('Location:http://localhost/CC/crime_reporting/dashboard%20user/index.php')?></a>
-    <?php
+   
+     header('Location:Profile.php');
+    
     } else {
         echo " <script> alert('Failed to upload image!')</script>";
     }
@@ -385,6 +381,7 @@ if (isset($_POST['upload'])) {
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                                           }
+                                    if(isset($_POST['submitform'])){
                                             $sql="UPDATE user
                                             SET f_name = '$f_name', l_name = '$l_name', email='$email', address='$address'
                                             WHERE user_id = '$id';";
@@ -397,6 +394,7 @@ if (isset($_POST['upload'])) {
                                          //echo "error";
                                               
                                       }
+                                    }
                                       
                                       
                          
