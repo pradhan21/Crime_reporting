@@ -1,7 +1,13 @@
 <?php
+    SESSION_start();
 
     // include "../dashboard user/logics/bloglogic.php"
+    $id=$_SESSION['id'];
+    //echo"<script>alert($id)</script>"; to check value of id
+    if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
+      include "connection.php";  
     include "../Crime Reporting System User Interface/logics/bloglogic.php"
+
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +69,7 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        <h6 class="mb-0"><?php echo $_SESSION['fname']?> <?php echo $_SESSION['lname']?></h6>
                         <span>Admin</span>
                     </div>
                 </div>
@@ -343,3 +349,10 @@
 </body>
 
 </html>
+<?php
+}
+  
+else{
+  echo "error";
+}
+?>

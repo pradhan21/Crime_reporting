@@ -67,7 +67,7 @@ SESSION_start();
           </div>
         </div>
         <div class="navbar-nav w-100">
-          <a href="dashboard.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <a href="dashboard.php" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
           <!--<div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
             <div class="dropdown-menu bg-transparent border-0">
@@ -77,9 +77,13 @@ SESSION_start();
             </div>
           </div>-->
           <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
+          <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a> -->
+          <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
           <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a>
           <a href="user.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Users</a>
           <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Add Station</a>
+          <!-- <a href="Criminal_deets.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a> -->
+          <a href="chart.html" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Track Cases</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
           <!-- <div class="nav-item dropdown">
@@ -190,39 +194,7 @@ SESSION_start();
         </div>
       </nav>
       <!-- Navbar End -->
-      <div class="col-12">
-              <div class="table-responsive">
-                  <table class="table">
-                      <thead>
-                          <tr>
-                              <th scope="col">ID</th>
-                              <th scope="col">crime Place</th>
-                              <th scope="col">Crime Type</th>
-                              <th scope="col">Crime Evidence</th>
-                              <th scope="col">Date</th>
-                              
-                          </tr>
-                      </thead>
-                      <tbody>
-                      <?php
-                        $sql="SELECT * from user_complaints";
-                        if($result=mysqli_query($conn,$sql)){
-                        while($row=mysqli_fetch_assoc($result)){ 
-                        ?> 
-                          <tr>
-                              <th scope="row"><?php echo $row['complaint_id'];?></th>
-                              <td><?php echo $row['crime_place'];?></td>
-                              <td><?php echo $row['crime_type'];?></td>
-                              <td><?php echo $row['crime_evidence'];?></td>
-                              <td><?php echo $row['date_col'];?></td>
-                          </tr>
-                          <?php }} ?>
-                          
-                      </tbody>
-                  </table>
-              </div>
-          </div>
-      
+
 
       <!-- Sale & Revenue Start
       <div class="container-fluid pt-4 px-4">
@@ -297,7 +269,7 @@ SESSION_start();
 
 
       <!-- Recent Sales Start -->
-      <!-- <div class="container-fluid pt-4 px-4">
+      <div class="container-fluid pt-4 px-4">
         <div class="bg-secondary text-center rounded p-4">
           <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Report History</h6>
@@ -309,27 +281,57 @@ SESSION_start();
 
               <thead>
                 <tr class="text-white">
-                  <th scope="col"></th>
-                  <th scope="col">Date</th>
                   <th scope="col">ID</th>
-                  <th scope="col">location</th>
-                   <th scope="col">Action</th>-->
-                <!-- </tr>
+                  <th scope="col">User</th>
+                  <th scope="col">Crime Place</th>
+                  <th scope="col">Crime Type</th>
+                  <th scope="col">Crime Evidence</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">View</th>
+                  <!--    <th scope="col">Action</th>-->
+                </tr>
               </thead>
               <tbody>
-             
-                        <iframe class="position-relative rounded w-100 h-100"
-                       
-                        frameborder="0" allowfullscreen="" aria-hidden="false"
-                        tabindex="0" style="filter: grayscale(100%) invert(92%) contrast(83%); border: 0;"></iframe>
+              <?php 
+                $sql="SELECT * FROM user join user_complaints on user.user_id=user_complaints.user_id  ORDER by complaint_id DESC ";
+                $result=mysqli_query($conn,$sql);
+                while ($data = mysqli_fetch_assoc($result)) {
+              ?>
+                <tr>
+                  <th scope="row"><?php echo $data['complaint_id']?></th>
+                  <td><?php echo $data['user_id']?></td>
+                  <td><?php echo $data['crime_place'];?></td>
+                  <td><?php echo $data['crime_type'];?></td>
+                  <td> <?php echo $data['crime_evidence'];?></td>
+                  <td><?php echo $data['date_col'];?></td>
+                    <?php
+                    if($data['status']==0){
+                      ?>
+                      <td>
+                        <button name="submit" class="btn btn-success">Accept Case</button>
                     </td>
+                   
+                      <?php
+                    }
+                    if($data['status']==1){ 
+                      ?>
+                      <td>
+                     <button name="sumnit1" class="btn btn-danger">Taken</button>
+                    </td>
+                    <?php
+                      }
+                      // echo $data['complaint_id'];
+                      ?>
+                      <td><a href="reportdetails.php?csid=<?php echo $data['complaint_id'];?>"> <button name="submit" class="btn btn-success">View</button></a></td>
+                  
                 </tr>
-               
+                <?php } ?>
               </tbody>
             </table>
           </div>
         </div>
-      </div> --> 
+      </div>
       <!--   Recent Sales End -->
 
 
@@ -338,7 +340,7 @@ SESSION_start();
 
 
       <!-- Footer Start -->
-     
+      
       <!-- Footer End -->
     </div>
     <!-- Content End -->

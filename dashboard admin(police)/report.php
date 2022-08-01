@@ -1,6 +1,7 @@
 <?php 
 SESSION_start();
  $id=$_SESSION['id'];
+ $sid=$_SESSION['sid'];
   //echo"<script>alert($id)</script>"; to check value of id
   if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
     include "connection.php";  
@@ -67,7 +68,7 @@ SESSION_start();
           </div>
         </div>
         <div class="navbar-nav w-100">
-          <a href="#" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <a href="dashboard.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
           <!--<div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
             <div class="dropdown-menu bg-transparent border-0">
@@ -283,12 +284,13 @@ SESSION_start();
                   <th scope="col">Crime Type</th>
                   <th scope="col">Crime Evidence</th>
                   <th scope="col">Date</th>
+                  <th scope="col">Status</th>
                   <!--    <th scope="col">Action</th>-->
                 </tr>
               </thead>
               <tbody>
               <?php 
-                $sql="SELECT * FROM user_complaints ORDER by complaint_id DESC ";
+                $sql="SELECT * FROM user join user_complaints on user.user_id=user_complaints.user_id where user.near_police_station='$sid' ORDER by complaint_id DESC ";
                 $result=mysqli_query($conn,$sql);
                 while ($data = mysqli_fetch_assoc($result)) {
               ?>
@@ -298,7 +300,28 @@ SESSION_start();
                   <td><?php echo $data['crime_place'];?></td>
                   <td><?php echo $data['crime_type'];?></td>
                   <td> <?php echo $data['crime_evidence'];?></td>
-                  <td><?php echo $data['date'];?></td>
+                  <td><?php echo $data['date_col'];?></td>
+                  <td>
+                    <?php
+                    if($data['status']==0){
+                      ?>
+                      <form action="statushandle.php" method="post">
+                        <input type="hidden" value="<?php echo $data['complaint_id'];?>" name="cid">
+                        <input type="hidden" value="<?php echo $id;?>" name="id">
+                        <input type="hidden" value="<?php echo $sid;?>" name="sid">
+                        <button name="submit" class="btn btn-success">Accept Case</button>
+                      </form>
+                      
+                      <?php
+                    }
+                    if($data['status']==1){ 
+                      ?>
+                      <form action="statushandle.php" method="post" ><button name="sumnit1" class="btn btn-danger">Taken</button></form>
+                    <?php
+                      }
+                      // echo $data['complaint_id'];
+                    ?>
+                  </td>
                 </tr>
                 <?php } ?>
               </tbody>

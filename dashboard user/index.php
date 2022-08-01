@@ -97,7 +97,7 @@ SESSION_start();
             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
           </div>
           <div class="ms-3">
-            <h6 class="mb-0"><?php echo $first1;echo $last1?></h6><!-- user-->
+            <h6 class="mb-0"><?php echo $_SESSION['fname'];echo $_SESSION['lname']?></h6><!-- user-->
             <span></span><!-- user-->
           </div>
         </div>
@@ -378,7 +378,7 @@ SESSION_start();
                 <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                   <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
+                    <h6 class="mb-0"><?php echo $_SESSION['fname'];echo $_SESSION['lname']?></h6>
                     <small>15 minutes ago</small>
                   </div>
                   <span>Officer Stan says.....</span>
@@ -388,7 +388,7 @@ SESSION_start();
                 <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                   <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
+                    <h6 class="mb-0"><?php echo $_SESSION['fname'];echo $_SESSION['lname']?></h6>
                     <small>15 minutes ago</small>
                   </div>
                   <span>Sergant Kenny says...</span>
@@ -398,7 +398,7 @@ SESSION_start();
                 <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                   <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
+                    <h6 class="mb-0"><?php echo $_SESSION['fname'];echo $_SESSION['lname']?></h6>
                     <small>1 day ago</small>
                   </div>
                   <span>Rob ken says - hi , Officer t...</span>
@@ -408,7 +408,7 @@ SESSION_start();
                 <img class="rounded-circle flex-shrink-0" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                   <div class="d-flex w-100 justify-content-between">
-                    <h6 class="mb-0"><?php echo $first1;echo $last1?></h6>
+                    <h6 class="mb-0"><?php echo $_SESSION['fname'];echo $_SESSION['lname']?></h6>
                     <small>1 week ago</small>
                   </div>
                   <span>Officer Goerge - I would...</span>
