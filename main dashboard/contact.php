@@ -1,3 +1,13 @@
+<?php
+     SESSION_start();   
+    $id=$_SESSION['id'];
+    $email=$_SESSION['email'];
+    // echo"<script>alert($id)</script>"; //to check value of id
+    if(isset($_SESSION['id'])){
+        
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,10 +69,10 @@
                             <li><a href="news.php">News</a></li>
                             <li><a class="active" href="contact.php">Contact</a></li>
                             <li class="has-children">
-                                <a href="#">Login/Register</a>
+                                <a href="#"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></a>
                                 <ul class="dropdown">
-                                    <li><a href="login/login.php">Login</a></li>
-                                    <li><a href="login/signup.php">Signup</a></li>
+                                    <li><a href="../dashboard user/index.php">Dashboard</a></li>
+                                    <li><a href="login/logout.php">LogOut</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -246,3 +256,10 @@
 </body>
 
 </html>
+<?php
+}
+  
+else{
+  echo "error";
+}
+?>
