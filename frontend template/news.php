@@ -75,10 +75,11 @@
                             <li class="active"><a href="news.php">News</a></li>
                             <li><a href="contact.php">Contact</a></li>
                             <li class="has-children">
-                                <a href="#">Username</a>
+                                <a href="#">Login/Register</a>
                                 <ul class="dropdown">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">LogOut</a></li>
+                                    <li><a href="../dashboard user/login/login.php">Login</a></li>
+                                    <li><a href="../dashboard user/login/signup.php">Signup</a></li>
+                                   <!-- <li><a href="../dashboard admin(police)/signup.php">Signup-admin</a></li>-->
                                 </ul>
                             </li>
                         </ul>

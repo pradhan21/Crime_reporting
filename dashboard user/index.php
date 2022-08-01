@@ -283,6 +283,7 @@ SESSION_start();
               </div>
               <canvas id="worldwide-sales"></canvas>
             </div>
+            
           </div>
           <div class="col-sm-12 col-xl-6">
             <div class="bg-secondary text-center rounded p-4">
