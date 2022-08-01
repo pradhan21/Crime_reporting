@@ -41,6 +41,10 @@
                                     echo $_GET['err1'];}?> 
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>  
+                            <div class="form-floating mb-4">
+                                <input type="text" class="form-control"name="contact_no" id="floatingText" placeholder="Contact No."required>
+                                <label for="floatingText">Contact Number</label>
+                            </div>
                             </div>
                             <div class="form-floating mb-4">
                                 <input type="text" class="form-control"name="username" id="floatingText" placeholder="Username"required>
