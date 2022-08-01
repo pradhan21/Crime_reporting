@@ -1,7 +1,7 @@
 <?php
 SESSION_start();
 $id=$_SESSION['id'];
-  echo"<script>alert($id)</script>"; //to check value of id
+  // echo"<script>alert($id)</script>"; //to check value of id
  if(isset($_SESSION['id'])){
    include "connection.php";
 error_reporting(0);
@@ -87,7 +87,7 @@ if (isset($_POST['upload'])) {
       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb" style="background-color:#191c24 ">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
 
           <li class="breadcrumb-item active" aria-current="page">User Profile</li>
         </ol>
@@ -112,7 +112,7 @@ if (isset($_POST['upload'])) {
                 $conn = new mysqli($servername,$username, $password, $dbname);
                 if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                 }
-                $sql = "SELECT f_name,l_name,address,email_id,image from police_registration WHERE police_id='$id' ";
+                $sql = "SELECT * from police_registration WHERE police_id='$id' ";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -280,7 +280,7 @@ if (isset($_POST['upload'])) {
 
               <div class="row">
                 <div class="col-sm-12">
-                  <a class="btn btn-info " target="__blank" href="Profile_form.php">Edit</a><!-- EDIT 111111111111111111111-->
+                  <a class="btn btn-info "  href="Profile_form.php">Edit</a><!-- EDIT 111111111111111111111-->
                 </div>
               </div>
             </div>

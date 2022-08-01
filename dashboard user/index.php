@@ -102,10 +102,11 @@ SESSION_start();
             <span></span><!-- user-->
           </div>
         </div>
+        <!-- NAV bar -->
         <div class="navbar-nav w-100">
           <a href="index.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
         <a href="create_complaint.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Create Complaint</a>
-        <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>My Complaints</a>
+        <a href="my_complaints.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>My Complaints</a>
           <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>My Active Cases</a>
           <!--<div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
