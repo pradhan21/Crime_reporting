@@ -112,7 +112,7 @@ if (isset($_POST['upload'])) {
                 $conn = new mysqli($servername,$username, $password, $dbname);
                 if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
                 }
-                $sql = "SELECT f_name,l_name,address,email,image from user WHERE user_id='$id' ";
+                $sql = "SELECT f_name,l_name,address,email,image,contact_no from user WHERE user_id='$id' ";
                 $result = $conn->query($sql);
 
                 if ($result->num_rows > 0) {
@@ -123,6 +123,7 @@ if (isset($_POST['upload'])) {
                     $address1 = $row["address"];
                     $email1=$row["email"];
                     $image1=$row["image"]; 
+                    $phone1=$row["contact_no"];
                   }
                   echo "<script>alert($last1);</script>";
                 }
@@ -246,7 +247,7 @@ if (isset($_POST['upload'])) {
 
               <hr>
 
-              <div class="row">
+              <!-- <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0" style="color:white">Phone</h6>
                 </div>
@@ -255,14 +256,14 @@ if (isset($_POST['upload'])) {
                 </div>
               </div>
 
-              <hr>
+              <hr> -->
 
               <div class="row">
                 <div class="col-sm-3">
                   <h6 class="mb-0" style="color:white">Mobile</h6>
                 </div>
                 <div class="col-sm-9 text-secondary">
-                <?php// echo $phone1;?>
+                <?php echo $phone1;?>
                 </div>
               </div>
 
@@ -281,7 +282,7 @@ if (isset($_POST['upload'])) {
 
               <div class="row">
                 <div class="col-sm-12">
-                  <a class="btn btn-info " target="__blank" href="Profile_form.php?id=<?php echo $id;?>">Edit</a><!-- EDIT 111111111111111111111-->
+                  <a class="btn btn-info " href="Profile_form.php?id=<?php echo $id;?>">Edit</a><!-- EDIT 111111111111111111111-->
                 </div>
               </div>
             </div>

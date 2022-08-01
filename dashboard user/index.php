@@ -97,7 +97,8 @@ SESSION_start();
             <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
           </div>
           <div class="ms-3">
-            <h6 class="mb-0"><?php echo $_SESSION['fname'].' '.$_SESSION['lname']?></h6><!-- user-->
+            <h6 class="mb-0"><?php echo $_SESSION['fname'];?> <?php echo $_SESSION['lname'];?></h6>
+            <!-- user-->
             <span></span><!-- user-->
           </div>
         </div>

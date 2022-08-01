@@ -138,7 +138,7 @@ if (isset($_POST['upload'])) {
       <!-- Breadcrumb -->
       <nav aria-label="breadcrumb" class="main-breadcrumb">
         <ol class="breadcrumb" style="background-color:#191c24 ">
-          <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+          <li class="breadcrumb-item"><a href="Profile.php">Back</a></li>
 
           <li class="breadcrumb-item active" aria-current="page">User Profile</li>
         </ol>
@@ -287,13 +287,20 @@ if (isset($_POST['upload'])) {
             <div class="card-body" style="background-color:#191c24">
               
               <form name ="form" method="post" action= "">
-              
+              <?php
+              $sql1="SELECT * FROM user where user_id='$id'";
+              $result1=mysqli_query($conn,$sql1);
+              if(mysqli_num_rows($result1)>0){
+                while($row1=mysqli_fetch_array($result1)){
+
+                
+              ?>
                 <div class="row">
                   <div class="col-sm-3">
                     <h6 class="mb-0" style="color:white">First-Name</h6>
                   </div>
                     <div class="col-sm-9 text-secondary">
-                    <input type="text" name="f_name">
+                    <input type="text" name="f_name" value="<?php echo $row1['f_name'];?>" required>
                     <span class="error"> 
                   **<?php echo $f_Err;?> 
                     </span>  
@@ -306,7 +313,7 @@ if (isset($_POST['upload'])) {
                     <h6 class="mb-0" style="color:white">Last-Name</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                  <input type="text" name="l_name"  >
+                  <input type="text" name="l_name" value="<?php echo $row1['l_name'];?>" required>
                   <span class="error"> 
                   **<?php echo $l_Err;?> 
                   </span>  
@@ -319,7 +326,7 @@ if (isset($_POST['upload'])) {
                     <h6 class="mb-0" style="color:white">Email</h6>
                   </div>
                   <div class="col-sm-9 text-secondary" >
-                    <input type="text" name ="email"  >
+                    <input type="text" name ="email"  value="<?php echo $row1['email'];?>" required>
                     <span class = "error">
                     **<?php// echo $emailErr;?>
                     </span>
@@ -333,14 +340,26 @@ if (isset($_POST['upload'])) {
                     <h6 class="mb-0" style="color:white">Address</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    <input type="text" name ="address"  >
+                    <input type="text" name ="address" value="<?php echo $row1['address'];?>" required >
                     <span class="error">
                     **<?php echo $addressErr;?>
                     </span>
                   </div>
                 </div>
-                <br>
-
+                <hr>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h6 class="mb-0" style="color:white">Contact Number</h6>
+                  </div>
+                  <div class="col-sm-9 text-secondary">
+                    <input type="text" name ="contact" value="<?php echo $row1['contact_no'];?>" required>
+                    <span class="error">
+                    **<?php echo $addressErr;?>
+                    </span>
+                  </div>
+                </div>
+                <hr>
+                  <?php }} ?>
                 <div class="row">
                   <div class="col-sm-12">
 
@@ -357,8 +376,11 @@ if (isset($_POST['upload'])) {
                         $username = "root";
                         $password = "";
                         $dbname = "crime_db";
-                        $f_name=$_POST['f_name'];$l_name=$_POST['l_name'];
-                        $email=$_POST['email'];$address=$_POST['address'];
+                        $f_name=$_POST['f_name'];
+                        $l_name=$_POST['l_name'];
+                        $email=$_POST['email'];
+                        $address=$_POST['address'];
+                       
                         $conn = new mysqli($servername,$username, $password, $dbname);
 
                         if($conn === false){ die("ERRORRRRRR: Could not connect. ". mysqli_connect_error());
@@ -392,7 +414,7 @@ if (isset($_POST['upload'])) {
                                 {       
                       ?>  
                           <script type="text/javascript">
-                            window.location = "profile_form.php";
+                            window.location = "profile.php";
                           </script>      
                         
                          <?php

@@ -417,19 +417,27 @@ include("database_handler/select_user.php");
                                     </tr>
                                 </thead>
                                 <?php
-                                            if(is_array($fetchData)){      
-                                            $sn=1;
-                                            foreach($fetchData as $data){
-                                            ?>
+                                           if ($result2->num_rows > 0){
+                                            while($row = $result2->fetch_assoc()){
+                                            $c_id = $row["complaint_id"];
+                                            $u_id=$row["user_id"];
+                                            $c_place = $row["crime_place"];
+                                            $c_type=$row["crime_type"];
+                                          //  $evidence=$row["evidence"];
+                                            $image2=$row["image"]; 
+                                           // $image1=$row["image"];
+                                          ?>
                                 <tbody>
                                     <tr>
                                         
-                                    <td><?php echo ++$no;?> July 2022</td>
-                                    
-                                    <td><a href= "Criminal_details_form.php?id=<?php echo $data['criminal_name'] ;?>"> <?php echo $data['criminal_name']??'';?></a></td>
-                                    <td><a href= "Criminal_details_form.php?id=<?php echo $data['criminal_name'] ;?>"> <?php echo $data['gender']??'';?></a></td>
-                                    <td><a href= "Criminal_details_form.php?id=<?php echo $data['criminal_name'] ;?>"> <?php echo $data['age']??'';?></a></td>
-                                    <td><a href= "Criminal_details_form.php?id=<?php echo $data['criminal_name'] ;?>"> <?php echo $data['description']??'';?></a></td>
+                                 
+                                    <td><?php echo $c_id;?></td>
+                                    <td><?php echo $u_id;?></td>
+                                    <td><?php echo $c_place;?></td>
+                                    <td><?php echo $c_type;?></td>
+                                    <td><img src="http://localhost/crime_reporting/dashboard%20template/<?php echo $image2;?>"onerror="this.style.display='none'"/></td>
+                                    <td>On-Going</td>
+
                                     
                                     
                                     </tr>
