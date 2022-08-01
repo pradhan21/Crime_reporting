@@ -1,6 +1,8 @@
 <?php 
 SESSION_start();
  $id=$_SESSION['id'];
+ $sid=$_SESSION['sid'];
+ $csid=$_GET['csid'];
   //echo"<script>alert($id)</script>"; to check value of id
   if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
     include "connection.php";  
@@ -26,6 +28,9 @@ SESSION_start();
   <!-- Icon Font Stylesheet -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
 
   <!-- Libraries Stylesheet -->
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
@@ -67,7 +72,7 @@ SESSION_start();
           </div>
         </div>
         <div class="navbar-nav w-100">
-          <a href="dashboard.php" class="nav-item nav-link "><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+          <a href="#" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
           <!--<div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
             <div class="dropdown-menu bg-transparent border-0">
@@ -79,12 +84,9 @@ SESSION_start();
           <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
           <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a> -->
           <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
-          <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a>
-          <a href="user.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Users</a>
-          <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Add Station</a>
-          <!-- <a href="Criminal_deets.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a> -->
-          <a href="chart.html" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Track Cases</a>
+          <a href="Criminal_deets.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
           <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
+          <a href="widget.php" class="nav-item nav-link  active"><i class="fa fa-chart-bar me-2"></i>Your Cases</a>
          <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
           <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -269,71 +271,106 @@ SESSION_start();
 
 
       <!-- Recent Sales Start -->
-      <div class="container-fluid pt-4 px-4">
-        <div class="bg-secondary text-center rounded p-4">
-          <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">Report History</h6>
-            <a href="">Show All</a>
-          </div>
-          
-          <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
+        <div class="container-fluid pt-4 px-4">
+            <div class="row g-4">
+                <div class="col-sm-14 col-md-6 col-xl-6" >
+                    <div class="h-100 bg-secondary rounded p-4">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Case</h6>
+                            <?php
+                            $sql1="SELECT *
+                            FROM  user_complaints join investigation_details on  user_complaints.complaint_id=investigation_details.complaint_id
+                            join investigation on investigation_details.investigation_del_id=investigation.investigation_del_id 
+                             where user_complaints .complaint_id='$csid'"; 
+                             $result1=mysqli_query($conn,$sql1);
+                             if(mysqli_num_rows($result1)>0){
+                              while($row=mysqli_fetch_array($result1)){
 
-              <thead>
-                <tr class="text-white">
-                  <th scope="col">ID</th>
-                  <th scope="col">User</th>
-                  <th scope="col">Crime Place</th>
-                  <th scope="col">Crime Type</th>
-                  <th scope="col">Crime Evidence</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">View</th>
-                  <!--    <th scope="col">Action</th>-->
-                </tr>
-              </thead>
-              <tbody>
-              <?php 
-                $sql="SELECT * FROM user join user_complaints on user.user_id=user_complaints.user_id  ORDER by complaint_id DESC ";
-                $result=mysqli_query($conn,$sql);
-                while ($data = mysqli_fetch_assoc($result)) {
-              ?>
-                <tr>
-                  <th scope="row"><?php echo $data['complaint_id']?></th>
-                  <td><?php echo $data['user_id']?></td>
-                  <td><?php echo $data['crime_place'];?></td>
-                  <td><?php echo $data['crime_type'];?></td>
-                  <td> <?php echo $data['crime_evidence'];?></td>
-                  <td><?php echo $data['date_col'];?></td>
-                    <?php
-                    if($data['status']==0){
-                      ?>
-                      <td>
-                        <button name="submit" class="btn btn-success">Accept Case</button>
-                    </td>
+            
+                            ?>
+                            <div class=" mb-3">
+                             <label for="" class="mb-1">Case-Details</label>
+                                <input type="text" class="form-control" id="floatingInput" readonly
+                                    placeholder="<?php echo $row['details'];?>">
+                                <label for="floatingInput"></label>
+                             </div>
+                            <div class="input-group mb-3  row justify-content-around form-floating">
+                                <div class="col-6  ">
+                                  <label for="" class="mb-1">Complaint_id</label>
+                                  <input type="text" class="form-control" placeholder="<?php echo $row['complaint_id'];?>"  readonly aria-label="Username">
+                                </div>
+                                <!-- <span class="input-group-text"> </span> -->
+                                <div class="col-6 ">
+                                <label for="" class="mb-1">Criminal Name</label>
+                                  <input type="text" class="form-control" placeholder="<?php echo $row['criminal_name'];?>"  readonly aria-label="Server">
+                                </div>
+                            </div>
+                             <div class=" mb-3">
+                             <label for="" class="mb-1">Crime Type</label>
+                                <input type="text" class="form-control" id="floatingInput" readonly
+                                    placeholder="<?php echo $row['crime_type'];?>">
+                                <label for="floatingInput"></label>
+                             </div>
+                             <div class=" mb-3">
+                                <?php
+                                    $sql4="SELECT * FROM investigation_details join police_registration on investigation_details.police_id=police_registration.police_id where investigation_details.complaint_id='$csid'";
+                                    $result4=mysqli_query($conn,$sql4);
+                                    if(mysqli_num_rows($result4)>0){
+                                     while($row4=mysqli_fetch_array($result4)){
+                                
+                                ?>
+                             <label for="" class="mb-1">Case Taken By</label>
+                                <input type="text" class="form-control" id="floatingInput" readonly
+                                    placeholder="<?php echo $row4['f_name'];?> <?php echo $row4['l_name'];?>">
+                                <label for="floatingInput"></label>
+                                <?php }}
+                                else{ ?>
+                                    <label for="" class="mb-1">Case Taken By</label>
+                                <input type="text" class="form-control" id="floatingInput" readonly
+                                    placeholder="<?php echo $row4['f_name'];?> <?php echo $row4['l_name'];?>">
+                                <label for="floatingInput"></label>
+                                <?php }?>
+
+                             </div>
+
+                             <div class="mb-3  row justify-content-around form-floating">
+                                <div class="col-6  ">
+                                <label for="" class="mb-1">Date</label>
+                                  <input type="text" class="form-control" placeholder="<?php echo $row['date_col'];?>"  readonly aria-label="Username">
+                                </div>
+                                <!-- <span class="input-group-text"> </span> -->
+                                <div class="col-6 ">
+                                <label for="" class="mb-1">Crime Place</label>
+                                  <input type="text" class="form-control" placeholder="<?php echo $row['crime_place'];?>" readonly aria-label="Server">
+                                </div>
+                            </div>
+                            
+                            <div class=" mb-3">
+                            <label for="" class="mb-1">Evidences</label>
+                                <input type="text" class="form-control" id="floatingInput" readonly
+                                    placeholder="<?php echo $row['crime_evidence'];?>">
+                                <label for="floatingInput"></label>
+                             </div>
+                            <br>
+                            <?php 
+                            }
+                            }
+                        
+                        ?>
+                            
+                        </div>
                    
-                      <?php
-                    }
-                    if($data['status']==1){ 
-                      ?>
-                      <td>
-                     <button name="sumnit1" class="btn btn-danger">Taken</button>
-                    </td>
-                    <?php
-                      }
-                      // echo $data['complaint_id'];
-                      ?>
-                      <td><a href="reportdetails.php?csid=<?php echo $data['complaint_id'];?>"> <button name="submit" class="btn btn-success">View</button></a></td>
+                    </div>
+                </div>
                   
-                </tr>
-                <?php } ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+            </div>
+            
       <!--   Recent Sales End -->
+      
 
+<!-- Modal -->
+
+  <!-- Modal -->
 
 
 
