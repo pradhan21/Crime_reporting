@@ -223,10 +223,61 @@ include("database_handler/select_user.php");
                         
 
 
+                <div class="container-fluid pt-4 px-4">
+                    <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                <h6 class="mb-0">Complaint Form</h6>
+              </div>
+              <form action="reporthandle.php" method="POST" enctype="multipart/form-data" >
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Phone No:</span>
+                  <input type="text" class="form-control" placeholder="contact" aria-label="contact" aria-describedby="basic-addon1" name ="contact" value = "<?php echo $_SESSION['contact']?>">
+                  <!-- <input type="hidden" value="<?php //echo $id;?>" name="id"> -->
+                </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1">Location</span>
+                  <input type="text" class="form-control" placeholder="location"  aria-describedby="basic-addon1" name ="location">
+                  
+                </div>
+                <div class="input-group mb-3">
+                <select name="type"  class="form-control" id="floatingText">
+                    <?php 
+                    include_once "connection.php";
+                    $sql="SELECT * FROM cime_type";
+                    $result=mysqli_query($conn,$sql);
+                    if(mysqli_num_rows($result)>0){
+                      while($row=mysqli_fetch_array($result)){ 
+                        
+                    ?>
+                    <option value="<?php echo $row['crime_id'];?>" class="form-control" id="floatingText"><?php echo $row['crime']; ?></option>
+                    <?php }}
+                    else{
+                      $error=mysqli_error($conn);
+                      echo "<script>alert('$error')</script>";
+                    } ?>
+                </select>
+                </div>
 
-    <!-- Content Start -->
+                <!--  <div class="d-flex mb-2">
+                <input class="form-control bg-dark border-0" type="text" placeholder="Enter task">
+                <button type="button" class="btn btn-primary ms-2">Add</button>
+              </div>-->
                 
+                <div class="form-floating">
+                  <textarea class="form-control" placeholder="What happened?" id="floatingTextarea" style="height: 150px;"name="report"></textarea>
+                  <label for="floatingTextarea">Type your report</label>
+                </div>
+                <br>
 
+                <input type="file" class="form-control" name="fimage">
+
+                <br><button type="submit" class="btn btn-primary" name="submit">Send</button>
+                <button type="reset" class="btn btn-info">Reset</button>
+              </form>
+                        </div>
+                </div>
+ 
+    </div>
     <!-- Content End -->
 
 

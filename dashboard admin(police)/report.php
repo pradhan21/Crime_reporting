@@ -1,8 +1,7 @@
 <?php 
 SESSION_start();
  $id=$_SESSION['id'];
- $sid=$_SESSION['sid'];
-  //echo"<script>alert($id)</script>"; to check value of id
+//  $sid=$_SESSION['sid'];
   if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
     include "connection.php";  
 ?>
@@ -69,29 +68,9 @@ SESSION_start();
         </div>
         <div class="navbar-nav w-100">
           <a href="dashboard.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-          <!--<div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-            <div class="dropdown-menu bg-transparent border-0">
-              <a href="button.html" class="dropdown-item">Buttons</a>
-              <a href="typography.html" class="dropdown-item">Typography</a>
-              <a href="element.html" class="dropdown-item">Other Elements</a>
-            </div>
-          </div>-->
-          <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
-          <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a> -->
-          <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
+
           <a href="Criminal_deets.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Criminal detail</a>
-          <!--<a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>-->
-         <!-- <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
-          <!-- <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-            <div class="dropdown-menu bg-transparent border-0">
-              <a href="signin.html" class="dropdown-item">Sign In</a>
-              <a href="signup.html" class="dropdown-item">Sign Up</a>
-              <a href="404.html" class="dropdown-item">404 Error</a>
-              <a href="blank.html" class="dropdown-item">Blank Page</a>
-            </div>
-          </div> -->
+
         </div>
       </nav>
     </div>
@@ -306,9 +285,11 @@ SESSION_start();
                     if($data['status']==0){
                       ?>
                       <form action="statushandle.php" method="post">
-                        <input type="hidden" value="<?php echo $data['complaint_id'];?>" name="cid">
-                        <input type="hidden" value="<?php echo $id;?>" name="id">
-                        <input type="hidden" value="<?php echo $sid;?>" name="sid">
+                        <input type="hidden" value="<?php echo $data['complaint_id'];?>" name="complaint_id">
+                        <input type="hidden" value="<?php echo $id;?>" name="police_id">
+                        <input type="hidden" value="<?php echo $data['user_id'];?>" name="user_id">
+                        <input type="hidden" value="<?php echo $data['image'];?>" name="image">
+                        
                         <button name="submit" class="btn btn-success">Accept Case</button>
                       </form>
                       
@@ -316,7 +297,7 @@ SESSION_start();
                     }
                     if($data['status']==1){ 
                       ?>
-                      <form action="statushandle.php" method="post" ><button name="sumnit1" class="btn btn-danger">Taken</button></form>
+                      <form action="statushandle.php" method="post" ><button name="sumbit1" class="btn btn-danger">Taken</button></form>
                     <?php
                       }
                       // echo $data['complaint_id'];
