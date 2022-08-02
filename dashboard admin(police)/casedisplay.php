@@ -301,7 +301,7 @@ SESSION_start();
               </thead>
               <tbody>
               <?php 
-                $sql="SELECT * FROM investigation_details join investigation on investigation_details.investigation_del_id=investigation.investigation_del_id join user_complaints on investigation_details.complaint_id=user_complaints.complaint_id where investigation_details.police_id='$id'";
+                $sql="SELECT * FROM investigation_details join user_complaints on investigation_details.complaint_id= user_complaints.complaint_id where investigation_details.police_id='$id'";
                 $result=mysqli_query($conn,$sql);
                 while ($data = mysqli_fetch_assoc($result)) {
               ?>

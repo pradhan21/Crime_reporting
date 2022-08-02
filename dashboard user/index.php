@@ -233,7 +233,7 @@ include("database_handler/select_user.php");
                                             <td><?php echo $c_type; ?></td>
                                             <!-- <td><img src="http://localhost/crime_reporting/dashboard%20template/
                                             <?php // echo $image2; ?>" onerror="this.style.display='none'" /></td> -->
-                                            <td><?php if($status == 0){echo "Pending";}else{echo "Approved";} ?></td>
+                                            <td><?php if($status == 0){echo "Pending";}else{echo "Solved";} ?></td>
 
 
 

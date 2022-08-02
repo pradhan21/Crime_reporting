@@ -19,6 +19,8 @@ include "connection.php";
                     $file=$folder.basename($_FILES['fimage']['name']);
                     $report=$_POST['report'];
                     $id=$_SESSION['id'];
+                    // echo $id;
+                    // die();
                     $type=$_POST['type'];
                     $location=$_POST['location'];
                 

@@ -1,7 +1,7 @@
 <?php 
 SESSION_start();
  $id=$_SESSION['id'];
-//  $sid=$_SESSION['sid'];
+ $sid=$_SESSION['sid'];
   if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
     include "connection.php";  
 ?>
@@ -289,7 +289,11 @@ SESSION_start();
                         <input type="hidden" value="<?php echo $id;?>" name="police_id">
                         <input type="hidden" value="<?php echo $data['user_id'];?>" name="user_id">
                         <input type="hidden" value="<?php echo $data['image'];?>" name="image">
-                        
+                        <input type="hidden" value="<?php echo $data['date_col'];?>" name="date">
+                        <input type="hidden" value="<?php echo $data['crime_type'];?>" name="crime_type_id">
+                        <input type="hidden" value="<?php echo $data['crime_place'];?>" name="location">
+                        <input type="hidden" value="<?php echo $data['crime_evidence'];?>" name="evidence">
+
                         <button name="submit" class="btn btn-success">Accept Case</button>
                       </form>
                       
