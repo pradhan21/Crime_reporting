@@ -12,7 +12,7 @@
 
 
     // To show blog in the table
-    $sql = "SELECT * FROM Blog";
+    $sql = "SELECT * FROM missing_details";
     $query = mysqli_query($conn, $sql);
 
 
@@ -24,23 +24,27 @@
       // echo "<pre>";
       // print_r($_FILES['fimage']);
       // echo"</pre>";
-        $dir="images/";
-        $dir1="images1/";
-        $title =$_REQUEST['blogTitle'];
-        $subTitle =$_REQUEST['subTitle'];
-        $author =$_REQUEST['author'];
-        $image_path=$dir.basename($_FILES['fimage']['name']);
+        $dir="mimages/";
+        $name=$_REQUEST['name'];
+        $date=$_REQUEST['date'];
+        $homeland=$_REQUEST['homeland'];
+        $gender=$_REQUEST['gender'];
+        $llocation=$_REQUEST['lost_location'];
+        $ldate=$_REQUEST['ldate'];
+        $cname=$_REQUEST['cname'];
+        $number=$_REQUEST['number'];
         $description =$_REQUEST['description'];
-        $image1_path=$dir1.basename($_FILES['addimage']['name']);
-        $opt_description =$_REQUEST['opt_description'];
+        $image_path=$dir.basename($_FILES['fimage']['name']);
+      
 
 
-        $sql = "INSERT INTO Blog(title, sub_title, author, featured_image, description1, add_image, description2) VALUES('$title', '$subTitle', '$author', '$image_path', '$description', '$image1_path', '$opt_description')" ;
+        $sql = "INSERT INTO missing_details(name, Homeland	,Date,	gender,	llocation,	ldate,	cname,	contact,	description,	image) 
+        VALUES('$name', '$homeland', '$date', '$gender', '$llocation', '$ldate', '$cname','$number','$description','$image_path')" ;
     
         if(mysqli_query($conn, $sql)){
           move_uploaded_file($_FILES['fimage']['tmp_name'],$image_path);
-          move_uploaded_file($_FILES['addimage']['tmp_name'],$image1_path);
-          header("Location: blog.php?info = inserted");
+          
+          header("Location: missing.php?info = inserted");
           exit();
 
         }
@@ -78,10 +82,10 @@
     $id =$_REQUEST["id"];
     
 
-    $delete = "DELETE FROM blog WHERE blog_id = '$id' ";
+    $delete = "DELETE FROM missing_details WHERE missing_id = '$id' ";
     mysqli_query($conn, $delete);
     
-    header("Location: blog.php?info = deleted");
+    header("Location: missing.php?info = deleted");
     exit();
 }
 
@@ -94,23 +98,24 @@ if(isset($_REQUEST["blog_update"])) {
   // print_r($_FILES['fimage']);
   // echo"</pre>";
 
-    $dir="images/";
-    $dir1="images1/";
     $id =$_REQUEST["id"];
-    $title =$_REQUEST['blogTitle'];
-    $subTitle =$_REQUEST['subTitle'];
-    $author =$_REQUEST['author'];
-    $image_path=$dir.basename($_FILES['fimage']['name']);
+    $dir="mimages/";
+    $name=$_REQUEST['name'];
+    $date=$_REQUEST['date'];
+    $homeland=$_REQUEST['homeland'];
+    $gender=$_REQUEST['gender'];
+    $llocation=$_REQUEST['lost_location'];
+    $ldate=$_REQUEST['ldate'];
+    $cname=$_REQUEST['cname'];
+    $number=$_REQUEST['number'];
     $description =$_REQUEST['description'];
-    $image1_path=$dir1.basename($_FILES['addimage']['name']);
-    $opt_description =$_REQUEST['opt_description'];
-
-    $sql = "UPDATE missing_details SET title ='$title', sub_title = '$subTitle', author = '$author', description1 = '$description', description2 = '$opt_description', featured_image = '$image_path',  add_image = '$image1_path' WHERE blog_id = '$id' " ;
+    $image_path=$dir.basename($_FILES['fimage']['name']);
+    $sql = "UPDATE missing_details set name='$name', Homeland='$homeland'	,Date='$date',	gender='$gender',	llocation='$llocation',	ldate='$ldate',	cname='$cname',	contact='$number',	description='$description',	image='$image_path' WHERE missing_id = '$id' " ;
     
     if(mysqli_query($conn, $sql)){
       move_uploaded_file($_FILES['fimage']['tmp_name'],$image_path);
-      move_uploaded_file($_FILES['addimage']['tmp_name'],$image1_path);
-      header("Location: blog.php?info = updated");
+      
+      header("Location: missing.php?info = updated");
       exit();
 
     }

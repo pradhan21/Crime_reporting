@@ -162,7 +162,7 @@ if (isset($_POST['upload'])) {
               </div>
             </div>
           </div>
-          <div class="card mt-3 ">
+          <!-- <div class="card mt-3 ">
             <ul class="list-group list-group-flush">
 
               <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
@@ -208,7 +208,7 @@ if (isset($_POST['upload'])) {
                 <span class="text-secondary">FB</span>
               </li>
             </ul>
-          </div>
+          </div> -->
         </div>
         <div class="col-md-8">
           <div class="card mb-3">
@@ -288,7 +288,7 @@ if (isset($_POST['upload'])) {
             </div>
           </div>
 
-          <div class="row gutters-sm">
+          <!-- <div class="row gutters-sm">
             <div class="col-sm-6 mb-3">
               <div class="card h-100">
                 <div class="card-body" style="background-color:#191c24">
@@ -355,7 +355,7 @@ if (isset($_POST['upload'])) {
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
 
 
 

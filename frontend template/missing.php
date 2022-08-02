@@ -103,32 +103,48 @@
                     </div>
                 </div>
             </div>
-
+            <?php
+                    $servername="localhost";
+                    $username="root";
+                    $password="";
+                    $db="crime_db";
+                    //create connections
+                    $conn=mysqli_connect($servername,$username,$password, $db);
+                    //check connection
+                    if(!$conn){
+                      die("connection failed:".mysqli_connect_error());
+                    }
+                    $sql = "SELECT * FROM missing_details";
+                    $first = mysqli_query($conn, $sql);
+                    foreach($first as $q) {
+                    ?>
             <div class="row">
                 <div class="col-3">
-                    <img src="images/blank.png" class="img-fluid rounded-start" style="margin-top:2.5%; width:100%;">
+                    <img src="http://localhost/crime_reporting/dashboard%20admin/<?=$q['image']; ?>" class="img-fluid rounded-start" style="margin-top:2.5%; width:100%;">
                 </div>
                 <div class="col-8" style="margin-left:2%;">
-                    <div class="row"><h4>&nbsp;&nbsp;Sita Kumari</h4></div>
-                    <div class="row"><span>&nbsp;&nbsp; 20-02-2020</span></div>
+                    <div class="row"><h4>&nbsp;&nbsp;<?php echo $q['name'];?></h4></div>
+                    <div class="row"><span>&nbsp;&nbsp; <?php echo $q['Date'];?></span></div>
                     <div class="row">
-                        <div class="col-7"><h5 class = "detail_space">Homeland: </h5> &nbsp;<span> Dhulikhel </span></div>
-                        <div class="col-5"><h5 class = "detail_space">Gender: </h5> &nbsp;<span> Female </span></div>
+                        <div class="col-7"><h5 class = "detail_space">Homeland: </h5> &nbsp;<span> <?php echo $q['Homeland'];?> </span></div>
+                        <div class="col-5"><h5 class = "detail_space">Gender: </h5> &nbsp;<span> <?php echo $q['gender'];?> </span></div>
                     </div>
                     <div class="row">
-                        <div class="col-7"><h5 class = "detail_space">Lost-Location:</h5> &nbsp;<span> Kathmandu </span></div>
-                        <div class="col-5"><h5 class = "detail_space">Lost-Date:</h5> &nbsp;<span> 19-02-2020 </span></div>                    
+                        <div class="col-7"><h5 class = "detail_space">Lost-Location:</h5> &nbsp;<span> <?php echo $q['llocation'];?> </span></div>
+                        <div class="col-5"><h5 class = "detail_space">Lost-Date:</h5> &nbsp;<span> <?php echo $q['ldate'];?> </span></div>                    
                     </div>
                     <div class="row">
-                        <div class="col-7"><h5 class = "detail_space">Complainers' Name: </h5> &nbsp;<span> Ram Bahadhur </span></div>
-                        <div class="col-5"><h5 class = "detail_space">Contact Number:</h5> &nbsp;<span> 9888009977 </span></div>                    
+                        <div class="col-7"><h5 class = "detail_space">Complainers' Name: </h5> &nbsp;<span><?php echo $q['cname'];?>  </span></div>
+                        <div class="col-5"><h5 class = "detail_space">Contact Number:</h5> &nbsp;<span> <?php echo $q['contact'];?> </span></div>                    
                     </div>
                     <div class="row">
-                        <div><h5 class = "detail_space">&nbsp;&nbsp; Appearance:</h5><p style="margin-left:7%;">Height 5 feet, black eyes, black hair, black pants, black shawl, yellow hat, wearing pink shoes. </p></div>
+                        <div><h5 class = "detail_space">&nbsp;&nbsp; Appearance:</h5><p style="margin-left:7%;"><?php echo $q['description'];?> </p></div>
                     </div>
                 </div>  
                 <div class="col-1"></div>             
             </div>
+            <hr>
+            <?php } ?>
 
         </div>
     </div>

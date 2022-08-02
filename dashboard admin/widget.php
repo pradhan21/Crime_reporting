@@ -323,7 +323,7 @@ SESSION_start();
                       }
                       // echo $data['complaint_id'];
                       ?>
-                      <td><a href="reportdetails.php?csid=<?php echo $data['complaint_id'];?>"> <button name="submit" class="btn btn-success">View</button></a></td>
+                      <td><a href="reportdetails.php?csid=<?php echo $data['complaint_id'];?> & sid=<?php echo $data['near_police_station'];?>"> <button name="submit" class="btn btn-success">View</button></a></td>
                   
                 </tr>
                 <?php } ?>

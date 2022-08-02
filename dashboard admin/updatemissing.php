@@ -1,9 +1,26 @@
 <?php
-    SESSION_start();
-    // include "../dashboard user/logics/bloglogic.php"
-    include "logics/bloglogic.php";
-    if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
-        include "connection.php";  
+
+    $servername="localhost";
+    $username="root";
+    $password="";
+    $db="crime_db";
+    //create connections
+    $conn=mysqli_connect($servername,$username,$password, $db);
+    //check connection
+    if(!$conn){
+      die("connection failed:".mysqli_connect_error());
+    }
+    
+    // include_once "../dashboard user/logics/bloglogic.php";
+
+    include_once "logics/logic1.php";
+
+    $id = $_REQUEST['id'];
+
+    $sql = "SELECT * FROM missing_details WHERE missing_id = '$id' ";
+    $check_rec = mysqli_query($conn, $sql);
+
+    
 
 ?>
 
@@ -12,7 +29,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Crime Daily </title>
+    <title>DarkPan - Bootstrap 5 Admin Template</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -35,19 +52,9 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
-
-    <!-- bootstrap CDN -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-
-    <!-- ajax for search bar -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-
-
-
 </head>
 
 <body>
@@ -73,38 +80,15 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0"><?php echo $_SESSION['fname'] ?> <?php echo $_SESSION['lname'] ?></h6>
+                        <h6 class="mb-0">Jhon Doe</h6>
                         <span>Admin</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="dashboard.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <!-- <div class="nav-item dropdown">
-                       <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buttons</a>
-                            <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>
-                        </div>
-                    </div> -->
-                   <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
                     <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
                     <a href="user.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Users</a>
                     <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Add Station</a>
-                    <a href="missing.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Missing Person Details</a>
-                    <a href="widget.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Track Cases</a>
-                    <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
-                   <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Table</a>-->
-                  <!--  <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>-->
-                    <!-- <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item active">Blank Page</a>
-                        </div>
-                    </div> -->
                 </div>
             </nav>
         </div>
@@ -121,10 +105,9 @@
                 <a href="#" class="sidebar-toggler flex-shrink-0">
                     <i class="fa fa-bars"></i>
                 </a>
-                <!-- <form class="d-none d-md-flex ms-4" method = "GET"> -->
-                    &nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control bg-dark border-0" name="search" id="search_text" type="search" placeholder="Search..." required>
-                    <button type="submit" class="btn border-0"><i class="bi bi-search"></i></button>
-                <!-- </form> -->
+                <form class="d-none d-md-flex ms-4">
+                    <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+                </form>
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -192,12 +175,12 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION['fname'] ?> <?php echo $_SESSION['lname'] ?></span>
+                            <span class="d-none d-lg-inline-flex">John Doe</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="logout.php" class="dropdown-item">Log Out</a>
+                            <a href="../frontend template/login/logout.php" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -211,132 +194,92 @@
                     <div class="container-fluid">
                         <!-- <br/> -->
                         
+                        <?php
+                            if($check_rec){
+                                while($q = mysqli_fetch_array($check_rec))
+                                {
+                                    $desc=$q['description'];
+                        ?>        
                     
-                        <div class="col-12 format" id="div1">
+                        <div class="col-12" id="div1">
                             
-                            <form method="POST" enctype = "multipart/form-data">   
+                            <form method="post" enctype = "multipart/form-data">   
                                 <br/>
-                                <h1>Blog Post</h1>                             
-                                <label for="blogTitle" class="form-label">Title</label>
-                                <input type="text" class="form-control" name="blogTitle" required>
+                                <h1>Update Blog Post</h1>  
                                 
-                                <label for="subTitle" class="form-label">Sub-Title</label>
-                                <input type="text" class="form-control" name="subTitle">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" name="name" value="<?php echo $q['name'];?>"required>
+                                
+                                <label for="date" class="form-label">Date</label>
+                                <input type="date" class="form-control" name="date" value="<?php echo $q['Date'];?>">
 
-                                <label for="author" class="form-label">Written by</label>
-                                <input type="text" class="form-control" name="author">
+                                <label for="homeland" class="form-label">Homeland</label>
+                                <input type="text" class="form-control" name="homeland" value="<?php echo $q['Homeland'];?>">
                                 
-                                <label for="fimage" class="form-label">Featured Image</label>
-                                <input type="file" class="form-control" name="fimage" required>
-                                
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control tarea" name="description" rows="8" required></textarea>
-                                
-                                <label for="addimage" class="form-label">Additional Image</label>
-                                <input type="file" class="form-control" name="addimage">
+                                <label for="fimage" class="form-label"> Image</label>
+                                <input type="file" class="form-control" name="fimage" value="<?php echo $q['image'];?>"required>
 
-                                <label for="opt_description" class="form-label">Optional Description</label>
-                                <textarea class="form-control tarea" name="opt_description" rows="6"></textarea>
+                                <label for="gender" class="form-label">Gender</label>
+                                <input type="text" class="form-control" name="gender" value="<?php echo $q['gender'];?>">
 
+                                <label for="lost-location" class="form-label">Lost_location</label>
+                                <input type="text" class="form-control" name="lost_location" value="<?php echo $q['llocation'];?>">
+
+                                <label for="ldate" class="form-label">Last-Date</label>
+                                <input type="date" class="form-control" name="ldate" value="<?php echo $q['ldate'];?>">
+
+                                <label for="cname" class="form-label">Complainer's Name</label>
+                                <input type="text" class="form-control" name="cname" value="<?php echo $q['cname'];?>">
+
+                                <label for="number" class="form-label">Contact Number</label>
+                                <input type="text" class="form-control" name="number" value="<?php echo $q['contact'];?>">
+                                
+                                <label for="description" class="form-label">Appearance</label>
+                                <textarea class="form-control tarea" name="description" rows="8"  required><?php echo $desc;?></textarea>
                                 <br/>
-                                <button name="blog_insert" type="submit" class="btn btn-success" id = "btn-submit" onsubmit="myFunction()">Submit</button>
+                                <button name="blog_update" type="submit" class="btn btn-success" id = "btn-submit" onsubmit="myFunction()">Update Data</button>
                                 <button type="reset" class="btn btn-info">Reset</button>
-                                <button name="blog_insert" type="button" class="btn btn-light" id = "btn-submit" onclick="myFunction()">Go Back</button>
-
-                                <!-- <a href="blog.php" class="btn btn-light">Cancel / Go Back</a> -->
+                                <a href="missing.php" class="btn btn-light">Cancel / Go Back</a>
                                 <br/>
                                 <br/>
                             </form> 
 
-                            <?php if(isset($_REQUEST['info'])){?>
-                                <?php if($_REQUEST['info'] == "added"){?> 
-                                
-                                    <div class="alert alert-success" role="alert">Post Added</div>
-                                <?php } ?>
-                            <?php } ?>
 
-                        </div>                           
+                        </div>   
+                        <?php
+                                }
+                            }
+                        ?>
                     </div>
                     
                 </div>
 
-                <!-- Table start -->
-                <div class="row g-4" id= "div2">
-                    <div class="col-12">
-                        
+                <!-- <br/>
                         <button class="btn btn-success" id = "btn-tog">Create New Post</button>
                         <br/>
                         <br/>
-                        <div class="bg-secondary rounded h-100 p-4">
-                            <h1 class="mb-4">Published Post List</h1>
-                            <div class="table-responsive">
-                                <table class="table table-hover table-bordered" id="table-data">
-                                    <thead class=" table-light">
-                                        <tr>
-                                            <th scope="col">Blog_Id</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Published Date</th>
-                                            <th scope="col">Image</th>
-                                            <!-- <th scope="col">added Image</th> -->
-                                            <th scope="col">Edit</th>
-                                            <th scope="col">Delete</th>
-                                        </tr>
-                                    </thead>
-                                    
-                                    <!-- Using loop to get recorded blog from database -->
-                                    <?php foreach($query as $q) { ?> 
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row"><?php echo $q['blog_id']; ?></th>
-                                            <td><?php echo $q['title']; ?></td>
-                                            <td><?php echo $q['date_col']; ?></td>
-                                            <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?> "></td>
-                                            <!-- <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td> -->
-                                            <form action = "updatedata.php" method="POST">
-                                                <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
-                                                <td><input type="submit" name = "edit" class="btn btn-info" value="Edit"></td>
-                                            </form>
 
-                                            <form method="POST">
-                                                <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
-                                                <td><input type="submit" name = "delete" class="btn btn-danger" value="Delete"></td>
-                                            </form>
-                                        
-                                        </tr>
-                                    </tbody>
-                                    <?php } ?>
-                                </table>
-                            </div>
+                        <script src="js/toggle.js"></script>     -->
+
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                            <br>Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
                         </div>
                     </div>
                 </div>
-                <script src="js/toggle.js"></script>    
-                <!-- Table end -->
             </div>
-            <!-- Blog End -->
-            
-
-            <!-- Footer Start -->
-            
             <!-- Footer End -->
         </div>
         <!-- Content End -->
-        <script type="text/javascript">
-            $(document).ready(function(){
-                $("#search_text").keyup(function(){
-                    var input = $(this).val();
-                        $.ajax({
-                            url:"action.php",
-                            method: "POST",
-                            data: {input:input},
-
-                            success:function(response){
-                                $("#table-data").html(response);
-                            }
-                        });
-                });
-            });
-        </script>
 
 
         <!-- Back to Top -->
@@ -359,10 +302,3 @@
 </body>
 
 </html>
-<?php
-}
-  
-else{
-  echo "error";
-}
-?>

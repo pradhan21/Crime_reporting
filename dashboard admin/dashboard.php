@@ -4,59 +4,6 @@ SESSION_start();
   //echo"<script>alert($id)</script>"; to check value of id
   if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
     include "connection.php";  
-    $sql1="SELECT count(complaint_id) from user_complaints where date_col between '2022-01-01' and '2022-01-31'";
-    $result1 = mysqli_query($conn,$sql1);
-    $data1 = mysqli_num_rows($result1); 
-  
-      $sql2="SELECT count(complaint_id) from user_complaints where date_col between '2022-02-01' and '2022-02-31'";
-      $result2 = mysqli_query($conn,$sql2);
-      $data2 = mysqli_num_rows($result2);
-
-      $sql3="SELECT count(complaint_id) from user_complaints where date_col between '2022-03-01' and '2022-03-31'";
-      $result3 = mysqli_query($conn,$sql3);
-      $data3 = mysqli_num_rows($result3);
-
-      $sql4="SELECT count(complaint_id) from user_complaints where date_col between '2022-04-01' and '2022-04-31'";
-      
-      $result4 = mysqli_query($conn,$sql4);
-    $data4 = mysqli_num_rows($result4);
-
-    $sql5="SELECT count(complaint_id)  from user_complaints where date_col between '2022-05-01' and '2022-05-31'";
-    $result5 = mysqli_query($conn,$sql5);
-    $data5 = mysqli_num_rows($result5);
-
-    $sql6="SELECT count(complaint_id) from user_complaints where date_col between '2022-06-01' and '2022-06-31'";
-    $result6 = mysqli_query($conn,$sql6);
-    $data6 = mysqli_num_rows($result6);
-
-    $sql7="SELECT count(complaint_id) from user_complaints where date_col between '2022-07-01' and '2022-07-31'";
-    $result7 = mysqli_query($conn,$sql7);
-    $data7 = mysqli_num_rows($result7);
-
-    $sql8="SELECT count(complaint_id) from user_complaints where date_col between '2022-08-01' and '2022-08-31'";
-    $result8 = mysqli_query($conn,$sql8);
-    $data8 = mysqli_num_rows($result8);
-
-    $sql9="SELECT count(complaint_id) from user_complaints where date_col between '2022-09-01' and '2022-09-31'";
-    $result9 = mysqli_query($conn,$sql9);
-    $data9 = mysqli_num_rows($result9);
-
-    $sql10="SELECT count(complaint_id) from user_complaints where date_col between '2022-10-01' and '2022-11-31'";
-    $result10 = mysqli_query($conn,$sql10);
-    $data10 = mysqli_num_rows($result10);
-
-    $sql11="SELECT count(complaint_id) from user_complaints where date_col between '2022-11-01' and '2022-11-31'";
-    $result11 = mysqli_query($conn,$sql11);
-    $data11 = mysqli_num_rows($result11);
-
-    $sql12="SELECT count(complaint_id) from user_complaints where date_col between '2022-12-01' and '2022-12-31'";
-    $result12 = mysqli_query($conn,$sql12);
-    
-    $data12 = mysqli_num_rows($result12);
-  $dataPoints = array(
-    $data1,$data2 ,$data3 ,$data4, $data5, $data6, $data7 ,$data8, $data9, $data10, $data11, $data12
-  );
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,25 +37,7 @@ SESSION_start();
 
   <!-- Template Stylesheet -->
   <link href="css/style.css" rel="stylesheet">
-  <script>
-    window.onload = function () {
-    
-    var chart = new CanvasJS.Chart("chartContainer", {
-      title: {
-        text: "Push-ups Over a Week"
-      },
-      axisY: {
-        title: "Number of Push-ups"
-      },
-      data: [{
-        type: "line",
-        dataPoints: <?php echo json_encode($dataPoints); ?>
-      }]
-    });
-    chart.render();
-    
-    }
-    </script>
+  
 </head>
 
 <body>
@@ -153,7 +82,7 @@ SESSION_start();
           <a href="blog.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Blog/News </a>
           <a href="user.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Users</a>
           <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Add Station</a>
-          <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i></a> -->
+          <a href="missing.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Missing Person Details</a>
          <a href="widget.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Track Cases</a>
           <!-- <div class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
@@ -331,20 +260,53 @@ SESSION_start();
 
 
       <!--  Sales Chart Start -->
-       <!-- <div class="container-fluid pt-4 px-4">
-        <div class="row g-4">
-          <div class="col-sm-12 col-xl-6">
-            <div class="bg-secondary text-center rounded p-4">
-              <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Reports</h6>
-                <a href="">Show All</a>
-              </div>
-              <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-            </div>
-          </div> 
+      <div class="container-fluid pt-4 px-4">
+        <div class="bg-secondary text-center rounded p-4">
+          <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Report History</h6>
+            <a href="showemergency.php">Show All</a>
+          </div>
           
+          <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+
+              <thead>
+                <tr class="text-white">
+                  
+                  <th scope="col">Date</th>
+                  <th scope="col">Time</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Contact Number</th>
+                  <th scope="col">location</th>
+                  <!--    <th scope="col">Action</th>-->
+                </tr>
+              </thead>
+              <tbody>
+              <?php 
+                $sql="SELECT * FROM emergency ORDER by id DESC LIMIT 0,5";
+                $result=mysqli_query($conn,$sql);
+                while ($data = mysqli_fetch_assoc($result)) {
+              ?>
+                <tr>
+                  
+                  <td><?php echo $data['date_col']?></td>
+                  <td><?php echo $data['time_col']?></td>
+                  <td><?php echo $data['id'];?></td>
+                  <td><?php echo $data['contact'];?></td>
+                  <td>      <iframe class="position-relative rounded w-100 h-100"
+                            src="https://www.google.com/maps?q=<?php echo $data['latitude']; ?>,<?php echo $data['longitude']; ?>&hl=es;z=14&output=embed"
+                            frameborder="0" allowfullscreen="" aria-hidden="false"
+                            tabindex="0" style="filter: grayscale(100%) invert(92%) contrast(83%); border: 0;"></iframe></td>
+                  
+
+
+                </tr>
+                <?php } ?>
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>  -->
+      </div>
   <!--Sales Chart End -->
 
 
@@ -404,9 +366,9 @@ SESSION_start();
                $sql="SELECT * FROM user_complaints ORDER by complaint_id DESC LIMIT 0,5";
                $result=mysqli_query($conn,$sql);
                while ($data = mysqli_fetch_assoc($result)) {
-             ?>
+             ?>dashboard user\images
               <div class="d-flex align-items-center border-bottom py-3">
-                <img class="rounded-circle flex-shrink-0" src="http://localhost/crime_reporting/dashboard%20admin/report-image/<?php echo $data['image']?>" alt="" style="width: 40px; height: 40px;">
+                <img class="rounded-circle flex-shrink-0" src="http://localhost/crime_reporting/dashboard%20user/<?php echo $data['image']?>" alt="" style="width: 40px; height: 40px;">
                 <div class="w-100 ms-3">
                   <div class="d-flex w-100 justify-content-between">
                     <h6 class="mb-0"><?php echo $data['crime_type']?></h6>

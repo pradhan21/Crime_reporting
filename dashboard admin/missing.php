@@ -1,7 +1,7 @@
 <?php
     SESSION_start();
     // include "../dashboard user/logics/bloglogic.php"
-    include "logics/bloglogic.php";
+    include "logics/logic1.php";
     if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
         include "connection.php";  
 
@@ -88,10 +88,10 @@
                         </div>
                     </div> -->
                    <!--<a href="widget.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>-->
-                    <a href="blog.php" class="nav-item nav-link active"><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
+                    <a href="blog.php" class="nav-item nav-link "><i class="fa fa-chart-bar me-2"></i>Blog/News</a>
                     <a href="user.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Users</a>
                     <a href="Criminal_details_form.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Add Station</a>
-                    <a href="missing.php" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Missing Person Details</a>
+                    <a href="missing.php" class="nav-item nav-link active"><i class="fa fa-table me-2"></i>Missing Person Details</a>
                     <a href="widget.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Track Cases</a>
                     <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a> -->
                    <!-- <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Table</a>-->
@@ -217,26 +217,39 @@
                             <form method="POST" enctype = "multipart/form-data">   
                                 <br/>
                                 <h1>Blog Post</h1>                             
-                                <label for="blogTitle" class="form-label">Title</label>
-                                <input type="text" class="form-control" name="blogTitle" required>
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" name="name" required>
                                 
-                                <label for="subTitle" class="form-label">Sub-Title</label>
-                                <input type="text" class="form-control" name="subTitle">
+                                <label for="date" class="form-label">Date</label>
+                                <input type="date" class="form-control" name="date">
 
-                                <label for="author" class="form-label">Written by</label>
-                                <input type="text" class="form-control" name="author">
+                                <label for="homeland" class="form-label">Homeland</label>
+                                <input type="text" class="form-control" name="homeland">
                                 
-                                <label for="fimage" class="form-label">Featured Image</label>
+                                <label for="fimage" class="form-label"> Image</label>
                                 <input type="file" class="form-control" name="fimage" required>
+
+                                <label for="gender" class="form-label">Gender</label>
+                                <input type="text" class="form-control" name="gender">
+
+                                <label for="lost-location" class="form-label">Lost_location</label>
+                                <input type="text" class="form-control" name="lost_location">
+
+                                <label for="ldate" class="form-label">Last-Date</label>
+                                <input type="date" class="form-control" name="ldate">
+
+                                <label for="cname" class="form-label">Complainer's Name</label>
+                                <input type="text" class="form-control" name="cname">
+
+                                <label for="number" class="form-label">Contact Number</label>
+                                <input type="text" class="form-control" name="number">
                                 
-                                <label for="description" class="form-label">Description</label>
+                                <label for="description" class="form-label">Appearance</label>
                                 <textarea class="form-control tarea" name="description" rows="8" required></textarea>
                                 
-                                <label for="addimage" class="form-label">Additional Image</label>
-                                <input type="file" class="form-control" name="addimage">
+                               
 
-                                <label for="opt_description" class="form-label">Optional Description</label>
-                                <textarea class="form-control tarea" name="opt_description" rows="6"></textarea>
+                               
 
                                 <br/>
                                 <button name="blog_insert" type="submit" class="btn btn-success" id = "btn-submit" onsubmit="myFunction()">Submit</button>
@@ -264,21 +277,28 @@
                 <div class="row g-4" id= "div2">
                     <div class="col-12">
                         
-                        <button class="btn btn-success" id = "btn-tog">Create New Post</button>
+                        <button class="btn btn-success" id = "btn-tog">Create New Missing Report </button>
                         <br/>
                         <br/>
                         <div class="bg-secondary rounded h-100 p-4">
-                            <h1 class="mb-4">Published Post List</h1>
+                            <h1 class="mb-4">Missing Reports</h1>
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered" id="table-data">
                                     <thead class=" table-light">
                                         <tr>
-                                            <th scope="col">Blog_Id</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Published Date</th>
+                                            <th scope="col">Id</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Homeland</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Gender</th>
+                                            <th scope="col">Lost Location</th>
+                                            <th scope="col">Lost Date</th>
+                                            <th scope="col">Complainer's Name</th>
+                                            <th scope="col">Contact No</th>
+                                            <th scope="col">Description</th>
                                             <th scope="col">Image</th>
                                             <!-- <th scope="col">added Image</th> -->
-                                            <th scope="col">Edit</th>
+                                            
                                             <th scope="col">Delete</th>
                                         </tr>
                                     </thead>
@@ -287,18 +307,23 @@
                                     <?php foreach($query as $q) { ?> 
                                     <tbody>
                                         <tr>
-                                            <th scope="row"><?php echo $q['blog_id']; ?></th>
-                                            <td><?php echo $q['title']; ?></td>
-                                            <td><?php echo $q['date_col']; ?></td>
-                                            <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?> "></td>
-                                            <!-- <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td> -->
-                                            <form action = "updatedata.php" method="POST">
-                                                <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
-                                                <td><input type="submit" name = "edit" class="btn btn-info" value="Edit"></td>
-                                            </form>
+
+                                            <td><?php echo $q['missing_id']; ?></td>
+                                            <td><?php echo $q['name']; ?></td>
+                                            <td><?php echo $q['Homeland']; ?></td>
+                                            <td><?php echo $q['Date']; ?></td>
+                                            <td><?php echo $q['gender']; ?></td>
+                                            <td><?php echo $q['llocation']; ?></td>
+                                            <td><?php echo $q['ldate']; ?></td>
+                                            <td><?php echo $q['cname']; ?></td>
+                                            <td><?php echo $q['contact']; ?></td>
+                                            <td><?php echo $q['description']; ?></td>
+                                            <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20admin/<?=$q['image']; ?> "></td>
+                                            
+                                           
 
                                             <form method="POST">
-                                                <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
+                                                <input type="hidden" name = "id" value = "<?php echo $q['missing_id']; ?>">
                                                 <td><input type="submit" name = "delete" class="btn btn-danger" value="Delete"></td>
                                             </form>
                                         
