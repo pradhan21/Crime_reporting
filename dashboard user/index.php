@@ -218,7 +218,7 @@ include("database_handler/select_user.php");
                                     $date = $row["date_col"];
                                     $c_place = $row["crime_place"];
                                     $c_type = $row["crime"];
-                                    $evidence=$row["evidence"];
+                                    $evidence=$row["crime_evidence"];
                                     $image2 = $row["image"];
                                     $status = $row["status"]
                                     // $image1=$row["image"];

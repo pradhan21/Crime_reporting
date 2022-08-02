@@ -157,7 +157,7 @@ SESSION_start();
                     <!-- <a href="blog.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog/News</a> -->
                     <a href="#" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i> Criminal detail</a>
                    <!-- <a href="blogpost.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Blog Post</a>-->
-                   <a href="casedisplay.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Your Cases</a>
+                    <a href="casedisplay.php" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Your Cases</a>
                     <!-- <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -493,9 +493,7 @@ SESSION_start();
                             </h6>
                             <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                 <i class="fa fa-exclamation-circle me-2"></i>
-                                **<?php
-                                if(isset($_GET['success'])){
-                                    echo $_GET['success'];}?> 
+                               
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>  
                             <form method="POST" action= "detailsform.php" enctype = "multipart/form-data">
@@ -510,13 +508,7 @@ SESSION_start();
                                     <label for="first_name" class="col-sm-2 col-form-label" >Criminal Name :</label>
                                     <div class="col-sm-10">
                                     <input type="text" class="form-control" id="first_name" name="f_name">
-                                    <?php if(isset($f_Err)){?> 
-                                        <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                        <i class="fa fa-exclamation-circle me-2"></i>
-                                            <?php echo $f_Err;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div> 
-                                        <?php } ?> 
+
                                     </div>
                                 </div>
                                 <hr>
@@ -524,13 +516,7 @@ SESSION_start();
                                     <label for="age1" class="col-sm-2 col-form-label" >Age :</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="age1" name="age"  >
-                                        <?php if(isset($ageErr)){?>
-                                            <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                                <i class="fa fa-exclamation-circle me-2"></i>
-                                                <?php echo $ageErr;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div> 
-                                        <?php } ?>
+                                            
                                         
                                     </div>
                                 </div>
@@ -539,13 +525,8 @@ SESSION_start();
                                     <label for="height1" class="col-sm-2 col-form-label" >Height :</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="height1" name="height"  >
-                                        <?php if(isset($heightErr)) {?> 
-                                            <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                                <i class="fa fa-exclamation-circle me-2"></i>
-                                                <?php echo $heightErr;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div> 
-                                        <?php } ?>
+                                           
+                                        
                                     </div>
                                 </div>
                                 <hr>
@@ -553,13 +534,7 @@ SESSION_start();
                                     <label for="weight1" class="col-sm-2 col-form-label" >Weight :</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="weight1" name="weight"  >
-                                        **<?php if(isset($weightErr)){?> 
-                                            <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                                <i class="fa fa-exclamation-circle me-2"></i>
-                                                <?php echo $weightErr;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div> 
-                                        <?php } ?>
+                                           
                                         
                                     </div>
                                 </div>
@@ -568,13 +543,7 @@ SESSION_start();
                                     <label for="D.O.B" class="col-sm-2 col-form-label">Date of Birth :</label>
                                     <div class="col-sm-10">
                                         <input type="date" class="form-control" id="D.O.B" name ="date"  >
-                                        <?php if(isset($dateErr)){ ?> 
-                                        <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                                <i class="fa fa-exclamation-circle me-2"></i>
-                                            <?php echo $dateErr;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>
-                                        <?php } ?> 
+                                        
                                     </div>
                                 </div>
                                 <hr>
@@ -623,13 +592,8 @@ SESSION_start();
                                                 2C and above
                                             </label>
                                         </div>
-                                        <?php if(isset($hairErr)){?> 
-                                        <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                                <i class="fa fa-exclamation-circle me-2"></i>
-                                            <?php echo $hairErr;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div> 
-                                        <?php } ?> 
+
+                                       
                                     </div>
                                 </fieldset>
                                 <hr>
@@ -657,13 +621,7 @@ SESSION_start();
                                                 other
                                             </label>
                                         </div>
-                                        <?php if(isset($genderErr)){?> 
-                                        <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                                <i class="fa fa-exclamation-circle me-2"></i>
-                                            <?php echo $genderErr;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
-                                        </div> 
-                                        <?php } ?>
+                                        
                                     </div>
                                 </fieldset>
                                 <hr>
@@ -674,13 +632,7 @@ SESSION_start();
                                     <div class="col-sm-10">
                                         <!--<input type="textarea" class="form-control" id="crimeD1" name ="crimeD" value="">-->
                                         <textarea class="form-control" placeholder="Description" id="floatingTextarea" name ="crimeD" style="height: 150px;"  ></textarea>
-                                        <?php if(isset($crimeDErr)){?> 
-                                        <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                                <i class="fa fa-exclamation-circle me-2"></i>
-                                            <?php echo $crimeDErr;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div> 
-                                        <?php }?>
+                                        
                                     </div>
                                 </div>
                                 <hr>
@@ -688,13 +640,8 @@ SESSION_start();
                                     <label for="race" class="col-sm-2 col-form-label" >Race :</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="race" name="Race"  >
-                                        <?php if($isset($RaceErr)){?>
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                        <i class="fa fa-exclamation-circle me-2"></i>
-                                            <?php echo $RaceErr;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>  
-                                        <?php }?>
+                                       
                                     </div>
                                 </div>
                                 <hr>
@@ -702,13 +649,8 @@ SESSION_start();
                                     <label for="skin" class="col-sm-2 col-form-label" >Skin Color :</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="skin" name="Skin"  >
-                                        <?php if(isset($SkinErr)){?> 
                                         <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
-                                        <i class="fa fa-exclamation-circle me-2"></i>
-                                            <?php echo $SkinErr;?> 
-                                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
-                                        </div> 
-                                        <?php }?> 
+                                       
                                     </div>
                                 </div>
                                 <div class="row mb-3">

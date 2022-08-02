@@ -64,17 +64,99 @@
         }
         
 
-    </style>
+   
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+    .open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+    }
+
+    /* The popup form - hidden by default */
+    .form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+    }
+
+    /* Full-width input fields */
+    .form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    }
+
+    /* When the inputs get focus, do something */
+    .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+    }
+
+    /* Set a style for the submit/login button */
+    .form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+    }
+
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+    background-color: red;
+    }
+
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+    }
+</style>
 </head>
 
 <body onload="getLocation();">
     <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up-circle-fill"></i></button>
-    <form action="sendlocation.php" class="myForm" method="post" autocomplete="off">
-        <input type="hidden" name="latitude" required value="">
-        <input type="hidden" name="longitude" required value=""><br>
-        <button type="submit" id="myBtn1" title="Emergency" name="submit"><i class="bi bi-exclamation-octagon-fill"></i></button>
-    </form>
+    <button onclick="openForm()" id="myBtn1" ><i class="bi bi-exclamation-octagon-fill"></i></button>
+    
+    <div class="form-popup" id="myForm">
+        <form action="sendlocation.php" autocomplete="off" method="post" class="form-container myForm">
+            <h1>Emergency</h1>
 
+            <label for="email"><b>Contact Number</b></label>
+            <input type="text" placeholder="Enter Mobile Number" name="contact" required>
+
+            <input type="hidden" name="latitude" required value="">
+            <input type="hidden" name="longitude" required value=""><br>
+
+          
+
+            <button type="submit" class="btn" title="Emergency" name="nonuser">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+    </div>
+    
     <div class="site-wrap">
 
         <div class="site-mobile-menu">
@@ -184,7 +266,7 @@
             
                 <div class="col-md-5">
                 <?php foreach($cyber as $c){ ?>
-                    <a href="single.php?b_id=<?php echo $c['blog_id'];?>" class="hentry img-1 h-100 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$c['featured_image']; ?>');">
+                    <a href="single.php?b_id=<?php echo $c['blog_id'];?>" class="hentry img-1 h-100 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20admin/<?=$c['featured_image']; ?>');">
                         <span class="post-category text-white bg-danger">BREAKING NEWS</span>
                         <div class="text text-sm">
                             <h2><strong><?php echo $c['title']; ?> </strong></h2>
@@ -200,7 +282,7 @@
                 <div class="col-md-7">
 
                     <?php foreach($fraud as $f){ ?>
-                    <a href="single.php?b_id=<?php echo $f['blog_id'];?>" class="hentry img-2 v-height mb30 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$f['featured_image']; ?>');">
+                    <a href="single.php?b_id=<?php echo $f['blog_id'];?>" class="hentry img-2 v-height mb30 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20admin/<?=$f['featured_image']; ?>');">
                         <span class="post-category text-white bg-success">Business Fraud</span>
                         <div class="text text-sm">
                             <h2><strong><?php echo $f['title']; ?></strong></h2>
@@ -213,7 +295,7 @@
 
                     <div class="two-col d-block d-md-flex">
                         <?php foreach($murder as $m){ ?>
-                        <a href="single.php?b_id=<?php echo $m['blog_id'];?>" class="hentry v-height img-2 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$m['featured_image']; ?>');">
+                        <a href="single.php?b_id=<?php echo $m['blog_id'];?>" class="hentry v-height img-2 gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20admin/<?=$m['featured_image']; ?>');">
                             <span class="post-category text-white bg-danger">Murder</span>
                             <div class="text text-sm">
                                 <h2><strong><?php echo $m['title']; ?></strong></h2>
@@ -225,7 +307,7 @@
                         ?>
 
                         <?php foreach($kidnap as $k){ ?>
-                        <a href="single.php?b_id=<?php echo $k['blog_id'];?>" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20user/<?=$k['featured_image']; ?>');">
+                        <a href="single.php?b_id=<?php echo $k['blog_id'];?>" class="hentry v-height img-2 ml-auto gradient" style="background-image: url('http://localhost/crime_reporting/dashboard%20admin/<?=$k['featured_image']; ?>');">
                             <span class="post-category text-white bg-warning">Kidnapping</span>
                             <div class="text text-sm">
                                 <h2><strong><?php echo $k['title']; ?></strong></h2>
@@ -254,7 +336,7 @@
             <?php foreach($kidnap as $k){ ?>
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="entry2">
-                        <a href="single.php?b_id=<?php echo $k['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$k['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
+                        <a href="single.php?b_id=<?php echo $k['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20admin/<?=$k['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
                         <span class="post-category text-white bg-primary mb-3">News</span>
                         <h2><a href="single.php?b_id=<?php echo $k['blog_id'];?>"><strong><?php echo $k['title']; ?></strong></a></h2>
                         <div class="post-meta align-items-center text-left clearfix">
@@ -273,7 +355,7 @@
             
                     <div class="entry3 d-block d-sm-flex">
                         <figure class="figure order-2">
-                            <a href="single.php?b_id=<?php echo $d['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$d['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
+                            <a href="single.php?b_id=<?php echo $d['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20admin/<?=$d['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
                         </figure>
                         <div class="text mr-4 order-1">
                             <span class="post-category text-white bg-primary mb-3">News</span>
@@ -299,7 +381,7 @@
             <?php foreach($random as $r){ ?>
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="entry2 mb-5">
-                        <a href="single.php?b_id=<?php echo $r['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$r['featured_image']; ?>" alt="Image" class="img-fluid rounded related_img"></a>
+                        <a href="single.php?b_id=<?php echo $r['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20admin/<?=$r['featured_image']; ?>" alt="Image" class="img-fluid rounded related_img"></a>
                         <br>
                         <span class="post-category text-white bg-primary mb-3">News</span>
                         <h2><a href="single.php?b_id=<?php echo $r['blog_id'];?>"><?php echo $r['title']; ?></a></h2>
@@ -321,7 +403,7 @@
                 <div class="col-lg-4 mb-5 mb-lg-0">
                     <div class="entry4 d-block d-sm-flex">
                         <figure class="figure order-2">
-                            <a href="single.php?b_id=<?php echo $q['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
+                            <a href="single.php?b_id=<?php echo $q['blog_id'];?>"><img src="http://localhost/crime_reporting/dashboard%20admin/<?=$q['featured_image']; ?>" alt="Image" class="img-fluid rounded"></a>
                         </figure>
                         <div class="text mr-4 order-1">
                             <span class="post-category text-white bg-danger mb-3">NEWS</span>
@@ -441,6 +523,18 @@
             }
         }
     </script>
+    <script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+ $(function() {
+            $("#jquery-ui-dialog").dialog();
+        });
+</script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>

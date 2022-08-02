@@ -290,7 +290,7 @@
                                             <th scope="row"><?php echo $q['blog_id']; ?></th>
                                             <td><?php echo $q['title']; ?></td>
                                             <td><?php echo $q['date_col']; ?></td>
-                                            <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['featured_image']; ?> "></td>
+                                            <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20admin/<?=$q['featured_image']; ?> "></td>
                                             <!-- <td><img class="table_image" src="http://localhost/crime_reporting/dashboard%20user/<?=$q['add_image']; ?> "></td> -->
                                             <form action = "updatedata.php" method="POST">
                                                 <input type="hidden" name = "id" value = "<?php echo $q['blog_id']; ?>">
