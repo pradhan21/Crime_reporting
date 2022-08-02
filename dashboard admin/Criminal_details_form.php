@@ -376,15 +376,17 @@ SESSION_start();
                 <div class="container-fluid pt-4 px-4" >
                     <div class="row g-4">
                         <div class="col-sm-12 col-xl-6" style="30%;" >
-                            <div class="bg-secondary rounded h-100 p-4" ">
+                            <div class="bg-secondary rounded h-100 p-4" >
                                 <h6 class="mb-4">Add Station</h6>
+                                <?php if (isset($_GET['data1'])){?>
                                 <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-check me-2" Style="color: green;"></i>
-                                                **<?php if (isset($_GET['data1'])){?>
+                                                
                                             <?php echo $_GET['data1'];?> 
-                                            <?php } ?>
+                                            
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         </div>
+                                        <?php } ?>
                                 <form method="POST" action="stationhandle.php">
                                     <div class="mb-3">
                                         <label for="exampleInputEmail1" class="form-label">Station Name</label>
@@ -408,14 +410,15 @@ SESSION_start();
                                         <label for="exampleInputEmail1" class="form-label">Contact No</label>
                                         <input type="text" class="form-control" id="exampleInputEmail1" name="contact"
                                             aria-describedby="emailHelp">
+                                            <?php if (isset($_GET['dataErr1'])){?>
                                             <div class="alert alert-dark alert-dismissible fade show " role="alert"> 
                                                 <i class="fa fa-exclamation-circle me-2"></i>
-                                                **<?php if (isset($_GET['dataErr1'])){?>
+                                                
                                             <?php echo $_GET['dataErr1'];?> 
-                                            <?php } ?>
+                                            
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                         </div>
-                                        
+                                        <?php } ?>
                                     </div>
                                     <div class="mb-3 form-check">
                                         <!-- <input type="checkbox" class="form-check-input" id="exampleCheck1"> -->
@@ -439,7 +442,7 @@ SESSION_start();
                                                     <th scope="col">City</th>
                                                     <th scope="col">Address</th>
                                                     <th scope="col">Contact Number</th>
-                                                    <th scope="col">No of officers</th>
+                                                   
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -454,7 +457,7 @@ SESSION_start();
                                                     <td><?php echo $row['city'];?></td>
                                                     <td><?php echo $row['address'];?></td>
                                                     <td><?php echo $row['contact_no'];?></td>
-                                                    <td><?php echo $row['no_of_officers'];?></td>
+                                                    
                                                     
                                                 </tr>
                                                 <?php }} ?>

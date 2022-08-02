@@ -1,13 +1,13 @@
 <?php 
 SESSION_start();
  $id=$_SESSION['id'];
- $sid=$_SESSION['sid'];
+ $sid=$_GET['sid'];
  $csid=$_GET['csid'];
   //echo"<script>alert($id)</script>"; to check value of id
   if(isset($_SESSION['id']) && isset($_SESSION['fname']) && isset($_SESSION['lname']) && isset($_SESSION['lname'])){
     include "connection.php";  
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html>                                             
 <html lang="en">
 
 <head>

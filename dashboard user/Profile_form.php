@@ -181,7 +181,7 @@ if (isset($_POST['upload'])) {
               </div>
             </div>
           </div>
-          <div class="card mt-3 ">
+          <!-- <div class="card mt-3 ">
             <ul class="list-group list-group-flush">
 
               <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
@@ -227,7 +227,7 @@ if (isset($_POST['upload'])) {
                 <span class="text-secondary">FB</span>
               </li>
             </ul>
-          </div>
+          </div> -->
         </div>
         <?php  
                   
@@ -418,74 +418,7 @@ if (isset($_POST['upload'])) {
                          <?php
                                }  
                             ?>              
-          <div class="row gutters-sm" style="background-color:#000000 " >
-            <div class="col-sm-6 mb-3">
-              <div class="card h-100">
-                <div class="card-body" style="background-color:#191c24">
-                  <h6 class="d-flex align-items-center mb-3" style="color:white"><i
-                      class="material-icons text-info mr-2">Investigation</i>Report Status</h6>
-                  <small style="color:white">Criminal-Identified</small>
-                  <div class="progress mb-3" style="height: 5px">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small style="color:white">Criminal-Descrpition</small>
-                  <div class="progress mb-3" style="height: 5px">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small style="color:white">Evidence-Collection</small>
-                  <div class="progress mb-3" style="height: 5px">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small style="color:white">Alibi-Search</small>
-                  <div class="progress mb-3" style="height: 5px">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small style="color:white">Report-Authenticity</small>
-                  <div class="progress mb-3" style="height: 5px">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6 mb-3">
-              <div class="card h-100">
-                <div class="card-body" style="background-color:#191c24">
-                  <h6 class="d-flex align-items-center mb-3" style="color:white"><i
-                      class="material-icons text-info mr-2">Lifetime reports</i>Completion rate</h6>
-                  <small style="color:white">Report-1</small>
-                  <div class="progress mb-3" style="height: 5px">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small style="color:white">Report-2</small>
-                  <div class="progress mb-3" style="height: 5px">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small style="color:white">Report-3</small>
-                  <div class="progress mb-3" style="height: 5px">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small style="color:white">Report-4</small>
-                  <div class="progress mb-3" style="height: 5px">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <small style="color:white">Report-5</small>
-                  <div class="progress mb-3" style="height: 5px">
-                    <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66"
-                      aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+         
 
 
 

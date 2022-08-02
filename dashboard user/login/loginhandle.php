@@ -17,7 +17,7 @@ SESSION_start();
                     $_SESSION['id']=$row['user_id'];
                     $_SESSION['email']=$row['email'];
                     $_SESSION['contact']=$row['contact_no'];
-                    header("location:../index.php");
+                    header("location:../my_complaints.php");
                 }
             }
             else{
