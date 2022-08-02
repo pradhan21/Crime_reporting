@@ -324,7 +324,7 @@ if (isset($_POST['upload'])) {
                   <div class="col-sm-9 text-secondary" >
                     <input type="text" name ="email"  value="<?php echo $row1['email'];?>" required>
                     <span class = "error">
-                    **<?php// echo $emailErr;?>
+                    **<?php // echo $emailErr;?>
                     </span>
                   </div>
                 </div>

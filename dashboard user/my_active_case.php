@@ -1,11 +1,43 @@
-<?php
+<?php 
 SESSION_start();
-
-
-include("database_handler/DB_pull.php");
+$RaceErr="";
+$SkinErr="";
+$hairErr="";
+$heightErr="";
+$weightErr="";
+$ageErr="";
+$nameErr = "";  
+$dateErr = "";  
+$genderErr = "";  
+$casenoErr = "";  
+$mobileErr="";
+$addressErr="";
+$crimeDErr="";
+$l_Err="";
+$f_Err="";
+$name = "";  
+$f_name="";
+$l_name="";
+$date = "";  
+$gender = "";  
+$comment = "";  
+$caseno = "";  
+$mobile="";
+$address="";
+$age="";
+$height="";
+$weight="";
+$hair="";
+$crimeD="";
+$Race="";
+$Skin="";
+$image="";
+$no=0;
+ 
+include ("database_handler/DB_pull.php");
 include("database_handler/select_user.php");
-
-?>
+   
+   ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,8 +54,8 @@ include("database_handler/select_user.php");
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet"> 
+    
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -49,22 +81,25 @@ include("database_handler/select_user.php");
         </div>
         <!-- Spinner End -->
         <?php
-  
+        $sql = "SELECT * from user where user_id='$id' limit 0,5 ";
+                  $sql2="SELECT * from user_complaints where user_id='$id' limit 0,5";
+                  $result = $conn->query($sql);
+                  $result2 = $conn->query($sql2);
 
-        // if ($result->num_rows > 0) {
-        //     // output data of each row
-        //     while ($row = mysqli_fetch_array($result)) {
-        //         $first1 = $row["f_name"];
-        //         $last1 = $row["l_name"];
-        //         $address1 = $row["address"];
-        //         $email1 = $row["email"];
-        //         $image1 = $row["image"];
-        //         $user_id = $row["user_id"];
-        //         $l_no = $row["liscence_no"];
-        //     }
-        // }
-
-        ?>
+                  if ($result->num_rows > 0) {
+                    // output data of each row
+                    while($row = mysqli_fetch_array($result)) {
+                      $first1 = $row["f_name"];
+                      $last1=$row["l_name"];
+                      $address1 = $row["address"];
+                      $email1=$row["email"];
+                     $image1=$row["image"];
+                      $user_id=$row["user_id"];
+                      $l_no=$row["liscence_no"];
+                    }
+                  }
+                  
+          ?>
 
         <!-- Sidebar Start -->
         <div class="sidebar pe-4 pb-3">
@@ -74,19 +109,19 @@ include("database_handler/select_user.php");
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="http://localhost/crime_reporting/dashboard%20user/image/<?php echo $image1; ?>" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="http://localhost/crime_reporting/dashboard%20user/image/<?php echo $image1;?>" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0"><?php echo $_SESSION["fname"].' '.$_SESSION["lname"]; ?></h6>
+                        <h6 class="mb-0"><?php echo $first1;?> <?php echo $last1;?></h6>
                         <span></span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <a href="create_complaint.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Create Complaint</a>
-                    <a href="Table_criminal.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>My Complaints</a>
-                    <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>My Active Cases</a>
+                    <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>My Complaints</a>
+                    <a href="create_complaint.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>Create Complaint</a>
+                    <a href="my_active_case.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>My Active Cases</a>
+                    
                 </div>
             </nav>
         </div>
@@ -172,8 +207,8 @@ include("database_handler/select_user.php");
                     </div>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="http://localhost/crime_reporting/dashboard%20user/image/<?php echo $image1; ?>" alt="" style="width: 40px; height: 40px;">
-                            <span class="d-none d-lg-inline-flex"><?php echo $_SESSION["fname"].' '.$_SESSION["lname"]; ?></span>
+                            <img class="rounded-circle me-lg-2" src="http://localhost/crime_reporting/dashboard%20user/image/<?php echo $image1;?>" alt="" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex"><?php echo $first1;?> <?php echo $last1;?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="Profile.php" class="dropdown-item">My Profile</a>
@@ -184,13 +219,7 @@ include("database_handler/select_user.php");
                 </div>
             </nav>
             <!-- Navbar End -->
-            <?php
-
-      
-            ?>
-
-
-
+            <!-- Content Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
@@ -214,7 +243,7 @@ include("database_handler/select_user.php");
                                 </tr>
                             </thead>
                             <?php
-                                  $sql2 = "SELECT * from user_complaints JOIN cime_type ON user_complaints.crime_type = cime_type.crime_id where user_id='$id'";
+                                  $sql2 = "SELECT * from  JOIN cime_type ON user_complaints.crime_type = cime_type.crime_id where user_id='$id'";
                                   // $result = $conn->query($sql);
                                   $result2 = $conn->query($sql2);
                             if ($result2->num_rows > 0) {
@@ -255,98 +284,30 @@ include("database_handler/select_user.php");
                         </table>
                     </div>
                 </div>
-                <!--   Recent Sales End 
-                <div class="container-fluid pt-4 px-4">
-                    <div class="row g-4">
-                        <div class="col-sm-12 col-xl-6">
-                            <div class="bg-secondary rounded h-100 p-4">
-                                <h2 class="mb-4">Criminal Details </h2>
-                                <form>
-                                <div class="mb-3">
-                                <h4 class="mb-4">Image : </h4>
-                                        <?php echo "<img src= '$image'/>"; ?>
-                                        
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Criminal name :</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail1" value ="<?php echo $name; ?>"
-                                            aria-describedby="emailHelp">
-                                        
-                                    </div>
-                                    <hr>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Age :</label>
-                                        <input type="text" class="form-control" id="exampleInput    1" value ="<?php echo $age; ?>">
-                                    </div>
-                                    <hr>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Height :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $height; ?>">
-                                    </div>
-                                    <hr>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Weight :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $weight; ?>">
-                                    </div>
-                                    <hr>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Gender :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $gender; ?>">
-                                    </div>
-                                    <hr>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Hair type :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $hair; ?>">
-                                    </div>
-                                    <hr>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Skin color :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Skin; ?>">
-                                    </div>
-                                    <hr>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Race :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $Race; ?>">
-                                    </div>
-                                    <hr>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Description :</label>
-                                        <textarea class="form-control" placeholder="Description" id="floatingTextarea" name ="crimeD" style="height: 150px;"  ><?php echo $crimeD; ?></textarea>
-                                    </div>
-                                    <hr>
-                                    <div class="mb-3">
-                                        <label for="exampleInputPassword1" class="form-label">Records :</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword1" value ="<?php echo $caseno; ?>">
-                                    </div>
-                                    <hr>
-                                    
-                                </form>
-                            </div>
-                    </div>  -->
-
-                <!-- Footer Start 
-            </div>
-            <!-- Content End -->
+                     
 
 
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    <!-- Content End -->
 
-        </div>
 
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="lib/chart/chart.min.js"></script>
-        <script src="lib/easing/easing.min.js"></script>
-        <script src="lib/waypoints/waypoints.min.js"></script>
-        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="lib/tempusdominus/js/moment.min.js"></script>
-        <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-        <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 
-        <!-- Template Javascript -->
-        <script src="js/main.js"></script>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="lib/chart/chart.min.js"></script>
+  <script src="lib/easing/easing.min.js"></script>
+  <script src="lib/waypoints/waypoints.min.js"></script>
+  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+  <script src="lib/tempusdominus/js/moment.min.js"></script>
+  <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+  <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+  <!-- Template Javascript -->
+  <script src="js/main.js"></script>
 </body>
 
 </html>
