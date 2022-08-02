@@ -86,7 +86,7 @@ include("database_handler/select_user.php");
                     <!-- <a href="index.php" class="nav-item nav-link"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a> -->
                     <a href="index.php" class="nav-item nav-link active"><i class="fa fa-keyboard me-2"></i>My Complaints</a>
                     <a href="create_complaint.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Create Complaint</a>
-                    <a href="Table_criminal.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>My Active Cases</a>
+                    <a href="my_active_cases.php" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>My Active Cases</a>
                 </div>
             </nav>
         </div>
@@ -184,11 +184,6 @@ include("database_handler/select_user.php");
                 </div>
             </nav>
             <!-- Navbar End -->
-            <?php
-
-      
-            ?>
-
 
 
             <div class="container-fluid pt-4 px-4">

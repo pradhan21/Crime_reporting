@@ -219,13 +219,73 @@ include("database_handler/select_user.php");
                 </div>
             </nav>
             <!-- Navbar End -->
+            <!-- Content Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">My Complaints</h6>
+                        <!-- <a href="">Show All</a> -->
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0">
+                            <thead>
+                                <tr class="text-white">
 
-                        
+                                    <th scope="col">Date</th>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Crime Place</th>
+                                    <th scope="col">Crime Type</th>
+                                    <th scope="col">Status</th>
 
 
 
-    <!-- Content Start -->
-                
+                                    <!--    <th scope="col">Action</th>-->
+                                </tr>
+                            </thead>
+                            <?php
+                                  $sql2 = "SELECT * from  JOIN cime_type ON user_complaints.crime_type = cime_type.crime_id where user_id='$id'";
+                                  // $result = $conn->query($sql);
+                                  $result2 = $conn->query($sql2);
+                            if ($result2->num_rows > 0) {
+                                while ($row = $result2->fetch_assoc()) {
+                                    $c_id = $row["complaint_id"];
+                                    $date = $row["date_col"];
+                                    $c_place = $row["crime_place"];
+                                    $c_type = $row["crime"];
+                                    $evidence=$row["evidence"];
+                                    $image2 = $row["image"];
+                                    $status = $row["status"]
+                                    // $image1=$row["image"];
+                            ?>
+                                    <tbody>
+                                        <tr>
+
+
+                                            <td><?php echo $date; ?></td>
+                                            <td><?php echo $c_id; ?></td>
+                                            <td><?php echo $c_place; ?></td>
+                                            <td><?php echo $c_type; ?></td>
+                                            <!-- <td><img src="http://localhost/crime_reporting/dashboard%20template/
+                                            <?php // echo $image2; ?>" onerror="this.style.display='none'" /></td> -->
+                                            <td><?php if($status == 0){echo "Pending";}else{echo "Approved";} ?></td>
+
+
+
+                                        </tr>
+                                    </tbody>
+
+                            <?php
+
+                                }
+                            }
+                            ?>
+
+
+                        </table>
+                    </div>
+                </div>
+                     
+
 
     <!-- Content End -->
 
